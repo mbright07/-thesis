@@ -80,7 +80,7 @@
                                     </div>
                                     <div class="addcart">
                                         <div class="bookmark">
-                                            <a href="#" class="btn add-to-cart">Bookmark</a>
+                                            <a href="#" class="btn add-to-cart" wire:click.prevent="company({{ $job->id}},'{{ $job->name }}',{{ $job->regular_salary }})">Bookmark</a>
                                         </div>
                                         <div class="choice">
                                             <a href="#" class="btn add-to-cart">Ứng tuyển ngay</a>

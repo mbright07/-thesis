@@ -54,7 +54,7 @@
                             <a href="#" class="btn add-to-cart">Ứng tuyển ngay</a>
                             <div class="wrap-btn">
                                 <a href="#" class="btn btn-compare">Add Compare</a>
-                                <a href="#" class="btn btn-wishlist">Add Wishlist</a>
+                                <a href="#" class="btn btn-wishlist" wire:click.prevent="company({{ $job->id}},'{{ $job->name }}',{{ $job->regular_salary }})">Add Wishlist</a>
                             </div>
                         </div>
                     </div>

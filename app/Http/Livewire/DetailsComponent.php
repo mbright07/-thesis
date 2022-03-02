@@ -4,6 +4,7 @@ namespace App\Http\Livewire;
 
 use App\Models\Job;
 use Livewire\Component;
+use Cart;
 
 class DetailsComponent extends Component
 {
@@ -12,6 +13,13 @@ class DetailsComponent extends Component
     public function mount($slug)
     {
         $this->slug = $slug;
+    }
+
+    public function company($job_id, $job_name, $job_salary)
+    {
+        Cart::add($job_id, $job_name, 1, $job_salary)->associate('App\Models\Job');
+        session()->flash('success_message', 'Item added in Cart');
+        return redirect()->route('job.cart');
     }
 
     public function render()

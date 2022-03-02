@@ -29,7 +29,7 @@ Route::get('/', HomeComponent::class);
 
 Route::get('/blog', BlogComponent::class);
 
-Route::get('/cart', CartComponent::class);
+Route::get('/cart', CartComponent::class)->name('job.cart');
 
 Route::get('job/{slug}', DetailsComponent::class)->name('job.details');
 
