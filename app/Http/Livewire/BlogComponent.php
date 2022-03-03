@@ -6,6 +6,7 @@ use App\Models\Job;
 use Livewire\Component;
 use Livewire\WithPagination;
 use Cart;
+use App\Models\Category;
 
 class BlogComponent extends Component
 {
@@ -38,6 +39,8 @@ class BlogComponent extends Component
             $jobs = Job::paginate($this->pagesize);
         }
 
-        return view('livewire.blog-component', ['jobs' => $jobs])->layout("layouts.base");
+        $categories = Category::all();
+
+        return view('livewire.blog-component', ['jobs' => $jobs, 'categories' => $categories])->layout("layouts.base");
     }
 }

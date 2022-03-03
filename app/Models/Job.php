@@ -10,10 +10,4 @@ class Job extends Model
     use HasFactory;
 
     protected $table = "jobs";
-
-    public static function sort($orderBy, $order = 'ASC')
-    {
-        return empty($orderBy) ? static::query()
-            : static::orderBy($orderBy, $order);
-    }
 }
