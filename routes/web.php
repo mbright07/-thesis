@@ -6,6 +6,7 @@ use App\Http\Livewire\CartComponent;
 use App\Http\Livewire\CategoryComponent;
 use App\Http\Livewire\DetailsComponent;
 use App\Http\Livewire\HomeComponent;
+use App\Http\Livewire\SearchComponent;
 use App\Http\Livewire\User\UserDashboardComponent;
 use Illuminate\Support\Facades\Route;
 
@@ -35,6 +36,8 @@ Route::get('/cart', CartComponent::class)->name('job.cart');
 Route::get('job/{slug}', DetailsComponent::class)->name('job.details');
 
 Route::get('/job-category/{category_slug}', CategoryComponent::class)->name('job.category');
+
+Route::get('/search', SearchComponent::class)->name('job.search');
 
 // Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {
 //     return view('dashboard');
