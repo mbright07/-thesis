@@ -41,15 +41,6 @@
                         <div class="stock-info in-stock">
                             <p class="availability">Availability: <b>{{ $job->stock_status }}</b></p>
                         </div>
-                        <div class="quantity">
-                            <span>Quantity:</span>
-                            <div class="quantity-input">
-                                <input type="text" name="product-quatity" value="1" data-max="120" pattern="[0-9]*" >
-                                
-                                <a class="btn btn-reduce" href="#"></a>
-                                <a class="btn btn-increase" href="#"></a>
-                            </div>
-                        </div>
                         <div class="wrap-butons">
                             <a href="#" class="btn add-to-cart">Ứng tuyển ngay</a>
                             <div class="wrap-btn">
@@ -173,8 +164,8 @@
                                 <a class="link-to-service" href="#">
                                     <i class="fa fa-truck" aria-hidden="true"></i>
                                     <div class="right-content">
-                                        <b class="title">Free Shipping</b>
-                                        <span class="subtitle">On Oder Over $99</span>
+                                        <b class="title">Ngành nghề</b>
+                                        <span class="subtitle"></span>
                                         <p class="desc">Lorem Ipsum is simply dummy text of the printing...</p>
                                     </div>
                                 </a>
@@ -184,8 +175,8 @@
                                 <a class="link-to-service" href="#">
                                     <i class="fa fa-gift" aria-hidden="true"></i>
                                     <div class="right-content">
-                                        <b class="title">Special Offer</b>
-                                        <span class="subtitle">Get a gift!</span>
+                                        <b class="title">Kỹ năng</b>
+                                        <span class="subtitle"></span>
                                         <p class="desc">Lorem Ipsum is simply dummy text of the printing...</p>
                                     </div>
                                 </a>
@@ -195,8 +186,8 @@
                                 <a class="link-to-service" href="#">
                                     <i class="fa fa-reply" aria-hidden="true"></i>
                                     <div class="right-content">
-                                        <b class="title">Order Return</b>
-                                        <span class="subtitle">Return within 7 days</span>
+                                        <b class="title">Khu vực</b>
+                                        <span class="subtitle"></span>
                                         <p class="desc">Lorem Ipsum is simply dummy text of the printing...</p>
                                     </div>
                                 </a>

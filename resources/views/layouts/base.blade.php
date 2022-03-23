@@ -88,10 +88,10 @@
 									@endif
 								@endif
 								<li class="menu-item lang-menu menu-item-has-children parent">
-									<a title="English" href="#"><span class="img label-before"><img src="assets/images/lang-en.png" alt="lang-en"></span>English<i class="fa fa-angle-down" aria-hidden="true"></i></a>
+									<a title="English" href="#"><span class="img label-before"><img src="assets/images/lang-en.jpg" alt="lang-en"></span>English<i class="fa fa-angle-down" aria-hidden="true"></i></a>
 									<ul class="submenu lang" >
-										<li class="menu-item" ><a title="vietnam" href="#"><span class="img label-before"><img src="assets/images/lang-vi.png" alt="lang-hun"></span>Vietnam</a></li>
-										<li class="menu-item" ><a title="japan" href="#"><span class="img label-before"><img src="assets/images/lang-jp.png" alt="lang-ger" ></span>Japan</a></li>
+										<li class="menu-item" ><a title="vietnam" href="#"><span class="img label-before"><img src="assets/images/lang-vi.jpg" alt="lang-hun"></span>Vietnam</a></li>
+										<li class="menu-item" ><a title="japan" href="#"><span class="img label-before"><img src="assets/images/lang-jp.jpg" alt="lang-ger" ></span>Japan</a></li>
 									</ul>
 								</li>
 							</ul>
@@ -147,10 +147,10 @@
 									<a href="/" class="link-term mercado-item-title"><i class="fa fa-home" aria-hidden="true"></i></a>
 								</li>
 								<li class="menu-item">
-									<a href="/blog" class="link-term mercado-item-title">Blog</a>
+									<a href="/blog" class="link-term mercado-item-title">Jobs</a>
 								</li>
 								<li class="menu-item">
-									<a href="/cart" class="link-term mercado-item-title">Cart</a>
+									<a href="/cart" class="link-term mercado-item-title">Bookmark</a>
 								</li>
 								<li class="menu-item">
 									<a href="#" class="link-term mercado-item-title">references</a>
