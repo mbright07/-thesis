@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Livewire\Admin\AdminAddCategoryComponent;
+use App\Http\Livewire\Admin\AdminAddJobComponent;
 use App\Http\Livewire\Admin\AdminCategoryComponent;
 use App\Http\Livewire\Admin\AdminDashboardComponent;
 use App\Http\Livewire\Admin\AdminEditCategoryComponent;
@@ -60,4 +61,5 @@ Route::middleware(['auth:sanctum', 'verified', 'authadmin'])->group(function () 
     Route::get('/admin/category/add', AdminAddCategoryComponent::class)->name('admin.addcategory');
     Route::get('/admin/category/edit/{category_slug}', AdminEditCategoryComponent::class)->name('admin.editcategory');
     Route::get('/admin/jobs', AdminJobComponentnent::class)->name('admin.jobs');
+    Route::get('/admin/job/add', AdminAddJobComponent::class)->name('admin.addjob');
 });

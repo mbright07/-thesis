@@ -11,8 +11,15 @@
         <div class="row">
             <div class="col-md-12">
                 <div class="panel panel-default">
-                    <div class="panel-headin">
-                        All Jobs
+                    <div class="panel-heading">
+                        <div class="row">
+                            <div class="col-md-6">
+                                All Jobs
+                            </div>
+                            <div class="col-md-6">
+                                <a href="{{ route('admin.addjob') }}" class="btn btn-success pull-right">Add New Job</a>
+                            </div>
+                        </div>
                     </div>
                     <div class="panel-body">
                         <table class='table table-striped'>
