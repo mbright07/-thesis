@@ -9,6 +9,12 @@ use Livewire\WithPagination;
 class AdminJobComponentnent extends Component
 {
     use WithPagination;
+    public function deleteJob($id)
+    {
+        $job = Job::find($id);
+        $job->delete();
+        session()->flash('message', 'Job has been deleted successfully!');
+    }
     public function render()
     {
         $jobs = Job::paginate(10);
