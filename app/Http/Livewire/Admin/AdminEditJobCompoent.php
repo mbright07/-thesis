@@ -66,7 +66,7 @@ class AdminEditJobCompoent extends Component
         }
         $job->category_id = $this->category_id;
         @$job->save();
-        session()->flash('message', 'Job has been updateed successfully!');
+        session()->flash('message', 'Job has been updated successfully!');
     }
 
     public function render()
