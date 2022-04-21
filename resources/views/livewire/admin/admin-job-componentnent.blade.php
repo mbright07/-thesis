@@ -43,7 +43,11 @@
                                         <td>{{ $job->regular_salary }}</td>
                                         <td>{{ $job->category->name }}</td>
                                         <td>{{ $job->created_at }}</td>
-                                        <td></td>
+                                        <td>
+                                            <a href="{{ route('admin.editjob',['job_slug'=>$job->slug]) }}">
+                                                <i class="fa fa-edit fa-2x text-info"></i>
+                                            </a>
+                                        </td>
                                     </tr>
                                     
                                 @endforeach
