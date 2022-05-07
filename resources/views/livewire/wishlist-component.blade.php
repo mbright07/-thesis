@@ -32,7 +32,7 @@
                                 </div>
                                 <div class="addcart">
                                     <div class="bookmark">
-                                        <a href="#" class="btn add-to-cart" wire:click.prevent="company({{ $job->model->id}},'{{ $job->model->name }}',{{ $job->model->regular_salary }})">Bookmark</a>
+                                        <a href="#" class="btn add-to-cart" wire:click.prevent="moveJobFromWishlistToBookmark('{{ $job->rowId}}')">Bookmark</a>
                                     </div>
                                     <div class="choice">
                                         <a href="#" class="btn add-to-cart">Ứng tuyển ngay</a>

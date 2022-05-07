@@ -7,13 +7,6 @@ use Cart;
 
 class WishlistComponent extends Component
 {
-    public function company($job_id, $job_name, $job_salary)
-    {
-        Cart::instance('cart')->add($job_id, $job_name, 1, $job_salary)->associate('App\Models\Job');
-        session()->flash('success_message', 'Job bookmark successful');
-        return redirect()->route('job.cart');
-    }
-
     public function removeFromWishlist($job_id)
     {
         foreach (Cart::instance('wishlist')->content() as $witem) {
@@ -24,6 +17,15 @@ class WishlistComponent extends Component
             }
         }
     }
+
+    public function moveJobFromWishlistToBookmark($rowId)
+    {
+        $job = Cart::instance('wishlist')->get($rowId);
+        Cart::instance('wishlist')->remove($rowId);
+        Cart::instance('cart')->add($job->id, $job->name, 1, $job->salary)->associate('App\Models\Job');
+        $this->emitTo('wishlist-count-component', 'refreshComponent');
+    }
+
     public function render()
     {
         return view('livewire.wishlist-component')->layout('layouts.base');
