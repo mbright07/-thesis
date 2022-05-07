@@ -35,8 +35,35 @@ class AdminAddJobComponent extends Component
         $this->slug = Str::slug($this->name, '-');
     }
 
+    public function updated($fields)
+    {
+        $this->validateOnly($fields, [
+            'name' => 'required',
+            'slug' => 'required|unique:jobs',
+            'short_description' => 'required',
+            'description' => 'required',
+            'regular_salary' => 'required|numeric',
+            'SKU' => 'required',
+            'stock_status' => 'required',
+            'quantity' => 'required|numeric',
+            'image' => 'required|mimes:jpeg,png,jpg',
+            'category_id' => 'required'
+        ]);
+    }
     public function addJob()
     {
+        $this->validate([
+            'name' => 'required',
+            'slug' => 'required|unique:jobs',
+            'short_description' => 'required',
+            'description' => 'required',
+            'regular_salary' => 'required|numeric',
+            'SKU' => 'required',
+            'stock_status' => 'required',
+            'quantity' => 'required|numeric',
+            'image' => 'required|mimes:jpeg,png,jpg',
+            'category_id' => 'required'
+        ]);
         $job = new Job();
         $job->name = $this->name;
         $job->slug = $this->slug;

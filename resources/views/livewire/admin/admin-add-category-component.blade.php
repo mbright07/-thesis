@@ -21,7 +21,10 @@
                             <div class="form-group">
                                 <label class="col-md-4 control-label">Location Name</label>
                                 <div class="col-md-4">
-                                    <input type="text" placeholder="Location Name" class="form-control input-md" wire:model="name" wire:ketup="generateslug" />
+                                    <input type="text" placeholder="Location Name" class="form-control input-md" wire:model="name" wire:keyup="generateslug" />
+                                    @error('name')
+                                        <p class="text-danger">{{ $message }}</p>
+                                    @enderror
                                 </div>
                             </div>
 
@@ -29,6 +32,9 @@
                                 <label class="col-md-4 control-label">Location Slug</label>
                                 <div class="col-md-4">
                                     <input type="text" placeholder="Location Slug" class="form-control input-md" wire:model="slug" />
+                                    @error('slug')
+                                        <p class="text-danger">{{ $message }}</p>
+                                    @enderror
                                 </div>
                             </div>
 
