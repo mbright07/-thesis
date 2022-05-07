@@ -9,13 +9,13 @@ class CartComponent extends Component
 {
     public function destroy($rowId)
     {
-        Cart::remove($rowId);
+        Cart::instance('cart')->remove($rowId);
         session()->flash('success_message', 'Bookmark has been removed!');
     }
 
     public function destroyAll()
     {
-        Cart::destroy();
+        Cart::instance('cart')->destroy();
         session()->flash('success_message', 'All Bookmark has been removed!');
     }
 

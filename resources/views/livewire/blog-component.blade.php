@@ -56,8 +56,11 @@
                 </div><!--end wrap shop control-->
 
                 <div class="row">
-
+                    
                     <ul class="product-list grid-products equal-container">
+                        @php
+                            $witems = Cart::instance('wishlist')->content()->pluck('id');
+                        @endphp
                         @foreach ($jobs as $job)
                             <li class="col-lg-4 col-md-6 col-sm-6 col-xs-6 ">
                                 <div class="product product-style-2 equal-elem ">
@@ -74,7 +77,14 @@
                                     </div>
                                     <div class="product-info">
                                         <a href="{{ route('job.details', ['slug'=>$job->slug]) }}" class="product-name"><span>{{ $job->name }}</span></a>
-                                        <div class="wrap-price"><ins><p class="product-price">Salary: ${{ $job->regular_salary }}</p></ins></div>    
+                                        <div class="wrap-price"><ins><p class="product-price">Salary: ${{ $job->regular_salary }}</p></ins></div>
+                                        <div class="product-wish">
+                                            @if ($witems->contains($job->id))
+                                                <a href="#" wire:click.prvent="removeFromWishlist({{ $job->id}})"><i class="fa fa-heart fill-heart"></i></a>
+                                            @else
+                                                <a href="#" wire:click.prevent="addToWishList({{ $job->id}},'{{ $job->name }}',{{ $job->regular_salary }})"><i class="fa fa-heart"></i></a>
+                                            @endif
+                                        </div>    
                                     </div>
                                     <div class="addcart">
                                         <div class="bookmark">

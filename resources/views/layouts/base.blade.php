@@ -121,6 +121,7 @@
 						@livewire('header-search-component')
 
 						<div class="wrap-icon right-section">
+							@livewire('wishlist-count-component')
 							<div class="wrap-icon-section wishlist">
 								<a href="#" class="link-direction">
 									<i class="fa fa-bell" aria-hidden="true"></i>

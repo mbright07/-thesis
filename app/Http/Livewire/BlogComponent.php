@@ -27,9 +27,26 @@ class BlogComponent extends Component
 
     public function company($job_id, $job_name, $job_salary)
     {
-        Cart::add($job_id, $job_name, 1, $job_salary)->associate('App\Models\Job');
+        Cart::instance('cart')->add($job_id, $job_name, 1, $job_salary)->associate('App\Models\Job');
         session()->flash('success_message', 'Job bookmark successful');
         return redirect()->route('job.cart');
+    }
+
+    public function addToWishList($job_id, $job_name, $job_salary)
+    {
+        Cart::instance('wishlist')->add($job_id, $job_name, 1, $job_salary)->associate('App\Models\Job');
+        $this->emitTo('wishlist-count-component', 'refreshComponent');
+    }
+
+    public function removeFromWishlist($job_id)
+    {
+        foreach (Cart::instance('wishlist')->content() as $witem) {
+            if ($witem->id == $job_id) {
+                Cart::instance('wishlist')->remove($witem->rowId);
+                $this->emitTo('wishlist-count-component', 'refreshComponent');
+                return;
+            }
+        }
     }
 
     use WithPagination;
