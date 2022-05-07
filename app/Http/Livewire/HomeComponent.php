@@ -18,6 +18,7 @@ class HomeComponent extends Component
         $cats = explode(',', $category->sel_categories);
         $categories = Category::whereIn('id', $cats)->get();
         $no_of_jobs = $category->no_of_jobs;
-        return view('livewire.home-component', ['sliders' => $sliders, 'ljobs' => $ljobs, 'categories' => $categories, 'no_of_jobs' => $no_of_jobs])->layout('layouts.base');
+        $sjobs = Job::orderBy('regular_salary', 'DESC')->get()->take(8);
+        return view('livewire.home-component', ['sliders' => $sliders, 'ljobs' => $ljobs, 'categories' => $categories, 'no_of_jobs' => $no_of_jobs, 'sjobs' => $sjobs])->layout('layouts.base');
     }
 }
