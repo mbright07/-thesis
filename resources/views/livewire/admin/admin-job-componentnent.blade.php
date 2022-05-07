@@ -50,7 +50,7 @@
                                             <a href="{{ route('admin.editjob',['job_slug'=>$job->slug]) }}">
                                                 <i class="fa fa-edit fa-2x text-info"></i>
                                             </a>
-                                            <a href="#" wire:click.prevent="deleteJob({{ $job->id }})" style="margin-left: 10px;"><i class="fa fa-times fa-2x text-danger"></i></a>
+                                            <a href="#" onclick="confirm('Are you sure, You want to delete this job?') || event.stopImmediatePropagation()" wire:click.prevent="deleteJob({{ $job->id }})" style="margin-left: 10px;"><i class="fa fa-times fa-2x text-danger"></i></a>
                                         </td>
                                     </tr>
                                     
