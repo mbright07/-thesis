@@ -393,7 +393,8 @@
 	<script src="{{ asset('assets/js/functions.js') }}"></script>
 	<script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/noUiSlider/15.6.0/nouislider.min.js" integrity="sha512-1mDhG//LAjM3pLXCJyaA+4c+h5qmMoTc7IuJyuNNPaakrWT9rVTxICK4tIizf7YwJsXgDC2JP74PGCc7qxLAHw==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
-    @livewireScripts
+    <script src="https://cdn.tiny.cloud/1/00di8v0f0v7k10qxofzw3djgapgkxw88x6p0e8yuhk9prsjm/tinymce/6/tinymce.min.js" referrerpolicy="origin"></script>
+	@livewireScripts
 
 	@stack('scripts')
 </body>

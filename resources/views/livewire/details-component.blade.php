@@ -32,7 +32,7 @@
                         </div>
                         <h2 class="product-name">{{ $job->name }}</h2>
                         <div class="short-desc">
-                           {{ $job->short_description}}
+                           {!! $job->short_description !!}
                         </div>
                         <div class="wrap-social">
                             <a class="link-socail" href="#"><img src="{{asset('assets/images/social-list.png')}}" alt=""></a>
@@ -57,7 +57,7 @@
                         </div>
                         <div class="tab-contents">
                             <div class="tab-content-item active" id="description">
-                                {{ $job->description }}
+                                {!! $job->description !!}
                             </div>
                             <div class="tab-content-item " id="add_infomation">
                                 <table class="shop_attributes">
