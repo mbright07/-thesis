@@ -27,9 +27,12 @@
                                     <a class="link-to-product" href="{{ route('job.details',['slug'=>$item->model->slug]) }}">{{ $item->model->name }}</a>
                                 </div>
                                 <div class="price-field produtc-price"><p class="price">Salary: ${{ $item->model->regular_salary }}</p></div>
+                                <div class="quantity">
+                                    <a class="btn btn-primary" href="#" wire:click.prevent="switchToSaveForLater('{{ $item->rowId }}')">Save For Later</a>
+                                </div>
                                 <div class="delete">
-                                    <a href="#" wire:click.prevent="destroy('{{ $item->rowId }}')" class="btn btn-delete" title="">
-                                        <span>Delete from your cart</span>
+                                    <a href="#" onclick="confirm('Are you sure, You want to delete this job?') || event.stopImmediatePropagation()" wire:click.prevent="destroy('{{ $item->rowId }}')" class="btn btn-delete" title="">
+                                        <span>Delete from your bookmark</span>
                                         <i class="fa fa-times-circle" aria-hidden="true"></i>
                                     </a>
                                 </div>
@@ -49,6 +52,42 @@
                     <a class="btn btn-clear" wire:click.prevent="destroyAll()" href="#">Clear Job Bookmark</a>
                     <a class="btn btn-update" href="#">Update Job Bookmark</a>
                 </div>
+            </div>
+
+            <div class="wrap-iten-in-cart">
+                <h3 class="title-box" style="border-bottom:1px solid; padding-bottom:15px;">{{ Cart::instance('saveForLater')->count() }} job(s) Save For Later</h3>
+                @if(Session::has('s_success_message'))
+                    <div class="alert alert-success">
+                        <strong>Success</strong> {{ Session::get('s_success_message') }}
+                    </div>
+                @endif
+                @if(Cart::instance('saveForLater')->count() > 0)
+                    
+                    <ul class="products-cart">
+                        @foreach (Cart::instance('saveForLater')->content() as $item )
+                            <li class="pr-cart-item">
+                                <div class="product-image">
+                                    <figure><img src="{{ asset('assets/images/products') }}/{{ $item->model->image }}" alt="{{ $item->model->image }}"></figure>
+                                </div>
+                                <div class="product-name">
+                                    <a class="link-to-product" href="{{ route('job.details',['slug'=>$item->model->slug]) }}">{{ $item->model->name }}</a>
+                                </div>
+                                <div class="price-field produtc-price"><p class="price">Salary: ${{ $item->model->regular_salary }}</p></div>
+                                <div class="quantity">
+                                    <a class="btn btn-primary" href="#" wire:click.prevent="moveToBookmark('{{ $item->rowId }}')">Move To Bookmark</a>
+                                </div>
+                                <div class="delete">
+                                    <a href="#" onclick="confirm('Are you sure, You want to delete this job?') || event.stopImmediatePropagation()" wire:click.prevent="deleteFromSaveForLater('{{ $item->rowId }}')" class="btn btn-delete" title="">
+                                        <span>Delete from save for Later</span>
+                                        <i class="fa fa-times-circle" aria-hidden="true"></i>
+                                    </a>
+                                </div>
+                            </li>
+                        @endforeach							
+                    </ul>
+                @else
+                    <p>No Job save for later</p>
+                @endif
             </div>
 
             <div class="wrap-show-advance-info-box style-1 box-in-site">
