@@ -127,14 +127,9 @@
                 </div><!-- brand widget-->
 
                 <div class="widget mercado-widget filter-widget price-filter">
-                    <h2 class="widget-title">Salary</h2>
-                    <div class="widget-content">
-                        <div id="slider-range"></div>
-                        <p>
-                            <label for="amount">Salary:</label>
-                            <input type="text" id="amount" readonly>
-                            <button class="filter-submit">Filter</button>
-                        </p>
+                    <h2 class="widget-title">Salary <span class="text-info">${{ $min_salary }} - ${{ $max_salary }}</span></h2>
+                    <div class="widget-content" style="padding: 10px 5px 40px 5px;">
+                        <div id="slider" wire:ignore></div>
                     </div>
                 </div><!-- Price-->
 
@@ -322,3 +317,27 @@
 
 </main>
 <!--main area-->
+
+@push('scripts')
+    <script>
+        var slider = document.getElementById('slider');
+        noUiSlider.create(slider,{
+            start : [1,1000],
+            connect: true,
+            range :{
+                'min' : 1,
+                'max' : 1000
+            },
+            pips:{
+                mode:'steps',
+                stepped:true,
+                density:4
+            }
+        });
+
+        slider.noUiSlider.on('update', function(value){
+            @this.set('min_salary',value[0]);
+            @this.set('max_salary',value[1]);
+        });
+    </script>
+@endpush
