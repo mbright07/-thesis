@@ -22,7 +22,7 @@ class WishlistComponent extends Component
     {
         $job = Cart::instance('wishlist')->get($rowId);
         Cart::instance('wishlist')->remove($rowId);
-        Cart::instance('cart')->add($job->id, $job->name, 1, $job->salary)->associate('App\Models\Job');
+        Cart::instance('bookmark')->add($job->id, $job->name, 1, $job->salary)->associate('App\Models\Job');
         $this->emitTo('wishlist-count-component', 'refreshComponent');
     }
 

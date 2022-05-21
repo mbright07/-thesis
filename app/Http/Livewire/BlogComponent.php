@@ -8,6 +8,7 @@ use Livewire\WithPagination;
 use Cart;
 use App\Models\Category;
 
+
 class BlogComponent extends Component
 {
     public $sorting;
@@ -27,9 +28,9 @@ class BlogComponent extends Component
 
     public function company($job_id, $job_name, $job_salary)
     {
-        Cart::instance('cart')->add($job_id, $job_name, 1, $job_salary)->associate('App\Models\Job');
+        Cart::instance('bookmark')->add($job_id, $job_name, 1, $job_salary)->associate('App\Models\Job');
         session()->flash('success_message', 'Job bookmark successful');
-        return redirect()->route('job.cart');
+        return redirect()->route('job.bookmark');
     }
 
     public function addToWishList($job_id, $job_name, $job_salary)
@@ -56,7 +57,7 @@ class BlogComponent extends Component
             $jobs = Job::whereBetween('regular_salary', [$this->min_salary, $this->max_salary])->orderBy('created_at', 'DESC')->paginate($this->pagesize);
         } else if ($this->sorting == 'regular_salary') {
             $jobs = Job::whereBetween('regular_salary', [$this->min_salary, $this->max_salary])->orderBy('regular_salary', 'ASC')->paginate($this->pagesize);
-        } else if ($this->sorting == 'price-desc') {
+        } else if ($this->sorting == 'regular_salary-desc') {
             $jobs = Job::whereBetween('regular_salary', [$this->min_salary, $this->max_salary])->orderBy('regular_salary', 'DESC')->paginate($this->pagesize);
         } else {
             $jobs = Job::whereBetween('regular_salary', [$this->min_salary, $this->max_salary])->paginate($this->pagesize);

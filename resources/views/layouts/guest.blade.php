@@ -102,7 +102,9 @@
 							<a href="/" class="link-to-home"><img src="{{ asset('assets/images/logo-top-1.png') }}" alt="mercado"></a>
 						</div>
 
-						<div class="wrap-search center-section">
+						@livewire('header-search-component')
+
+						{{-- <div class="wrap-search center-section">
 							<div class="wrap-search-form">
 								<form action="#" id="form-search-top" name="form-search-top">
 									<input type="text" name="search" value="" placeholder="Search here...">
@@ -133,7 +135,7 @@
 									</div>
 								</form>
 							</div>
-						</div>
+						</div> --}}
 
 						<div class="wrap-icon right-section">
 							<div class="wrap-icon-section wishlist">
@@ -174,10 +176,10 @@
 									<a href="/" class="link-term mercado-item-title"><i class="fa fa-home" aria-hidden="true"></i></a>
 								</li>
 								<li class="menu-item">
-									<a href="/blog" class="link-term mercado-item-title">Blog</a>
+									<a href="/blog" class="link-term mercado-item-title">Jobs</a>
 								</li>
 								<li class="menu-item">
-									<a href="/cart" class="link-term mercado-item-title">Cart</a>
+									<a href="/cart" class="link-term mercado-item-title">Bookmark</a>
 								</li>
 								<li class="menu-item">
 									<a href="#" class="link-term mercado-item-title">references</a>

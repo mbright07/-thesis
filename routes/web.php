@@ -12,12 +12,15 @@ use App\Http\Livewire\Admin\AdminHomeCategoryCompoent;
 use App\Http\Livewire\Admin\AdminHomeSliderComponent;
 use App\Http\Livewire\Admin\AdminJobComponentnent;
 use App\Http\Livewire\Admin\AdminProductComponent;
+use App\Http\Livewire\Admin\AdminRecruitmentComponent;
 use App\Http\Livewire\BlogComponent;
 use App\Http\Livewire\CartComponent;
 use App\Http\Livewire\CategoryComponent;
 use App\Http\Livewire\DetailsComponent;
 use App\Http\Livewire\HomeComponent;
+use App\Http\Livewire\RecruitmentComponent;
 use App\Http\Livewire\SearchComponent;
+use App\Http\Livewire\ThankyouComponent;
 use App\Http\Livewire\User\UserDashboardComponent;
 use App\Http\Livewire\WishlistComponent;
 use Illuminate\Support\Facades\Route;
@@ -43,7 +46,9 @@ Route::get('/', HomeComponent::class);
 
 Route::get('/blog', BlogComponent::class);
 
-Route::get('/cart', CartComponent::class)->name('job.cart');
+Route::get('/bookmark', CartComponent::class)->name('job.bookmark');
+
+Route::get('/recruitment', RecruitmentComponent::class)->name('recruitment');
 
 Route::get('job/{slug}', DetailsComponent::class)->name('job.details');
 
@@ -52,6 +57,8 @@ Route::get('/job-category/{category_slug}', CategoryComponent::class)->name('job
 Route::get('/search', SearchComponent::class)->name('job.search');
 
 Route::get('/wishlist', WishlistComponent::class)->name('job.wishlist');
+
+Route::get('/thank-you', ThankyouComponent::class)->name('thankyou');
 
 // Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {
 //     return view('dashboard');
@@ -77,4 +84,5 @@ Route::middleware(['auth:sanctum', 'verified', 'authadmin'])->group(function () 
     Route::get('/admin/slider/edit/{slider_id}', AdminEditHomeSliderComponent::class)->name('admin.edithomeslider');
 
     Route::get('/admin/home-categories', AdminHomeCategoryCompoent::class)->name('admin.homecategories');
+    Route::get('admin/recruitments', AdminRecruitmentComponent::class)->name('admin.recruitments');
 });

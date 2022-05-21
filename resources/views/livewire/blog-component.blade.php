@@ -1,6 +1,4 @@
-<!--main area-->
 <main id="main" class="main-site left-sidebar">
-
     <div class="container">
 
         <div class="wrap-breadcrumb">
@@ -30,7 +28,7 @@
                                 <option value="default" selected="selected">Default sorting</option>
                                 <option value="created_at">Sort by newness</option>
                                 <option value="regular_salary">Sort by salary: low to high</option>
-                                <option value="price-desc">Sort by saraly: high to low</option>
+                                <option value="regular_salary-desc">Sort by saraly: high to low</option>
                             </select>
                         </div>
 
@@ -326,7 +324,7 @@
     </div><!--end container-->
 
 </main>
-<!--main area-->
+
 
 @push('scripts')
     <script>

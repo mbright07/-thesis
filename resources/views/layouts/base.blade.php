@@ -68,6 +68,9 @@
 														<a title="Manage Home Categories" href="{{ route('admin.homecategories') }}">Manage Home Categories</a>
 													</li>
 													<li class="menu-item" >
+														<a title="All Recruitments" href="{{ route('admin.recruitments') }}">All Recruitments</a>
+													</li>
+													<li class="menu-item" >
 														<a title="Logout" href="{{ route('logout') }}" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">Logout</a>
 													</li>
 													<form id="logout-form" method="POST" action="{{ route('logout') }}">
@@ -100,10 +103,10 @@
 									@endif
 								@endif
 								<li class="menu-item lang-menu menu-item-has-children parent">
-									<a title="English" href="#"><span class="img label-before"><img src="assets/images/lang-en.jpg" alt="lang-en"></span>English<i class="fa fa-angle-down" aria-hidden="true"></i></a>
+									<a title="English" href="#"><span class="img label-before"><img src="/assets/images/lang-en.jpg" alt="lang-en"></span>English<i class="fa fa-angle-down" aria-hidden="true"></i></a>
 									<ul class="submenu lang" >
-										<li class="menu-item" ><a title="vietnam" href="#"><span class="img label-before"><img src="assets/images/lang-vi.jpg" alt="lang-hun"></span>Vietnam</a></li>
-										<li class="menu-item" ><a title="japan" href="#"><span class="img label-before"><img src="assets/images/lang-jp.jpg" alt="lang-ger" ></span>Japan</a></li>
+										<li class="menu-item" ><a title="vietnam" href="#"><span class="img label-before"><img src="/assets/images/lang-vi.jpg" alt="lang-hun"></span>Vietnam</a></li>
+										<li class="menu-item" ><a title="japan" href="#"><span class="img label-before"><img src="/assets/images/lang-jp.jpg" alt="lang-ger" ></span>Japan</a></li>
 									</ul>
 								</li>
 							</ul>
@@ -163,7 +166,10 @@
 									<a href="/blog" class="link-term mercado-item-title">Jobs</a>
 								</li>
 								<li class="menu-item">
-									<a href="/cart" class="link-term mercado-item-title">Bookmark</a>
+									<a href="/bookmark" class="link-term mercado-item-title">Bookmark</a>
+								</li>
+								<li class="menu-item">
+									<a href="/recruitment" class="link-term mercado-item-title">Recruitment</a>
 								</li>
 								<li class="menu-item">
 									<a href="#" class="link-term mercado-item-title">references</a>
@@ -321,7 +327,7 @@
 								<h3 class="item-header">We Using:</h3>
 								<div class="item-content">
 									<div class="wrap-list-item wrap-gallery">
-										<img src="assets/images/payment.png" style="max-width: 260px;">
+										<img src="/assets/images/payment.png" style="max-width: 260px;">
 									</div>
 								</div>
 							</div>
@@ -350,8 +356,8 @@
 								<div class="item-content">
 									<div class="wrap-list-item apps-list">
 										<ul>
-											<li><a href="#" class="link-to-item" title="our application on apple store"><figure><img src="assets/images/brands/apple-store.png" alt="apple store" width="128" height="36"></figure></a></li>
-											<li><a href="#" class="link-to-item" title="our application on google play store"><figure><img src="assets/images/brands/google-play-store.png" alt="google play store" width="128" height="36"></figure></a></li>
+											<li><a href="#" class="link-to-item" title="our application on apple store"><figure><img src="/assets/images/brands/apple-store.png" alt="apple store" width="128" height="36"></figure></a></li>
+											<li><a href="#" class="link-to-item" title="our application on google play store"><figure><img src="/assets/images/brands/google-play-store.png" alt="google play store" width="128" height="36"></figure></a></li>
 										</ul>
 									</div>
 								</div>
