@@ -11,7 +11,9 @@
         <div class="row">
             <div class="col-md-12">
                 <div class="panel panel-default">
-                    All recruitments
+                    <div class="panel-heading">
+                        All recruitments
+                    </div>
                 </div>
                 <div class="panel-body">
                     <table class="table table-striped">
@@ -28,6 +30,7 @@
                                 <th>Country</th>
                                 <th>CV</th>
                                 <th>Recruitment Date</th>
+                                <th>Action</th>
                             </tr>
                         </thead>
                         <tbody>
@@ -38,12 +41,13 @@
                                     <td>{{ $recruitment->lastname }}</td>
                                     <td>{{ $recruitment->email }}</td>
                                     <td>{{ $recruitment->mobile }}</td>
-                                    <td>{{ $recruitment->intro }}</td>
+                                    <td>{{substr($recruitment->intro, 0, 50)}}</td>
                                     <td>{{ $recruitment->country }}</td>
                                     <td>{{ $recruitment->province }}</td>
                                     <td>{{ $recruitment->city }}</td>
-                                    <td>{{ $recruitment->file }}</td>
+                                    <td><a href="{{ URL::asset('/assets/images/recruitments')}}/{{ $recruitment->file }}">{{ $recruitment->file }}</a></td>
                                     <td>{{ $recruitment->created_at }}</td>
+                                    <td><a href="{{ route('admin.recruitmentdetails',['recruitment_id'=>$recruitment->id]) }}" class="btn btn-info btn-sm">Detail</a></td>
                                 </tr>
                             @endforeach
                         </tbody>

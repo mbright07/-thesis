@@ -15,4 +15,9 @@ class RecruitmentJob extends Model
     {
         return $this->belongsTo(Recruitment::class);
     }
+
+    public function job()
+    {
+        return $this->belongsTo(Job::class);
+    }
 }

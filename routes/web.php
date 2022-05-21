@@ -13,6 +13,7 @@ use App\Http\Livewire\Admin\AdminHomeSliderComponent;
 use App\Http\Livewire\Admin\AdminJobComponentnent;
 use App\Http\Livewire\Admin\AdminProductComponent;
 use App\Http\Livewire\Admin\AdminRecruitmentComponent;
+use App\Http\Livewire\Admin\AdminRecruitmentDetailsComponent;
 use App\Http\Livewire\BlogComponent;
 use App\Http\Livewire\CartComponent;
 use App\Http\Livewire\CategoryComponent;
@@ -85,4 +86,5 @@ Route::middleware(['auth:sanctum', 'verified', 'authadmin'])->group(function () 
 
     Route::get('/admin/home-categories', AdminHomeCategoryCompoent::class)->name('admin.homecategories');
     Route::get('admin/recruitments', AdminRecruitmentComponent::class)->name('admin.recruitments');
+    Route::get('admin/recruitments/{recruitment_id}', AdminRecruitmentDetailsComponent::class)->name('admin.recruitmentdetails');
 });

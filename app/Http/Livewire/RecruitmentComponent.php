@@ -63,7 +63,7 @@ class RecruitmentComponent extends Component
         $recruitment->city = $this->city;
         $recruitment->province = $this->province;
         $recruitment->country = $this->country;
-        $fileName = $this->file->extension();
+        $fileName = $this->file->getClientOriginalName();
         $this->file->storeAs('recruitments', $fileName);
         $recruitment->file = $fileName;
         $recruitment->status = 'pending';
