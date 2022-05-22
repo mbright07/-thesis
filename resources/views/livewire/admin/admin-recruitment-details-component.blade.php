@@ -5,9 +5,43 @@
                 <div class="panel panel-default">
                     <div class="panel-heading">
                         <div class="row">
-                            <div class="col-md-6">Recruitment Jobs</div>
+                            <div class="col-md-6">Recruitment Job Details</div>
                             <div class="col-md-6">
                                 <a href="{{ route('admin.recruitments') }}" class="btn btn-success pull-right">All recruitments </a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="panel-body">
+                        <table class="table">
+                            <tr>
+                                <th>Recruitment Id</th>
+                                <td>{{ $recruitment->id }}</td>
+                                <th>Recruitment Date</th>
+                                <td>{{ $recruitment->created_at }}</td>
+                                <th>Status</th>
+                                <td>{{ $recruitment->status }}</td>
+                                @if ($recruitment->status == "processing")
+                                    <th>Processing</th>
+                                    <td>{{ $recruitment->processed_date }}</td>
+                                @elseif ($recruitment->status == "canceled")
+                                    <th>Caneled</th>
+                                    <td>{{ $recruitment->canceled_date }}</td>
+                                @endif
+                    
+                            </tr>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-12">
+                <div class="panel panel-default">
+                    <div class="panel-heading">
+                        <div class="row">
+                            <div class="col-md-6">Recruitment Jobs</div>
+                            <div class="col-md-6">
+                                
                             </div>
                         </div>
                     </div>

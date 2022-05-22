@@ -15,6 +15,9 @@
                         All recruitments
                     </div>                
                     <div class="panel-body" >
+                        @if (Session::has('recruitment_message'))
+                            <div class="alert alert-success" role="alert">{{ Session::get('recruitment_message') }}</div>   
+                        @endif
                         <table class="table table-striped">
                             <thead>
                                 <tr>
@@ -28,8 +31,9 @@
                                     <th>Province</th>
                                     <th>Country</th>
                                     <th>CV</th>
+                                    <th>Status</th>
                                     <th>Recruitment Date</th>
-                                    <th>Action</th>
+                                    <th colspan="2" class="text-center">Action</th>
                                 </tr>
                             </thead>
                             <tbody>
@@ -44,9 +48,21 @@
                                         <td>{{ $recruitment->country }}</td>
                                         <td>{{ $recruitment->province }}</td>
                                         <td>{{ $recruitment->city }}</td>
+                                        <td><strong>{{ $recruitment->status }}</strong></td>
                                         <td><a href="{{ URL::asset('/assets/images/recruitments')}}/{{ $recruitment->file }}">{{ $recruitment->file }}</a></td>
                                         <td>{{ $recruitment->created_at }}</td>
                                         <td><a href="{{ route('admin.recruitmentdetails',['recruitment_id'=>$recruitment->id]) }}" class="btn btn-info btn-sm">Detail</a></td>
+                                        <td>
+                                            <div class="dropdown">
+                                                <button class="btn btn-success btn-sm dropdown" type="button" data-toggle="dropdown">Status
+                                                    <span class="caret"></span>
+                                                </button>
+                                                <ul class="dropdown-menu">
+                                                    <li><a href="#" wire:click.prevent="updateRecruitmentStatus({{ $recruitment->id }},'processing')">Processing</a></li>
+                                                    <li><a href="#" wire:click.prevent="updateRecruitmentStatus({{ $recruitment->id }},'canceled')">Canceled</a></li>
+                                                </ul>
+                                            </div>
+                                        </td>
                                     </tr>
                                 @endforeach
                             </tbody>
