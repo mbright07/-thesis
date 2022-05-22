@@ -23,6 +23,8 @@ use App\Http\Livewire\RecruitmentComponent;
 use App\Http\Livewire\SearchComponent;
 use App\Http\Livewire\ThankyouComponent;
 use App\Http\Livewire\User\UserDashboardComponent;
+use App\Http\Livewire\User\UserRecruitmentDetailsComponent;
+use App\Http\Livewire\User\UserRecruitmentsComponent;
 use App\Http\Livewire\WishlistComponent;
 use Illuminate\Support\Facades\Route;
 
@@ -68,6 +70,8 @@ Route::get('/thank-you', ThankyouComponent::class)->name('thankyou');
 //For User or Customer
 Route::middleware(['auth:sanctum', 'verified'])->group(function () {
     Route::get('/user/dashboard', UserDashboardComponent::class)->name('user.dashboard');
+    Route::get('user/recruitments', UserRecruitmentsComponent::class)->name('user.recruitments');
+    Route::get('user/recruitments/{recruitment_id}', UserRecruitmentDetailsComponent::class)->name('user.recruitmentdetails');
 });
 
 //For Admin
