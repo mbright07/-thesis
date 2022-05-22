@@ -29,6 +29,7 @@
                                     <th>Province</th>
                                     <th>Country</th>
                                     <th>CV</th>
+                                    <th>Status</th>
                                     <th>Recruitment Date</th>
                                     <th>Action</th>
                                 </tr>
@@ -46,6 +47,7 @@
                                         <td>{{ $recruitment->province }}</td>
                                         <td>{{ $recruitment->city }}</td>
                                         <td><a href="{{ URL::asset('/assets/images/recruitments')}}/{{ $recruitment->file }}">{{ $recruitment->file }}</a></td>
+                                        <td><strong>{{ $recruitment->status }}</strong></td>
                                         <td>{{ $recruitment->created_at }}</td>
                                         <td><a href="{{ route('user.recruitmentdetails',['recruitment_id'=>$recruitment->id]) }}" class="btn btn-info btn-sm">Detail</a></td>
                                     </tr>

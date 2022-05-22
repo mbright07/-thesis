@@ -10,6 +10,7 @@ use Livewire\WithPagination;
 class UserRecruitmentsComponent extends Component
 {
     use WithPagination;
+
     public function render()
     {
         $recruitments = Recruitment::where('user_id', Auth::user()->id)->paginate(12);

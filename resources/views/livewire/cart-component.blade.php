@@ -35,7 +35,7 @@
                                         <a class="btn btn-checkout"  href="#" wire:click.prevent="Recruitment">Recruitment</a>
                                     </div>
                                     <div class="delete">
-                                        <a href="#" onclick="confirm('Are you sure, You want to delete this job?') || event.stopImmediatePropagation()" wire:click.prevent="destroy('{{ $item->rowId }}')" class="btn btn-delete" title="">
+                                        <a href="#" onclick=" return confirm('Are you sure, You want to cancel recruitment this job?') || event.stopImmediatePropagation()" wire:click.prevent="destroy('{{ $item->rowId }}')" class="btn btn-delete" title="">
                                             <span>Delete from your bookmark</span>
                                             <i class="fa fa-times-circle" aria-hidden="true"></i>
                                         </a>

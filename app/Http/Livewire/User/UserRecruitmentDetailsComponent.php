@@ -4,6 +4,7 @@ namespace App\Http\Livewire\User;
 
 use App\Models\Recruitment;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\DB;
 use Livewire\Component;
 
 class UserRecruitmentDetailsComponent extends Component
@@ -13,6 +14,15 @@ class UserRecruitmentDetailsComponent extends Component
     public function mount($recruitment_id)
     {
         $this->recruitment_id = $recruitment_id;
+    }
+
+    public function cancelRecruitment()
+    {
+        $recruitment = Recruitment::find($this->recruitment_id);
+        $recruitment->status = 'canceled';
+        $recruitment->canceled_date = DB::raw('CURRENT_DATE');
+        $recruitment->save();
+        session()->flash('recruitment_message', 'Recruitment has been canceled!');
     }
 
     public function render()

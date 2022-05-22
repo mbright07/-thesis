@@ -7,14 +7,14 @@
             display: block !important;
         }
     </style>
-    <div class="container" style="padding: 30px 0;">
+    <div class="container" style="padding: 30px 0; width: 99%;">
         <div class="row">
             <div class="col-md-12">
                 <div class="panel panel-default">
                     <div class="panel-heading">
                         All recruitments
                     </div>                
-                    <div class="panel-body" >
+                    <div class="panel-body" style="margin-left: -10px;">
                         @if (Session::has('recruitment_message'))
                             <div class="alert alert-success" role="alert">{{ Session::get('recruitment_message') }}</div>   
                         @endif

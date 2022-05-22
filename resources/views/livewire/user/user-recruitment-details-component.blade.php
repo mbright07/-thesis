@@ -2,14 +2,45 @@
     <div class="container" style="padding: 30px 0;">
         <div class="row">
             <div class="col-md-12">
+                @if (Session::has('recruitment_message'))
+                    <div class="alert alert-success" role="alert">{{ Session::get('recruitment_message') }}</div>   
+                @endif
                 <div class="panel panel-default">
                     <div class="panel-heading">
                         <div class="row">
-                            <div class="col-md-6">Recruitment Jobs</div>
+                            <div class="col-md-6">Recruitment Job Details</div>
                             <div class="col-md-6">
                                 <a href="{{ route('user.recruitments') }}" class="btn btn-success pull-right">My recruitments </a>
+                                @if ($recruitment->status == 'pending' || $recruitment->status == 'processing')
+                                    <a href="#" onclick="confirm('Are you sure, You want to delete this job?') || event.stopImmediatePropagation()" wire:click.prevent="cancelRecruitment" class="btn btn-warning pull-right" style="margin-right: 20px;">Cancel Recruitment</a>
+                                @endif
                             </div>
                         </div>
+                    </div>
+                    <div class="panel-body">
+                        <table class="table">
+                            <th>Recruitment ID</th>
+                            <td>{{ $recruitment->id }}</td>
+                            <th>Recruitment Date</th>
+                            <td>{{ $recruitment->created_at }}</td>
+                            <th>Status</th>
+                            <td>{{ $recruitment->status }}</td>
+                            @if ($recruitment->status == "processing")
+                                <th>Processing</th>
+                                <td>{{ $recruitment->processed_date }}</td>
+                            @elseif ($recruitment->status == "canceled")
+                                <th>Caneled</th>                                    
+                                <td>{{ $recruitment->canceled_date }}</td>
+                            @endif
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-12">
+                <div class="panel panel-default">
+                    <div class="panel-heading">
                     </div>
                     <div class="panel-body">
                         <div class="wrap-iten-in-cart">
