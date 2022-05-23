@@ -55,6 +55,9 @@
                                             <a class="link-to-product" href="{{ route('job.details',['slug'=>$item->job->slug]) }}">{{ $item->job->name }}</a>
                                         </div>
                                         <div class="price-field produtc-price"><p class="price">Salary: ${{ $item->job->regular_salary }}</p></div>
+                                        @if ($item->rstatus == false)
+                                            <div class="price-field sub-total"><p class="price"><a href="{{ route('user.review',['recruitment_job_id'=>$item->id]) }}">Write Review</a></p></div>
+                                        @endif 
                                     </li>
                                 @endforeach							
                             </ul>

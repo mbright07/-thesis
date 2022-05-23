@@ -37,6 +37,7 @@
                                     </div>
                                     <div class="form-group row-in-form">
                                         <label for="add">Intro<span>*</span></label>
+                                        {{-- <textarea id="comment" name="add" cols="78" rows="8" wire:model="intro"></textarea> --}}
                                         <input type="text" name="add" value="" placeholder="Mo ta ban than" wire:model="intro">
                                         @error('intro') <p class="text-danger">{{ $message }}</p> @enderror
                                     </div>
