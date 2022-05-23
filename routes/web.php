@@ -4,6 +4,7 @@ use App\Http\Livewire\Admin\AdminAddCategoryComponent;
 use App\Http\Livewire\Admin\AdminAddHomeSliderComponent;
 use App\Http\Livewire\Admin\AdminAddJobComponent;
 use App\Http\Livewire\Admin\AdminCategoryComponent;
+use App\Http\Livewire\Admin\AdminContactComponent;
 use App\Http\Livewire\Admin\AdminDashboardComponent;
 use App\Http\Livewire\Admin\AdminEditCategoryComponent;
 use App\Http\Livewire\Admin\AdminEditHomeSliderComponent;
@@ -17,6 +18,7 @@ use App\Http\Livewire\Admin\AdminRecruitmentDetailsComponent;
 use App\Http\Livewire\BlogComponent;
 use App\Http\Livewire\CartComponent;
 use App\Http\Livewire\CategoryComponent;
+use App\Http\Livewire\ContactComponent;
 use App\Http\Livewire\DetailsComponent;
 use App\Http\Livewire\HomeComponent;
 use App\Http\Livewire\RecruitmentComponent;
@@ -28,6 +30,7 @@ use App\Http\Livewire\User\UserRecruitmentDetailsComponent;
 use App\Http\Livewire\User\UserRecruitmentsComponent;
 use App\Http\Livewire\User\UserReviewComponent;
 use App\Http\Livewire\WishlistComponent;
+use App\Models\Contact;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -65,6 +68,8 @@ Route::get('/wishlist', WishlistComponent::class)->name('job.wishlist');
 
 Route::get('/thank-you', ThankyouComponent::class)->name('thankyou');
 
+Route::get('/contact-us', ContactComponent::class)->name('contact-us');
+
 // Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {
 //     return view('dashboard');
 // })->name('dashboard');
@@ -93,6 +98,9 @@ Route::middleware(['auth:sanctum', 'verified', 'authadmin'])->group(function () 
     Route::get('/admin/slider/edit/{slider_id}', AdminEditHomeSliderComponent::class)->name('admin.edithomeslider');
 
     Route::get('/admin/home-categories', AdminHomeCategoryCompoent::class)->name('admin.homecategories');
-    Route::get('admin/recruitments', AdminRecruitmentComponent::class)->name('admin.recruitments');
-    Route::get('admin/recruitments/{recruitment_id}', AdminRecruitmentDetailsComponent::class)->name('admin.recruitmentdetails');
+
+    Route::get('/admin/recruitments', AdminRecruitmentComponent::class)->name('admin.recruitments');
+    Route::get('/admin/recruitments/{recruitment_id}', AdminRecruitmentDetailsComponent::class)->name('admin.recruitmentdetails');
+
+    Route::get('/admin/contact-us', AdminContactComponent::class)->name('admin.contact');
 });
