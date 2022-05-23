@@ -11,7 +11,7 @@
                                             <img alt="" src="{{asset('assets/images/products')}}/{{$recruitmentJob->job->image }}" height="80" width="80">
                                             <div class="comment-text">
                                                 <p class="meta"> 
-                                                    <strong class="woocommerce-review__author">{{ $recruitmentJob->job->name }}</strong> 
+                                                    <a class="link-to-product" href="{{ route('job.details',['slug'=>$recruitmentJob->job->slug]) }}"><strong class="woocommerce-review__author">{{ $recruitmentJob->job->name }}</strong></a> 
                                                 </p>   
                                             </div>
                                         </div>
