@@ -56,15 +56,15 @@
 										<ul>
 											<li>
 												<i class="fa fa-map-marker" aria-hidden="true"></i>
-												<p class="contact-txt">{{ $setting && $setting->address }}</p>
+												<p class="contact-txt">{{ $setting ? $setting->address : '' }}</p>
 											</li>
 											<li>
 												<i class="fa fa-phone" aria-hidden="true"></i>
-												<p class="contact-txt">{{ $setting && $setting->phone }}</p>
+												<p class="contact-txt">{{ $setting ? $setting->phone : '' }}</p>
 											</li>
 											<li>
 												<i class="fa fa-envelope" aria-hidden="true"></i>
-												<p class="contact-txt">{{ $setting && $setting->email }}</p>
+												<p class="contact-txt">{{ $setting ? $setting->email : '' }}</p>
 											</li>											
 										</ul>
 									</div>
@@ -79,7 +79,7 @@
 								<div class="item-content">
 									<div class="wrap-hotline-footer">
 										<span class="desc">Call Us toll Free</span>
-										<b class="phone-number">{{ $setting && $setting->phone2 }}</b>
+										<b class="phone-number">{{ $setting ? $setting->phone2 : '' }}</b>
 									</div>
 								</div>
 							</div>
@@ -148,10 +148,10 @@
 								<div class="item-content">
 									<div class="wrap-list-item social-network">
 										<ul>
-											<li><a href="{{ $setting && $setting->twitter }}" class="link-to-item" title="twitter"><i class="fa fa-twitter" aria-hidden="true"></i></a></li>
-											<li><a href="{{ $setting && $setting->facebook }}" class="link-to-item" title="facebook"><i class="fa fa-facebook" aria-hidden="true"></i></a></li>
-											<li><a href="{{ $setting && $setting->pinterest }}" class="link-to-item" title="pinterest"><i class="fa fa-pinterest" aria-hidden="true"></i></a></li>
-											<li><a href="{{ $setting && $setting->instagram }}" class="link-to-item" title="instagram"><i class="fa fa-instagram" aria-hidden="true"></i></a></li>
+											<li><a href="{{ $setting ? $setting->twitter : '' }}" class="link-to-item" title="twitter"><i class="fa fa-twitter" aria-hidden="true"></i></a></li>
+											<li><a href="{{ $setting ? $setting->facebook : '' }}" class="link-to-item" title="facebook"><i class="fa fa-facebook" aria-hidden="true"></i></a></li>
+											<li><a href="{{ $setting ? $setting->pinterest : '' }}" class="link-to-item" title="pinterest"><i class="fa fa-pinterest" aria-hidden="true"></i></a></li>
+											<li><a href="{{ $setting ? $setting->instagram : '' }}" class="link-to-item" title="instagram"><i class="fa fa-instagram" aria-hidden="true"></i></a></li>
 										</ul>
 									</div>
 								</div>

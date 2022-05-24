@@ -42,7 +42,7 @@
 						<div class="col-lg-6 col-sm-6 col-md-6 col-xs-12">
 							<div class="contact-box contact-info">
 								<div class="wrap-map">
-									<iframe src="{{ $setting && $setting->map }}" width="100%" height="320" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+									<iframe src="{{ $setting ? $setting->map : '' }}" width="100%" height="320" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
 								</div>
 								<h2 class="box-title">Contact Detail</h2>
 								<div class="wrap-icon-box">
@@ -51,7 +51,7 @@
 										<i class="fa fa-envelope" aria-hidden="true"></i>
 										<div class="right-info">
 											<b>Email</b>
-											<p>{{ $setting && $setting->email }}</p>
+											<p>{{ $setting ? $setting->email : '' }}</p>
 										</div>
 									</div>
 
@@ -59,7 +59,7 @@
 										<i class="fa fa-phone" aria-hidden="true"></i>
 										<div class="right-info">
 											<b>Phone</b>
-											<p>{{ $setting && $setting->phone }} - {{ $setting && $setting->phone2 }}</p>
+											<p>{{ $setting ? $setting->phone : '' }} - {{ $setting ? $setting->phone2 : '' }}</p>
 										</div>
 									</div>
 
@@ -67,7 +67,7 @@
 										<i class="fa fa-map-marker" aria-hidden="true"></i>
 										<div class="right-info">
 											<b>Office Address</b>
-											<p>{{ $setting && $setting->address }}</p>
+											<p>{{ $setting ? $setting->address : '' }}</p>
 										</div>
 									</div>
 								</div>
