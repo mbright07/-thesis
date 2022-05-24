@@ -5,7 +5,6 @@ namespace App\Http\Livewire;
 use App\Models\Contact;
 use App\Models\Setting;
 use Livewire\Component;
-use PhpParser\Node\Expr\AssignOp\Concat;
 
 class ContactComponent extends Component
 {
@@ -42,7 +41,7 @@ class ContactComponent extends Component
     }
     public function render()
     {
-        $setting = Setting::find(1);
+        $setting = Setting::orderBy('id', 'DESC')->first();
         return view('livewire.contact-component', ['setting' => $setting])->layout('layouts.base');
     }
 }
