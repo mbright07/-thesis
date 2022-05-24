@@ -21,15 +21,15 @@ class AdminSettingComponent extends Component
     {
         $setting = Setting::orderBy('id', 'DESC')->first();
 
-        $this->email = $setting->email ?: '';
-        $this->phone = $setting->phone ?: '';
-        $this->phone2 = $setting->phone2 ?: '';
-        $this->address = $setting->address ?: '';
-        $this->map = $setting->map ?: '';
-        $this->twitter = $setting->twitter ?: '';
-        $this->facebook = $setting->facebook ?: '';
-        $this->pinterest = $setting->pinterest ?: '';
-        $this->instagram = $setting->instagram ?: '';
+        $this->email =  $setting ? $setting->email : '';
+        $this->phone = $setting ? $setting->phone : '';
+        $this->phone2 = $setting ? $setting->phone2 : '';
+        $this->address = $setting ? $setting->address : '';
+        $this->map = $setting ? $setting->map : '';
+        $this->twitter = $setting ? $setting->twitter : '';
+        $this->facebook = $setting ? $setting->facebook : '';
+        $this->pinterest = $setting ? $setting->pinterest : '';
+        $this->instagram = $setting ? $setting->instagram : '';
     }
 
     public function updated($fields)
