@@ -15,6 +15,7 @@ use App\Http\Livewire\Admin\AdminJobComponentnent;
 use App\Http\Livewire\Admin\AdminProductComponent;
 use App\Http\Livewire\Admin\AdminRecruitmentComponent;
 use App\Http\Livewire\Admin\AdminRecruitmentDetailsComponent;
+use App\Http\Livewire\Admin\AdminSettingComponent;
 use App\Http\Livewire\BlogComponent;
 use App\Http\Livewire\CartComponent;
 use App\Http\Livewire\CategoryComponent;
@@ -103,4 +104,6 @@ Route::middleware(['auth:sanctum', 'verified', 'authadmin'])->group(function () 
     Route::get('/admin/recruitments/{recruitment_id}', AdminRecruitmentDetailsComponent::class)->name('admin.recruitmentdetails');
 
     Route::get('/admin/contact-us', AdminContactComponent::class)->name('admin.contact');
+
+    Route::get('/admin/settings', AdminSettingComponent::class)->name('admin.settings');
 });
