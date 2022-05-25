@@ -67,6 +67,7 @@ class BlogComponent extends Component
 
         if (Auth::check()) {
             Cart::instance('bookmark')->store(Auth::user()->email);
+            Cart::instance('wishlist')->store(Auth::user()->email);
         }
 
         return view('livewire.blog-component', ['jobs' => $jobs, 'categories' => $categories])->layout("layouts.base");

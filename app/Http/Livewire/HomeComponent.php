@@ -24,6 +24,7 @@ class HomeComponent extends Component
 
         if (Auth::check()) {
             Cart::instance('bookmark')->restore(Auth::user()->email);
+            Cart::instance('wishlist')->restore(Auth::user()->email);
         }
         return view('livewire.home-component', ['sliders' => $sliders, 'ljobs' => $ljobs, 'categories' => $categories, 'no_of_jobs' => $no_of_jobs, 'sjobs' => $sjobs])->layout('layouts.base');
     }
