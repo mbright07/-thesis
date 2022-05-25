@@ -15,12 +15,7 @@ class AdminJobComponentnent extends Component
         if ($job->image) {
             unlink('assets/images/products' . '/' . $job->image);
         }
-        if ($job->images) {
-            $images = explode(",", $job->image);
-            foreach ($images as $image) {
-                unlink('assets/images/products' . '/' . $image);
-            }
-        }
+
         $job->delete();
         session()->flash('message', 'Job has been deleted successfully!');
     }
