@@ -89,7 +89,7 @@ Route::middleware(['auth:sanctum', 'verified', 'authadmin'])->group(function () 
     Route::get('/admin/dashboard', AdminDashboardComponent::class)->name('admin.dashboard');
     Route::get('/admin/categories', AdminCategoryComponent::class)->name('admin.categories');
     Route::get('/admin/category/add', AdminAddCategoryComponent::class)->name('admin.addcategory');
-    Route::get('/admin/category/edit/{category_slug}', AdminEditCategoryComponent::class)->name('admin.editcategory');
+    Route::get('/admin/category/edit/{category_slug}/{sub_category_slug?}', AdminEditCategoryComponent::class)->name('admin.editcategory');
     Route::get('/admin/jobs', AdminJobComponentnent::class)->name('admin.jobs');
     Route::get('/admin/job/add', AdminAddJobComponent::class)->name('admin.addjob');
     Route::get('/admin/job/edit/{job_slug}', AdminEditJobCompoent::class)->name('admin.editjob');

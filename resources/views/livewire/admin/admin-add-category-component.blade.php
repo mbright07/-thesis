@@ -39,6 +39,18 @@
                             </div>
 
                             <div class="form-group">
+                                <label class="col-md-4 control-label">Parent Location</label>
+                                <div class="col-md-4">
+                                    <select class="form-control input-md" wire:model="category_id">
+                                        <option value="">None</option>
+                                        @foreach ($categories as $category)
+                                            <option value="{{ $category->id }}">{{ $category->name }}</option>
+                                        @endforeach
+                                    </select>
+                                </div>
+                            </div>
+
+                            <div class="form-group">
                                 <label class="col-md-4 control-label"></label>
                                 <div class="col-md-4">
                                     <button type="submit" class="btn btn-primary">Submit</button>

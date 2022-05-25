@@ -7509,3 +7509,15 @@ svg {
       font-size: 12px;
       border-top: 1px solid #eee;
   }
+
+.sclist {
+    list-style: none;
+}
+.sclist li{
+    line-height: 33px;
+    border-bottom: 1px solid #ccc;
+}
+.sclist .slink i{
+    font-size: 20px;
+    margin-left: 8px;
+}

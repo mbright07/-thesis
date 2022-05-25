@@ -29,6 +29,7 @@
                                     <th>Id</th>
                                     <th>Locations</th>
                                     <th>Slug</th>
+                                    <th>Sub Category</th>
                                     <th>Action</th>
                                 </tr>
                             </thead>
@@ -39,8 +40,23 @@
                                         <td>{{ $category->name }}</td>
                                         <td>{{ $category->slug }}</td>
                                         <td>
+                                            <ul class="sclist">
+                                                @foreach ($category->subCategory as $sub_category )
+                                                    <li>
+                                                        <i class="fa fa-caret-right"></i>{{ $sub_category->name }} 
+                                                        <a href="{{ route('admin.editcategory',['category_slug'=>$category->slug,'sub_category_slug'=>$sub_category->slug]) }}" class="slink">
+                                                            <i class="fa fa-edit"></i>
+                                                        </a>
+                                                        <a href="#" onclick="confirm('Are you sure, You want to delete this sub location?') || event.stopImmediatePropagation()" wire:click.prevent="deleteSubCategory({{ $sub_category->id }})" class="slink">
+                                                            <i class="fa fa-times text-danger"></i>
+                                                        </a>
+                                                    </li>
+                                                @endforeach
+                                            </ul>
+                                        </td>
+                                        <td>
                                             <a href="{{ route('admin.editcategory',['category_slug'=>$category->slug]) }}"><i class="fa fa-edit fa-2x"></i></a>
-                                            <a href="#" onclick="confirm('Are you sure, You want to delete this category?') || event.stopImmediatePropagation()" wire:click.prevent="deleteCategory({{ $category->id }})" style="margin-left: 10px;"><i class="fa fa-times fa-2x text-danger"></i></a>
+                                            <a href="#" onclick="confirm('Are you sure, You want to delete this location?') || event.stopImmediatePropagation()" wire:click.prevent="deleteCategory({{ $category->id }})" style="margin-left: 10px;"><i class="fa fa-times fa-2x text-danger"></i></a>
                                         </td>
                                     </tr>    
                                 @endforeach

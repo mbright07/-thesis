@@ -17,6 +17,7 @@
                         @if (Session::has('message'))
                         <div class="alert alert-success" role="alert">{{ Session::get('message') }}</div>
                         @endif
+                        
                         <form class="form-horizontal" wire:submit.prevent="updateCategory">
                             <div class="form-group">
                                 <label class="col-md-4 control-label">Location Name</label>
@@ -37,6 +38,20 @@
                                     @enderror
                                 </div>
                             </div>
+
+                            @if ($this->sub_category_id)
+                                <div class="form-group">
+                                    <label for="" class="col-md-4 control-label">Parent Location</label>
+                                    <div class="col-md-4">
+                                        <select class="form-control input-md" wire:model="category_id">
+                                            @foreach ($categories as $category)
+                                                <option value="{{ $category->id }}">{{ $category->name }}</option>
+                                            @endforeach
+                                        </select>
+                                        @error('slug') <p class="text-danger">{{ $message }}</p>  @enderror
+                                    </div>
+                                </div>
+                            @endif
 
                             <div class="form-group">
                                 <label class="col-md-4 control-label"></label>
