@@ -14,7 +14,7 @@
                         <div class="wrap-address-billing">
                             <h3 class="box-title">Apply Job</h3>                     
                             <div class="billing-address">
-                                <form enctype="multipart/form-data" wire:submit.prevent="placeRecruitment"> 
+                                <form enctype="multipart/form-data" wire:submit.prevent="placeRecruitment" onsubmit="$('#processing').show();"> 
                                     <div class="form-group row-in-form">
                                         <label for="fname">first name<span>*</span></label>
                                         <input type="text" name="fname" value="" placeholder="Your name" wire:model="firstname">
@@ -61,8 +61,14 @@
                                         <input type="file" name="file" class="form-control" wire:model="file"/>
                                         @error('file') <p class="text-danger">{{ $message }}</p> @enderror
                                     </div>
+                                    @if ($errors->isEmpty())
+                                        <div wire:ignore id="processing" style="font-size: 22px; margin-bottom:20px; padding-left:37px; color: green; display:none; ">
+                                            <i class="fa fa-spinner fa-pulse fa-fw"></i>
+                                            <span>Processing...</span>
+                                        </div>
+                                    @endif
                                     <div class="summary-item payment-method">
-                                        <button type="submit" class="btn btn-medium">Place order now</button>
+                                        <button type="submit" class="btn btn-medium">Recruiment now</button>
                                     </div> 
                                 </form>   
                             </div>                        
