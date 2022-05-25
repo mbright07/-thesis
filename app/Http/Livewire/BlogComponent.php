@@ -7,7 +7,7 @@ use Livewire\Component;
 use Livewire\WithPagination;
 use Cart;
 use App\Models\Category;
-
+use Illuminate\Support\Facades\Auth;
 
 class BlogComponent extends Component
 {
@@ -64,6 +64,10 @@ class BlogComponent extends Component
         }
 
         $categories = Category::all();
+
+        if (Auth::check()) {
+            Cart::instance('bookmark')->store(Auth::user()->email);
+        }
 
         return view('livewire.blog-component', ['jobs' => $jobs, 'categories' => $categories])->layout("layouts.base");
     }

@@ -6,6 +6,8 @@ use App\Models\Category;
 use App\Models\HomeCategory;
 use App\Models\HomeSlider;
 use App\Models\Job;
+use Illuminate\Support\Facades\Auth;
+use Cart;
 use Livewire\Component;
 
 class HomeComponent extends Component
@@ -19,6 +21,10 @@ class HomeComponent extends Component
         $categories = Category::whereIn('id', $cats)->get();
         $no_of_jobs = $category->no_of_jobs;
         $sjobs = Job::orderBy('regular_salary', 'DESC')->get()->take(8);
+
+        if (Auth::check()) {
+            Cart::instance('bookmark')->restore(Auth::user()->email);
+        }
         return view('livewire.home-component', ['sliders' => $sliders, 'ljobs' => $ljobs, 'categories' => $categories, 'no_of_jobs' => $no_of_jobs, 'sjobs' => $sjobs])->layout('layouts.base');
     }
 }
