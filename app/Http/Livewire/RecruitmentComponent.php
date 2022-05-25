@@ -2,11 +2,12 @@
 
 namespace App\Http\Livewire;
 
+use App\Mail\RecruitmentMail;
 use App\Models\Recruitment;
 use App\Models\RecruitmentJob;
 use Cart;
-use Illuminate\Support\Carbon;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Mail;
 use Livewire\Component;
 use Livewire\WithFileUploads;
 
@@ -77,9 +78,16 @@ class RecruitmentComponent extends Component
             $recruitmentJob->save();
         }
 
+        $this->sendRecruitmentConfirmationMail($recruitment);
+
         $this->thankyou = 1;
         Cart::instance('bookmark')->destroy();
         session()->forget('recruitment');
+    }
+
+    public function sendRecruitmentConfirmationMail($recruitment)
+    {
+        Mail::to($recruitment->email)->send(new RecruitmentMail($recruitment));
     }
 
     public function verifyForRecruitment()
