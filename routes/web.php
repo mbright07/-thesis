@@ -12,7 +12,6 @@ use App\Http\Livewire\Admin\AdminEditJobCompoent;
 use App\Http\Livewire\Admin\AdminHomeCategoryCompoent;
 use App\Http\Livewire\Admin\AdminHomeSliderComponent;
 use App\Http\Livewire\Admin\AdminJobComponentnent;
-use App\Http\Livewire\Admin\AdminProductComponent;
 use App\Http\Livewire\Admin\AdminRecruitmentComponent;
 use App\Http\Livewire\Admin\AdminRecruitmentDetailsComponent;
 use App\Http\Livewire\Admin\AdminSettingComponent;
@@ -61,7 +60,7 @@ Route::get('/recruitment', RecruitmentComponent::class)->name('recruitment');
 
 Route::get('job/{slug}', DetailsComponent::class)->name('job.details');
 
-Route::get('/job-category/{category_slug}', CategoryComponent::class)->name('job.category');
+Route::get('/job-category/{category_slug}/{sub_category_slug?}', CategoryComponent::class)->name('job.category');
 
 Route::get('/search', SearchComponent::class)->name('job.search');
 

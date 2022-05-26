@@ -103,8 +103,20 @@
                     <div class="widget-content">
                         <ul class="list-category">
                             @foreach ($categories as $category )
-                            <li class="category-item">
+                            <li class="category-item {{ count($category->subCategory) > 0 ? 'has-child-cate':'' }}">
                                 <a href="{{ route('job.category',['category_slug'=>$category->slug]) }}" class="cate-link">{{ $category->name }}</a>
+                                @if(count($category->subCategory) > 0)
+                                    <span class="toggle-control">+</span>
+                                    <ul class="sub-cate">
+                                        @foreach ($category->subCategory as $sub_category)
+                                            <li class="category-item">
+                                                <a href="{{ route('job.category',['category_slug'=>$category->slug,'sub_category_slug'=>$sub_category->slug]) }}" class="cat-link">
+                                                    <i class="fa fa-caret-right"></i> {{ $sub_category->name }}
+                                                </a>
+                                            </li>
+                                        @endforeach
+                                    </ul>
+                                @endif
                             </li>
                             @endforeach
                         </ul>
