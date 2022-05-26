@@ -5,7 +5,7 @@
               <div class="icon-stat">    
                 <div class="row">
                   <div class="col-xs-8 text-left">
-                    <span class="icon-stat-label">Total Recruitments</span>
+                    <span class="icon-stat-label">Total Recruitments Pending</span>
                     <span class="icon-stat-value">{{ $totalRecruitments }}</span>
                   </div>   
                   <div class="col-xs-4 text-center">
