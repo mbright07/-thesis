@@ -26,11 +26,13 @@ use App\Http\Livewire\SearchComponent;
 use App\Http\Livewire\ThankyouComponent;
 use App\Http\Livewire\User\UserChangePasswordCompponent;
 use App\Http\Livewire\User\UserDashboardComponent;
+use App\Http\Livewire\User\UserProfileComponent;
 use App\Http\Livewire\User\UserRecruitmentDetailsComponent;
 use App\Http\Livewire\User\UserRecruitmentsComponent;
 use App\Http\Livewire\User\UserReviewComponent;
 use App\Http\Livewire\WishlistComponent;
 use App\Models\Contact;
+use Illuminate\Contracts\Auth\UserProvider;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -81,6 +83,7 @@ Route::middleware(['auth:sanctum', 'verified'])->group(function () {
     Route::get('user/recruitments/{recruitment_id}', UserRecruitmentDetailsComponent::class)->name('user.recruitmentdetails');
     Route::get('/user/review/{recruitment_job_id}', UserReviewComponent::class)->name('user.review');
     Route::get('user/change-password', UserChangePasswordCompponent::class)->name('user.changepassword');
+    Route::get('/user/profile', UserProfileComponent::class)->name('user.profile');
 });
 
 //For Admin
