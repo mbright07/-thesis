@@ -125,13 +125,28 @@
                             <div class="form-group">
                                 <label class="col-md-4 control-label">Location</label>
                                 <div class="col-md-4">
-                                    <select class="form-control" wire:model="category_id">
+                                    <select class="form-control" wire:model="category_id" wire:change="changeSubcategory">
                                         <option value="">Select Location</option>
                                         @foreach ($categories as $category)
                                             <option value="{{ $category->id }}">{{ $category->name }}</option>
                                         @endforeach
                                     </select>
                                     @error('category_id')
+                                        <p class="text-danger">{{ $message }}</p>
+                                    @enderror
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <label class="col-md-4 control-label">Sub Location</label>
+                                <div class="col-md-4">
+                                    <select class="form-control" wire:model="sub_category_id">
+                                        <option value="0">Select Location</option>
+                                        @foreach ($sub_categories as $sub_category)
+                                            <option value="{{ $sub_category->id }}">{{ $sub_category->name }}</option>
+                                        @endforeach
+                                    </select>
+                                    @error('sub_category_id')
                                         <p class="text-danger">{{ $message }}</p>
                                     @enderror
                                 </div>

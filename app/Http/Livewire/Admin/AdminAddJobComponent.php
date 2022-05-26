@@ -5,6 +5,7 @@ namespace App\Http\Livewire\Admin;
 use Livewire\Component;
 use App\Models\Category;
 use App\Models\Job;
+use App\Models\Subcategory;
 use Illuminate\Support\Str;
 use Illuminate\Support\Carbon;
 use Livewire\WithFileUploads;
@@ -23,6 +24,7 @@ class AdminAddJobComponent extends Component
     public $quantity;
     public $image;
     public $category_id;
+    public $sub_category_id;
 
     public function mount()
     {
@@ -78,13 +80,22 @@ class AdminAddJobComponent extends Component
         $this->image->storeAs('products', $imageName);
         $job->image = $imageName;
         $job->category_id = $this->category_id;
+        if ($this->sub_category_id) {
+            $job->sub_category_id = $this->sub_category_id;
+        }
         @$job->save();
         session()->flash('message', 'Job has been created successfully!');
+    }
+
+    public function changeSubcategory()
+    {
+        $this->sub_category_id = 0;
     }
 
     public function render()
     {
         $categories = Category::all();
-        return view('livewire.admin.admin-add-job-component', ['categories' => $categories])->layout('layouts.base');
+        $sub_categories = Subcategory::where('category_id', $this->category_id)->get();
+        return view('livewire.admin.admin-add-job-component', ['categories' => $categories, 'sub_categories' => $sub_categories])->layout('layouts.base');
     }
 }
