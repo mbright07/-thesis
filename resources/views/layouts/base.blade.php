@@ -194,10 +194,10 @@
 									<a href="#" class="link-term mercado-item-title">{{ __('base.references') }}</a>
 								</li>
 								<li class="menu-item">
-									<a href="#" class="link-term mercado-item-title">{{ __('base.about_us') }}</a>
+									<a href="#" class="link-term mercado-item-title">@lang('base.about_us')</a>
 								</li>
 								<li class="menu-item">
-									<a href="/contact-us" class="link-term mercado-item-title">{{ __('base.contact_us') }}</a>
+									<a href="/contact-us" class="link-term mercado-item-title">@lang('base.contact_us')</a>
 								</li>																	
 							</ul>
 						</div>

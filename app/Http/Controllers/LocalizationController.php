@@ -7,7 +7,7 @@ use Session;
 
 class LocalizationController extends Controller
 {
-    public function changeLanguage($language)
+    public function changeLanguage(Request $request, $language)
     {
         $lang = $request->language;
         $language = config('app.locale');
