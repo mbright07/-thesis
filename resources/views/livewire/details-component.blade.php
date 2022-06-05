@@ -9,17 +9,10 @@
             </ul>
         </div>
         <div class="row">
-
             <div class="col-lg-9 col-md-8 col-sm-8 col-xs-12 main-content-area">
                 <div class="wrap-product-detail">
                     <div class="detail-media">
-                        <div class="product-gallery">
-                          <ul class="slides">
-                            <li data-thumb="{{ asset('assets/images/products' )}}/{{ $job->image }}">
-                                <img src="{{asset('assets/images/products')}}/{{ $job->image }}" alt="{{ $job->name }}" />
-                            </li>
-                          </ul>
-                        </div>
+                        <img src="{{asset('assets/images/products')}}/{{ $job->image }}" alt="{{ $job->name }}"  height="300" width="300" />
                     </div>
                     <div class="detail-info">
                         <div class="product-rating">
@@ -49,12 +42,11 @@
                         <div class="short-desc">
                            {!! $job->short_description !!}
                         </div>
-                        <div class="wrap-social">
-                            <a class="link-socail" href="#"><img src="{{asset('assets/images/social-list.png')}}" alt=""></a>
-                        </div>
+                        
                         <div class="wrap-price"><span class="product-price">Salary:${{ $job->regular_salary }}</span></div>
                         <div class="stock-info in-stock">
                             <p class="availability">Availability: <b>{{ $job->stock_status }}</b></p>
+                            <p class="availability">Số lượng: <b>{{ $job->quantity }}</b></p>
                         </div>
                         <div class="wrap-butons">
                             <a href="#" class="btn add-to-cart">Ứng tuyển ngay</a>

@@ -53,31 +53,31 @@
 									@auth
 										@if(Auth::user()->utype === 'ADM')
 											<li class="menu-item menu-item-has-children parent" >
-												<a title="My account" href="#">My Account ({{ Auth::user()->name }})<i class="fa fa-angle-down" aria-hidden="true"></i></a>
+												<a title="My account" href="#">{{ __('base.my_account') }} ({{ Auth::user()->name }})<i class="fa fa-angle-down" aria-hidden="true"></i></a>
 												<ul class="submenu curency" >
 													<li class="menu-item" >
-														<a title="Dashboard" href="{{ route('admin.dashboard') }}">Dashboard</a>
+														<a title="Dashboard" href="{{ route('admin.dashboard') }}">{{ __('base.dashboard') }}</a>
 													</li>
 													<li class="menu-item">
-														<a title="Categories" href="{{ route('admin.categories') }}">Categories</a>
+														<a title="Categories" href="{{ route('admin.categories') }}">{{ __('base.categories') }}</a>
 													</li>
 													<li class="menu-item" >
-														<a title="Jobs" href="{{ route('admin.jobs') }}">All Jobs</a>
+														<a title="Jobs" href="{{ route('admin.jobs') }}">{{ __('base.all_jobs') }}</a>
 													</li>
 													<li class="menu-item" >
-														<a title="Manage Home Slider" href="{{ route('admin.homeslider') }}">Manage Home Slider</a>
+														<a title="Manage Home Slider" href="{{ route('admin.homeslider') }}">{{ __('base.all_jobs') }}</a>
 													</li>
 													<li class="menu-item" >
-														<a title="Manage Home Categories" href="{{ route('admin.homecategories') }}">Manage Home Categories</a>
+														<a title="Manage Home Categories" href="{{ route('admin.homecategories') }}">{{ __('base.manage_home_slider') }}</a>
 													</li>
 													<li class="menu-item" >
-														<a title="All Recruitments" href="{{ route('admin.recruitments') }}">All Recruitments</a>
+														<a title="All Recruitments" href="{{ route('admin.recruitments') }}">{{ __('base.all_recruitments') }}</a>
 													</li>
 													<li class="menu-item" >
-														<a title="Contact Messages" href="{{ route('admin.contact') }}">Contact Messages</a>
+														<a title="Contact Messages" href="{{ route('admin.contact') }}">{{ __('base.contact_messages') }}</a>
 													</li>
 													<li class="menu-item" >
-														<a title="Settings" href="{{ route('admin.settings') }}">Settings</a>
+														<a title="Settings" href="{{ route('admin.settings') }}">{{ __('base.settings') }}</a>
 													</li>
 													<li class="menu-item" >
 														<a title="Logout" href="{{ route('logout') }}" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">Logout</a>
@@ -90,19 +90,19 @@
 											</li>
 										@else
 											<li class="menu-item menu-item-has-children parent" >
-												<a title="My account" href="#">My Account ({{ Auth::user()->name }})<i class="fa fa-angle-down" aria-hidden="true"></i></a>
+												<a title="My account" href="#">{{ __('base.my_account') }} ({{ Auth::user()->name }})<i class="fa fa-angle-down" aria-hidden="true"></i></a>
 												<ul class="submenu curency" >
 													<li class="menu-item" >
-														<a title="Dashboard" href="{{ route('user.dashboard') }}">Dashboard</a>
+														<a title="Dashboard" href="{{ route('user.dashboard') }}">{{ __('base.dashboard') }}</a>
 													</li>
 													<li class="menu-item" >
-														<a title="My Profile" href="{{ route('user.profile') }}">My Profile</a>
+														<a title="My Profile" href="{{ route('user.profile') }}">{{ __('base.my_profile') }}</a>
 													</li>
 													<li class="menu-item" >
-														<a title="My Recruitments" href="{{ route('user.recruitments') }}">My Recruitments</a>
+														<a title="My Recruitments" href="{{ route('user.recruitments') }}">{{ __('base.my_recruitments') }}</a>
 													</li>
 													<li class="menu-item" >
-														<a title="Change Password" href="{{ route('user.changepassword') }}">Change Password</a>
+														<a title="Change Password" href="{{ route('user.changepassword') }}">{{ __('base.change_password') }}</a>
 													</li>
 													<li class="menu-item" >
 														<a title="Logout" href="{{ route('logout') }}" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">Logout</a>
@@ -116,15 +116,16 @@
 										@endif
 										
 									@else
-										<li class="menu-item" ><a title="Register or Login" href="{{ route('login') }}">Login</a></li>
-										<li class="menu-item" ><a title="Register or Login" href="{{ route('register') }}">Register</a></li>
+										<li class="menu-item" ><a title="Register or Login" href="{{ route('login') }}">{{ __('base.login') }}</a></li>
+										<li class="menu-item" ><a title="Register or Login" href="{{ route('register') }}">{{ __('base.register') }}</a></li>
 									@endif
 								@endif
+
 								<li class="menu-item lang-menu menu-item-has-children parent">
-									<a title="English" href="#"><span class="img label-before"><img src="/assets/images/lang-en.jpg" alt="lang-en"></span>English<i class="fa fa-angle-down" aria-hidden="true"></i></a>
+									<a title="Vietnamese" href="{!! route('change-language', ['vi']) !!}"><span class="img label-before"><img src="/assets/images/lang-vi.jpg" alt="lang-en"></span>{{ __('base.vietnam') }}<i class="fa fa-angle-down" aria-hidden="true"></i></a>
 									<ul class="submenu lang" >
-										<li class="menu-item" ><a title="vietnam" href="#"><span class="img label-before"><img src="/assets/images/lang-vi.jpg" alt="lang-hun"></span>Vietnam</a></li>
-										<li class="menu-item" ><a title="japan" href="#"><span class="img label-before"><img src="/assets/images/lang-jp.jpg" alt="lang-ger" ></span>Japan</a></li>
+										<li class="menu-item" ><a title="vietnam" href="{!! route('change-language', ['en']) !!}"><span class="img label-before"><img src="/assets/images/lang-en.jpg" alt="lang-hun"></span>{{ __('base.english') }}</a></li>
+										<li class="menu-item" ><a title="japan" href="{!! route('change-language', ['ja']) !!}"><span class="img label-before"><img src="/assets/images/lang-jp.jpg" alt="lang-ger" ></span>{{ __('base.japan') }}</a></li>
 									</ul>
 								</li>
 							</ul>
@@ -181,22 +182,22 @@
 									<a href="/" class="link-term mercado-item-title"><i class="fa fa-home" aria-hidden="true"></i></a>
 								</li>
 								<li class="menu-item">
-									<a href="/blog" class="link-term mercado-item-title">Jobs</a>
+									<a href="/blog" class="link-term mercado-item-title">{{ __('base.jobs') }}</a>
 								</li>
 								<li class="menu-item">
-									<a href="/bookmark" class="link-term mercado-item-title">Bookmark</a>
+									<a href="/bookmark" class="link-term mercado-item-title">{{ __('base.bookmark') }}</a>
 								</li>
 								<li class="menu-item">
-									<a href="/recruitment" class="link-term mercado-item-title">Recruitment</a>
+									<a href="/recruitment" class="link-term mercado-item-title">{{ __('base.recruitment') }}</a>
 								</li>
 								<li class="menu-item">
-									<a href="#" class="link-term mercado-item-title">references</a>
+									<a href="#" class="link-term mercado-item-title">{{ __('base.references') }}</a>
 								</li>
 								<li class="menu-item">
-									<a href="#" class="link-term mercado-item-title">About Us</a>
+									<a href="#" class="link-term mercado-item-title">{{ __('base.about_us') }}</a>
 								</li>
 								<li class="menu-item">
-									<a href="/contact-us" class="link-term mercado-item-title">Contact Us</a>
+									<a href="/contact-us" class="link-term mercado-item-title">{{ __('base.contact_us') }}</a>
 								</li>																	
 							</ul>
 						</div>

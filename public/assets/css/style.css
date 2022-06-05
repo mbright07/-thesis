@@ -47,6 +47,8 @@ Primary use:    Ecommerce
 	Effects Style 6 : .banner-effect-toright;
 
 -------------------------------------------------------------------*/
+@import '~flag-icon-css/sass/flag-icon';
+
 
 body {
     font-family: "Open Sans", sans-serif;

@@ -11,7 +11,7 @@
                         <img src="http://ssl.gstatic.com/accounts/ui/avatar_2x.png" class="avatar img-circle img-thumbnail" alt="avatar">
                         <h6>Upload a different photo...</h6>
                     @endif
-                    <input type="file" class="text-center center-block file-upload"> 
+                    <input type="file" class="text-center center-block file-upload" > 
                 </div>
                 <div class="row text-center">
                     <div class="col-sm-12" class="text-center"><h2>{{ $user->name }}</h2></div>
@@ -46,7 +46,6 @@
                     </ul>      
                     <div class="tab-content">
                         <div class="tab-pane active" id="home">
-                            <hr>
                             <form class="form" action="##" method="post" id="registrationForm">
                                 <div class="form-group">
                                     <div class="col-xs-6">

@@ -10,6 +10,7 @@ use Livewire\Component;
 
 class UserProfileComponent extends Component
 {
+
     public function render()
     {
         $userProfile = Profile::where('user_id', Auth::user()->id)->first();
