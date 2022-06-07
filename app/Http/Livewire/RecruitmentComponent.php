@@ -10,6 +10,7 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Mail;
 use Livewire\Component;
 use Livewire\WithFileUploads;
+use App\Models\Job;
 
 class RecruitmentComponent extends Component
 {
@@ -105,6 +106,7 @@ class RecruitmentComponent extends Component
     public function render()
     {
         $this->verifyForRecruitment();
-        return view('livewire.recruitment-component')->layout("layouts.base");
+        $top_views = Job::orderBy('totalviews', 'DESC')->get()->take(8);
+        return view('livewire.recruitment-component', ['top_views' => $top_views])->layout("layouts.base");
     }
 }

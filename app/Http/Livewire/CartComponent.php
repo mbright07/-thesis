@@ -59,14 +59,6 @@ class CartComponent extends Component
         }
     }
 
-    // public function switchToApplied($rowId)
-    // {
-    //     $job = Cart::instance('bookmark')->get($rowId);
-    //     Cart::instance('bookmark')->remove($rowId);
-    //     Cart::instance('applied')->add($job->id, $job->name, 1, $job->salary)->associate('App\Models\Job');
-    //     session()->flash('success_message', 'Job has been applied');
-    // }
-
     public function render()
     {
         $this->setAmountForRecruitment();

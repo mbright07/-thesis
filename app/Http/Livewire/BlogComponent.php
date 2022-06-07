@@ -8,6 +8,7 @@ use Livewire\WithPagination;
 use Cart;
 use App\Models\Category;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Cookie;
 
 class BlogComponent extends Component
 {

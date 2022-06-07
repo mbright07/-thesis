@@ -39,6 +39,7 @@
                             <a href="#" class="count-review">({{ $job->recruitmentJobs->where('rstatus',1)->count() }} {{ __('detail.review') }})</a>
                         </div>
                         <h2 class="product-name">{{ $job->name }}</h2>
+                        <h5>View: {{ $job->totalviews }}</h5>
                         <div class="short-desc">
                            {!! $job->short_description !!}
                         </div>
@@ -49,7 +50,7 @@
                             <p class="availability">{{ __('detail.quantily') }}<b>{{ $job->quantity }}</b></p>
                         </div>
                         <div class="wrap-butons">
-                            <a href="#" class="btn add-to-cart">{{ __('detail.apply_now') }}</a>
+                            <a href="#" class="btn add-to-cart" wire:click.prevent="Recruitment">{{ __('detail.apply_now') }}</a>
                             <div class="wrap-btn">
                                 <a href="#" class="btn btn-compare">{{ __('detail.bookmark') }}</a>
                                 <a href="#" class="btn btn-wishlist" wire:click.prevent="company({{ $job->id}},'{{ $job->name }}',{{ $job->regular_salary }})">{{ __('detail.wishlist') }}</a>

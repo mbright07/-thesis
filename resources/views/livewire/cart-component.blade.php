@@ -5,7 +5,7 @@
         <div class="wrap-breadcrumb">
             <ul>
                 <li class="item-link"><a href="/" class="link">{{ __('bookmark.home') }}</a></li>
-                <li class="item-link"><span>{{ __('bookmark.bookmark') }}</span></li>
+                <li class="item-link"><span>{{ __('bookmark.book_mark') }}</span></li>
             </ul>
         </div> 
         <div class=" main-content-area">
@@ -13,7 +13,7 @@
                 <div class="wrap-iten-in-cart">
                     @if(Session::has('success_message'))
                         <div class="alert alert-success">
-                            <strong>Success</strong> {{ Session::get('success_message') }}
+                            <strong>{{ __('bookmark.success') }}</strong> {{ Session::get('success_message') }}
                         </div>
                     @endif
                     @if(Cart::instance('bookmark')->count() > 0)
@@ -99,39 +99,6 @@
                     <p>{{ __('bookmark.no_job_save') }}</p>
                 @endif
             </div>
-            {{-- <div class="wrap-iten-in-cart">
-                <h3 class="title-box" style="border-bottom:1px solid; padding-bottom:15px;">{{ Cart::instance('applied')->count() }} job(s) Applied</h3>
-                @if (Session::has('message'))
-                    <div class="alert alert-success" role="alert">{{ Session::get('message') }}</div>
-                @endif
-                @if(Cart::instance('applied')->count() > 0)
-                    <ul class="products-cart">
-                        @foreach (Cart::instance('applied')->content() as $item )
-                            <li class="pr-cart-item">
-                                <div class="product-image">
-                                    <figure><img src="{{ asset('assets/images/products') }}/{{ $item->model->image }}" alt="{{ $item->model->image }}"></figure>
-                                </div>
-                                <div class="product-name">
-                                    <a class="link-to-product" href="{{ route('job.details',['slug'=>$item->model->slug]) }}">{{ $item->model->name }}</a>
-                                </div>
-                                <div class="price-field produtc-price"><p class="price">Salary: ${{ $item->model->regular_salary }}</p></div>
-                                <div class="quantity">
-                                    <a class="btn btn-primary" href="#" wire:click.prevent="moveToBookmark('{{ $item->rowId }}')">Move To Bookmark</a>
-                                </div>
-                                <div class="delete">
-                                    <a href="#" onclick="confirm('Are you sure, You want to delete this job?') || event.stopImmediatePropagation()" wire:click.prevent="deleteFromSaveForLater('{{ $item->rowId }}')" class="btn btn-delete" title="">
-                                        <span>Delete from applied</span>
-                                        <i class="fa fa-times-circle" aria-hidden="true"></i>
-                                    </a>
-                                </div>
-                            </li>
-                        @endforeach							
-                    </ul>
-                @else
-                    <p>No Job Applied</p>
-                @endif
-            </div> --}}
-
             
             <div class="wrap-show-advance-info-box style-1 box-in-site">
                 <h3 class="title-box">{{ __('bookmark.most_view') }}</h3>

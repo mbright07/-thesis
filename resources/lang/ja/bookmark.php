@@ -1,7 +1,7 @@
 <?php
 return [
     'home' => 'ホームページ',
-    'bookmark' => 'ブックマーク',
+    'book_mark' => 'ブックマーク',
     'job_bookmark' => '保存された仕事',
     'salary' => '給料: $',
     'save' => '後で見るように保存',

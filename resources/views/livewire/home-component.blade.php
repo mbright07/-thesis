@@ -37,19 +37,19 @@
         <div class="wrap-show-advance-info-box style-1 has-countdown">
             <h3 class="title-box">{{ __('home.top_view') }}</h3>
             <div class="wrap-products slide-carousel owl-carousel style-nav-1 equal-container " data-items="5" data-loop="false" data-nav="true" data-dots="false" data-responsive='{"0":{"items":"1"},"480":{"items":"2"},"768":{"items":"3"},"992":{"items":"4"},"1200":{"items":"5"}}'>
-                @foreach ($sjobs as $sjob)
+                @foreach ($top_views as $top_view)
                     <div class="product product-style-2 equal-elem ">
                         <div class="product-thumnail">
-                            <a href="{{ route('job.details',['slug'=>$sjob->slug]) }}" title="{{ $sjob->name }}">
-                                <figure><img src="{{ asset ('assets/images/products') }}/{{ $sjob->image }}" width="800" height="800" alt="{{ $sjob->name }}"></figure>
+                            <a href="{{ route('job.details',['slug'=>$top_view->slug]) }}" title="{{ $top_view->name }}">
+                                <figure><img src="{{ asset ('assets/images/products') }}/{{ $top_view->image }}" width="800" height="800" alt="{{ $top_view->name }}"></figure>
                             </a>
                             <div class="group-flash">
                                 <span class="flash-item bestseller-label">Hot</span>
                             </div>
                         </div>
                         <div class="product-info">
-                            <a href="{{ route('job.details',['slug'=>$sjob->slug]) }}" class="product-name"><span>{{ $sjob->name }}</span></a>
-                            <div class="wrap-price"><ins><p class="product-price">{{ __('home.salary') }} ${{ $sjob->regular_salary }}</p></ins></div>
+                            <a href="{{ route('job.details',['slug'=>$top_view->slug]) }}" class="product-name"><span>{{ $top_view->name }}</span></a>
+                            <div class="wrap-price"><ins><p class="product-price">{{ __('home.salary') }} ${{ $top_view->regular_salary }}</p></ins></div>
                         </div>
                     </div>
                 @endforeach                

@@ -1,7 +1,7 @@
 <?php
 return [
     'home' => 'Home',
-    'bookmark' => 'Bookmark',
+    'book_mark' => 'Bookmark',
     'job_bookmark' => 'Jobs Bookmark',
     'salary' => 'Salary: $',
     'save' => 'Save For Later',

@@ -1,7 +1,7 @@
 <?php
 return [
     'home' => 'Trang chủ',
-    'bookmark' => 'Công Việc đã lưu',
+    'book_mark' => 'Công Việc đã lưu',
     'job_bookmark' => 'Công Việc đã lưu',
     'salary' => 'Lương: $',
     'save' => 'Lưu để xem sau',

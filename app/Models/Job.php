@@ -28,4 +28,10 @@ class Job extends Model
     {
         return $this->belongsTo(Subcategory::class, 'sub_category_id');
     }
+
+    public function incrementReadCount()
+    {
+        $this->totalviews++;
+        return $this->save();
+    }
 }
