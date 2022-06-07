@@ -2368,6 +2368,7 @@ li.menu-item .nav-label.sale-label::before {
     padding: 4.5px 0;
     background: #f5f5f5;
     margin-top: 33px;
+    height: 40px;
 }
 .wrap-shop-control .shop-title {
     display: inline-block;

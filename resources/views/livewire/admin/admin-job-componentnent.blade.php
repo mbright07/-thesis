@@ -14,10 +14,10 @@
                     <div class="panel-heading">
                         <div class="row">
                             <div class="col-md-6">
-                                All Jobs
+                                {{ __('admin/admin-add-job.all_jobs') }}
                             </div>
                             <div class="col-md-6">
-                                <a href="{{ route('admin.addjob') }}" class="btn btn-success pull-right">Add New Job</a>
+                                <a href="{{ route('admin.addjob') }}" class="btn btn-success pull-right">{{ __('admin/admin-add-job.add_job') }}</a>
                             </div>
                         </div>
                     </div>
@@ -28,13 +28,13 @@
                         <table class='table table-striped'>
                             <thead>
                                 <th>Id</th>
-                                <th>Image</th>
-                                <th>Name</th>
-                                <th>Stock</th>
-                                <th>Salary</th>
-                                <th>Location</th>
-                                <th>Date</th>
-                                <th>Action</th>
+                                <th>{{ __('admin/admin-add-job.image') }}</th>
+                                <th>{{ __('admin/admin-add-job.job_name') }}</th>
+                                <th>{{ __('admin/admin-add-job.stock') }}</th>
+                                <th>{{ __('admin/admin-add-job.regular_salary') }}</th>
+                                <th>{{ __('admin/admin-add-job.location') }}</th>
+                                <th>{{ __('admin/admin-add-job.date') }}</th>
+                                <th>{{ __('admin/admin-add-job.action') }}</th>
                             </thead>
                             <tbody>
                                 @foreach ($jobs as $job )
@@ -50,7 +50,7 @@
                                             <a href="{{ route('admin.editjob',['job_slug'=>$job->slug]) }}">
                                                 <i class="fa fa-edit fa-2x text-info"></i>
                                             </a>
-                                            <a href="#" onclick="confirm('Are you sure, You want to delete this job?') || event.stopImmediatePropagation()" wire:click.prevent="deleteJob({{ $job->id }})" style="margin-left: 10px;"><i class="fa fa-times fa-2x text-danger"></i></a>
+                                            <a href="#" onclick="confirm('{{ __('admin/admin-add-job.sure') }}') || event.stopImmediatePropagation()" wire:click.prevent="deleteJob({{ $job->id }})" style="margin-left: 10px;"><i class="fa fa-times fa-2x text-danger"></i></a>
                                         </td>
                                     </tr>
                                     

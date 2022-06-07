@@ -6,10 +6,10 @@
                     <div class="panel-heading">
                         <div class="row">
                             <div class="col-md-6">
-                                All Sliders
+                                {{ __('admin/admin-add-home-slider.all_slide') }}
                             </div>
                             <div class="col-md-6">
-                                <a href="{{ route('admin.addhomeslider') }}" class="btn btn-success pull-right">Add New Slider</a>
+                                <a href="{{ route('admin.addhomeslider') }}" class="btn btn-success pull-right">{{ __('admin/admin-add-home-slider.add_slide') }}</a>
                             </div>
                         </div>
                     </div>
@@ -21,14 +21,14 @@
                             <thead>
                                 <tr>
                                     <th>ID</th>
-                                    <th>Image</th>
-                                    <th>Title</th>
-                                    <th>Subtile</th>
-                                    <th>Salary</th>
-                                    <th>Link</th>
-                                    <th>Status</th>
-                                    <th>Date</th>
-                                    <th>Action</th>
+                                    <th>{{ __('admin/admin-add-home-slider.image') }}</th>
+                                    <th>{{ __('admin/admin-add-home-slider.title') }}</th>
+                                    <th>{{ __('admin/admin-add-home-slider.subtitle') }}</th>
+                                    <th>{{ __('admin/admin-add-home-slider.salary') }}</th>
+                                    <th>{{ __('admin/admin-add-home-slider.link') }}</th>
+                                    <th>{{ __('admin/admin-add-home-slider.status') }}</th>
+                                    <th>{{ __('admin/admin-add-home-slider.date') }}</th>
+                                    <th>{{ __('admin/admin-add-home-slider.action') }}</th>
                                 </tr>
                             </thead>
                             <tbody>
@@ -46,7 +46,7 @@
                                             <a href="{{ route('admin.edithomeslider',['slider_id'=>$slider->id]) }}">
                                                 <i class="fa fa-edit fa-2x text-info"></i>
                                             </a>
-                                            <a href="#" wire:click.prevent="deleteSlide({{ $slider->id }})" style="margin-left: 10px;"><i class="fa fa-times fa-2x text-danger"></i></a>
+                                            <a href="#" onclick="confirm('{{ __('admin/admin-add-home-slider.sure') }}') || event.stopImmediatePropagation()" wire:click.prevent="deleteSlide({{ $slider->id }})" style="margin-left: 10px;"><i class="fa fa-times fa-2x text-danger"></i></a>
                                         </td>
                                     </tr>
                                 @endforeach

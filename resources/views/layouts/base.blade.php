@@ -42,9 +42,6 @@
 					<div class="container">
 						<div class="topbar-menu left-menu">
 							<ul>
-								<li class="menu-item" >
-									<a title="Hotline: (+123) 456 789" href="#" ><span class="icon label-before fa fa-mobile"></span>Hotline: (+123) 456 789</a>
-								</li>
 							</ul>
 						</div>
 						<div class="topbar-menu right-menu">
@@ -65,10 +62,10 @@
 														<a title="Jobs" href="{{ route('admin.jobs') }}">{{ __('base.all_jobs') }}</a>
 													</li>
 													<li class="menu-item" >
-														<a title="Manage Home Slider" href="{{ route('admin.homeslider') }}">{{ __('base.all_jobs') }}</a>
+														<a title="Manage Home Slider" href="{{ route('admin.homeslider') }}">{{ __('base.manage_home_slider') }}</a>
 													</li>
 													<li class="menu-item" >
-														<a title="Manage Home Categories" href="{{ route('admin.homecategories') }}">{{ __('base.manage_home_slider') }}</a>
+														<a title="Manage Home Categories" href="{{ route('admin.homecategories') }}">{{ __('base.manage_home_categories') }}</a>
 													</li>
 													<li class="menu-item" >
 														<a title="All Recruitments" href="{{ route('admin.recruitments') }}">{{ __('base.all_recruitments') }}</a>
@@ -80,7 +77,7 @@
 														<a title="Settings" href="{{ route('admin.settings') }}">{{ __('base.settings') }}</a>
 													</li>
 													<li class="menu-item" >
-														<a title="Logout" href="{{ route('logout') }}" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">Logout</a>
+														<a title="Logout" href="{{ route('logout') }}" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">{{ __('base.logout') }}</a>
 													</li>
 													<form id="logout-form" method="POST" action="{{ route('logout') }}">
 														@csrf
@@ -105,7 +102,7 @@
 														<a title="Change Password" href="{{ route('user.changepassword') }}">{{ __('base.change_password') }}</a>
 													</li>
 													<li class="menu-item" >
-														<a title="Logout" href="{{ route('logout') }}" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">Logout</a>
+														<a title="Logout" href="{{ route('logout') }}" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">{{ __('base.logout') }}</a>
 													</li>
 													<form id="logout-form" method="POST" action="{{ route('logout') }}">
 														@csrf
@@ -122,10 +119,11 @@
 								@endif
 
 								<li class="menu-item lang-menu menu-item-has-children parent">
-									<a title="Vietnamese" href="{!! route('change-language', ['vi']) !!}"><span class="img label-before"><img src="/assets/images/lang-vi.jpg" alt="lang-en"></span>{{ __('base.vietnam') }}<i class="fa fa-angle-down" aria-hidden="true"></i></a>
+									<a title="Language" href="#"><i class="fa fa-angle-down" aria-hidden="true"></i> {{ __('base.language') }}</a>
 									<ul class="submenu lang" >
-										<li class="menu-item" ><a title="vietnam" href="{!! route('change-language', ['en']) !!}"><span class="img label-before"><img src="/assets/images/lang-en.jpg" alt="lang-hun"></span>{{ __('base.english') }}</a></li>
-										<li class="menu-item" ><a title="japan" href="{!! route('change-language', ['ja']) !!}"><span class="img label-before"><img src="/assets/images/lang-jp.jpg" alt="lang-ger" ></span>{{ __('base.japan') }}</a></li>
+										<li class="menu-item" ><a title="Vietnamese" href="{!! route('change-language', ['vi']) !!}"><span class="img label-before"><img src="/assets/images/lang-vi.jpg" alt="lang-vi"></span>{{ __('base.vietnam') }}</a></li>
+										<li class="menu-item" ><a title="English" href="{!! route('change-language', ['en']) !!}"><span class="img label-before"><img src="/assets/images/lang-en.jpg" alt="lang-en"></span>{{ __('base.english') }}</a></li>
+										<li class="menu-item" ><a title="Japanese" href="{!! route('change-language', ['ja']) !!}"><span class="img label-before"><img src="/assets/images/lang-jp.jpg" alt="lang-ja" ></span>{{ __('base.japan') }}</a></li>
 									</ul>
 								</li>
 							</ul>
@@ -149,7 +147,7 @@
 									<i class="fa fa-bell" aria-hidden="true"></i>
 									<div class="left-info">
 										<span class="index">0</span>
-										<span class="title">Noti</span>
+										<span class="title">{{ __('base.noti') }}</span>
 									</div>
 								</a>
 							</div>
@@ -158,7 +156,7 @@
 									<i class="fa fa-comments" aria-hidden="true"></i>
 									<div class="left-info">
 										<span class="index">4</span>
-										<span class="title">Message</span>
+										<span class="title">{{ __('base.message') }}</span>
 									</div>
 								</a>
 							</div>
@@ -194,10 +192,10 @@
 									<a href="#" class="link-term mercado-item-title">{{ __('base.references') }}</a>
 								</li>
 								<li class="menu-item">
-									<a href="#" class="link-term mercado-item-title">@lang('base.about_us')</a>
+									<a href="#" class="link-term mercado-item-title">{{ __('base.about_us') }}</a>
 								</li>
 								<li class="menu-item">
-									<a href="/contact-us" class="link-term mercado-item-title">@lang('base.contact_us')</a>
+									<a href="/contact-us" class="link-term mercado-item-title">{{ __('base.contact_us') }}</a>
 								</li>																	
 							</ul>
 						</div>

@@ -6,10 +6,10 @@
                     <div class="panel-heading">
                         <div class="row">
                             <div class="col-md-6">
-                                Edit Slide
+                                {{ __('admin/admin-add-home-slider.edit') }}
                             </div>
                             <div class="col-md-6">
-                                <a href="{{ route('admin.homeslider') }}" class="btn btn-success pull-right">All Slides</a>
+                                <a href="{{ route('admin.homeslider') }}" class="btn btn-success pull-right">{{ __('admin/admin-add-home-slider.all_slide') }}</a>
                             </div>
                         </div>
                     </div>
@@ -19,35 +19,35 @@
                         @endif
                         <form class="form-horizontal" wire:submit.prevent="updateSlide">
                             <div class="form-group">
-                                <div class="col-md-4 control-label">Title</div>
+                                <div class="col-md-4 control-label">{{ __('admin/admin-add-home-slider.title') }}</div>
                                 <div class="col-md-4">
-                                    <input type="text" placeholder="Title" class="form-control input-md" wire:model="title"/>
+                                    <input type="text" placeholder="{{ __('admin/admin-add-home-slider.title') }}" class="form-control input-md" wire:model="title"/>
                                 </div>
                             </div>
 
                             <div class="form-group">
-                                <div class="col-md-4 control-label">Subtitle</div>
+                                <div class="col-md-4 control-label">{{ __('admin/admin-add-home-slider.subtitle') }}</div>
                                 <div class="col-md-4">
-                                    <input type="text" placeholder="Subtitle" class="form-control input-md" wire:model="subtitle"/>
+                                    <input type="text" placeholder="{{ __('admin/admin-add-home-slider.subtitle') }}" class="form-control input-md" wire:model="subtitle"/>
                                 </div>
                             </div>
 
                             <div class="form-group">
-                                <div class="col-md-4 control-label">Salary</div>
+                                <div class="col-md-4 control-label">{{ __('admin/admin-add-home-slider.salary') }}</div>
                                 <div class="col-md-4">
-                                    <input type="text" placeholder="Salary" class="form-control input-md" wire:model="salary" />
+                                    <input type="text" placeholder="{{ __('admin/admin-add-home-slider.salary') }}" class="form-control input-md" wire:model="salary" />
                                 </div>
                             </div>
 
                             <div class="form-group">
-                                <div class="col-md-4 control-label">Link</div>
+                                <div class="col-md-4 control-label">{{ __('admin/admin-add-home-slider.link') }}</div>
                                 <div class="col-md-4">
-                                    <input type="text" placeholder="Link" class="form-control input-md" wire:model="link" />
+                                    <input type="text" placeholder="{{ __('admin/admin-add-home-slider.link') }}" class="form-control input-md" wire:model="link" />
                                 </div>
                             </div>
 
                             <div class="form-group">
-                                <div class="col-md-4 control-label">Image</div>
+                                <div class="col-md-4 control-label">{{ __('admin/admin-add-home-slider.image') }}</div>
                                 <div class="col-md-4">
                                     <input type="file" class="input-file" wire:model="newimage"/>
                                     @if ($newimage)
@@ -59,11 +59,11 @@
                             </div>
 
                             <div class="form-group">
-                                <div class="col-md-4 control-label">Status</div>
+                                <div class="col-md-4 control-label">{{ __('admin/admin-add-home-slider.status') }}</div>
                                 <div class="col-md-4">
                                     <select class="form-control" wire:model="status">
-                                        <option value="0">Inactive</option>
-                                        <option value="1">Active</option>
+                                        <option value="0">{{ __('admin/admin-add-home-slider.inactive') }}</option>
+                                        <option value="1">{{ __('admin/admin-add-home-slider.active') }}</option>
                                     </select>
                                 </div>
                             </div>
@@ -71,7 +71,7 @@
                             <div class="form-group">
                                 <div class="col-md-4 control-label"></div>
                                 <div class="col-md-4">
-                                    <button type="submit" class="btn btn-primary">Update</button>
+                                    <button type="submit" class="btn btn-primary">{{ __('admin/admin-add-home-slider.update') }}</button>
                                 </div>
                             </div>
                         </form>

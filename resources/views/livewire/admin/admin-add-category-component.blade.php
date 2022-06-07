@@ -6,10 +6,10 @@
                     <div class="panel-heading">
                         <div class="row">
                             <div class="col-md-6">
-                                Add New Location
+                                {{ __('admin/admin-add-category.add_location') }}
                             </div>
                             <div class="col-md-6">
-                                <a href="{{ route('admin.categories') }}" class="btn btn-success pull-right">All Locations</a>
+                                <a href="{{ route('admin.categories') }}" class="btn btn-success pull-right">{{ __('admin/admin-add-category.all_locations') }}</a>
                             </div>
                         </div>
                     </div>
@@ -19,9 +19,9 @@
                         @endif
                         <form class="form-horizontal" wire:submit.prevent="storeCategory">
                             <div class="form-group">
-                                <label class="col-md-4 control-label">Location Name</label>
+                                <label class="col-md-4 control-label">{{ __('admin/admin-add-category.location_name') }}</label>
                                 <div class="col-md-4">
-                                    <input type="text" placeholder="Location Name" class="form-control input-md" wire:model="name" wire:keyup="generateslug" />
+                                    <input type="text" placeholder="{{ __('admin/admin-add-category.location_name') }}" class="form-control input-md" wire:model="name" wire:keyup="generateslug" />
                                     @error('name')
                                         <p class="text-danger">{{ $message }}</p>
                                     @enderror
@@ -29,9 +29,9 @@
                             </div>
 
                             <div class="form-group">
-                                <label class="col-md-4 control-label">Location Slug</label>
+                                <label class="col-md-4 control-label">{{ __('admin/admin-add-category.location_slug') }}</label>
                                 <div class="col-md-4">
-                                    <input type="text" placeholder="Location Slug" class="form-control input-md" wire:model="slug" />
+                                    <input type="text" placeholder="{{ __('admin/admin-add-category.location_slug') }}" class="form-control input-md" wire:model="slug" />
                                     @error('slug')
                                         <p class="text-danger">{{ $message }}</p>
                                     @enderror
@@ -39,10 +39,10 @@
                             </div>
 
                             <div class="form-group">
-                                <label class="col-md-4 control-label">Parent Location</label>
+                                <label class="col-md-4 control-label">{{ __('admin/admin-add-category.parent_location') }}</label>
                                 <div class="col-md-4">
                                     <select class="form-control input-md" wire:model="category_id">
-                                        <option value="">None</option>
+                                        <option value="">{{ __('admin/admin-add-category.none') }}</option>
                                         @foreach ($categories as $category)
                                             <option value="{{ $category->id }}">{{ $category->name }}</option>
                                         @endforeach
@@ -53,7 +53,7 @@
                             <div class="form-group">
                                 <label class="col-md-4 control-label"></label>
                                 <div class="col-md-4">
-                                    <button type="submit" class="btn btn-primary">Submit</button>
+                                    <button type="submit" class="btn btn-primary">{{ __('admin/admin-add-category.submit') }}</button>
                                 </div>
                             </div>
                         </form>

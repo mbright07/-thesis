@@ -13,9 +13,9 @@
                 <div class="panel panel-default">
                     <div class="panel-heading">
                         <div class="row">
-                            <div class="col-md-6">All Locations</div>
+                            <div class="col-md-6">{{ __('admin/admin-category.all_locations') }}</div>
                             <div class="col-md-6">
-                                <a href="{{ route('admin.addcategory') }}" class="btn btn-success pull-right">Add New Location</a>
+                                <a href="{{ route('admin.addcategory') }}" class="btn btn-success pull-right">{{ __('admin/admin-category.add_location') }}</a>
                             </div>
                         </div>
                     </div>
@@ -27,10 +27,10 @@
                             <thead>
                                 <tr>
                                     <th>Id</th>
-                                    <th>Locations</th>
-                                    <th>Slug</th>
-                                    <th>Sub Category</th>
-                                    <th>Action</th>
+                                    <th>{{ __('admin/admin-category.location_name') }}</th>
+                                    <th>{{ __('admin/admin-category.location_slug') }}</th>
+                                    <th>{{ __('admin/admin-category.sub_location') }}</th>
+                                    <th>{{ __('admin/admin-category.action') }}</th>
                                 </tr>
                             </thead>
                             <tbody>
@@ -47,7 +47,7 @@
                                                         <a href="{{ route('admin.editcategory',['category_slug'=>$category->slug,'sub_category_slug'=>$sub_category->slug]) }}" class="slink">
                                                             <i class="fa fa-edit"></i>
                                                         </a>
-                                                        <a href="#" onclick="confirm('Are you sure, You want to delete this sub location?') || event.stopImmediatePropagation()" wire:click.prevent="deleteSubCategory({{ $sub_category->id }})" class="slink">
+                                                        <a href="#" onclick="confirm('{{ __('admin/admin-category.sub_sure') }}') || event.stopImmediatePropagation()" wire:click.prevent="deleteSubCategory({{ $sub_category->id }})" class="slink">
                                                             <i class="fa fa-times text-danger"></i>
                                                         </a>
                                                     </li>
@@ -56,7 +56,7 @@
                                         </td>
                                         <td>
                                             <a href="{{ route('admin.editcategory',['category_slug'=>$category->slug]) }}"><i class="fa fa-edit fa-2x"></i></a>
-                                            <a href="#" onclick="confirm('Are you sure, You want to delete this location?') || event.stopImmediatePropagation()" wire:click.prevent="deleteCategory({{ $category->id }})" style="margin-left: 10px;"><i class="fa fa-times fa-2x text-danger"></i></a>
+                                            <a href="#" onclick="confirm('{{ __('admin/admin-category.sure') }}') || event.stopImmediatePropagation()" wire:click.prevent="deleteCategory({{ $category->id }})" style="margin-left: 10px;"><i class="fa fa-times fa-2x text-danger"></i></a>
                                         </td>
                                     </tr>    
                                 @endforeach

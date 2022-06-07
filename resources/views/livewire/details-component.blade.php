@@ -4,8 +4,8 @@
 
         <div class="wrap-breadcrumb">
             <ul>
-                <li class="item-link"><a href="/" class="link">home</a></li>
-                <li class="item-link"><span>detail</span></li>
+                <li class="item-link"><a href="/" class="link">{{ __('detail.home') }}</a></li>
+                <li class="item-link"><span>{{ __('detail.detail') }}</span></li>
             </ul>
         </div>
         <div class="row">
@@ -36,38 +36,38 @@
                                     <i class="fa fa-star color-gray" aria-hidden="true"></i>
                                 @endif
                             @endfor
-                            <a href="#" class="count-review">({{ $job->recruitmentJobs->where('rstatus',1)->count() }} review)</a>
+                            <a href="#" class="count-review">({{ $job->recruitmentJobs->where('rstatus',1)->count() }} {{ __('detail.review') }})</a>
                         </div>
                         <h2 class="product-name">{{ $job->name }}</h2>
                         <div class="short-desc">
                            {!! $job->short_description !!}
                         </div>
                         
-                        <div class="wrap-price"><span class="product-price">Salary:${{ $job->regular_salary }}</span></div>
+                        <div class="wrap-price"><span class="product-price">{{ __('detail.salary') }}{{ $job->regular_salary }}</span></div>
                         <div class="stock-info in-stock">
-                            <p class="availability">Availability: <b>{{ $job->stock_status }}</b></p>
-                            <p class="availability">Số lượng: <b>{{ $job->quantity }}</b></p>
+                            <p class="availability">{{ __('detail.availability') }}<b>{{ $job->stock_status }}</b></p>
+                            <p class="availability">{{ __('detail.quantily') }}<b>{{ $job->quantity }}</b></p>
                         </div>
                         <div class="wrap-butons">
-                            <a href="#" class="btn add-to-cart">Ứng tuyển ngay</a>
+                            <a href="#" class="btn add-to-cart">{{ __('detail.apply_now') }}</a>
                             <div class="wrap-btn">
-                                <a href="#" class="btn btn-compare">Add Compare</a>
-                                <a href="#" class="btn btn-wishlist" wire:click.prevent="company({{ $job->id}},'{{ $job->name }}',{{ $job->regular_salary }})">Add Wishlist</a>
+                                <a href="#" class="btn btn-compare">{{ __('detail.bookmark') }}</a>
+                                <a href="#" class="btn btn-wishlist" wire:click.prevent="company({{ $job->id}},'{{ $job->name }}',{{ $job->regular_salary }})">{{ __('detail.wishlist') }}</a>
                             </div>
                         </div>
                     </div>
                     <div class="advance-info">
                         <div class="tab-control normal">
-                            <a href="#description" class="tab-control-item active">description</a>
-                            <a href="#add_infomation" class="tab-control-item">Addtional Infomation</a>
-                            <a href="#review" class="tab-control-item">Reviews</a>
+                            <a href="#description" class="tab-control-item active">{{ __('detail.description') }}</a>
+                            <a href="#add_infomation" class="tab-control-item">{{ __('detail.add_info') }}</a>
+                            <a href="#review" class="tab-control-item">{{ __('detail.review') }}</a>
                         </div>
                         <div class="tab-contents">
                             <div class="tab-content-item active" id="description">
                                 {!! $job->description !!}
                             </div>
                             <div class="tab-content-item " id="add_infomation">
-                                <table class="shop_attributes">
+                                {{-- <table class="shop_attributes">
                                     <tbody>
                                         <tr>
                                             <th>Weight</th><td class="product_weight">1 kg</td>
@@ -79,7 +79,7 @@
                                             <th>Color</th><td><p>Black, Blue, Grey, Violet, Yellow</p></td>
                                         </tr>
                                     </tbody>
-                                </table>
+                                </table> --}}
                             </div>
                             <div class="tab-content-item " id="review">
                                 
@@ -105,7 +105,7 @@
                                         }
                                     </style>
                                     <div id="comments">
-                                        <h2 class="woocommerce-Reviews-title">{{ $job->recruitmentJobs->where('rstatus',1)->count() }} review for <span>{{ $job->name }}</span></h2>
+                                        <h2 class="woocommerce-Reviews-title">{{ $job->recruitmentJobs->where('rstatus',1)->count() }} {{ __('detail.review_for') }} <span>{{ $job->name }}</span></h2>
                                         <ol class="commentlist">
                                             @foreach ($job->recruitmentJobs->where('rstatus',1) as $recruitmentJob)
                                                 <li class="comment byuser comment-author-admin bypostauthor even thread-even depth-1" id="li-comment-20">
@@ -113,7 +113,7 @@
                                                         <img alt="" src="{{asset('assets/images/author-avata.jpg')}}" height="80" width="80">
                                                         <div class="comment-text">
                                                             <div class="star-rating">
-                                                                <span class="width-{{ $recruitmentJob->review->rating * 20 }}-percent">Rated <strong class="rating">{{ $recruitmentJob->review->rating }}</strong> out of 5</span>
+                                                                <span class="width-{{ $recruitmentJob->review->rating * 20 }}-percent">{{ __('detail.rate') }} <strong class="rating">{{ $recruitmentJob->review->rating }}</strong> {{ __('detail.out_of_5') }} </span>
                                                             </div>
                                                             <p class="meta"> 
                                                                 <strong class="woocommerce-review__author">{{ $recruitmentJob->recruitment->user->name }}</strong> 
@@ -128,7 +128,7 @@
                                                 </li>
                                             @endforeach
                                         </ol>
-                                    </div><!-- #comments -->
+                                    </div>
 
                                     <div id="review_form_wrapper">
                                         <div id="review_form">
@@ -136,10 +136,10 @@
 
                                                 <form action="#" method="post" id="commentform" class="comment-form" novalidate="">
                                                     <p class="comment-notes">
-                                                        <span id="email-notes">Your email address will not be published.</span> Required fields are marked <span class="required">*</span>
+                                                        <span id="email-notes">{{ __('detail.your_email') }}</span> {{ __('detail.required') }} <span class="required">*</span>
                                                     </p>
                                                     <div class="comment-form-rating">
-                                                        <span>Your rating</span>
+                                                        <span>{{ __('detail.your_rating') }}</span>
                                                         <p class="stars">
                                                             
                                                             <label for="rated-1"></label>
@@ -155,20 +155,20 @@
                                                         </p>
                                                     </div>
                                                     <p class="comment-form-author">
-                                                        <label for="author">Name <span class="required">*</span></label> 
+                                                        <label for="author">{{ __('detail.name') }} <span class="required">*</span></label> 
                                                         <input id="author" name="author" type="text" value="">
                                                     </p>
                                                     <p class="comment-form-email">
-                                                        <label for="email">Email <span class="required">*</span></label> 
+                                                        <label for="email">{{ __('detail.email') }} <span class="required">*</span></label> 
                                                         <input id="email" name="email" type="email" value="" >
                                                     </p>
                                                     <p class="comment-form-comment">
-                                                        <label for="comment">Your review <span class="required">*</span>
+                                                        <label for="comment">{{ __('detail.your_review') }} <span class="required">*</span>
                                                         </label>
                                                         <textarea id="comment" name="comment" cols="45" rows="8"></textarea>
                                                     </p>
                                                     <p class="form-submit">
-                                                        <input name="submit" type="submit" id="submit" class="submit" value="Submit">
+                                                        <input name="submit" type="submit" id="submit" class="submit" value="{{ __('detail.submit') }}">
                                                     </p>
                                                 </form>
 
@@ -192,7 +192,7 @@
                                 <a class="link-to-service" href="#">
                                     <i class="fa fa-truck" aria-hidden="true"></i>
                                     <div class="right-content">
-                                        <b class="title">Ngành nghề</b>
+                                        <b class="title">{{ __('detail.career') }}</b>
                                         <span class="subtitle"></span>
                                         <p class="desc">Lorem Ipsum is simply dummy text of the printing...</p>
                                     </div>
@@ -203,7 +203,7 @@
                                 <a class="link-to-service" href="#">
                                     <i class="fa fa-gift" aria-hidden="true"></i>
                                     <div class="right-content">
-                                        <b class="title">Kỹ năng</b>
+                                        <b class="title">{{ __('detail.skill') }}</b>
                                         <span class="subtitle"></span>
                                         <p class="desc">Lorem Ipsum is simply dummy text of the printing...</p>
                                     </div>
@@ -214,7 +214,7 @@
                                 <a class="link-to-service" href="#">
                                     <i class="fa fa-reply" aria-hidden="true"></i>
                                     <div class="right-content">
-                                        <b class="title">Khu vực</b>
+                                        <b class="title">{{ __('detail.area') }}</b>
                                         <span class="subtitle"></span>
                                         <p class="desc">Lorem Ipsum is simply dummy text of the printing...</p>
                                     </div>
@@ -225,7 +225,7 @@
                 </div><!-- Categories widget-->
 
                 <div class="widget mercado-widget widget-product">
-                    <h2 class="widget-title">Popular Products</h2>
+                    <h2 class="widget-title">{{ __('detail.popular_job') }}</h2>
                     <div class="widget-content">
                         <ul class="products">
                             @foreach ($popular_jobs as $popular_job)
@@ -238,7 +238,7 @@
                                         </div>
                                         <div class="product-info">
                                             <a href="{{ route('job.details', ['slug'=>$popular_job->slug]) }}" title="{{ $popular_job->name }}" class="product-name"><span>{{ $popular_job->name }}</span></a>
-                                            <div class="wrap-price"><span class="product-price">Salary:${{ $popular_job->regular_salary }}</span></div>
+                                            <div class="wrap-price"><span class="product-price">{{ __('detail.salary') }}{{ $popular_job->regular_salary }}</span></div>
                                         </div>
                                     </div>
                                 </li>
@@ -252,7 +252,7 @@
 
             <div class="single-advance-box col-lg-12 col-md-12 col-sm-12 col-xs-12">
                 <div class="wrap-show-advance-info-box style-1 box-in-site">
-                    <h3 class="title-box">Related Products</h3>
+                    <h3 class="title-box">{{ __('detail.related') }}</h3>
                     <div class="wrap-products">
                         <div class="products slide-carousel owl-carousel style-nav-1 equal-container" data-items="5" data-loop="false" data-nav="true" data-dots="false" data-responsive='{"0":{"items":"1"},"480":{"items":"2"},"768":{"items":"3"},"992":{"items":"3"},"1200":{"items":"5"}}' >
                             
@@ -263,15 +263,12 @@
                                             <figure><img src="{{ asset('assets/images/products') }}/{{ $related_job->image }}" width="214" height="214" alt="{{ $related_job->name }}"></figure>
                                         </a>
                                         <div class="group-flash">
-                                            <span class="flash-item new-label">new</span>
-                                        </div>
-                                        <div class="wrap-btn">
-                                            <a href="#" class="function-link">quick view</a>
+                                            <span class="flash-item new-label" style="height: 20px; padding-top: 5px;">{{ __('detail.new') }}</span>
                                         </div>
                                     </div>
                                     <div class="product-info">
                                         <a href="{{ route('job.details', ['slug'=>$related_job->slug]) }}" title="{{ $related_job->name }}" class="product-name"><span>{{ $related_job->name }}</span></a>
-                                        <div class="wrap-price"><span class="product-price">Salary:${{ $related_job->regular_salary }}</span></div>
+                                        <div class="wrap-price"><span class="product-price">{{ __('detail.salary') }}{{ $related_job->regular_salary }}</span></div>
                                     </div>
                                 </div>
                                 

@@ -12,26 +12,26 @@
             <div class="col-md-12">
                 <div class="panel panel-default">
                     <div class="panel-heading">
-                        All recruitments
+                        {{ __('user/user-recruitment.all_recruitment') }}
                     </div>
                 
                     <div class="panel-body">
                         <table class="table table-striped">
                             <thead>
                                 <tr>
-                                    <th>STT</th>
-                                    <th>FirstName</th>
-                                    <th>Last Name</th>
-                                    <th>Email</th>
-                                    <th>Mobile</th>
-                                    <th>Intro</th>
-                                    <th>City</th>
-                                    <th>Province</th>
-                                    <th>Country</th>
-                                    <th>CV</th>
-                                    <th>Status</th>
-                                    <th>Recruitment Date</th>
-                                    <th>Action</th>
+                                    <th>{{ __('user/user-recruitment.stt') }}</th>
+                                    <th>{{ __('user/user-recruitment.f_name') }}</th>
+                                    <th>{{ __('user/user-recruitment.l_name') }}</th>
+                                    <th>{{ __('user/user-recruitment.email') }}</th>
+                                    <th>{{ __('user/user-recruitment.mobile') }}</th>
+                                    <th>{{ __('user/user-recruitment.intro') }}</th>
+                                    <th>{{ __('user/user-recruitment.city') }}</th>
+                                    <th>{{ __('user/user-recruitment.province') }}</th>
+                                    <th>{{ __('user/user-recruitment.country') }}</th>
+                                    <th>{{ __('user/user-recruitment.cv') }}</th>
+                                    <th>{{ __('user/user-recruitment.status') }}</th>
+                                    <th>{{ __('user/user-recruitment.re_date') }}</th>
+                                    <th>{{ __('user/user-recruitment.action') }}</th>
                                 </tr>
                             </thead>
                             <tbody>
@@ -49,7 +49,7 @@
                                         <td><a href="{{ URL::asset('/assets/images/recruitments')}}/{{ $recruitment->file }}">{{ $recruitment->file }}</a></td>
                                         <td><strong>{{ $recruitment->status }}</strong></td>
                                         <td>{{ $recruitment->created_at }}</td>
-                                        <td><a href="{{ route('user.recruitmentdetails',['recruitment_id'=>$recruitment->id]) }}" class="btn btn-info btn-sm">Detail</a></td>
+                                        <td><a href="{{ route('user.recruitmentdetails',['recruitment_id'=>$recruitment->id]) }}" class="btn btn-info btn-sm">{{ __('user/user-recruitment.detail') }}</a></td>
                                     </tr>
                                 @endforeach
                             </tbody>

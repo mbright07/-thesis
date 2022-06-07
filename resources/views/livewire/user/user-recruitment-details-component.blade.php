@@ -8,28 +8,28 @@
                 <div class="panel panel-default">
                     <div class="panel-heading">
                         <div class="row">
-                            <div class="col-md-6">Recruitment Job Details</div>
+                            <div class="col-md-6">{{ __('user/user-recruitment.re_job_detail') }}</div>
                             <div class="col-md-6">
-                                <a href="{{ route('user.recruitments') }}" class="btn btn-success pull-right">My recruitments </a>
+                                <a href="{{ route('user.recruitments') }}" class="btn btn-success pull-right">{{ __('user/user-recruitment.my_recruitments') }} </a>
                                 @if ($recruitment->status == 'pending' || $recruitment->status == 'processing')
-                                    <a href="#" onclick="confirm('Are you sure, You want to delete this job?') || event.stopImmediatePropagation()" wire:click.prevent="cancelRecruitment" class="btn btn-warning pull-right" style="margin-right: 20px;">Cancel Recruitment</a>
+                                    <a href="#" onclick="confirm('{{ __('user/user-recruitment.sure') }}') || event.stopImmediatePropagation()" wire:click.prevent="cancelRecruitment" class="btn btn-warning pull-right" style="margin-right: 20px;">{{ __('user/user-recruitment.cancel_recruitment') }}</a>
                                 @endif
                             </div>
                         </div>
                     </div>
                     <div class="panel-body">
                         <table class="table">
-                            <th>Recruitment ID</th>
+                            <th>{{ __('user/user-recruitment.id') }}</th>
                             <td>{{ $recruitment->id }}</td>
-                            <th>Recruitment Date</th>
+                            <th>{{ __('user/user-recruitment.re_date') }}</th>
                             <td>{{ $recruitment->created_at }}</td>
-                            <th>Status</th>
+                            <th>{{ __('user/user-recruitment.status') }}</th>
                             <td>{{ $recruitment->status }}</td>
                             @if ($recruitment->status == "processing")
-                                <th>Processing</th>
+                                <th>{{ __('user/user-recruitment.process') }}</th>
                                 <td>{{ $recruitment->processed_date }}</td>
                             @elseif ($recruitment->status == "canceled")
-                                <th>Caneled</th>                                    
+                                <th>{{ __('user/user-recruitment.cancel') }}</th>                                    
                                 <td>{{ $recruitment->canceled_date }}</td>
                             @endif
                         </table>
@@ -44,7 +44,7 @@
                     </div>
                     <div class="panel-body">
                         <div class="wrap-iten-in-cart">
-                            <h3 class="box-title">Jobs Name</h3>
+                            <h3 class="box-title">{{ __('user/user-recruitment.re_job') }}</h3>
                             <ul class="products-cart">    
                                 @foreach ($recruitment->recruitmentJob as $item )
                                     <li class="pr-cart-item">
@@ -54,9 +54,9 @@
                                         <div class="product-name">
                                             <a class="link-to-product" href="{{ route('job.details',['slug'=>$item->job->slug]) }}">{{ $item->job->name }}</a>
                                         </div>
-                                        <div class="price-field produtc-price"><p class="price">Salary: ${{ $item->job->regular_salary }}</p></div>
+                                        <div class="price-field produtc-price"><p class="price">{{ __('user/user-recruitment.salary') }}{{ $item->job->regular_salary }}</p></div>
                                         @if ($item->rstatus == false)
-                                            <div class="price-field sub-total"><p class="price"><a href="{{ route('user.review',['recruitment_job_id'=>$item->id]) }}">Write Review</a></p></div>
+                                            <div class="price-field sub-total"><p class="price"><a href="{{ route('user.review',['recruitment_job_id'=>$item->id]) }}">{{ __('user/user-recruitment.write_review') }}</a></p></div>
                                         @endif 
                                     </li>
                                 @endforeach							
@@ -64,30 +64,30 @@
                         </div>
                         <div class="wrap-iten-in-cart">
                             
-                            <h3 class="box-title">CV Detail</h3>
+                            <h3 class="box-title">{{ __('user/user-recruitment.cv_detail') }}</h3>
                             <table class="table table-striped table-bordered" style="width:90%; margin-left:5%;">
                                 <tr>
-                                    <th>Họ Và Tên</th>
+                                    <th>{{ __('user/user-recruitment.full_name') }}</th>
                                     <td>{{ $recruitment->firstname }} {{ $recruitment->lastname }}</td>
                                 </tr>
                                 <tr>
-                                    <th>Email</th>
+                                    <th>{{ __('user/user-recruitment.email') }}</th>
                                     <td>{{ $recruitment->email }}</td>
                                 </tr>
                                 <tr>
-                                    <th>Mobile</th>
+                                    <th>{{ __('user/user-recruitment.mobile') }}</th>
                                     <td>{{ $recruitment->mobile }}</td>
                                 </tr>
                                 <tr>
-                                    <th>Address</th>
+                                    <th>{{ __('user/user-recruitment.address') }}</th>
                                     <td>{{ $recruitment->city }} - {{ $recruitment->province }} - {{ $recruitment->country }}</td>
                                 </tr>
                                 <tr>
-                                    <th>CV</th>
+                                    <th>{{ __('user/user-recruitment.cv') }}</th>
                                     <td><a href="{{ URL::asset('/assets/images/recruitments')}}/{{ $recruitment->file }}">{{ $recruitment->file }}</a></td>
                                 </tr>
                                 <tr>
-                                    <th>Intro</th>
+                                    <th>{{ __('user/user-recruitment.intro') }}</th>
                                     <td>{{ $recruitment->intro }}</td>
                                 </tr>
                             </table>

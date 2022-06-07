@@ -1,0 +1,25 @@
+<?php
+return [
+    'home' => 'Home',
+    'bookmark' => 'Bookmark',
+    'job_bookmark' => 'Jobs Bookmark',
+    'salary' => 'Salary: $',
+    'save' => 'Save For Later',
+    'apply' => 'Apply',
+    'sure' => 'Are you sure, You want to cancel recruitment this job?',
+    'delete' => 'Delete from your bookmark',
+    'no_bookmark' => 'No Bookmark',
+    'continue' => 'Continue Search Job',
+    'clear' => 'Clear Job Bookmark',
+    'update' => 'Update Job Bookmark',
+    'empty' => 'Your Bookmark is empty!',
+    'add_job_now' => 'Add Jobs to it now',
+    'list_job' => 'List Jobs',
+    'job_save' => 'job(s) Save For Later',
+    'success' => 'Success',
+    'move' => 'Move To Bookmark',
+    'delete_sure' => 'Are you sure, You want to delete this job?',
+    'delete_save' => 'Delete from save for Later',
+    'no_job_save' => 'No Job save for later',
+    'most_view' => 'Most Viewed Jobs'
+];

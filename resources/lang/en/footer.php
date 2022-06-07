@@ -1,0 +1,23 @@
+<?php
+return [
+    'job_search_support' => 'Job search support',
+    'fast' => 'proactive, fast, convenient',
+    'quality' => 'quality jobs',
+    'high-quality' => 'Thousands of high-quality job postings',
+    'security' => 'Absolute Security & Safety',
+    'secure' => 'keep your information secure',
+    'online_support' => 'Online Support',
+    'we' => 'We Have Support 24/7',
+    'contact_details' => 'Contact Details',
+    'hot_line' => 'Hot Line',
+    'call' => 'Call Us toll Free',
+    'sign_up' => 'Sign up for newsletter',
+    'subscribe' => 'Subscribe',
+    'info' => 'Information',
+    'contact_us' => 'Contact Us',
+    'return' => 'Returns',
+    'we_use' => 'We Using:',
+    'social' => 'Social network',
+    'download' => 'Download App',
+    'copyright' => 'Copyright © 2020 Trang Hoang. All rights reserved',
+];

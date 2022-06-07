@@ -35,9 +35,6 @@
 					<div class="container">
 						<div class="topbar-menu left-menu">
 							<ul>
-								<li class="menu-item" >
-									<a title="Hotline: (+123) 456 789" href="#" ><span class="icon label-before fa fa-mobile"></span>Hotline: (+123) 456 789</a>
-								</li>
 							</ul>
 						</div>
 						<div class="topbar-menu right-menu">
@@ -46,13 +43,13 @@
 									@auth
 										@if(Auth::user()->utype === 'ADM')
 											<li class="menu-item menu-item-has-children parent" >
-												<a title="My account" href="#">My Account ({{ Auth::user()->name }})<i class="fa fa-angle-down" aria-hidden="true"></i></a>
+												<a title="My account" href="#">{{ __('guest.my_account') }}({{ Auth::user()->name }})<i class="fa fa-angle-down" aria-hidden="true"></i></a>
 												<ul class="submenu curency" >
 													<li class="menu-item" >
-														<a title="Dashboard" href="{{ route('admin.dashboard') }}">Dashboard</a>
+														<a title="Dashboard" href="{{ route('admin.dashboard') }}">{{ __('guest.dashboard') }}</a>
 													</li>
 													<li class="menu-item" >
-														<a title="Logout" href="{{ route('logout') }}" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">Logout</a>
+														<a title="Logout" href="{{ route('logout') }}" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">{{ __('guest.logout') }}</a>
 													</li>
 													<form id="logout-form" method="POST" action="{{ route('logout') }}">
 														@csrf
@@ -62,13 +59,13 @@
 											</li>
 										@else
 											<li class="menu-item menu-item-has-children parent" >
-												<a title="My account" href="#">My Account ({{ Auth::user()->name }})<i class="fa fa-angle-down" aria-hidden="true"></i></a>
+												<a title="My account" href="#">{{ __('guest.my_account') }} ({{ Auth::user()->name }})<i class="fa fa-angle-down" aria-hidden="true"></i></a>
 												<ul class="submenu curency" >
 													<li class="menu-item" >
-														<a title="Dashboard" href="{{ route('user.dashboard') }}">Dashboard</a>
+														<a title="Dashboard" href="{{ route('user.dashboard') }}">{{ __('guest.dashboard') }}</a>
 													</li>
 													<li class="menu-item" >
-														<a title="Logout" href="{{ route('logout') }}" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">Logout</a>
+														<a title="Logout" href="{{ route('logout') }}" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">{{ __('guest.logout') }}</a>
 													</li>
 													<form id="logout-form" method="POST" action="{{ route('logout') }}">
 														@csrf
@@ -79,15 +76,15 @@
 										@endif
 										
 									@else
-										<li class="menu-item" ><a title="Register or Login" href="{{ route('login') }}">Login</a></li>
-										<li class="menu-item" ><a title="Register or Login" href="{{ route('register') }}">Register</a></li>
+										<li class="menu-item" ><a title="Register or Login" href="{{ route('login') }}">{{ __('guest.login') }}</a></li>
+										<li class="menu-item" ><a title="Register or Login" href="{{ route('register') }}">{{ __('guest.register') }}</a></li>
 									@endif
 								@endif
 								<li class="menu-item lang-menu menu-item-has-children parent">
-									<a title="English" href="#"><span class="img label-before"><img src="assets/images/lang-en.jpg" alt="lang-en"></span>English<i class="fa fa-angle-down" aria-hidden="true"></i></a>
+									<a title="Vietnamese" href="{!! route('change-language', ['vi']) !!}"><span class="img label-before"><img src="/assets/images/lang-vi.jpg" alt="lang-en"></span>{{ __('guest.vietnam') }}<i class="fa fa-angle-down" aria-hidden="true"></i></a>
 									<ul class="submenu lang" >
-										<li class="menu-item" ><a title="vietnam" href="#"><span class="img label-before"><img src="assets/images/lang-vi.jpg" alt="lang-hun"></span>Vietnam</a></li>
-										<li class="menu-item" ><a title="japan" href="#"><span class="img label-before"><img src="assets/images/lang-jp.jpg" alt="lang-ger" ></span>Japan</a></li>
+										<li class="menu-item" ><a title="vietnam" href="{!! route('change-language', ['en']) !!}"><span class="img label-before"><img src="/assets/images/lang-en.jpg" alt="lang-hun"></span>{{ __('guest.english') }}</a></li>
+										<li class="menu-item" ><a title="japan" href="{!! route('change-language', ['ja']) !!}"><span class="img label-before"><img src="/assets/images/lang-jp.jpg" alt="lang-ger" ></span>{{ __('guest.japan') }}</a></li>
 									</ul>
 								</li>
 							</ul>
@@ -143,7 +140,7 @@
 									<i class="fa fa-bell" aria-hidden="true"></i>
 									<div class="left-info">
 										<span class="index">0</span>
-										<span class="title">Noti</span>
+										<span class="title">">{{ __('guest.noti') }}</span>
 									</div>
 								</a>
 							</div>
@@ -152,7 +149,7 @@
 									<i class="fa fa-comments" aria-hidden="true"></i>
 									<div class="left-info">
 										<span class="index">4</span>
-										<span class="title">Message</span>
+										<span class="title">{{ __('guest.message') }}</span>
 									</div>
 								</a>
 							</div>
@@ -176,19 +173,19 @@
 									<a href="/" class="link-term mercado-item-title"><i class="fa fa-home" aria-hidden="true"></i></a>
 								</li>
 								<li class="menu-item">
-									<a href="/blog" class="link-term mercado-item-title">Jobs</a>
+									<a href="/blog" class="link-term mercado-item-title">{{ __('guest.jobs') }}</a>
 								</li>
 								<li class="menu-item">
-									<a href="/cart" class="link-term mercado-item-title">Bookmark</a>
+									<a href="/cart" class="link-term mercado-item-title">{{ __('guest.bookmark') }}</a>
 								</li>
 								<li class="menu-item">
-									<a href="#" class="link-term mercado-item-title">references</a>
+									<a href="#" class="link-term mercado-item-title">{{ __('guest.recruitment') }}</a>
 								</li>
 								<li class="menu-item">
-									<a href="#" class="link-term mercado-item-title">About Us</a>
+									<a href="#" class="link-term mercado-item-title">{{ __('guest.references') }}</a>
 								</li>
 								<li class="menu-item">
-									<a href="#" class="link-term mercado-item-title">Contact Us</a>
+									<a href="#" class="link-term mercado-item-title">{{ __('guest.about_us') }}/a>
 								</li>																	
 							</ul>
 						</div>
@@ -243,140 +240,7 @@
 			</div>
 			<!--End function info-->
 
-			<div class="main-footer-content">
-
-				<div class="container">
-
-					<div class="row">
-
-						<div class="col-lg-4 col-sm-4 col-md-4 col-xs-12">
-							<div class="wrap-footer-item">
-								<h3 class="item-header">Contact Details</h3>
-								<div class="item-content">
-									<div class="wrap-contact-detail">
-										<ul>
-											<li>
-												<i class="fa fa-map-marker" aria-hidden="true"></i>
-												<p class="contact-txt">Hanoi University of Science and Technology</p>
-											</li>
-											<li>
-												<i class="fa fa-phone" aria-hidden="true"></i>
-												<p class="contact-txt">(+123) 456 789 - (+123) 666 888</p>
-											</li>
-											<li>
-												<i class="fa fa-envelope" aria-hidden="true"></i>
-												<p class="contact-txt">Contact@gmail.com</p>
-											</li>											
-										</ul>
-									</div>
-								</div>
-							</div>
-						</div>
-
-						<div class="col-lg-4 col-sm-4 col-md-4 col-xs-12">
-
-							<div class="wrap-footer-item">
-								<h3 class="item-header">Hot Line</h3>
-								<div class="item-content">
-									<div class="wrap-hotline-footer">
-										<span class="desc">Call Us toll Free</span>
-										<b class="phone-number">(+123) 456 789 - (+123) 666 888</b>
-									</div>
-								</div>
-							</div>
-
-							<div class="wrap-footer-item footer-item-second">
-								<h3 class="item-header">Sign up for newsletter</h3>
-								<div class="item-content">
-									<div class="wrap-newletter-footer">
-										<form action="#" class="frm-newletter" id="frm-newletter">
-											<input type="email" class="input-email" name="email" value="" placeholder="Enter your email address">
-											<button class="btn-submit">Subscribe</button>
-										</form>
-									</div>
-								</div>
-							</div>
-
-						</div>
-
-						<div class="col-lg-4 col-sm-4 col-md-4 col-xs-12 box-twin-content ">
-							<div class="row">
-								<div class="wrap-footer-item twin-item">
-									<h3 class="item-header">My Account</h3>
-									<div class="item-content">
-										<div class="wrap-vertical-nav">
-											<ul>
-												<li class="menu-item"><a href="#" class="link-term">My Account</a></li>
-												<li class="menu-item"><a href="#" class="link-term">My CV</a></li>
-												<li class="menu-item"><a href="#" class="link-term">Noti</a></li>
-												<li class="menu-item"><a href="#" class="link-term">Message</a></li>
-											</ul>
-										</div>
-									</div>
-								</div>
-								<div class="wrap-footer-item twin-item">
-									<h3 class="item-header">Infomation</h3>
-									<div class="item-content">
-										<div class="wrap-vertical-nav">
-											<ul>
-												<li class="menu-item"><a href="#" class="link-term">Contact Us</a></li>
-												<li class="menu-item"><a href="#" class="link-term">Returns</a></li>
-											</ul>
-										</div>
-									</div>
-								</div>
-							</div>
-						</div>
-
-					</div>
-
-					<div class="row">
-
-						<div class="col-lg-4 col-sm-4 col-md-4 col-xs-12">
-							<div class="wrap-footer-item">
-								<h3 class="item-header">We Using:</h3>
-								<div class="item-content">
-									<div class="wrap-list-item wrap-gallery">
-										<img src="assets/images/payment.png" style="max-width: 260px;">
-									</div>
-								</div>
-							</div>
-						</div>
-
-						<div class="col-lg-4 col-sm-4 col-md-4 col-xs-12">
-							<div class="wrap-footer-item">
-								<h3 class="item-header">Social network</h3>
-								<div class="item-content">
-									<div class="wrap-list-item social-network">
-										<ul>
-											<li><a href="#" class="link-to-item" title="twitter"><i class="fa fa-twitter" aria-hidden="true"></i></a></li>
-											<li><a href="#" class="link-to-item" title="facebook"><i class="fa fa-facebook" aria-hidden="true"></i></a></li>
-											<li><a href="#" class="link-to-item" title="pinterest"><i class="fa fa-pinterest" aria-hidden="true"></i></a></li>
-											<li><a href="#" class="link-to-item" title="instagram"><i class="fa fa-instagram" aria-hidden="true"></i></a></li>
-											<li><a href="#" class="link-to-item" title="vimeo"><i class="fa fa-vimeo" aria-hidden="true"></i></a></li>
-										</ul>
-									</div>
-								</div>
-							</div>
-						</div>
-
-						<div class="col-lg-4 col-sm-4 col-md-4 col-xs-12">
-							<div class="wrap-footer-item">
-								<h3 class="item-header">Dowload App</h3>
-								<div class="item-content">
-									<div class="wrap-list-item apps-list">
-										<ul>
-											<li><a href="#" class="link-to-item" title="our application on apple store"><figure><img src="assets/images/brands/apple-store.png" alt="apple store" width="128" height="36"></figure></a></li>
-											<li><a href="#" class="link-to-item" title="our application on google play store"><figure><img src="assets/images/brands/google-play-store.png" alt="google play store" width="128" height="36"></figure></a></li>
-										</ul>
-									</div>
-								</div>
-							</div>
-						</div>
-
-					</div>
-				</div>
-			</div>
+			@livewire('footer-component')
 
 			<div class="coppy-right-box">
 				<div class="container">

@@ -14,6 +14,9 @@ class LocalizationController extends Controller
         if ($lang == 'en') {
             $language = 'en';
         }
+        if ($lang == 'ja') {
+            $language = 'ja';
+        }
         if ($lang == 'vi') {
             $language = 'vi';
         }

@@ -4,8 +4,8 @@
 
         <div class="wrap-breadcrumb">
             <ul>
-                <li class="item-link"><a href="/" class="link">home</a></li>
-                <li class="item-link"><span>Bookmark</span></li>
+                <li class="item-link"><a href="/" class="link">{{ __('bookmark.home') }}</a></li>
+                <li class="item-link"><span>{{ __('bookmark.bookmark') }}</span></li>
             </ul>
         </div> 
         <div class=" main-content-area">
@@ -17,7 +17,7 @@
                         </div>
                     @endif
                     @if(Cart::instance('bookmark')->count() > 0)
-                        <h3 class="box-title">Jobs Bookmark</h3>
+                        <h3 class="box-title">{{ __('bookmark.job_bookmark') }}</h3>
                         <ul class="products-cart">
                             @foreach (Cart::instance('bookmark')->content() as $item )
                                 <li class="pr-cart-item">
@@ -27,16 +27,16 @@
                                     <div class="product-name">
                                         <a class="link-to-product" href="{{ route('job.details',['slug'=>$item->model->slug]) }}">{{ $item->model->name }}</a>
                                     </div>
-                                    <div class="price-field produtc-price"><p class="price">Salary: ${{ $item->model->regular_salary }}</p></div>
+                                    <div class="price-field produtc-price"><p class="price">{{ __('bookmark.salary') }}{{ $item->model->regular_salary }}</p></div>
                                     <div class="quantity">
-                                        <a class="btn btn-primary" href="#" wire:click.prevent="switchToSaveForLater('{{ $item->rowId }}')">Save For Later</a>
+                                        <a class="btn btn-primary" href="#" wire:click.prevent="switchToSaveForLater('{{ $item->rowId }}')">{{ __('bookmark.save') }}</a>
                                     </div>
                                     <div class="checkout-info">
-                                        <a class="btn btn-checkout"  href="#" wire:click.prevent="Recruitment">Recruitment</a>
+                                        <a class="btn btn-checkout"  href="#" wire:click.prevent="Recruitment">{{ __('bookmark.apply') }}</a>
                                     </div>
                                     <div class="delete">
-                                        <a href="#" onclick=" return confirm('Are you sure, You want to cancel recruitment this job?') || event.stopImmediatePropagation()" wire:click.prevent="destroy('{{ $item->rowId }}')" class="btn btn-delete" title="">
-                                            <span>Delete from your bookmark</span>
+                                        <a href="#" onclick=" return confirm('{{ __('bookmark.sure') }}') || event.stopImmediatePropagation()" wire:click.prevent="destroy('{{ $item->rowId }}')" class="btn btn-delete" title="">
+                                            <span>{{ __('bookmark.delete') }}</span>
                                             <i class="fa fa-times-circle" aria-hidden="true"></i>
                                         </a>
                                     </div>
@@ -44,31 +44,31 @@
                             @endforeach							
                         </ul>
                     @else
-                        <p>No Bookmark</p>
+                        <h3>{{ __('bookmark.no_bookmark') }}</h3>
                     @endif
                 </div>
 
                 <div class="summary">
                     <div class="checkout-info">
-                        <a class="link-to-shop" href="/blog" style="font-size: 18px;">Continue Search Job<i class="fa fa-arrow-circle-right" aria-hidden="true"></i></a>
+                        <a class="link-to-shop" href="/blog" style="font-size: 18px;">{{ __('bookmark.continue') }}<i class="fa fa-arrow-circle-right" aria-hidden="true"></i></a>
                     </div>
                     <div class="update-clear">
-                        <a class="btn btn-clear" wire:click.prevent="destroyAll()" href="#">Clear Job Bookmark</a>
-                        <a class="btn btn-update" href="#">Update Job Bookmark</a>
+                        <a class="btn btn-clear" wire:click.prevent="destroyAll()" href="#">{{ __('bookmark.clear') }}</a>
+                        <a class="btn btn-update" href="#">{{ __('bookmark.update') }}</a>
                     </div>
                 </div>
             @else
                 <div class="text-center" style="padding: 30p 0;">
-                    <h1>Your Bookmark is empty!</h1>
-                    <p>Add Jobs to it now</p>
-                    <a href="/blog" class="btn btn-success">List Jobs</a>
+                    <h1>{{ __('bookmark.empty') }}</h1>
+                    <p>{{ __('bookmark.add_job_now') }}</p>
+                    <a href="/blog" class="btn btn-success">{{ __('bookmark.list_job') }}</a>
                 </div>
             @endif
             <div class="wrap-iten-in-cart">
-                <h3 class="title-box" style="border-bottom:1px solid; padding-bottom:15px;">{{ Cart::instance('saveForLater')->count() }} job(s) Save For Later</h3>
+                <h3 class="title-box" style="border-bottom:1px solid; padding-bottom:15px;">{{ Cart::instance('saveForLater')->count() }} {{ __('bookmark.job_save') }}</h3>
                 @if(Session::has('s_success_message'))
                     <div class="alert alert-success">
-                        <strong>Success</strong> {{ Session::get('s_success_message') }}
+                        <strong>{{ __('bookmark.success') }}</strong> {{ Session::get('s_success_message') }}
                     </div>
                 @endif
                 @if(Cart::instance('saveForLater')->count() > 0)
@@ -82,13 +82,13 @@
                                 <div class="product-name">
                                     <a class="link-to-product" href="{{ route('job.details',['slug'=>$item->model->slug]) }}">{{ $item->model->name }}</a>
                                 </div>
-                                <div class="price-field produtc-price"><p class="price">Salary: ${{ $item->model->regular_salary }}</p></div>
+                                <div class="price-field produtc-price"><p class="price">{{ __('bookmark.salary') }}{{ $item->model->regular_salary }}</p></div>
                                 <div class="quantity">
-                                    <a class="btn btn-primary" href="#" wire:click.prevent="moveToBookmark('{{ $item->rowId }}')">Move To Bookmark</a>
+                                    <a class="btn btn-primary" href="#" wire:click.prevent="moveToBookmark('{{ $item->rowId }}')">{{ __('bookmark.move') }}</a>
                                 </div>
                                 <div class="delete">
-                                    <a href="#" onclick="confirm('Are you sure, You want to delete this job?') || event.stopImmediatePropagation()" wire:click.prevent="deleteFromSaveForLater('{{ $item->rowId }}')" class="btn btn-delete" title="">
-                                        <span>Delete from save for Later</span>
+                                    <a href="#" onclick="confirm('{{ __('bookmark.delete_job') }}') || event.stopImmediatePropagation()" wire:click.prevent="deleteFromSaveForLater('{{ $item->rowId }}')" class="btn btn-delete" title="">
+                                        <span>{{ __('bookmark.delete_save') }}</span>
                                         <i class="fa fa-times-circle" aria-hidden="true"></i>
                                     </a>
                                 </div>
@@ -96,10 +96,10 @@
                         @endforeach							
                     </ul>
                 @else
-                    <p>No Job save for later</p>
+                    <p>{{ __('bookmark.no_job_save') }}</p>
                 @endif
             </div>
-            <div class="wrap-iten-in-cart">
+            {{-- <div class="wrap-iten-in-cart">
                 <h3 class="title-box" style="border-bottom:1px solid; padding-bottom:15px;">{{ Cart::instance('applied')->count() }} job(s) Applied</h3>
                 @if (Session::has('message'))
                     <div class="alert alert-success" role="alert">{{ Session::get('message') }}</div>
@@ -130,11 +130,11 @@
                 @else
                     <p>No Job Applied</p>
                 @endif
-            </div>
+            </div> --}}
 
             
             <div class="wrap-show-advance-info-box style-1 box-in-site">
-                <h3 class="title-box">Most Viewed Jobs</h3>
+                <h3 class="title-box">{{ __('bookmark.most_view') }}</h3>
                 <div class="wrap-products">
                     <div class="products slide-carousel owl-carousel style-nav-1 equal-container" data-items="5" data-loop="false" data-nav="true" data-dots="false" data-responsive='{"0":{"items":"1"},"480":{"items":"2"},"768":{"items":"3"},"992":{"items":"3"},"1200":{"items":"5"}}' >
 

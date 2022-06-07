@@ -10,39 +10,12 @@
                         <div class="slide-info slide-1">
                             <h2 class="f-title"><b>{{ $slider->title }}</b></h2>
                             <span class="subtitle">{{ $slider->subtitle }}</span>
-                            <p class="sale-info">Salary: <span class="price">{{ $slider->salary }}</span></p>
+                            <p class="sale-info">{{ __('home.salary') }}<span class="price">{{ $slider->salary }}</span></p>
                             <br />
-                            <a href="{{ $slider->link }}" class="btn-link">Ung tuyen ngay</a>
+                            <a href="{{ $slider->link }}" class="btn-link">{{ __('home.apply_now') }}</a>
                         </div>
                     </div>
                 @endforeach
-                <div class="item-slide">
-                    <img src="{{ asset ('assets/images/main-slider-1-1.jpg') }}" alt="" class="img-slide">
-                    <div class="slide-info slide-1">
-                        <h2 class="f-title"><b>Quality Jobs</b></h2>
-                        <span class="subtitle">Thousands of high-quality job postings are regularly updated to meet the job search needs of candidates.</span>
-                        <br />
-                        <a href="{{ route('register') }}" class="btn-link">Sign up now</a>
-                    </div>
-                </div>
-                <div class="item-slide">
-                    <img src="{{ asset ('assets/images/main-slider-1-2.jpg') }}" alt="" class="img-slide">
-                    <div class="slide-info slide-2">
-                        <h2 class="f-title">Absolute Security</h2>
-                        <span class="f-subtitle">actively enable/disable job search status</span>
-                        <h4 class="s-title">Absolute Safety</h4>
-                        <p class="s-subtitle">Recruiters are clearly identified, guaranteed to come from reputable companies, helping you feel more secure when applying and proactively receiving feedback soon.</p>
-                    </div>
-                </div>
-                <div class="item-slide">
-                    <img src="{{ asset ('assets/images/main-slider-1-3.png') }}" alt="" class="img-slide">
-                    <div class="slide-info slide-3">
-                        <h2 class="f-title"><b>Job Seeker Support</b></h2>
-                        <span class="f-subtitle">Employers actively search and contact you through the intelligent candidate matching system.
-                            Detailed report Employer has viewed your CV and sent an offer to you.</span>
-                        <a href="{{ route('register') }}" class="btn-link">Sign up now</a>
-                    </div>
-                </div>
             </div>
         </div>
 
@@ -62,7 +35,7 @@
 
         <!--On Sale-->
         <div class="wrap-show-advance-info-box style-1 has-countdown">
-            <h3 class="title-box">Top nursing facilities</h3>
+            <h3 class="title-box">{{ __('home.top_view') }}</h3>
             <div class="wrap-products slide-carousel owl-carousel style-nav-1 equal-container " data-items="5" data-loop="false" data-nav="true" data-dots="false" data-responsive='{"0":{"items":"1"},"480":{"items":"2"},"768":{"items":"3"},"992":{"items":"4"},"1200":{"items":"5"}}'>
                 @foreach ($sjobs as $sjob)
                     <div class="product product-style-2 equal-elem ">
@@ -73,13 +46,10 @@
                             <div class="group-flash">
                                 <span class="flash-item bestseller-label">Hot</span>
                             </div>
-                            <div class="wrap-btn">
-                                <a href="#" class="function-link">quick view</a>
-                            </div>
                         </div>
                         <div class="product-info">
                             <a href="{{ route('job.details',['slug'=>$sjob->slug]) }}" class="product-name"><span>{{ $sjob->name }}</span></a>
-                            <div class="wrap-price"><ins><p class="product-price">Lương: ${{ $sjob->regular_salary }}</p></ins></div>
+                            <div class="wrap-price"><ins><p class="product-price">{{ __('home.salary') }} ${{ $sjob->regular_salary }}</p></ins></div>
                         </div>
                     </div>
                 @endforeach                
@@ -89,7 +59,7 @@
         
         <!--Product Categories-->
         <div class="wrap-show-advance-info-box style-1">
-            <h3 class="title-box">Featured Jobs</h3>
+            <h3 class="title-box">{{ __('home.featured_jobs') }}</h3>
             <div class="wrap-top-banner">
                 <a href="#" class="link-banner banner-effect-2">
                     <figure><img src="{{ asset ('assets/images/fashion-accesories-banner.jpg') }}" width="1170" height="240" alt=""></figure>
@@ -109,19 +79,19 @@
                                     @php
                                         $c_jobs = DB::table('jobs')->where('category_id',$category->id)->get()->take($no_of_jobs);
                                     @endphp
-                                        @foreach ($c_jobs as $c_job )
-                                            <div class="product product-style-2 equal-elem ">
-                                                <div class="product-thumnail">
-                                                    <a href="{{ route('job.details',['slug'=>$c_job->slug]) }}" title="{{ $c_job->name }}">
-                                                        <figure><img src="{{ asset ('assets/images/products/') }}/{{ $c_job->image }}" width="800" height="800" alt="{{ $c_job->name }}"></figure>
-                                                    </a>
-                                                </div>
-                                                <div class="product-info">
-                                                    <a href="{{ route('job.details',['slug'=>$c_job->slug]) }}" class="product-name"><span>{{ $c_job->name }}</span></a>
-                                                    <div class="wrap-price"><ins><p class="product-price">Lương: ${{ $c_job->regular_salary }}</p></ins></div>
-                                                </div>
+                                    @foreach ($c_jobs as $c_job )
+                                        <div class="product product-style-2 equal-elem ">
+                                            <div class="product-thumnail">
+                                                <a href="{{ route('job.details',['slug'=>$c_job->slug]) }}" title="{{ $c_job->name }}">
+                                                    <figure><img src="{{ asset ('assets/images/products/') }}/{{ $c_job->image }}" width="800" height="800" alt="{{ $c_job->name }}"></figure>
+                                                </a>
                                             </div>
-                                        @endforeach 
+                                            <div class="product-info">
+                                                <a href="{{ route('job.details',['slug'=>$c_job->slug]) }}" class="product-name"><span>{{ $c_job->name }}</span></a>
+                                                <div class="wrap-price"><ins><p class="product-price">{{ __('home.salary') }}${{ $c_job->regular_salary }}</p></ins></div>
+                                            </div>
+                                        </div>
+                                    @endforeach 
                                 </div>
                             </div>
                         @endforeach
@@ -131,7 +101,7 @@
         </div>
         <!--Latest Products-->
         <div class="wrap-show-advance-info-box style-1">
-            <h3 class="title-box">Latest Jobs</h3>
+            <h3 class="title-box">{{ __('home.lastest_jobs') }}</h3>
             <div class="wrap-top-banner">
                 <a href="#" class="link-banner banner-effect-2">
                     <figure><img src="{{ asset ('assets/images/digital-electronic-banner.jpg') }}" width="1170" height="240" alt=""></figure>
@@ -164,7 +134,7 @@
         
 		<!--Latest Products-->
         <div class="wrap-show-advance-info-box style-1">
-            <h3 class="title-box">Career Advice</h3>
+            <h3 class="title-box">{{ __('home.career_advice') }}</h3>
             <div class="wrap-top-banner">
                 <a href="#" class="link-banner banner-effect-2">
                     <figure><img src="{{ asset ('assets/images/digital-electronic-banner.jpg') }}" width="1170" height="240" alt=""></figure>

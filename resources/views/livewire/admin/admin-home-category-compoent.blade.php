@@ -4,7 +4,7 @@
             <div class="col-md-12">
                 <div class="panel panel-default">
                     <div class="panel-heading">
-                        Manage Home Locations
+                        {{ __('admin/admin-add-category.manage_home_locations') }}
                     </div>
                     <div class="panel-body">
                         @if (Session::has('message'))
@@ -12,7 +12,7 @@
                         @endif
                         <form class="form-horizontal" wire:submit.prevent="updateHomeCategory">
                             <div class="form-group" wire:ignore>
-                                <label class="col-md-4 control-label">Choose Locations </label>
+                                <label class="col-md-4 control-label"> {{ __('admin/admin-add-category.choose_locations') }} </label>
                                 <div class="col-md-4" >
                                     <select class="sel_categories form-control" name="categories[]" multiple="multiple" wire:model="selected_categories">
                                         @foreach ($categories as $category )
@@ -23,7 +23,7 @@
                             </div>
 
                             <div class="form-group">
-                                <label class="col-md-4 control-label">No of Jobs </label>
+                                <label class="col-md-4 control-label"> {{ __('admin/admin-add-category.no_of_job') }} </label>
                                 <div class="col-md-4">
                                     <input type="text" class="form-control input-md" wire:model="numberofjobs"/>
                                 </div>
@@ -32,7 +32,7 @@
                             <div class="form-group">
                                 <label class="col-md-4 control-label"></label>
                                 <div class="col-md-4">
-                                    <button type="submit" class="btn btn-primary">Save</button>
+                                    <button type="submit" class="btn btn-primary"> {{ __('admin/admin-add-category.save') }}</button>
                                 </div>
                             </div>
                         </form>

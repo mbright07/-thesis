@@ -12,18 +12,18 @@
             <div class="col-md-12">
                 <div class="panel panel-default">
                     <div class="panel-heading">
-                        Contact Messages
+                        {{ __('admin/admin-contact.con_mes') }}
                     </div>
                     <div class="panel-body">
                         <table class="table table-striped">
                             <thead>
                                 <tr>
-                                    <th>#</th>
-                                    <th>Name</th>
-                                    <th>Email</th>
-                                    <th>Phone</th>
-                                    <th>Comment</th>
-                                    <th>Created_at</th>
+                                    <th>{{ __('admin/admin-contact.stt') }}</th>
+                                    <th>{{ __('admin/admin-contact.name') }}</th>
+                                    <th>{{ __('admin/admin-contact.email') }}</th>
+                                    <th>{{ __('admin/admin-contact.phone') }}</th>
+                                    <th>{{ __('admin/admin-contact.comment') }}</th>
+                                    <th>{{ __('admin/admin-contact.time') }}</th>
                                 </tr>
                             </thead>
                             <tbody>

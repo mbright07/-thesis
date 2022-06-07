@@ -1,12 +1,11 @@
-<!--main area-->
 <main id="main" class="main-site left-sidebar">
 
     <div class="container">
 
         <div class="wrap-breadcrumb">
             <ul>
-                <li class="item-link"><a href="/" class="link">home</a></li>
-                <li class="item-link"><span>Job Categories</span></li>
+                <li class="item-link"><a href="/" class="link">{{ __('search.home') }}</a></li>
+                <li class="item-link"><span>{{ __('search.job_location') }}</span></li>
                 <li class="item-link"><span>{{ $category_name }}</span></li>
             </ul>
         </div>
@@ -28,28 +27,28 @@
 
                         <div class="sort-item orderby ">
                             <select name="orderby" class="use-chosen" wire:model="sorting" >
-                                <option value="default" selected="selected">Default sorting</option>
-                                <option value="created_at">Sort by newness</option>
-                                <option value="regular_salary">Sort by salary: low to high</option>
-                                <option value="price-desc">Sort by saraly: high to low</option>
+                                <option value="default" selected="selected">{{ __('search.default') }}</option>
+                                <option value="created_at">{{ __('search.sort_newness') }}</option>
+                                <option value="regular_salary">{{ __('search.low_to_high') }}</option>
+                                <option value="price-desc">{{ __('search.high_to_low') }}</option>
                             </select>
                         </div>
 
                         <div class="sort-item product-per-page">
                             <select name="post-per-page" class="use-chosen" wire:model="pagesize" >
-                                <option value="12" selected="selected">12 per page</option>
-                                <option value="16">16 per page</option>
-                                <option value="18">18 per page</option>
-                                <option value="21">21 per page</option>
-                                <option value="24">24 per page</option>
-                                <option value="30">30 per page</option>
-                                <option value="32">32 per page</option>
+                                <option value="12" selected="selected">{{ __('search.12') }}</option>
+                                <option value="16">{{ __('search.16') }}</option>
+                                <option value="18">{{ __('search.18') }}</option>
+                                <option value="21">{{ __('search.21') }}</option>
+                                <option value="24">{{ __('search.24') }}</option>
+                                <option value="30">{{ __('search.30') }}</option>
+                                <option value="32">{{ __('search.32') }}</option>
                             </select>
                         </div>
 
                         <div class="change-display-mode">
-                            <a href="#" class="grid-mode display-mode active"><i class="fa fa-th"></i>Grid</a>
-                            <a href="list.html" class="list-mode display-mode"><i class="fa fa-th-list"></i>List</a>
+                            <a href="#" class="grid-mode display-mode active"><i class="fa fa-th"></i>{{ __('search.grid') }}</a>
+                            <a href="list.html" class="list-mode display-mode"><i class="fa fa-th-list"></i>{{ __('search.list') }}</a>
                         </div>
 
                     </div>
@@ -69,20 +68,17 @@
                                         <div class="group-flash">
                                             <span class="flash-item bestseller-label">Hot</span>
                                         </div>
-                                        <div class="wrap-btn">
-                                            <a href="#" class="function-link">quick view</a>
-                                        </div>
                                     </div>
                                     <div class="product-info">
                                         <a href="{{ route('job.details', ['slug'=>$job->slug]) }}" class="product-name"><span>{{ $job->name }}</span></a>
-                                        <div class="wrap-price"><ins><p class="product-price">Salary: ${{ $job->regular_salary }}</p></ins></div>    
+                                        <div class="wrap-price"><ins><p class="product-price">{{ __('search.salary') }}{{ $job->regular_salary }}</p></ins></div>    
                                     </div>
                                     <div class="addcart">
                                         <div class="bookmark">
-                                            <a href="#" class="btn add-to-cart" wire:click.prevent="company({{ $job->id}},'{{ $job->name }}',{{ $job->regular_salary }})">Bookmark</a>
+                                            <a href="#" class="btn add-to-cart" wire:click.prevent="company({{ $job->id}},'{{ $job->name }}',{{ $job->regular_salary }})">{{ __('search.bookmark') }}</a>
                                         </div>
                                         <div class="choice">
-                                            <a href="#" class="btn add-to-cart">Ứng tuyển ngay</a>
+                                            <a href="#" class="btn add-to-cart">{{ __('search.apply_now') }}</a>
                                         </div>
                                     </div>
                                 </div>
@@ -99,7 +95,7 @@
 
             <div class="col-lg-3 col-md-4 col-sm-4 col-xs-12 sitebar">
                 <div class="widget mercado-widget categories-widget">
-                    <h2 class="widget-title">All locations</h2>
+                    <h2 class="widget-title">{{ __('search.all_location') }}</h2>
                     <div class="widget-content">
                         <ul class="list-category">
                             @foreach ($categories as $category )
@@ -140,19 +136,19 @@
                 </div><!-- brand widget-->
 
                 <div class="widget mercado-widget filter-widget price-filter">
-                    <h2 class="widget-title">Salary</h2>
+                    <h2 class="widget-title">{{ __('search.salary_2') }}</h2>
                     <div class="widget-content">
                         <div id="slider-range"></div>
                         <p>
-                            <label for="amount">Salary:</label>
+                            <label for="amount">{{ __('search.salary_2') }}:</label>
                             <input type="text" id="amount" readonly>
-                            <button class="filter-submit">Filter</button>
+                            <button class="filter-submit">{{ __('search.filter') }}</button>
                         </p>
                     </div>
                 </div><!-- Price-->
 
                 <div class="widget mercado-widget widget-product">
-                    <h2 class="widget-title">Popular Jobs</h2>
+                    <h2 class="widget-title">{{ __('search.popular') }}</h2>
                     <div class="widget-content">
                         <ul class="products">
                             <li class="product-item">

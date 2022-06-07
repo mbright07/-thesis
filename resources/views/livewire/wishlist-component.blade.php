@@ -2,8 +2,8 @@
     <div class="container">
         <div class="wrap-breadcrumb">
             <ul>
-                <li class="item-link"><a href="/" class="link">home</a></li>
-                <li class="item-link"><span>Wishlist</span></li>
+                <li class="item-link"><a href="/" class="link">{{ __('wishlist.home') }}</a></li>
+                <li class="item-link"><span>{{ __('wishlist.wishlist') }}</span></li>
             </ul>
         </div>
         <div class="row">
@@ -19,9 +19,6 @@
                                     <div class="group-flash">
                                         <span class="flash-item bestseller-label">Hot</span>
                                     </div>
-                                    <div class="wrap-btn">
-                                        <a href="#" class="function-link">quick view</a>
-                                    </div>
                                 </div>
                                 <div class="product-info">
                                     <a href="{{ route('job.details', ['slug'=>$job->model->slug]) }}" class="product-name"><span>{{ $job->model->name }}</span></a>
@@ -32,10 +29,10 @@
                                 </div>
                                 <div class="addcart">
                                     <div class="bookmark">
-                                        <a href="#" class="btn add-to-cart" wire:click.prevent="moveJobFromWishlistToBookmark('{{ $job->rowId}}')">Bookmark</a>
+                                        <a href="#" class="btn add-to-cart" wire:click.prevent="moveJobFromWishlistToBookmark('{{ $job->rowId}}')">{{ __('wishlist.bookmark') }}</a>
                                     </div>
                                     <div class="choice">
-                                        <a href="#" class="btn add-to-cart">Ứng tuyển ngay</a>
+                                        <a href="#" class="btn add-to-cart">{{ __('wishlist.apply_now') }}</a>
                                     </div>
                                 </div>
                             </div>
@@ -43,7 +40,7 @@
                     @endforeach
                 </ul>
             @else
-                <h4>No job in wishlist</h4>
+                <h3>{{ __('wishlist.no_job') }}t</h3>
             @endif
         </div>
     </div>

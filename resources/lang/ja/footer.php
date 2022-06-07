@@ -1,0 +1,23 @@
+<?php
+return [
+    'job_search_support' => '就職活動支援',
+    'fast' => 'プロアクティブ、高速、便利',
+    'quality' => '高品質の仕事',
+    'high-quality' => '何千もの高品質の求人情報',
+    'security' => '絶対的なセキュリティと安全性',
+    'secure' => 'お客様の情報を安全に保つ',
+    'online_support' => 'オンラインサポート',
+    'we' => '24時間年中無休でサポートしている',
+    'contact_details' => '連絡先の詳細',
+    'hot_line' => 'ホットライン',
+    'call' => 'フリーダイヤルでお電話ください',
+    'sign_up' => 'ニュースレターに登録する',
+    'subscribe' => '申し込む',
+    'info' => '情報',
+    'contact_us' => 'お問い合わせ',
+    'return' => '戻り値',
+    'we_use' => '使用するもの：',
+    'social' => 'ソーシャルネットワーク',
+    'download' => 'アプリをダウンロードする',
+    'copyright' => 'Copyright©2020TrangHoang。 全著作権所有',
+];

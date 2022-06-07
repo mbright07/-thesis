@@ -1,0 +1,23 @@
+<?php
+return [
+    'job_search_support' => 'Hỗ trợ tìm kiếm việc làm',
+    'fast' => 'Chủ động, nhanh chóng, tiện lợi',
+    'quality' => 'công việc chất lượng',
+    'high-quality' => 'Hàng nghìn tin tuyển dụng chất lượng cao',
+    'security' => 'An ninh & An toàn tuyệt đối',
+    'secure' => 'Giữ thông tin của bạn an toàn',
+    'online_support' => 'Hỗ trợ trực tuyến',
+    'we' => 'Chúng tôi có hỗ trợ 24/7',
+    'contact_details' => 'Chi tiết liên hệ',
+    'hot_line' => 'Hot Line',
+    'call' => 'Gọi cho chúng tôi miễn phí',
+    'sign_up' => 'Đăng ký để nhận Bản Tin',
+    'subscribe' => 'Đăng ký',
+    'info' => 'Thông tin',
+    'contact_us' => 'Liên hệ chúng tôi',
+    'return' => 'Lợi nhuận',
+    'we_use' => 'Chúng tôi đang sử dụng:',
+    'social' => 'Mạng xã hội',
+    'download' => 'Tải ứng dụng',
+    'copyright' => 'Bản quyền © 2020 Trang Hoang. Đã đăng ký Bản quyền',
+];

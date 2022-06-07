@@ -1,0 +1,28 @@
+<?php
+return [
+    'home' => 'Trang chủ',
+    'default' => 'Mặc định',
+    'sort_newness' => 'Sắp xếp theo độ mới',
+    'low_to_high' => 'Sắp xếp theo mức lương: thấp đến cao',
+    'high_to_low' => 'Sắp xếp theo mức lương: cao đến thấp',
+    '12' => '12 công việc /trang',
+    '16' => '16 công việc /trang',
+    '18' => '18 công việc /trang',
+    '21' => '21 công việc /trang',
+    '24' => '24 công việc /trang',
+    '30' => '30 công việc /trang',
+    '32' => '32 công việc /trang',
+    'grid' => 'Dạng lưới',
+    'list' => 'Danh sách',
+    'hot' => 'Hot',
+    'salary' => 'Lương: $',
+    'bookmark' => 'Lưu',
+    'apply_now' => 'Ứng tuyển ngay',
+    'no_jobs' => 'Không tìm thấy công việc',
+    'all_location' => 'Tất cả địa điểm',
+    'popular' => 'Công việc phổ biến',
+    'here' => 'Tìm kiếm việc làm...',
+    'job_location' => 'Công việc theo địa điểm',
+    'salary_2' => 'Lương ',
+    'filter' => 'Lọc'
+];

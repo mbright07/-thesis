@@ -1,0 +1,25 @@
+<?php
+return [
+    'home' => 'Trang chủ',
+    'bookmark' => 'Công Việc đã lưu',
+    'job_bookmark' => 'Công Việc đã lưu',
+    'salary' => 'Lương: $',
+    'save' => 'Lưu để xem sau',
+    'apply' => 'Ứng tuyển',
+    'sure' => 'Bạn có chắc chắn, Bạn muốn hủy bỏ ứng tuyển công việc này?',
+    'delete' => 'Bỏ lưu',
+    'no_bookmark' => 'Không có công việc nào được lưu',
+    'continue' => 'Tiếp tục tìm kiếm công việc',
+    'clear' => 'Xóa tất cả công việc đã lưu',
+    'update' => 'nâng cấp công việc đã lưu',
+    'empty' => 'Danh sách lưu của bạn trống!',
+    'add_job_now' => 'Thêm việc làm vào danh sách ngay bây giờ',
+    'list_job' => 'Danh sách công việc',
+    'job_save' => 'công việc lưu vào danh sách xem sau',
+    'success' => 'Thành công',
+    'move' => 'Chuyển về danh sách lưu',
+    'delete_sure' => 'Bạn có chắc muốn xóa công việc này?',
+    'delete_save' => 'Xóa khỏi danh sách xem sau',
+    'no_job_save' => 'Không có công việc nào ở danh sách xem sau',
+    'most_view' => 'Top công việc được xem nhiều nhất'
+];
