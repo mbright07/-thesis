@@ -14,7 +14,7 @@
                             <div class="form-group" wire:ignore>
                                 <label class="col-md-4 control-label"> {{ __('admin/admin-add-category.choose_locations') }} </label>
                                 <div class="col-md-4" >
-                                    <select class="sel_categories form-control" name="categories[]" multiple="multiple" wire:model="selected_categories">
+                                    <select class="select sel_categories form-control" name="categories[]" multiple="multiple" wire:model="selected_categories">
                                         @foreach ($categories as $category )
                                             <option value="{{ $category->id }}">{{ $category->name }}</option>
                                         @endforeach

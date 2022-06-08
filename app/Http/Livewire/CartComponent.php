@@ -5,6 +5,7 @@ namespace App\Http\Livewire;
 use Livewire\Component;
 use Cart;
 use Illuminate\Support\Facades\Auth;
+use App\Models\Job;
 
 class CartComponent extends Component
 {
@@ -66,7 +67,7 @@ class CartComponent extends Component
         if (Auth::check()) {
             Cart::instance('bookmark')->store(Auth::user()->email);
         }
-
-        return view('livewire.cart-component')->layout("layouts.base");
+        $top_views = Job::orderBy('totalviews', 'DESC')->get()->take(8);
+        return view('livewire.cart-component', ['top_views' => $top_views])->layout("layouts.base");
     }
 }
