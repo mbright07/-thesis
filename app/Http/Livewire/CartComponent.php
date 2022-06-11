@@ -25,7 +25,7 @@ class CartComponent extends Component
     {
         $job = Cart::instance('bookmark')->get($rowId);
         Cart::instance('bookmark')->remove($rowId);
-        Cart::instance('saveForLater')->add($job->id, $job->name, 1, $job->salary)->associate('App\Models\Job');
+        Cart::instance('saveForLater')->add($job->id, $job->name, 1, $job->price)->associate('App\Models\Job');
         session()->flash('success_message', 'Job has been saved for later');
     }
 
@@ -33,7 +33,7 @@ class CartComponent extends Component
     {
         $job = Cart::instance('saveForLater')->get($rowId);
         Cart::instance('saveForLater')->remove($rowId);
-        Cart::instance('bookmark')->add($job->id, $job->name, 1, $job->salary)->associate('App\Models\Job');
+        Cart::instance('bookmark')->add($job->id, $job->name, 1, $job->price)->associate('App\Models\Job');
         session()->flash('s_success_message', 'Job has been move to Bookmark');
     }
 

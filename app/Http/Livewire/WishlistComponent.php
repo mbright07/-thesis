@@ -21,9 +21,17 @@ class WishlistComponent extends Component
     public function moveJobFromWishlistToBookmark($rowId)
     {
         $job = Cart::instance('wishlist')->get($rowId);
+        $hasBookmarked = Cart::instance('bookmark')->content()->where('rowId', $rowId)->isNotEmpty();
+
         Cart::instance('wishlist')->remove($rowId);
-        Cart::instance('bookmark')->add($job->id, $job->name, 1, $job->salary)->associate('App\Models\Job');
+
         $this->emitTo('wishlist-count-component', 'refreshComponent');
+
+        if ($hasBookmarked) {
+            session()->flash('success_message', 'Job has been saved for later1223123');
+            return;
+        }
+        Cart::instance('bookmark')->add($job->id, $job->name, 1, $job->price)->associate('App\Models\Job');
     }
 
     public function render()
