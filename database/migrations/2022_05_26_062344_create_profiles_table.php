@@ -18,10 +18,10 @@ class CreateProfilesTable extends Migration
             $table->bigInteger('user_id')->unsigned()->nullable();
             $table->string('image')->nullable();
             $table->string('mobile')->nullable();
-            $table->date('Date of Birth')->nullable();
+            $table->date('date_of_birth')->nullable();
             $table->text('intro')->nullable();
-            $table->enum('Gender', ['Male', 'Female', 'Other'])->nullable();
-            $table->enum('Marital Status', ['Single', 'Married'])->nullable();
+            $table->enum('gender', ['Male', 'Female', 'Other'])->nullable();
+            $table->enum('marital_status', ['Single', 'Married'])->nullable();
             $table->string('city')->nullable();
             $table->string('province')->nullable();
             $table->string('country')->nullable();
