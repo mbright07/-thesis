@@ -29,15 +29,23 @@ class BlogComponent extends Component
 
     public function company($job_id, $job_name, $job_salary)
     {
-        Cart::instance('bookmark')->add($job_id, $job_name, 1, $job_salary)->associate('App\Models\Job');
-        session()->flash('success_message', 'Job bookmark successful');
-        return redirect()->route('job.bookmark');
+        if (!Auth::check()) {
+            return redirect()->route('login');
+        } else {
+            Cart::instance('bookmark')->add($job_id, $job_name, 1, $job_salary)->associate('App\Models\Job');
+            session()->flash('success_message', 'Job bookmark successful');
+            return redirect()->route('job.bookmark');
+        }
     }
 
     public function addToWishList($job_id, $job_name, $job_salary)
     {
-        Cart::instance('wishlist')->add($job_id, $job_name, 1, $job_salary)->associate('App\Models\Job');
-        $this->emitTo('wishlist-count-component', 'refreshComponent');
+        if (!Auth::check()) {
+            return redirect()->route('login');
+        } else {
+            Cart::instance('wishlist')->add($job_id, $job_name, 1, $job_salary)->associate('App\Models\Job');
+            $this->emitTo('wishlist-count-component', 'refreshComponent');
+        }
     }
 
     public function removeFromWishlist($job_id)
@@ -48,6 +56,15 @@ class BlogComponent extends Component
                 $this->emitTo('wishlist-count-component', 'refreshComponent');
                 return;
             }
+        }
+    }
+
+    public function Recruitment()
+    {
+        if (Auth::check()) {
+            return redirect()->route('recruitment');
+        } else {
+            return redirect()->route('login');
         }
     }
 

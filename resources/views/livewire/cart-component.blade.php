@@ -20,7 +20,6 @@
                         <h3 class="box-title">{{ __('bookmark.job_bookmark') }}</h3>
                         <ul class="products-cart">
                             @foreach (Cart::instance('bookmark')->content() as $item)
-                                {{-- {{ dd($item->model) }} --}}
                                 <li class="pr-cart-item">
                                     <div class="product-image">
                                         <figure><img

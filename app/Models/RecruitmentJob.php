@@ -11,6 +11,8 @@ class RecruitmentJob extends Model
 
     protected $table = "recruitment_jobs";
 
+    protected $fillable = ['job_id', 'recruitment_id', 'salary'];
+
     public function recruitment()
     {
         return $this->belongsTo(Recruitment::class);

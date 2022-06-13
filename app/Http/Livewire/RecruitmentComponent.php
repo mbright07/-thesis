@@ -54,7 +54,6 @@ class RecruitmentComponent extends Component
             'country' => 'required',
             'file' => 'required'
         ]);
-
         $recruitment = new Recruitment();
         $recruitment->user_id = Auth::user()->id;
         $recruitment->firstname = $this->firstname;
@@ -75,9 +74,10 @@ class RecruitmentComponent extends Component
             $recruitmentJob = new RecruitmentJob();
             $recruitmentJob->job_id = $job->id;
             $recruitmentJob->recruitment_id = $recruitment->id;
-            $recruitmentJob->salary = $job->salary;
+            $recruitmentJob->salary = $job->price;
             $recruitmentJob->save();
         }
+
 
         $this->sendRecruitmentConfirmationMail($recruitment);
 

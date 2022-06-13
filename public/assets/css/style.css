@@ -1785,6 +1785,7 @@ li.menu-item .nav-label.sale-label::before {
     padding: 1px;
     height: auto;
     max-width: 83px;
+    margin-top: 15px;
 }
 .product .product-thumnail .group-flash .flash-item {
     display: inline-block;
@@ -1794,7 +1795,7 @@ li.menu-item .nav-label.sale-label::before {
     background: #00bf3f;
     font-size: 10px;
     font-weight: 600;
-    padding: 1.5px 9px 5.5px 9px;
+    padding: 2.5px 9px 5.5px 9px;
     line-height: 10px;
     position: relative;
     margin-bottom: 10px;
@@ -2464,9 +2465,10 @@ li.menu-item .nav-label.sale-label::before {
 }
 .addcart {
     height: 100px;
+    width: 100%;
 }
 .addcart .bookmark {
-    width: 40%;
+    width: 100%;
     float: left;
 }
 
