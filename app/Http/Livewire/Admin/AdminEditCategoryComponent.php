@@ -23,7 +23,7 @@ class AdminEditCategoryComponent extends Component
             $this->sub_category_slug = $sub_category_slug;
             $sub_category = Subcategory::where('slug', $sub_category_slug)->first();
             $this->sub_category_id = $sub_category->id;
-            $this->sub_category_id = $sub_category->category_id;
+            $this->category_id = $sub_category->category_id;
             $this->name = $sub_category->name;
             $this->slug = $sub_category->slug;
         } else {
@@ -55,7 +55,7 @@ class AdminEditCategoryComponent extends Component
             'slug' => 'required|unique:categories'
         ]);
         if ($this->sub_category_id) {
-            $sub_category = Subcategory::where('slug', $this->sub_category_slug)->first();
+            $sub_category = Subcategory::find($this->sub_category_id);
             $sub_category->name = $this->name;
             $sub_category->slug = $this->slug;
             $sub_category->category_id = $this->category_id;
