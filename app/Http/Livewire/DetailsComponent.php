@@ -18,9 +18,13 @@ class DetailsComponent extends Component
 
     public function company($job_id, $job_name, $job_salary)
     {
-        Cart::add($job_id, $job_name, 1, $job_salary)->associate('App\Models\Job');
-        session()->flash('success_message', 'Item added in Wishlish');
-        return redirect()->route('job.wishlist');
+        if (!Auth::check()) {
+            return redirect()->route('login');
+        } else {
+            Cart::instance('bookmark')->add($job_id, $job_name, 1, $job_salary)->associate('App\Models\Job');
+            session()->flash('success_message', 'Job bookmark successful');
+            return redirect()->route('job.bookmark');
+        }
     }
 
     public function Recruitment()

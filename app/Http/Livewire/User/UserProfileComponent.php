@@ -17,6 +17,7 @@ class UserProfileComponent extends Component
     public $name;
     public $email;
     public $mobile;
+    public $image;
     public $newimage;
     public $date_of_birth;
     public $intro;
@@ -34,7 +35,7 @@ class UserProfileComponent extends Component
         $this->name = $user->name;
         $this->email = $user ? $user->email : '';
         $this->mobile = $user->profile ? $user->profile->mobile : '';
-        // $this->image = $user->profile ? $user->profile->image : '';
+        $this->image = $user->profile ? $user->profile->image : '';
         $this->date_of_birth = $user->profile ? $user->profile->date_of_birth : '';
         $this->intro = $user->profile ? $user->profile->intro : '';
         $this->gender = $user->profile ? $user->profile->gender : '';
@@ -43,11 +44,40 @@ class UserProfileComponent extends Component
         $this->province = $user->profile ? $user->profile->province : '';
         $this->country = $user->profile ? $user->profile->country : '';
         $this->address = $user->profile ? $user->profile->address : '';
-        // dd($this);
+    }
+
+    public function updated($fields)
+    {
+        $this->validateOnly($fields, [
+            'name' => 'required',
+            'email' => 'required|email',
+            'mobile' => 'required',
+            'date_of_birth' => 'required',
+            'intro' => 'required',
+            'gender' => 'required',
+            'marital_status' => 'required',
+            'city' => 'required',
+            'province' => 'required',
+            'country' => 'required',
+            'address' => 'required'
+        ]);
     }
 
     public function saveProfile()
     {
+        $this->validate([
+            'name' => 'required',
+            'email' => 'required|email',
+            'mobile' => 'required',
+            'date_of_birth' => 'required',
+            'intro' => 'required',
+            'gender' => 'required',
+            'marital_status' => 'required',
+            'city' => 'required',
+            'province' => 'required',
+            'country' => 'required',
+            'address' => 'required'
+        ]);
         $user = User::find(Auth::user()->id);
         $user->name = $this->name;
         $user->email = $this->email;
@@ -64,7 +94,7 @@ class UserProfileComponent extends Component
             $user->profile->image = $imagename;
         }
 
-        $profile['date_of_birth'] = $this->date_of_birth ?? null;
+        $profile->date_of_birth = $this->date_of_birth;
         $profile->intro = $this->intro;
         $profile->gender = $this->gender;
         $profile->marital_status = $this->marital_status;
@@ -83,7 +113,6 @@ class UserProfileComponent extends Component
         $totalRecruitments_processing = Recruitment::where('status', 'processing')->where('user_id', Auth::user()->id)->count();
         $totalRecruitments_canceled = Recruitment::where('status', 'canceled')->where('user_id', Auth::user()->id)->count();
         return view('livewire.user.user-profile-component', [
-            // 'userProfile' => $userProfile,
             'user' => $this->user,
             'recruitments' => $recruitments,
             'totalRecruitments' => $totalRecruitments,

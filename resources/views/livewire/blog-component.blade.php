@@ -95,7 +95,7 @@
                                         </div>
                                     </div>
                                     <div class="addcart">
-                                        <div class="bookmark">
+                                        <div class="bookmark" style="width: 100%;">
                                             <a href="#" class="btn add-to-cart"
                                                 wire:click.prevent="company({{ $job->id }},'{{ $job->name }}',{{ $job->regular_salary }})">{{ __('search.bookmark') }}</a>
                                         </div>
