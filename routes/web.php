@@ -4,15 +4,18 @@ use App\Http\Controllers\LocalizationController;
 use App\Http\Livewire\Admin\AdminAddCategoryComponent;
 use App\Http\Livewire\Admin\AdminAddHomeSliderComponent;
 use App\Http\Livewire\Admin\AdminAddJobComponent;
+use App\Http\Livewire\Admin\AdminAddPostComponent;
 use App\Http\Livewire\Admin\AdminCategoryComponent;
 use App\Http\Livewire\Admin\AdminContactComponent;
 use App\Http\Livewire\Admin\AdminDashboardComponent;
 use App\Http\Livewire\Admin\AdminEditCategoryComponent;
 use App\Http\Livewire\Admin\AdminEditHomeSliderComponent;
 use App\Http\Livewire\Admin\AdminEditJobCompoent;
+use App\Http\Livewire\Admin\AdminEditPostComponent;
 use App\Http\Livewire\Admin\AdminHomeCategoryCompoent;
 use App\Http\Livewire\Admin\AdminHomeSliderComponent;
 use App\Http\Livewire\Admin\AdminJobComponentnent;
+use App\Http\Livewire\Admin\AdminPostComponent;
 use App\Http\Livewire\Admin\AdminRecruitmentComponent;
 use App\Http\Livewire\Admin\AdminRecruitmentDetailsComponent;
 use App\Http\Livewire\Admin\AdminSettingComponent;
@@ -20,9 +23,11 @@ use App\Http\Livewire\BlogComponent;
 use App\Http\Livewire\CartComponent;
 use App\Http\Livewire\CategoryComponent;
 use App\Http\Livewire\ContactComponent;
+use App\Http\Livewire\DetailPostComponent;
 use App\Http\Livewire\DetailsComponent;
 use App\Http\Livewire\HomeComponent;
 use App\Http\Livewire\RecruitmentComponent;
+use App\Http\Livewire\ReferenceComponent;
 use App\Http\Livewire\SearchComponent;
 use App\Http\Livewire\ThankyouComponent;
 use App\Http\Livewire\User\UserChangePasswordCompponent;
@@ -64,7 +69,7 @@ Route::group(['middleware' => 'locale'], function () {
 
     Route::get('/recruitment', RecruitmentComponent::class)->name('recruitment');
 
-    Route::get('job/{slug}', DetailsComponent::class)->name('job.details');
+    Route::get('/job/{slug}', DetailsComponent::class)->name('job.details');
 
     Route::get('/job-category/{category_slug}/{sub_category_slug?}', CategoryComponent::class)->name('job.category');
 
@@ -75,6 +80,10 @@ Route::group(['middleware' => 'locale'], function () {
     Route::get('/thank-you', ThankyouComponent::class)->name('thankyou');
 
     Route::get('/contact-us', ContactComponent::class)->name('contact-us');
+
+    Route::get('/reference', ReferenceComponent::class)->name('reference');
+
+    Route::get('/post/{slug}', DetailPostComponent::class)->name('post.details');
 
     // Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {
     //     return view('dashboard');
@@ -112,5 +121,9 @@ Route::group(['middleware' => 'locale'], function () {
         Route::get('/admin/contact-us', AdminContactComponent::class)->name('admin.contact');
 
         Route::get('/admin/settings', AdminSettingComponent::class)->name('admin.settings');
+
+        Route::get('/admin/posts', AdminPostComponent::class)->name('admin.posts');
+        Route::get('/admin/post/add', AdminAddPostComponent::class)->name('admin.addpost');
+        Route::get('/admin/post/edit/{post_id}', AdminEditPostComponent::class)->name('admin.editpost');
     });
 });

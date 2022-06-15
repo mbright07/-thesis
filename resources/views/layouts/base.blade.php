@@ -77,6 +77,9 @@
                                                             href="{{ route('admin.jobs') }}">{{ __('base.all_jobs') }}</a>
                                                     </li>
                                                     <li class="menu-item">
+                                                        <a title="Posts" href="{{ route('admin.posts') }}">All Posts</a>
+                                                    </li>
+                                                    <li class="menu-item">
                                                         <a title="Manage Home Slider"
                                                             href="{{ route('admin.homeslider') }}">{{ __('base.manage_home_slider') }}</a>
                                                     </li>
@@ -232,7 +235,8 @@
                                             class="link-term mercado-item-title">{{ __('base.recruitment') }}</a>
                                     </li>
                                     <li class="menu-item">
-                                        <a href="#" class="link-term mercado-item-title">{{ __('base.references') }}</a>
+                                        <a href="/reference"
+                                            class="link-term mercado-item-title">{{ __('base.references') }}</a>
                                     </li>
                                     <li class="menu-item">
                                         <a href="#" class="link-term mercado-item-title">{{ __('base.about_us') }}</a>
