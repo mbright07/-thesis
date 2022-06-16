@@ -1,7 +1,6 @@
 <div class="container">
     <div class="wrap-main-slide">
-        <div class="slide-carousel owl-carousel style-nav-1" data-items="1" data-loop="1" data-nav="true"
-            data-dots="false">
+        <div class="slide-carousel owl-carousel style-nav-1" data-items="1" data-loop="1" data-nav="true" data-dots="false">
             @foreach ($sliders as $slider)
                 <div class="item-slide">
                     <img src="{{ asset('assets/images/sliders') }}/{{ $slider->image }}" alt=""
@@ -22,19 +21,21 @@
     <div class="wrap-banner style-twin-default">
         <div class="banner-item">
             <a href="#" class="link-banner banner-effect-1">
-                <figure><img src="{{ asset('assets/images/home-1-banner-1.jpg') }}" alt="" width="580" height="190">
+                <figure><img src="{{ asset('assets/images/home-1-banner-1.jpg') }}" alt="" width="580"
+                        height="190">
                 </figure>
             </a>
         </div>
         <div class="banner-item">
             <a href="#" class="link-banner banner-effect-1">
-                <figure><img src="{{ asset('assets/images/home-1-banner-2.jpg') }}" alt="" width="580" height="190">
+                <figure><img src="{{ asset('assets/images/home-1-banner-2.jpg') }}" alt="" width="580"
+                        height="190">
                 </figure>
             </a>
         </div>
     </div>
 
-    <!--On Sale-->
+
     <div class="wrap-show-advance-info-box style-1 has-countdown">
         <h3 class="title-box">Top View</h3>
         <div class="wrap-products slide-carousel owl-carousel style-nav-1 equal-container " data-items="5"
@@ -104,7 +105,7 @@
         </div>
     </div>
 
-    <!--Latest Products-->
+
     <div class="wrap-show-advance-info-box style-1">
         <h3 class="title-box">Other Post</h3>
         <div class="wrap-top-banner">
@@ -127,7 +128,8 @@
                                             title="{{ $popular_post->title }}">
                                             <figure><img
                                                     src="{{ asset('assets/images/posts') }}/{{ $popular_post->image }}"
-                                                    width="800" height="800" alt="{{ $popular_post->title }}">
+                                                    width="800" height="800"
+                                                    alt="{{ $popular_post->title }}">
                                             </figure>
                                         </a>
                                         <div class="group-flash">

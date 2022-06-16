@@ -58,7 +58,7 @@
                             <ul>
                                 @if (Route::has('login'))
                                     @auth
-                                        @if (Auth::user()->utype === 'ADM')
+                                        @if (Auth::user()->role_id === 1)
                                             <li class="menu-item menu-item-has-children parent">
                                                 <a title="My account" href="#">{{ __('base.my_account') }}
                                                     ({{ Auth::user()->name }})<i class="fa fa-angle-down"
@@ -109,6 +109,28 @@
                                                     </form>
                                                 </ul>
                                             </li>
+                                        @elseif (Auth::user()->role_id === 3)
+                                            <li class="menu-item menu-item-has-children parent">
+                                                <a title="My account" href="#">{{ __('base.my_account') }}
+                                                    ({{ Auth::user()->name }})
+                                                    <i class="fa fa-angle-down" aria-hidden="true"></i>
+                                                </a>
+                                                <ul class="submenu curency">
+                                                    <li class="menu-item">
+                                                        <a title="Dashboard"
+                                                            href="{{ route('employer.dashboard') }}">{{ __('base.dashboard') }}</a>
+                                                    </li>
+                                                    <li class="menu-item">
+                                                        <a title="Logout" href="{{ route('logout') }}"
+                                                            onclick="event.preventDefault(); document.getElementById('logout-form').submit();">{{ __('base.logout') }}</a>
+                                                    </li>
+                                                    <form id="logout-form" method="POST"
+                                                        action="{{ route('logout') }}">
+                                                        @csrf
+
+                                                    </form>
+                                                </ul>
+                                            </li>
                                         @else
                                             <li class="menu-item menu-item-has-children parent">
                                                 <a title="My account" href="#">{{ __('base.my_account') }}
@@ -135,7 +157,8 @@
                                                         <a title="Logout" href="{{ route('logout') }}"
                                                             onclick="event.preventDefault(); document.getElementById('logout-form').submit();">{{ __('base.logout') }}</a>
                                                     </li>
-                                                    <form id="logout-form" method="POST" action="{{ route('logout') }}">
+                                                    <form id="logout-form" method="POST"
+                                                        action="{{ route('logout') }}">
                                                         @csrf
 
                                                     </form>
@@ -151,16 +174,16 @@
                                     @endif
 
                                     <li class="menu-item lang-menu menu-item-has-children parent">
-                                        <a title="Language" href="#"><i class="fa fa-angle-down" aria-hidden="true"></i>
+                                        <a title="Language" href="#"><i class="fa fa-angle-down"
+                                                aria-hidden="true"></i>
                                             {{ __('base.language') }}</a>
                                         <ul class="submenu lang">
                                             <li class="menu-item"><a title="Vietnamese"
                                                     href="{!! route('change-language', ['vi']) !!}"><span class="img label-before"><img
                                                             src="/assets/images/lang-vi.jpg"
                                                             alt="lang-vi"></span>{{ __('base.vietnam') }}</a></li>
-                                            <li class="menu-item"><a title="English"
-                                                    href="{!! route('change-language', ['en']) !!}"><span class="img label-before"><img
-                                                            src="/assets/images/lang-en.jpg"
+                                            <li class="menu-item"><a title="English" href="{!! route('change-language', ['en']) !!}"><span
+                                                        class="img label-before"><img src="/assets/images/lang-en.jpg"
                                                             alt="lang-en"></span>{{ __('base.english') }}</a></li>
                                             <li class="menu-item"><a title="Japanese"
                                                     href="{!! route('change-language', ['ja']) !!}"><span class="img label-before"><img
@@ -177,8 +200,8 @@
                         <div class="mid-section main-info-area">
 
                             <div class="wrap-logo-top left-section">
-                                <a href="/" class="link-to-home"><img src="{{ asset('assets/images/logo-top-1.png') }}"
-                                        alt="mercado"></a>
+                                <a href="/" class="link-to-home"><img
+                                        src="{{ asset('assets/images/logo-top-1.png') }}" alt="mercado"></a>
                             </div>
 
                             @livewire('header-search-component')
@@ -224,7 +247,8 @@
                                                 aria-hidden="true"></i></a>
                                     </li>
                                     <li class="menu-item">
-                                        <a href="/blog" class="link-term mercado-item-title">{{ __('base.jobs') }}</a>
+                                        <a href="/blog"
+                                            class="link-term mercado-item-title">{{ __('base.jobs') }}</a>
                                     </li>
                                     <li class="menu-item">
                                         <a href="/bookmark"
@@ -239,7 +263,8 @@
                                             class="link-term mercado-item-title">{{ __('base.references') }}</a>
                                     </li>
                                     <li class="menu-item">
-                                        <a href="#" class="link-term mercado-item-title">{{ __('base.about_us') }}</a>
+                                        <a href="#"
+                                            class="link-term mercado-item-title">{{ __('base.about_us') }}</a>
                                     </li>
                                     <li class="menu-item">
                                         <a href="/contact-us"

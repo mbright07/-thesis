@@ -25,6 +25,7 @@ use App\Http\Livewire\CategoryComponent;
 use App\Http\Livewire\ContactComponent;
 use App\Http\Livewire\DetailPostComponent;
 use App\Http\Livewire\DetailsComponent;
+use App\Http\Livewire\Employer\EmployerDashBoardComponent;
 use App\Http\Livewire\HomeComponent;
 use App\Http\Livewire\RecruitmentComponent;
 use App\Http\Livewire\ReferenceComponent;
@@ -90,40 +91,47 @@ Route::group(['middleware' => 'locale'], function () {
     // })->name('dashboard');
 
     //For User or Customer
-    Route::middleware(['auth:sanctum', 'verified'])->group(function () {
-        Route::get('/user/dashboard', UserDashboardComponent::class)->name('user.dashboard');
-        Route::get('user/recruitments', UserRecruitmentsComponent::class)->name('user.recruitments');
-        Route::get('user/recruitments/{recruitment_id}', UserRecruitmentDetailsComponent::class)->name('user.recruitmentdetails');
-        Route::get('/user/review/{recruitment_job_id}', UserReviewComponent::class)->name('user.review');
-        Route::get('user/change-password', UserChangePasswordCompponent::class)->name('user.changepassword');
-        Route::get('/user/profile', UserProfileComponent::class)->name('user.profile');
-    });
+    Route::group(['middleware' => 'auth'], function () {
+        Route::group(['middleware' => 'role:candidate'], function () {
+            Route::get('/user/dashboard', UserDashboardComponent::class)->name('user.dashboard');
+            Route::get('user/recruitments', UserRecruitmentsComponent::class)->name('user.recruitments');
+            Route::get('user/recruitments/{recruitment_id}', UserRecruitmentDetailsComponent::class)->name('user.recruitmentdetails');
+            Route::get('/user/review/{recruitment_job_id}', UserReviewComponent::class)->name('user.review');
+            Route::get('user/change-password', UserChangePasswordCompponent::class)->name('user.changepassword');
+            Route::get('/user/profile', UserProfileComponent::class)->name('user.profile');
+        });
 
-    //For Admin
-    Route::middleware(['auth:sanctum', 'verified', 'authadmin'])->group(function () {
-        Route::get('/admin/dashboard', AdminDashboardComponent::class)->name('admin.dashboard');
-        Route::get('/admin/categories', AdminCategoryComponent::class)->name('admin.categories');
-        Route::get('/admin/category/add', AdminAddCategoryComponent::class)->name('admin.addcategory');
-        Route::get('/admin/category/edit/{category_slug}/{sub_category_slug?}', AdminEditCategoryComponent::class)->name('admin.editcategory');
-        Route::get('/admin/jobs', AdminJobComponentnent::class)->name('admin.jobs');
-        Route::get('/admin/job/add', AdminAddJobComponent::class)->name('admin.addjob');
-        Route::get('/admin/job/edit/{job_slug}', AdminEditJobCompoent::class)->name('admin.editjob');
+        //For Employer
+        Route::group(['middleware' => 'role:employer'], function () {
+            Route::get('/employer/dashboard', EmployerDashBoardComponent::class)->name('employer.dashboard');
+        });
 
-        Route::get('/admin/slider', AdminHomeSliderComponent::class)->name('admin.homeslider');
-        Route::get('/admin/slider/add', AdminAddHomeSliderComponent::class)->name('admin.addhomeslider');
-        Route::get('/admin/slider/edit/{slider_id}', AdminEditHomeSliderComponent::class)->name('admin.edithomeslider');
+        //For Admin
+        Route::group(['middleware' => 'role:admin'], function () {
+            Route::get('/admin/dashboard', AdminDashboardComponent::class)->name('admin.dashboard');
+            Route::get('/admin/categories', AdminCategoryComponent::class)->name('admin.categories');
+            Route::get('/admin/category/add', AdminAddCategoryComponent::class)->name('admin.addcategory');
+            Route::get('/admin/category/edit/{category_slug}/{sub_category_slug?}', AdminEditCategoryComponent::class)->name('admin.editcategory');
+            Route::get('/admin/jobs', AdminJobComponentnent::class)->name('admin.jobs');
+            Route::get('/admin/job/add', AdminAddJobComponent::class)->name('admin.addjob');
+            Route::get('/admin/job/edit/{job_slug}', AdminEditJobCompoent::class)->name('admin.editjob');
 
-        Route::get('/admin/home-categories', AdminHomeCategoryCompoent::class)->name('admin.homecategories');
+            Route::get('/admin/slider', AdminHomeSliderComponent::class)->name('admin.homeslider');
+            Route::get('/admin/slider/add', AdminAddHomeSliderComponent::class)->name('admin.addhomeslider');
+            Route::get('/admin/slider/edit/{slider_id}', AdminEditHomeSliderComponent::class)->name('admin.edithomeslider');
 
-        Route::get('/admin/recruitments', AdminRecruitmentComponent::class)->name('admin.recruitments');
-        Route::get('/admin/recruitments/{recruitment_id}', AdminRecruitmentDetailsComponent::class)->name('admin.recruitmentdetails');
+            Route::get('/admin/home-categories', AdminHomeCategoryCompoent::class)->name('admin.homecategories');
 
-        Route::get('/admin/contact-us', AdminContactComponent::class)->name('admin.contact');
+            Route::get('/admin/recruitments', AdminRecruitmentComponent::class)->name('admin.recruitments');
+            Route::get('/admin/recruitments/{recruitment_id}', AdminRecruitmentDetailsComponent::class)->name('admin.recruitmentdetails');
 
-        Route::get('/admin/settings', AdminSettingComponent::class)->name('admin.settings');
+            Route::get('/admin/contact-us', AdminContactComponent::class)->name('admin.contact');
 
-        Route::get('/admin/posts', AdminPostComponent::class)->name('admin.posts');
-        Route::get('/admin/post/add', AdminAddPostComponent::class)->name('admin.addpost');
-        Route::get('/admin/post/edit/{post_id}', AdminEditPostComponent::class)->name('admin.editpost');
+            Route::get('/admin/settings', AdminSettingComponent::class)->name('admin.settings');
+
+            Route::get('/admin/posts', AdminPostComponent::class)->name('admin.posts');
+            Route::get('/admin/post/add', AdminAddPostComponent::class)->name('admin.addpost');
+            Route::get('/admin/post/edit/{post_id}', AdminEditPostComponent::class)->name('admin.editpost');
+        });
     });
 });
