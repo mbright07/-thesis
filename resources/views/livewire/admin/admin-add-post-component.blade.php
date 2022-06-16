@@ -41,6 +41,16 @@
                             </div>
 
                             <div class="form-group">
+                                <label class="col-md-4 control-label">Short Description</label>
+                                <div class="col-md-4" wire:ignore>
+                                    <textarea class="form-control" id="short_description" placeholder="Short Description" wire:model="short_description"></textarea>
+                                    @error('short_description')
+                                        <p class="text-danger">{{ $message }}</p>
+                                    @enderror
+                                </div>
+                            </div>
+
+                            <div class="form-group">
                                 <label class="col-md-4 control-label">Image</label>
                                 <div class="col-md-4">
                                     <input type="file" class="input-file" wire:model="image" />
@@ -90,6 +100,17 @@
 @push('scripts')
     <script>
         $(function() {
+            tinymce.init({
+                selector: '#short_description',
+                setup: function(editor) {
+                    editor.on('Change', function(e) {
+                        tinyMCE.triggerSave();
+                        var sd_data = $('#short_description').val();
+                        @this.set('short_description', sd_data);
+                    });
+                }
+            });
+
             tinymce.init({
                 selector: '#description',
                 setup: function(editor) {

@@ -13,6 +13,7 @@ class AdminEditPostComponent extends Component
     use WithFileUploads;
     public $title;
     public $image;
+    public $short_description;
     public $description;
     public $newimage;
     public $post_id;
@@ -24,6 +25,7 @@ class AdminEditPostComponent extends Component
         $post = Post::find($post_id);
         $this->slug = $post->slug;
         $this->title = $post->title;
+        $this->short_description = $post->short_description;
         $this->image = $post->image;
         $this->description = $post->description;
         $this->status = $post->status;
@@ -40,6 +42,7 @@ class AdminEditPostComponent extends Component
         $post = Post::find($this->post_id);
         $post->title = $this->title;
         $post->slug = $this->slug;
+        $post->short_description = $this->short_description;
         if ($this->newimage) {
             $imageName = Carbon::now()->timestamp . '.' . $this->newimage->extension();
             $this->newimage->storeAs('posts', $imageName);

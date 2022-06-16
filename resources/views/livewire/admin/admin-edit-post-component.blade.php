@@ -35,6 +35,15 @@
                             </div>
 
                             <div class="form-group">
+                                <label
+                                    class="col-md-4 control-label">{{ __('admin/admin-add-job.short_description') }}</label>
+                                <div class="col-md-4">
+                                    <textarea class="form-control" id="short_description"
+                                        placeholder="{{ __('admin/admin-add-job.short_description') }}" wire:model="short_description"></textarea>
+                                </div>
+                            </div>
+
+                            <div class="form-group">
                                 <label class="col-md-4 control-label">Image</label>
                                 <div class="col-md-4">
                                     <input type="file" class="input-file" wire:model="newimage" />
@@ -85,6 +94,17 @@
 @push('scripts')
     <script>
         $(function() {
+            tinymce.init({
+                selector: '#short_description',
+                setup: function(editor) {
+                    editor.on('Change', function(e) {
+                        tinyMCE.triggerSave();
+                        var sd_data = $('#short_description').val();
+                        @this.set('short_description', sd_data);
+                    });
+                }
+            });
+
             tinymce.init({
                 selector: '#description',
                 setup: function(editor) {

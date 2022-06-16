@@ -7526,3 +7526,74 @@ svg {
     font-size: 20px;
     margin-left: 8px;
 }
+
+.all-posts .post-item {
+    margin-bottom: 50px;
+    position: relative; 
+    width: 100%;
+    display: inline-block;
+}
+
+.all-posts .post-item .post-img-left{
+    float: left;
+    width: 35%;
+    height: 35%;
+}
+.all-posts .post-item .post-img-left img {
+    overflow: hidden;
+    margin-bottom: 20px;
+    border-radius: 20px;
+}
+  
+.all-posts .post-item .post-main-info-right {
+    position: relative;
+    width: 60%;
+    height: 60%;
+    float: right;
+    margin-left: -50px;
+}
+  
+.all-posts .post-item .post-main-info-right .post-meta {
+    font-size: 0.9em;
+    padding: 10px 0px;
+    color: gray;
+}
+  
+.all-posts .post-item .post-main-info-right .post-meta span {
+    white-space: nowrap;
+}
+  
+.all-posts .post-item .post-main-info-right a {
+    display: inline-block;
+    margin-top: 10px;
+}
+
+.all-posts .post-item .post-main-info-right .description {
+    width: 500px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    line-height: 25px;
+    -webkit-line-clamp: 3;
+    height: 75px;
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    margin-top: -80px;
+}
+
+.post-main-info-right .main-btn {
+    text-align: center;
+    text-decoration: none;
+    color: white;
+    font-weight: 600;
+    background-color: #ff2832;
+    border: none;
+    padding: 15px 30px;
+    border-radius: 12px;
+    -webkit-transition: background-color 0.3s ease;
+    transition: background-color 0.3s ease;
+}
+  
+.post-main-info-right .main-btn:hover {
+    color: white;
+    background-color: #f77b7b;
+}

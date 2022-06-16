@@ -13,6 +13,7 @@ class AdminAddPostComponent extends Component
     use WithFileUploads;
     public $title;
     public $image;
+    public $short_description;
     public $description;
     public $status;
     public $slug;
@@ -32,6 +33,7 @@ class AdminAddPostComponent extends Component
         $this->validateOnly($fields, [
             'title' => 'required',
             'description' => 'required',
+            'short_description' => 'required',
             'slug' => 'required|unique:posts',
             'image' => 'required|mimes:jpeg,png,jpg',
             'status' => 'required'
@@ -44,12 +46,14 @@ class AdminAddPostComponent extends Component
             'title' => 'required',
             'slug' => 'required|unique:posts',
             'description' => 'required',
+            'short_description' => 'required',
             'image' => 'required|mimes:jpeg,png,jpg',
             'status' => 'required'
         ]);
         $post = new Post();
         $post->title = $this->title;
         $post->slug = $this->slug;
+        $post->short_description = $this->short_description;
         $imageName = Carbon::now()->timestamp . '.' . $this->image->extension();
         $this->image->storeAs('posts', $imageName);
         $post->image = $imageName;
