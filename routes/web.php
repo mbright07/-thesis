@@ -33,10 +33,12 @@ use App\Http\Livewire\SearchComponent;
 use App\Http\Livewire\ThankyouComponent;
 use App\Http\Livewire\User\UserChangePasswordCompponent;
 use App\Http\Livewire\User\UserDashboardComponent;
+use App\Http\Livewire\User\UserExperienceComponent;
 use App\Http\Livewire\User\UserProfileComponent;
 use App\Http\Livewire\User\UserRecruitmentDetailsComponent;
 use App\Http\Livewire\User\UserRecruitmentsComponent;
 use App\Http\Livewire\User\UserReviewComponent;
+use App\Http\Livewire\User\UserWorkHistoryComponent;
 use App\Http\Livewire\WishlistComponent;
 use App\Models\Contact;
 use Illuminate\Contracts\Auth\UserProvider;
@@ -99,6 +101,8 @@ Route::group(['middleware' => 'locale'], function () {
             Route::get('/user/review/{recruitment_job_id}', UserReviewComponent::class)->name('user.review');
             Route::get('user/change-password', UserChangePasswordCompponent::class)->name('user.changepassword');
             Route::get('/user/profile', UserProfileComponent::class)->name('user.profile');
+            Route::get('/user/experience', UserExperienceComponent::class)->name('user.experience');
+            Route::get('/user/experience/donwload-cv', [UserExperienceComponent::class, 'download'])->name('user.experience.donwload-cv');
         });
 
         //For Employer

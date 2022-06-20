@@ -61,8 +61,8 @@
                                     <label for="name">
                                         <h4>Name</h4>
                                     </label>
-                                    <input type="text" class="form-control" name="name" id="name" placeholder="name"
-                                        title="enter your name if any." wire:model="name">
+                                    <input type="text" class="form-control" name="name" id="name"
+                                        placeholder="name" title="enter your name if any." wire:model="name">
                                     @error('name')
                                         <p class="text-danger">{{ $message }}</p>
                                     @enderror
@@ -209,8 +209,8 @@
                                     <label for="intro">
                                         <h4>Intro</h4>
                                     </label>
-                                    <textarea type="text" class="form-control" name="intro" id="intro" placeholder="somewhere" title="enter intro"
-                                        wire:model="intro"></textarea>
+                                    <textarea type="text" class="form-control" name="intro" id="intro" placeholder="somewhere"
+                                        title="enter intro" wire:model="intro"></textarea>
                                     @error('intro')
                                         <p class="text-danger">{{ $message }}</p>
                                     @enderror
@@ -227,6 +227,8 @@
                                             class="glyphicon glyphicon-repeat"></i> Reset</button>
                                 </div>
                             </div>
+                        </div>
+                    </div>
             </form>
             <hr>
         </div>

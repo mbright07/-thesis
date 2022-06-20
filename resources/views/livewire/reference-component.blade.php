@@ -150,12 +150,12 @@
     </div>
     <br>
     <div class="row">
-        <div class="wrap-show-advance-info-box style-1">
+        <div class="wrap-show-advance-info-box style-1" style="width: 97.5%; margin-left: 15px;">
             <h3 class="title-box">All Posts</h3>
         </div>
         <br>
         <br>
-        <div class="all-posts">
+        <div class="all-posts" style="width: 97.5%; margin-left: 15px;">
             @foreach ($posts as $post)
                 <div class="post-item">
                     <div class="post-img-left">

@@ -146,6 +146,10 @@
                                                             href="{{ route('user.profile') }}">{{ __('base.my_profile') }}</a>
                                                     </li>
                                                     <li class="menu-item">
+                                                        <a title="My Experience"
+                                                            href="{{ route('user.experience') }}">My Experience</a>
+                                                    </li>
+                                                    <li class="menu-item">
                                                         <a title="My Recruitments"
                                                             href="{{ route('user.recruitments') }}">{{ __('base.my_recruitments') }}</a>
                                                     </li>

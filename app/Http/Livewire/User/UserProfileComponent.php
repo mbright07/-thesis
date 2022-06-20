@@ -13,6 +13,7 @@ use Livewire\WithFileUploads;
 class UserProfileComponent extends Component
 {
     use WithFileUploads;
+    // User Update Profile
     public $user;
     public $name;
     public $email;

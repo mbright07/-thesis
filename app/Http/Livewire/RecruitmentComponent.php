@@ -78,7 +78,6 @@ class RecruitmentComponent extends Component
             $recruitmentJob->save();
         }
 
-
         $this->sendRecruitmentConfirmationMail($recruitment);
 
         $this->thankyou = 1;
