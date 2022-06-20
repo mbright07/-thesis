@@ -18,4 +18,12 @@ class Post extends Model
         $this->totalviews_post++;
         return $this->save();
     }
+
+    public function scopeSearch($query, $term)
+    {
+        $term = "%$term%";
+        $query->where(function ($query) use ($term) {
+            $query->where('title', 'LIKE', $term);
+        });
+    }
 }

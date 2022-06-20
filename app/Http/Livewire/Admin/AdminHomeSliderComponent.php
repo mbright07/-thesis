@@ -7,6 +7,10 @@ use Livewire\Component;
 
 class AdminHomeSliderComponent extends Component
 {
+    public $active = null;
+    public $search;
+    public $sortBy = 'ASC';
+
     public function deleteSlide($id)
     {
         $slider = HomeSlider::find($id);
@@ -16,7 +20,13 @@ class AdminHomeSliderComponent extends Component
 
     public function render()
     {
-        $sliders = HomeSlider::all();
-        return view('livewire.admin.admin-home-slider-component', ['sliders' => $sliders])->layout('layouts.base');
+        return view('livewire.admin.admin-home-slider-component', [
+            'sliders' => HomeSlider::orderBy('created_at', 'ASC')->paginate(10),
+            'sliders' => HomeSlider::when($this->active, function ($query) {
+                $query->where('status', $this->active);
+            })->search(trim($this->search))
+                ->orderBy('created_at', $this->sortBy)
+                ->paginate(10),
+        ])->layout('layouts.base');
     }
 }

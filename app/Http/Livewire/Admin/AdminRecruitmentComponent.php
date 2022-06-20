@@ -10,6 +10,9 @@ use Illuminate\Support\Facades\DB;
 class AdminRecruitmentComponent extends Component
 {
     use WithPagination;
+    public $active = null;
+    public $search;
+    public $sortBy = 'ASC';
 
     public function updateRecruitmentStatus($recruitment_id, $status)
     {
@@ -26,6 +29,13 @@ class AdminRecruitmentComponent extends Component
     public function render()
     {
         $recruitments = Recruitment::orderBy('created_at', 'DESC')->paginate(12);
-        return view('livewire.admin.admin-recruitment-component', ['recruitments' => $recruitments])->layout('layouts.base');
+        return view('livewire.admin.admin-recruitment-component', [
+            'recruitments' => $recruitments,
+            'recruitments' => Recruitment::when($this->active, function ($query) {
+                $query->where('status', $this->active);
+            })->search(trim($this->search))
+                ->orderBy('created_at', $this->sortBy)
+                ->paginate(10),
+        ])->layout('layouts.base');
     }
 }

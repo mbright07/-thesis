@@ -10,23 +10,50 @@
     </style>
     <div class="container" style="padding: 30px 0;">
         <div class="row">
+
             <div class="col-md-12">
+                @if (Session::has('message'))
+                    <div class="alert alert-success" role="alert">{{ Session::get('message') }}</div>
+                @endif
+
                 <div class="panel panel-default">
                     <div class="panel-heading">
                         <div class="row">
-                            <div class="col-md-6">
-                                All Posts
+                            <div class="col-md-2">
+                                <label for="">All Posts</label>
                             </div>
-                            <div class="col-md-6">
-                                <a href="{{ route('admin.addpost') }}" class="btn btn-success pull-right">Add New
-                                    Post</a>
+                            <div>
+                                <div class="col-md-3">
+                                    <label for="">Search</label>
+                                    <input type="text" class="form-control" placeholder="Search..."
+                                        wire:model="search" />
+                                </div>
+                                <div class="col-md-2">
+                                    <label for="active">Status</label>
+                                    <select name="active" class="form-control" wire:model="active">
+                                        <option value="">No Selected</option>
+                                        <option value="0">Inactive</option>
+                                        <option value="1">Active</option>
+                                    </select>
+                                </div>
+                                <div class="col-md-2">
+                                    <label for="sortBy">sortBy</label>
+                                    <select name="sortBy" class="form-control" wire:model="sortBy">
+                                        <option value="asc">Cũ Nhất</option>
+                                        <option value="desc">Mới nhất</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="col-md-2" style="float: right">
+                                <label for=""></label>
+                                <div><a href="{{ route('admin.addpost') }}" class="btn btn-success pull-right">Add New
+                                        Post</a></div>
+
                             </div>
                         </div>
                     </div>
                     <div class="panel-body">
-                        @if (Session::has('message'))
-                            <div class="alert alert-success" role="alert">{{ Session::get('message') }}</div>
-                        @endif
+
                         <table class='table table-striped'>
                             <thead>
                                 <th>Id</th>

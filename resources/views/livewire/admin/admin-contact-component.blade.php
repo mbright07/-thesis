@@ -1,10 +1,11 @@
 <div>
     <div class="container" style="padding: 30px 0;">
         <style>
-            nav svg{
+            nav svg {
                 height: 20px;
             }
-            nav.hidden{
+
+            nav.hidden {
                 display: block !important;
             }
         </style>
@@ -12,7 +13,23 @@
             <div class="col-md-12">
                 <div class="panel panel-default">
                     <div class="panel-heading">
-                        {{ __('admin/admin-contact.con_mes') }}
+                        <div class="row">
+                            <div class="col-md-4">
+                                <label for="">{{ __('admin/admin-contact.con_mes') }}</label>
+                            </div>
+                            <div class="col-md-3">
+                                <label for="">Search</label>
+                                <input type="text" class="form-control" placeholder="Search..."
+                                    wire:model="search" />
+                            </div>
+                            <div class="col-md-2">
+                                <label for="sortBy">sortBy</label>
+                                <select name="sortBy" class="form-control" wire:model="sortBy">
+                                    <option value="asc">Cũ Nhất</option>
+                                    <option value="desc">Mới nhất</option>
+                                </select>
+                            </div>
+                        </div>
                     </div>
                     <div class="panel-body">
                         <table class="table table-striped">

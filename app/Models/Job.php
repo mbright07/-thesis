@@ -34,4 +34,12 @@ class Job extends Model
         $this->totalviews++;
         return $this->save();
     }
+
+    public function scopeSearch($query, $term)
+    {
+        $term = "%$term%";
+        $query->where(function ($query) use ($term) {
+            $query->where('name', 'LIKE', $term);
+        });
+    }
 }
