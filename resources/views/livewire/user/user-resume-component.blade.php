@@ -309,7 +309,8 @@
                 <div class="left-content">
                     <div class="profile">
                         <div class="image">
-                            {{-- <img src="{{ asset('/assets/images/profile') }}/{{ $profiles->image }}" alt=""> --}}
+                            <img src="{{ asset('/assets/images/profile') }}/{{ $users->profile->image }}"
+                                alt="">
                         </div>
                         <h2 class="name">{{ $users->name }}</h2>
                         <p class="career">Công việc mong muốn</p>
@@ -427,8 +428,8 @@
                                 </div>
                             @endif
                         @endforeach
-
                     </div>
+
                     <div class="education sect">
                         <h2 class="right-title">education</h2>
                         @foreach ($my_education as $my_education)
@@ -451,6 +452,7 @@
                             @endif
                         @endforeach
                     </div>
+
                     <div class="awards sect">
                         <h2 class="right-title">Activities</h2>
                         @foreach ($activities as $act)
@@ -471,7 +473,8 @@
                             @endif
                         @endforeach
                     </div>
-                    <div class="awards sect">
+
+                    <div class="education sect">
                         <h2 class="right-title">Certifications</h2>
                         @foreach ($certifications as $cer)
                             @if ($cer->user_id === Auth::user()->id)

@@ -6,6 +6,7 @@ use App\Models\Category;
 use App\Models\HomeCategory;
 use App\Models\HomeSlider;
 use App\Models\Job;
+use App\Models\Post;
 use Illuminate\Support\Facades\Auth;
 use Cart;
 use Livewire\Component;
@@ -21,11 +22,12 @@ class HomeComponent extends Component
         $categories = Category::whereIn('id', $cats)->get();
         $no_of_jobs = $category->no_of_jobs;
         $top_views = Job::orderBy('totalviews', 'DESC')->get()->take(8);
+        $lposts = Post::orderBy('created_at', 'DESC')->get()->take(8);
 
         if (Auth::check()) {
             Cart::instance('bookmark')->restore(Auth::user()->email);
             Cart::instance('wishlist')->restore(Auth::user()->email);
         }
-        return view('livewire.home-component', ['sliders' => $sliders, 'ljobs' => $ljobs, 'categories' => $categories, 'no_of_jobs' => $no_of_jobs, 'top_views' => $top_views])->layout('layouts.base');
+        return view('livewire.home-component', ['sliders' => $sliders, 'ljobs' => $ljobs, 'categories' => $categories, 'no_of_jobs' => $no_of_jobs, 'top_views' => $top_views, 'lposts' => $lposts])->layout('layouts.base');
     }
 }

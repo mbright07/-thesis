@@ -149,7 +149,8 @@
                                                 title="{{ $ljob->name }}">
                                                 <figure><img
                                                         src="{{ asset('assets/images/products') }}/{{ $ljob->image }}"
-                                                        width="800" height="800" alt="{{ $ljob->name }}"></figure>
+                                                        width="800" height="800" alt="{{ $ljob->name }}">
+                                                </figure>
                                             </a>
                                         </div>
                                         <div class="product-info">
@@ -184,159 +185,28 @@
                                 data-items="5" data-loop="false" data-nav="true" data-dots="false"
                                 data-responsive='{"0":{"items":"1"},"480":{"items":"2"},"768":{"items":"3"},"992":{"items":"4"},"1200":{"items":"5"}}'>
 
-                                <div class="product product-style-2 equal-elem ">
-                                    <div class="product-thumnail">
-                                        <a href="detail.html" title="T-Shirt Raw Hem Organic Boro Constrast Denim">
-                                            <figure><img src="{{ asset('assets/images/blogs/blog-article-1.jpg') }}"
-                                                    width="800" height="800"
-                                                    alt="T-Shirt Raw Hem Organic Boro Constrast Denim"></figure>
-                                        </a>
-                                        <div class="group-flash">
-                                            <span class="flash-item new-label">new</span>
+                                @foreach ($lposts as $lpost)
+                                    <div class="product product-style-2 equal-elem">
+                                        <div class="product-thumnail">
+                                            <a href="{{ route('post.details', ['slug' => $lpost->slug]) }}"
+                                                title="{{ $lpost->title }}">
+                                                <figure><img
+                                                        src="{{ asset('assets/images/posts') }}/{{ $lpost->image }}"
+                                                        width="800" height="800" alt="{{ $lpost->title }}">
+                                                </figure>
+                                            </a>
                                         </div>
-                                        <div class="wrap-btn">
-                                            <a href="#" class="function-link">quick view</a>
-                                        </div>
-                                    </div>
-                                    <div class="product-info">
-                                        <a href="#" class="product-name"><span>Phải làm gì khi cảm thấy cấp trên không
-                                                đủ năng lực dẫn dắt?</span></a>
-                                    </div>
-                                </div>
-
-                                <div class="product product-style-2 equal-elem ">
-                                    <div class="product-thumnail">
-                                        <a href="detail.html" title="T-Shirt Raw Hem Organic Boro Constrast Denim">
-                                            <figure><img src="{{ asset('assets/images/blogs/blog-article-2.jpg') }}"
-                                                    width="800" height="800"
-                                                    alt="T-Shirt Raw Hem Organic Boro Constrast Denim"></figure>
-                                        </a>
-                                        <div class="wrap-btn">
-                                            <a href="#" class="function-link">quick view</a>
+                                        <div class="product-info" style="height: 200px;">
+                                            <a href="{{ route('post.details', ['slug' => $lpost->slug]) }}"
+                                                class="product-name"><span>{{ $lpost->title }}</span></a>
+                                            <div class="wrap-price" style="margin-left: -28px;">
+                                                <p class="product-price">
+                                                    Post at {{ $lpost->created_at->format('Y-m-d') }}
+                                                </p>
+                                            </div>
                                         </div>
                                     </div>
-                                    <div class="product-info">
-                                        <a href="#" class="product-name"><span>Những câu nói “đại kỵ” khi giao tiếp
-                                                với đồng nghiệp</span></a>
-                                    </div>
-                                </div>
-
-                                <div class="product product-style-2 equal-elem ">
-                                    <div class="product-thumnail">
-                                        <a href="detail.html" title="T-Shirt Raw Hem Organic Boro Constrast Denim">
-                                            <figure><img src="{{ asset('assets/images/blogs/blog-article-3.jpg') }}"
-                                                    width="800" height="800"
-                                                    alt="T-Shirt Raw Hem Organic Boro Constrast Denim"></figure>
-                                        </a>
-                                        <div class="group-flash">
-                                            <span class="flash-item new-label">new</span>
-                                        </div>
-                                        <div class="wrap-btn">
-                                            <a href="#" class="function-link">quick view</a>
-                                        </div>
-                                    </div>
-                                    <div class="product-info">
-                                        <a href="#" class="product-name"><span>Được và mất khi đồng nghiệp cũ rủ qua
-                                                công ty mới làm chung</span></a>
-                                    </div>
-                                </div>
-
-                                <div class="product product-style-2 equal-elem ">
-                                    <div class="product-thumnail">
-                                        <a href="detail.html" title="T-Shirt Raw Hem Organic Boro Constrast Denim">
-                                            <figure><img src="{{ asset('assets/images/blogs/blog-article-4.jpg') }}"
-                                                    width="800" height="800"
-                                                    alt="T-Shirt Raw Hem Organic Boro Constrast Denim"></figure>
-                                        </a>
-                                        <div class="group-flash">
-                                            <span class="flash-item bestseller-label">Hot</span>
-                                        </div>
-                                        <div class="wrap-btn">
-                                            <a href="#" class="function-link">quick view</a>
-                                        </div>
-                                    </div>
-                                    <div class="product-info">
-                                        <a href="#" class="product-name"><span>Muốn làm sếp, trước hết hãy học cách
-                                                quản lý bản thân!</span></a>
-                                    </div>
-                                </div>
-
-                                <div class="product product-style-2 equal-elem ">
-                                    <div class="product-thumnail">
-                                        <a href="detail.html" title="T-Shirt Raw Hem Organic Boro Constrast Denim">
-                                            <figure><img src="{{ asset('assets/images/blogs/blog-article-5.jpg') }}"
-                                                    width="800" height="800"
-                                                    alt="T-Shirt Raw Hem Organic Boro Constrast Denim"></figure>
-                                        </a>
-                                        <div class="wrap-btn">
-                                            <a href="#" class="function-link">quick view</a>
-                                        </div>
-                                    </div>
-                                    <div class="product-info">
-                                        <a href="#" class="product-name"><span>Không rèn luyện 3 kỹ năng này, nhiều
-                                                người trẻ có nguy cơ mất việc làm</span></a>
-                                    </div>
-                                </div>
-
-                                <div class="product product-style-2 equal-elem ">
-                                    <div class="product-thumnail">
-                                        <a href="detail.html" title="T-Shirt Raw Hem Organic Boro Constrast Denim">
-                                            <figure><img src="{{ asset('assets/images/blogs/blog-article-1.jpg') }}"
-                                                    width="800" height="800"
-                                                    alt="T-Shirt Raw Hem Organic Boro Constrast Denim"></figure>
-                                        </a>
-                                        <div class="group-flash">
-                                            <span class="flash-item new-label">new</span>
-                                        </div>
-                                        <div class="wrap-btn">
-                                            <a href="#" class="function-link">quick view</a>
-                                        </div>
-                                    </div>
-                                    <div class="product-info">
-                                        <a href="#" class="product-name"><span>Bỏ túi tuyệt chiêu trị đồng nghiệp
-                                                ương ngạnh hay chất vấn</span></a>
-                                    </div>
-                                </div>
-
-                                <div class="product product-style-2 equal-elem ">
-                                    <div class="product-thumnail">
-                                        <a href="detail.html" title="T-Shirt Raw Hem Organic Boro Constrast Denim">
-                                            <figure><img src="{{ asset('assets/images/blogs/blog-article-3.jpg') }}"
-                                                    width="800" height="800"
-                                                    alt="T-Shirt Raw Hem Organic Boro Constrast Denim"></figure>
-                                        </a>
-                                        <div class="group-flash">
-                                            <span class="flash-item new-label">new</span>
-                                        </div>
-                                        <div class="wrap-btn">
-                                            <a href="#" class="function-link">quick view</a>
-                                        </div>
-                                    </div>
-                                    <div class="product-info">
-                                        <a href="#" class="product-name"><span>Bí kíp tìm kiếm công việc năm 2022 bạn
-                                                cần phải biết</span></a>
-                                    </div>
-                                </div>
-
-                                <div class="product product-style-2 equal-elem ">
-                                    <div class="product-thumnail">
-                                        <a href="detail.html" title="T-Shirt Raw Hem Organic Boro Constrast Denim">
-                                            <figure><img src="{{ asset('assets/images/blogs/blog-article-5.jpg') }}"
-                                                    width="800" height="800"
-                                                    alt="T-Shirt Raw Hem Organic Boro Constrast Denim"></figure>
-                                        </a>
-                                        <div class="group-flash">
-                                            <span class="flash-item bestseller-label">Hot</span>
-                                        </div>
-                                        <div class="wrap-btn">
-                                            <a href="#" class="function-link">quick view</a>
-                                        </div>
-                                    </div>
-                                    <div class="product-info">
-                                        <a href="#" class="product-name"><span>Phải làm gì khi đã cố gắng nhưng không
-                                                được sếp trọng dụng?</span></a>
-                                    </div>
-                                </div>
+                                @endforeach
 
                             </div>
                         </div>

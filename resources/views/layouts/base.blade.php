@@ -27,10 +27,6 @@
         crossorigin="anonymous" referrerpolicy="no-referrer" />
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
 
-    {{-- <link href="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css"> --}}
-    {{-- <link href="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css"> --}}
-    {{-- <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"> --}}
-
     @livewireStyles
 </head>
 
@@ -50,10 +46,6 @@
             <div class="row">
                 <div class="topbar-menu-area">
                     <div class="container">
-                        <div class="topbar-menu left-menu">
-                            <ul>
-                            </ul>
-                        </div>
                         <div class="topbar-menu right-menu">
                             <ul>
                                 @if (Route::has('login'))
