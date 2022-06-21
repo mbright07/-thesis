@@ -81,6 +81,7 @@ class AdminEditJobCompoent extends Component
             'category_id' => 'required'
         ]);
         $job = Job::find($this->job_id);
+        $job->user_id = Auth::user()->id;
         $job->name = $this->name;
         $job->slug = $this->slug;
         $job->short_description = $this->short_description;

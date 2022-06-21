@@ -84,19 +84,6 @@
 
                             <div class="form-group">
                                 <div class="col-xs-6">
-                                    <label for="phone">
-                                        <h4>Date of Birthday</h4>
-                                    </label>
-                                    <input type="date" class="form-control" name="birthday" id="date_of_birth"
-                                        placeholder="birthday" title="enter your birthday." wire:model="date_of_birth">
-                                    @error('date_of_birth')
-                                        <p class="text-danger">{{ $message }}</p>
-                                    @enderror
-                                </div>
-                            </div>
-
-                            <div class="form-group">
-                                <div class="col-xs-6">
                                     <label for="mobile">
                                         <h4>Mobile</h4>
                                     </label>
@@ -108,49 +95,66 @@
                                     @enderror
                                 </div>
                             </div>
-
-                            <div class="form-group">
-                                <div class="col-xs-6">
-                                    <label for="gender">
-                                        <h4>Gender</h4>
-                                    </label>
-                                    <div>
-                                        <select class="form-control" name="gender" wire:model="gender">
-                                            <option>--Select gender--
-                                            </option>
-                                            @foreach (['Male', 'Female', 'Other'] as $item)
-                                                <option value={{ $item }}>
-                                                    {{ $item }}</option>
-                                            @endforeach
-                                        </select>
-                                        @error('gender')
+                            @if (Auth::user()->role_id === 2)
+                                <div class="form-group">
+                                    <div class="col-xs-6">
+                                        <label for="phone">
+                                            <h4>Date of Birthday</h4>
+                                        </label>
+                                        <input type="date" class="form-control" name="birthday" id="date_of_birth"
+                                            placeholder="birthday" title="enter your birthday."
+                                            wire:model="date_of_birth">
+                                        @error('date_of_birth')
                                             <p class="text-danger">{{ $message }}</p>
                                         @enderror
                                     </div>
                                 </div>
-                            </div>
 
-                            <div class="form-group">
-                                <div class="col-xs-6">
-                                    <label for="marital_status">
-                                        <h4>Marital Status</h4>
-                                    </label>
-                                    <div>
-                                        <select class="form-control" name="marital_status"
-                                            wire:model="marital_status">
-                                            <option>--Select marital status--
-                                            </option>
-                                            @foreach (['Single', 'Married'] as $item)
-                                                <option value={{ $item }}>
-                                                    {{ $item }}</option>
-                                            @endforeach
-                                        </select>
-                                        @error('marital_status')
-                                            <p class="text-danger">{{ $message }}</p>
-                                        @enderror
+
+
+                                <div class="form-group">
+                                    <div class="col-xs-6">
+                                        <label for="gender">
+                                            <h4>Gender</h4>
+                                        </label>
+                                        <div>
+                                            <select class="form-control" name="gender" wire:model="gender">
+                                                <option>--Select gender--
+                                                </option>
+                                                @foreach (['Male', 'Female', 'Other'] as $item)
+                                                    <option value={{ $item }}>
+                                                        {{ $item }}</option>
+                                                @endforeach
+                                            </select>
+                                            @error('gender')
+                                                <p class="text-danger">{{ $message }}</p>
+                                            @enderror
+                                        </div>
                                     </div>
                                 </div>
-                            </div>
+
+                                <div class="form-group">
+                                    <div class="col-xs-6">
+                                        <label for="marital_status">
+                                            <h4>Marital Status</h4>
+                                        </label>
+                                        <div>
+                                            <select class="form-control" name="marital_status"
+                                                wire:model="marital_status">
+                                                <option>--Select marital status--
+                                                </option>
+                                                @foreach (['Single', 'Married'] as $item)
+                                                    <option value={{ $item }}>
+                                                        {{ $item }}</option>
+                                                @endforeach
+                                            </select>
+                                            @error('marital_status')
+                                                <p class="text-danger">{{ $message }}</p>
+                                            @enderror
+                                        </div>
+                                    </div>
+                                </div>
+                            @endif
 
                             <div class="form-group">
                                 <div class="col-xs-6">

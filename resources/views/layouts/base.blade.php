@@ -121,6 +121,18 @@
                                                             href="{{ route('employer.dashboard') }}">{{ __('base.dashboard') }}</a>
                                                     </li>
                                                     <li class="menu-item">
+                                                        <a title="Jobs"
+                                                            href="{{ route('employer.jobs') }}">{{ __('base.all_jobs') }}</a>
+                                                    </li>
+                                                    <li class="menu-item">
+                                                        <a title="My Profile"
+                                                            href="{{ route('employer.profile') }}">{{ __('base.my_profile') }}</a>
+                                                    </li>
+                                                    <li class="menu-item">
+                                                        <a title="Change Password"
+                                                            href="{{ route('employer.changepassword') }}">{{ __('base.change_password') }}</a>
+                                                    </li>
+                                                    <li class="menu-item">
                                                         <a title="Logout" href="{{ route('logout') }}"
                                                             onclick="event.preventDefault(); document.getElementById('logout-form').submit();">{{ __('base.logout') }}</a>
                                                     </li>

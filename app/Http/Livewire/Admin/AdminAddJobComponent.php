@@ -9,6 +9,7 @@ use App\Models\Subcategory;
 use Illuminate\Support\Str;
 use Illuminate\Support\Carbon;
 use Livewire\WithFileUploads;
+use Illuminate\Support\Facades\Auth;
 
 class AdminAddJobComponent extends Component
 {
@@ -67,6 +68,7 @@ class AdminAddJobComponent extends Component
             'category_id' => 'required'
         ]);
         $job = new Job();
+        $job->user_id = Auth::user()->id;
         $job->name = $this->name;
         $job->slug = $this->slug;
         $job->short_description = $this->short_description;

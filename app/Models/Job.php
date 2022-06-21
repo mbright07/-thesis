@@ -14,6 +14,8 @@ class Job extends Model
 
     protected $table = "jobs";
 
+    protected $fillable = ['user_id', 'name', 'description', 'regular_salary'];
+
     public function category()
     {
         return $this->belongsTo(Category::class, 'category_id');

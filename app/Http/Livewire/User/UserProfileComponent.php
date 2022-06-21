@@ -37,10 +37,12 @@ class UserProfileComponent extends Component
         $this->email = $user ? $user->email : '';
         $this->mobile = $user->profile ? $user->profile->mobile : '';
         $this->image = $user->profile ? $user->profile->image : '';
-        $this->date_of_birth = $user->profile ? $user->profile->date_of_birth : '';
+        if (Auth::user()->role_id == 2) {
+            $this->date_of_birth = $user->profile ? $user->profile->date_of_birth : '';
+            $this->gender = $user->profile ? $user->profile->gender : '';
+            $this->marital_status = $user->profile ? $user->profile->marital_status : '';
+        }
         $this->intro = $user->profile ? $user->profile->intro : '';
-        $this->gender = $user->profile ? $user->profile->gender : '';
-        $this->marital_status = $user->profile ? $user->profile->marital_status : '';
         $this->city = $user->profile ? $user->profile->city : '';
         $this->province = $user->profile ? $user->profile->province : '';
         $this->country = $user->profile ? $user->profile->country : '';
@@ -49,36 +51,64 @@ class UserProfileComponent extends Component
 
     public function updated($fields)
     {
-        $this->validateOnly($fields, [
-            'name' => 'required',
-            'email' => 'required|email',
-            'mobile' => 'required',
-            'date_of_birth' => 'required',
-            'intro' => 'required',
-            'gender' => 'required',
-            'marital_status' => 'required',
-            'city' => 'required',
-            'province' => 'required',
-            'country' => 'required',
-            'address' => 'required'
-        ]);
+        if (Auth::user()->role_id == 2) {
+            $this->validate([
+                'name' => 'required',
+                'email' => 'required|email',
+                'mobile' => 'required',
+                'date_of_birth' => 'required',
+                'intro' => 'required',
+                'gender' => 'required',
+                'marital_status' => 'required',
+                'city' => 'required',
+                'province' => 'required',
+                'country' => 'required',
+                'address' => 'required'
+            ]);
+        } else {
+            $this->validate([
+                'name' => 'required',
+                'email' => 'required|email',
+                'mobile' => 'required',
+                'intro' => 'required',
+                'city' => 'required',
+                'province' => 'required',
+                'country' => 'required',
+                'address' => 'required'
+            ]);
+        }
     }
 
     public function saveProfile()
     {
-        $this->validate([
-            'name' => 'required',
-            'email' => 'required|email',
-            'mobile' => 'required',
-            'date_of_birth' => 'required',
-            'intro' => 'required',
-            'gender' => 'required',
-            'marital_status' => 'required',
-            'city' => 'required',
-            'province' => 'required',
-            'country' => 'required',
-            'address' => 'required'
-        ]);
+        if (Auth::user()->role_id == 2) {
+            $this->validate([
+                'name' => 'required',
+                'email' => 'required|email',
+                'mobile' => 'required',
+                'date_of_birth' => 'required',
+                'intro' => 'required',
+                'gender' => 'required',
+                'marital_status' => 'required',
+                'city' => 'required',
+                'province' => 'required',
+                'country' => 'required',
+                'address' => 'required'
+            ]);
+        } else {
+            $this->validate([
+                'name' => 'required',
+                'email' => 'required|email',
+                'mobile' => 'required',
+                'intro' => 'required',
+                'city' => 'required',
+                'province' => 'required',
+                'country' => 'required',
+                'address' => 'required'
+            ]);
+        }
+
+
         $user = User::find(Auth::user()->id);
         $user->name = $this->name;
         $user->email = $this->email;
@@ -92,13 +122,14 @@ class UserProfileComponent extends Component
             }
             $imagename = Carbon::now()->timestamp . '.' . $this->newimage->extension();
             $this->newimage->storeAs('profile', $imagename);
-            $user->profile->image = $imagename;
+            $profile->image = $imagename;
         }
-
-        $profile->date_of_birth = $this->date_of_birth;
+        if (Auth::user()->role_id == 2) {
+            $profile->date_of_birth = $this->date_of_birth;
+            $profile->gender = $this->gender;
+            $profile->marital_status = $this->marital_status;
+        }
         $profile->intro = $this->intro;
-        $profile->gender = $this->gender;
-        $profile->marital_status = $this->marital_status;
         $profile->city = $this->city;
         $profile->province = $this->province;
         $profile->country = $this->country;

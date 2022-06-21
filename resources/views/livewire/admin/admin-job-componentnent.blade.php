@@ -17,12 +17,22 @@
                 <div class="panel panel-default">
                     <div class="panel-heading">
                         <div class="row">
-                            <div class="col-md-2">
-                                <label for="">{{ __('admin/admin-add-job.all_jobs') }}</label>
-                                <div><a href="{{ route('admin.addjob') }}"
-                                        class="btn btn-success pull-right">{{ __('admin/admin-add-job.add_job') }}</a>
+                            @if (Auth::user()->id === 1)
+                                <div class="col-md-2">
+                                    <label for="">{{ __('admin/admin-add-job.all_jobs') }}</label>
+                                    <div><a href="{{ route('admin.addjob') }}"
+                                            class="btn btn-success pull-right">{{ __('admin/admin-add-job.add_job') }}</a>
+                                    </div>
                                 </div>
-                            </div>
+                            @else
+                                <div class="col-md-2">
+                                    <label for="">{{ __('admin/admin-add-job.all_jobs') }}</label>
+                                    <div><a href="{{ route('employer.addjob') }}"
+                                            class="btn btn-success pull-right">{{ __('admin/admin-add-job.add_job') }}</a>
+                                    </div>
+                                </div>
+                            @endif
+
                             <div>
                                 {{-- <div class="col-md-3">
                                     <label for="">Location</label>
@@ -70,26 +80,40 @@
                             </thead>
                             <tbody>
                                 @foreach ($jobs as $job)
-                                    <tr>
-                                        <td>{{ $job->id }}</td>
-                                        <td> <img src="{{ asset('assets/images/products') }}/{{ $job->image }}"
-                                                width="60" /></td>
-                                        <td>{{ $job->name }}</td>
-                                        <td>{{ $job->stock_status }}</td>
-                                        <td>{{ $job->regular_salary }}</td>
-                                        <td>{{ $job->category->name }}</td>
-                                        <td>{{ $job->created_at }}</td>
-                                        <td>
-                                            <a href="{{ route('admin.editjob', ['job_slug' => $job->slug]) }}">
-                                                <i class="fa fa-edit fa-2x text-info"></i>
-                                            </a>
-                                            <a href="#"
-                                                onclick="confirm('{{ __('admin/admin-add-job.sure') }}') || event.stopImmediatePropagation()"
-                                                wire:click.prevent="deleteJob({{ $job->id }})"
-                                                style="margin-left: 10px;"><i
-                                                    class="fa fa-times fa-2x text-danger"></i></a>
-                                        </td>
-                                    </tr>
+                                    @if ($job->user_id === Auth::user()->id)
+                                        <tr>
+                                            <td>{{ $job->id }}</td>
+                                            <td> <img
+                                                    src="{{ asset('assets/images/products') }}/{{ $job->image }}"
+                                                    width="60" /></td>
+                                            <td>{{ $job->name }}</td>
+                                            <td>{{ $job->stock_status }}</td>
+                                            <td>{{ $job->regular_salary }}</td>
+                                            <td>{{ $job->category->name }}</td>
+                                            <td>{{ $job->created_at }}</td>
+                                            <td>
+                                                @if (Auth::user()->id === 1)
+                                                    {
+                                                    <a
+                                                        href="{{ route('admin.editjob', ['job_slug' => $job->slug]) }}">
+                                                        <i class="fa fa-edit fa-2x text-info"></i>
+                                                    </a>
+                                                }@else{
+                                                    <a
+                                                        href="{{ route('employer.editjob', ['job_slug' => $job->slug]) }}">
+                                                        <i class="fa fa-edit fa-2x text-info"></i>
+                                                    </a>
+                                                    }
+                                                @endif
+
+                                                <a href="#"
+                                                    onclick="confirm('{{ __('admin/admin-add-job.sure') }}') || event.stopImmediatePropagation()"
+                                                    wire:click.prevent="deleteJob({{ $job->id }})"
+                                                    style="margin-left: 10px;"><i
+                                                        class="fa fa-times fa-2x text-danger"></i></a>
+                                            </td>
+                                        </tr>
+                                    @endif
                                 @endforeach
                             </tbody>
                         </table>

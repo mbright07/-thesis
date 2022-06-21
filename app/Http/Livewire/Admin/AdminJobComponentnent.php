@@ -5,6 +5,7 @@ namespace App\Http\Livewire\Admin;
 use App\Models\Category;
 use Livewire\Component;
 use App\Models\Job;
+use Auth;
 use Illuminate\Support\Facades\DB;
 use Livewire\WithPagination;
 

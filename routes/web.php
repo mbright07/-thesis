@@ -108,6 +108,11 @@ Route::group(['middleware' => 'locale'], function () {
         //For Employer
         Route::group(['middleware' => 'role:employer'], function () {
             Route::get('/employer/dashboard', EmployerDashBoardComponent::class)->name('employer.dashboard');
+            Route::get('/employer/profile', UserProfileComponent::class)->name('employer.profile');
+            Route::get('/employer/change-password', UserChangePasswordCompponent::class)->name('employer.changepassword');
+            Route::get('/employer/jobs', AdminJobComponentnent::class)->name('employer.jobs');
+            Route::get('/employer/job/add', AdminAddJobComponent::class)->name('employer.addjob');
+            Route::get('/employer/job/edit/{job_slug}', AdminEditJobCompoent::class)->name('employer.editjob');
         });
 
         //For Admin
