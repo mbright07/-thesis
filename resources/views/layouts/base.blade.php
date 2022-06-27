@@ -255,7 +255,7 @@
                                                 aria-hidden="true"></i></a>
                                     </li>
                                     <li class="menu-item">
-                                        <a href="/blog"
+                                        <a href="/jobs"
                                             class="link-term mercado-item-title">{{ __('base.jobs') }}</a>
                                     </li>
                                     <li class="menu-item">

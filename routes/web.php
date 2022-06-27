@@ -66,7 +66,7 @@ Route::group(['middleware' => 'locale'], function () {
 
     Route::get('/', HomeComponent::class);
 
-    Route::get('/blog', BlogComponent::class);
+    Route::get('/jobs', BlogComponent::class);
 
     Route::get('/bookmark', CartComponent::class)->name('job.bookmark');
 

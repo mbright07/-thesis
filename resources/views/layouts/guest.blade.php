@@ -4,7 +4,7 @@
 	<meta charset="utf-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
-	<title>Home</title>	
+	<title>Home</title>
     <link rel="shortcut icon" type="image/x-icon" href="assets/images/favicon.ico">
 	<link href="https://fonts.googleapis.com/css?family=Lato:300,400,400italic,700,700italic,900,900italic&amp;subset=latin,latin-ext" rel="stylesheet">
 	<link href="https://fonts.googleapis.com/css?family=Open%20Sans:300,400,400italic,600,600italic,700,700italic&amp;subset=latin,latin-ext" rel="stylesheet">
@@ -53,7 +53,7 @@
 													</li>
 													<form id="logout-form" method="POST" action="{{ route('logout') }}">
 														@csrf
-														
+
 													</form>
 												</ul>
 											</li>
@@ -69,12 +69,12 @@
 													</li>
 													<form id="logout-form" method="POST" action="{{ route('logout') }}">
 														@csrf
-														
+
 													</form>
 												</ul>
 											</li>
 										@endif
-										
+
 									@else
 										<li class="menu-item" ><a title="Register or Login" href="{{ route('login') }}">{{ __('guest.login') }}</a></li>
 										<li class="menu-item" ><a title="Register or Login" href="{{ route('register') }}">{{ __('guest.register') }}</a></li>
@@ -173,7 +173,7 @@
 									<a href="/" class="link-term mercado-item-title"><i class="fa fa-home" aria-hidden="true"></i></a>
 								</li>
 								<li class="menu-item">
-									<a href="/blog" class="link-term mercado-item-title">{{ __('guest.jobs') }}</a>
+									<a href="/jobs" class="link-term mercado-item-title">{{ __('guest.jobs') }}</a>
 								</li>
 								<li class="menu-item">
 									<a href="/cart" class="link-term mercado-item-title">{{ __('guest.bookmark') }}</a>
@@ -186,7 +186,7 @@
 								</li>
 								<li class="menu-item">
 									<a href="#" class="link-term mercado-item-title">{{ __('guest.about_us') }}/a>
-								</li>																	
+								</li>
 							</ul>
 						</div>
 					</div>
@@ -250,10 +250,10 @@
 					<div class="coppy-right-item item-right">
 						<div class="wrap-nav horizontal-nav">
 							<ul>
-								<li class="menu-item"><a href="about-us.html" class="link-term">About us</a></li>								
+								<li class="menu-item"><a href="about-us.html" class="link-term">About us</a></li>
 								<li class="menu-item"><a href="privacy-policy.html" class="link-term">Privacy Policy</a></li>
 								<li class="menu-item"><a href="terms-conditions.html" class="link-term">Terms & Conditions</a></li>
-								<li class="menu-item"><a href="return-policy.html" class="link-term">Return Policy</a></li>								
+								<li class="menu-item"><a href="return-policy.html" class="link-term">Return Policy</a></li>
 							</ul>
 						</div>
 					</div>
@@ -262,7 +262,7 @@
 			</div>
 		</div>
 	</footer>
-	
+
 	<script src="{{ asset('assets/js/jquery-1.12.4.minb8ff.js?ver=1.12.4') }}"></script>
 	<script src="{{ asset('assets/js/jquery-ui-1.12.4.minb8ff.js?ver=1.12.4') }}"></script>
 	<script src="{{ asset('assets/js/bootstrap.min.js') }}"></script>

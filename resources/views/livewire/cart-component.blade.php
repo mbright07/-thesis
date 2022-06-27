@@ -61,7 +61,7 @@
 
                 <div class="summary">
                     <div class="checkout-info">
-                        <a class="link-to-shop" href="/blog"
+                        <a class="link-to-shop" href="/jobs"
                             style="font-size: 18px;">{{ __('bookmark.continue') }}<i class="fa fa-arrow-circle-right"
                                 aria-hidden="true"></i></a>
                     </div>
