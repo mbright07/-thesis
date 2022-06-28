@@ -37,7 +37,7 @@ class AdminJobComponentnent extends Component
             'categories' => Category::all(),
             'jobs' => Job::orderBy('created_at', 'ASC')->paginate(10),
             'jobs' => Job::when($this->active, function ($query) {
-                $query->where('stock_status', $this->active);
+                $query->where('stock_status', $this->active)->where('user_id', Auth::user()->id);
             })->search(trim($this->search))
                 ->orderBy('created_at', $this->sortBy)
                 ->paginate(10),

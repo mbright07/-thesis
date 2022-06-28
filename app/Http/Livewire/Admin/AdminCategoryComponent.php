@@ -32,6 +32,6 @@ class AdminCategoryComponent extends Component
         $categories = Category::where('name', 'LIKE', $search)->paginate(5);
 
 
-        return view('livewire.admin.admin-category-component', ['categories' => $categories])->layout('layouts.admin-base');
+        return view('livewire.admin.admin-category-component', ['categories' => $categories])->layout('layouts.base');
     }
 }

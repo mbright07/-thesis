@@ -21,6 +21,10 @@ class BlogComponent extends Component
 
     public $popular_jobs;
 
+    public $search;
+    public $job_cat;
+    public $job_cat_id;
+
     public function mount()
     {
         $this->category = 'default';
@@ -31,6 +35,8 @@ class BlogComponent extends Component
         $this->max_salary = 1000;
 
         $this->popular_jobs = Job::orderBy('totalviews', 'desc')->limit(12)->get();
+
+        $this->fill(request()->only('search', 'job_cat', 'job_cat_id'));
     }
 
     public function company($job_id, $job_name, $job_salary)
@@ -90,8 +96,6 @@ class BlogComponent extends Component
             $this->popular_jobs = Job::orderBy('totalviews', 'desc')->limit(12)->get();
             $jobs = Job::whereBetween('regular_salary', [$this->min_salary, $this->max_salary])->paginate($this->pagesize);
         }
-
-//        dump($this->sorting . '  ' . $jobs[1]['id']);
 
         $categories = Category::all();
 

@@ -80,7 +80,7 @@
                             </thead>
                             <tbody>
                                 @foreach ($jobs as $job)
-                                    @if ($job->user_id === Auth::user()->id)
+
                                         <tr>
                                             <td>{{ $job->id }}</td>
                                             <td> <img
@@ -113,7 +113,7 @@
                                                         class="fa fa-times fa-2x text-danger"></i></a>
                                             </td>
                                         </tr>
-                                    @endif
+
                                 @endforeach
                             </tbody>
                         </table>

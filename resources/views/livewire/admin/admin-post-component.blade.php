@@ -32,7 +32,7 @@
                                     <label for="active">Status</label>
                                     <select name="active" class="form-control" wire:model="active">
                                         <option value="">No Selected</option>
-                                        <option value="0">Inactive</option>
+                                        <option value="false">Inactive</option>
                                         <option value="1">Active</option>
                                     </select>
                                 </div>
