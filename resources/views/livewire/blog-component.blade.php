@@ -112,7 +112,7 @@
                 </div>
 
                 <div class="wrap-pagination-info">
-                    {{ $jobs->links() }}
+                    {{ $jobs->links('pagination::bootstrap-4') }}
                 </div>
             </div>
             <!--end main products area-->
@@ -148,22 +148,11 @@
                 </div><!-- Categories widget-->
 
                 <div class="widget mercado-widget filter-widget brand-widget">
-                    <h2 class="widget-title">Work location</h2>
+                    <h2 class="widget-title">Job Type</h2>
                     <div class="widget-content">
                         <ul class="list-style vertical-list list-limited" data-show="6">
-                            <li class="list-item"><a class="filter-link active" href="#">Hospital</a></li>
-                            <li class="list-item"><a class="filter-link " href="#">Nursing home</a></li>
-                            <li class="list-item"><a class="filter-link " href="#">Aged care center</a></li>
-                            <li class="list-item"><a class="filter-link " href="#">Clinic</a></li>
-                            <li class="list-item"><a class="filter-link " href="#">Community health facility</a>
-                            </li>
-                            <li class="list-item default-hiden"><a class="filter-link " href="#">Rehabilitation
-                                    center</a></li>
-                            <li class="list-item default-hiden"><a class="filter-link " href="#">School</a></li>
-                            <li class="list-item"><a
-                                    data-label='Show less<i class="fa fa-angle-up" aria-hidden="true"></i>'
-                                    class="btn-control control-show-more" href="#">Show more<i class="fa fa-angle-down"
-                                        aria-hidden="true"></i></a></li>
+                            <li class="list-item"><a class="filter-link" href="#">Full time</a></li>
+                            <li class="list-item"><a class="filter-link" href="#">Part time</a></li>
                         </ul>
                     </div>
                 </div><!-- brand widget-->
@@ -233,7 +222,7 @@
             }
         });
 
-        slider.noUiSlider.on('update', function(value) {
+        slider.noUiSlider.on('change', function(value) {
             @this.set('min_salary', value[0]);
             @this.set('max_salary', value[1]);
         });

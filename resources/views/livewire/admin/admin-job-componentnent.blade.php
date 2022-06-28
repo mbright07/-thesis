@@ -63,6 +63,15 @@
                                         <option value="desc">Mới nhất</option>
                                     </select>
                                 </div>
+                                <div class="col-md-2">
+                                    <label for="sortBy">Location</label>
+                                    <select name="sortBy" class="form-control" wire:model="category_id">
+                                        <option value="" selected="selected">{{ __('search.all_location') }}</option>
+                                        @foreach ($categories as $category)
+                                            <option value="{{ $category->id }}">{{ $category->name }}</option>
+                                        @endforeach
+                                    </select>
+                                </div>
                             </div>
                         </div>
                     </div>
