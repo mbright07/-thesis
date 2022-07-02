@@ -21,7 +21,7 @@
                     <div class="wrap-right">
                         <div class="sort-item orderby ">
                             <select name="orderby" class="use-chosen" wire:model="sorting">
-                                <option value="default" selected="selected">{{ __('search.default') }}</option>
+                                <option value="" selected="selected">{{ __('search.default') }}</option>
                                 <option value="created_at">{{ __('search.sort_newness') }}</option>
                                 <option value="regular_salary">{{ __('search.low_to_high') }}</option>
                                 <option value="regular_salary-desc">{{ __('search.high_to_low') }}</option>
@@ -109,7 +109,7 @@
             <!--end main products area-->
 
             <div class="col-lg-3 col-md-4 col-sm-4 col-xs-12 sitebar">
-                <div class="widget mercado-widget categories-widget">
+                {{--<div class="widget mercado-widget categories-widget">
                     <h2 class="widget-title">{{ __('search.all_location') }}</h2>
                     <div class="widget-content">
                         <ul class="list-category">
@@ -136,31 +136,53 @@
                             @endforeach
                         </ul>
                     </div>
-                </div><!-- Categories widget-->
+                </div><!-- Categories widget-->--}}
 
                 <div class="widget mercado-widget filter-widget brand-widget">
                     <h2 class="widget-title">Job Type</h2>
                     <div class="widget-content">
                         <ul class="list-style vertical-list list-limited" data-show="6">
                             <li class="list-item">
-                                <input class="form-check-input" type="checkbox" value="1" id="fulltime" wire:model="fulltime" />
-                                <label class="form-check-label" for="fulltime">Full Time</label>
+                                <input class="form-check-input" type="checkbox" value="1" id="full_time" wire:model="full_time" />
+                                <label class="form-check-label" for="full_time">Full Time</label>
                             </li>
                             <li class="list-item">
-                                <input class="form-check-input" type="checkbox" value="2" id="parttime" wire:model="parttime" />
-                                <label class="form-check-label" for="parttime">Part Time</label>
+                                <input class="form-check-input" type="checkbox" value="2" id="part_time" wire:model="part_time" />
+                                <label class="form-check-label" for="part_time">Part Time</label>
                             </li>
                         </ul>
                     </div>
                 </div><!-- brand widget-->
 
+                <br/><br/>
+
+               {{-- <div class="widget mercado-widget filter-widget price-filter">
+                    <h2 class="widget-title">{{ __('search.salary_2') }}</h2>
+                    <div class="sort-item orderby ">
+                        <select name="orderby" class="use-chosen" wire:model="salary_select">
+                            <option value="" selected="selected">$1 - $300</option>
+                            <option value="q">$301 - $600</option>
+                            <option value="w">$601 - $1000</option>
+                            <option value="e-desc">> $1000</option>
+                        </select>
+                    </div>
+                </div><!-- Price-->--}}
+
                 <div class="widget mercado-widget filter-widget price-filter">
-                    <h2 class="widget-title">{{ __('search.salary_2') }} <span
-                            class="text-info">${{ $min_salary }} - ${{ $max_salary }}</span></h2>
-                    <div class="widget-content" style="padding: 10px 5px 40px 5px;">
-                        <div id="slider" wire:ignore></div>
+                    <h2 class="widget-title">{{ __('search.salary_2') }}</h2>
+                    <div class="widget-content">
+                        <div id="slider-range"></div>
+                        <p>
+                            <label for="amount">{{ __('search.salary_2') }}:</label>
+                            <input type="text" id="amount" readonly>
+                            <button class="filter-submit">{{ __('search.filter') }}</button>
+                            <input type="hidden" id="salary_below" name="salary_below" wire:model="salary_below">
+                            <input type="hidden" id="salary_above" name="salary_above" wire:model="salary_above">
+                        </p>
                     </div>
                 </div><!-- Price-->
+
+                <br/><br/>
 
                 <div class="widget mercado-widget widget-product">
                     <h2 class="widget-title">{{ __('search.popular') }}</h2>
@@ -203,7 +225,7 @@
 
 
 @push('scripts')
-    <script>
+   {{-- <script>
         var slider = document.getElementById('slider');
         noUiSlider.create(slider, {
             start: [1, 1000],
@@ -223,5 +245,5 @@
             @this.set('min_salary', value[0]);
             @this.set('max_salary', value[1]);
         });
-    </script>
+    </script>--}}
 @endpush

@@ -27,7 +27,7 @@
 
                         <div class="sort-item orderby ">
                             <select name="orderby" class="use-chosen" wire:model="sorting" >
-                                <option value="default" selected="selected">{{ __('search.default') }}</option>
+                                <option value="" selected="selected">{{ __('search.default') }}</option>
                                 <option value="created_at">{{ __('search.sort_newness') }}</option>
                                 <option value="regular_salary">{{ __('search.low_to_high') }}</option>
                                 <option value="price-desc">{{ __('search.high_to_low') }}</option>
@@ -143,6 +143,8 @@
                             <label for="amount">{{ __('search.salary_2') }}:</label>
                             <input type="text" id="amount" readonly>
                             <button class="filter-submit">{{ __('search.filter') }}</button>
+                            <input type="hidden" id="salary_below" wire:model="salary_below">
+                            <input type="hidden" id="salary_above" wire:model="salary_above">
                         </p>
                     </div>
                 </div><!-- Price-->

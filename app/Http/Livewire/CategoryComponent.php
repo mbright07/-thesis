@@ -16,6 +16,9 @@ class CategoryComponent extends Component
     public $category_slug;
     public $sub_category_slug;
 
+    public $salary_below;
+    public $salary_above;
+
     public function mount($category_slug, $sub_category_slug = null)
     {
         $this->sorting = "default";
@@ -34,6 +37,7 @@ class CategoryComponent extends Component
     use WithPagination;
     public function render()
     {
+        var_dump($this->salary_below);
         $category_id = null;
         $category_name = "";
         $filter = "";

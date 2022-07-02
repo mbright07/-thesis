@@ -12,7 +12,6 @@ use Illuminate\Support\Facades\Cookie;
 
 class BlogComponent extends Component
 {
-    public $category;
     public $sorting;
     public $pagesize;
 
@@ -26,19 +25,23 @@ class BlogComponent extends Component
     public $job_cat_id;
     public $is_sub_cat;
 
-    public $job_sub_cat;
-    public $job_sub_cat_id;
+    public $full_time;
+    public $part_time;
+
+    public $salary_below;
+    public $salary_above;
+
+    public $salary_select;
 
     public function mount()
     {
-        $this->category = 'default';
-        $this->sorting = "default";
+        $this->sorting = "";
         $this->pagesize = 12;
 
         $this->min_salary = 1;
         $this->max_salary = 1000;
 
-        $this->popular_jobs = Job::orderBy('totalviews', 'desc')->limit(12)->get();
+        $this->popular_jobs = Job::orderBy('totalviews', 'desc')->limit(10)->get();
 
         $this->fill(request()->only('search', 'job_cat', 'job_cat_id', 'is_sub_cat'));
     }
@@ -87,6 +90,7 @@ class BlogComponent extends Component
     use WithPagination;
     public function render()
     {
+        var_dump($this->sorting);
         if ($this->sorting == 'created_at') {
             $this->popular_jobs = Job::orderBy('totalviews', 'desc')->limit(1)->get();
             $jobs = Job::whereBetween('regular_salary', [$this->min_salary, $this->max_salary])->orderBy('created_at', 'DESC')->paginate($this->pagesize);
@@ -110,28 +114,4 @@ class BlogComponent extends Component
 
         return view('livewire.blog-component', ['jobs' => $jobs, 'categories' => $categories])->layout("layouts.base");
     }
-
-//    public function updatedSorting()
-//    {
-//        if ($this->sorting == 'created_at') {
-//            $jobs = Job::whereBetween('regular_salary', [$this->min_salary, $this->max_salary])->orderBy('created_at', 'DESC')->paginate($this->pagesize);
-//        } else if ($this->sorting == 'regular_salary') {
-//            $jobs = Job::whereBetween('regular_salary', [$this->min_salary, $this->max_salary])->orderBy('regular_salary', 'ASC')->paginate($this->pagesize);
-//        } else if ($this->sorting == 'regular_salary-desc') {
-//            $jobs = Job::whereBetween('regular_salary', [$this->min_salary, $this->max_salary])->orderBy('regular_salary', 'DESC')->paginate($this->pagesize);
-//        } else {
-//            $jobs = Job::whereBetween('regular_salary', [$this->min_salary, $this->max_salary])->paginate($this->pagesize);
-//        }
-//
-//        dump($this->sorting . '  ' . $jobs[1]['id']);
-//
-//        $categories = Category::all();
-//
-//        if (Auth::check()) {
-//            Cart::instance('bookmark')->store(Auth::user()->email);
-//            Cart::instance('wishlist')->store(Auth::user()->email);
-//        }
-//
-//        return view('livewire.blog-component', ['jobs' => $jobs, 'categories' => $categories])->layout("layouts.base");
-//    }
 }

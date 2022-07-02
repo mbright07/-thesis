@@ -7,7 +7,7 @@
                 <input type="hidden" name="job_cat" value="{{ $job_cat }}" id="job-cate">
                 <input type="hidden" name="job_cat_id" value="{{ $job_cat_id }}" id="job-cate-id">
                 <input type="hidden" name="is_sub_cat" value="{{ $is_sub_cat }}" id="job-is_sub_cat">
-                <a href="#" class="link-control">{{ str_split($job_cat, 12)[0] }}</a>
+                <a href="#" class="link-control">{{ $job_cat }}</a>
                 <ul class="list-cate">
                     <li class="level-0">{{ __('search.all_location') }}</li>
                     @foreach ( $categories as $category )

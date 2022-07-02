@@ -68,8 +68,7 @@
 						_value = _this.text(),
 						_content = _this.text(),
 						_title 	 = _this.text();
-                    _content = _content.slice(0, 12);
-                    _this.parent().siblings('a').text(_content).attr('title',_title);
+                    _this.parent().siblings('a').text(_this.text()).attr('title',_title);
                     _this.parent().siblings('input[name="job_cat"]').val(_value);
 					_this.parent().siblings('input[name="job_cat_id"]').val(_this.data("id"));
                     _this.parent().siblings('input[name="is_sub_cat"]').val(_this.data("subcat"));
@@ -127,10 +126,16 @@
                     values: [ 75, 300 ],
                     slide: function( event, ui ) {
                         $( "#amount" ).val( "$" + ui.values[ 0 ] + " - $" + ui.values[ 1 ] );
+                        $( "#salary_below" ).val( ui.values[ 0 ]);
+                        $( "#salary_above" ).val( ui.values[ 1 ]);
                     }
                 });
                 $( "#amount" ).val( "$" + $( "#slider-range" ).slider( "values", 0 ) +
                     " - $" + $( "#slider-range" ).slider( "values", 1 ) );
+
+                $( "#salary_below" ).val( $( "#slider-range" ).slider( "values", 0 ));
+                $( "#salary_above" ).val( $( "#slider-range" ).slider( "values", 1 ));
+
             }
 		},
         /* ---------------------------------------------
