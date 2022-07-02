@@ -3,6 +3,8 @@
 namespace App\Http\Livewire;
 
 use App\Models\Job;
+use App\Models\Profile;
+use App\Models\User;
 use Livewire\Component;
 use Cart;
 use Illuminate\Support\Facades\Auth;
@@ -42,6 +44,7 @@ class DetailsComponent extends Component
         $total_view = Job::where('slug', $this->slug)->increment('totalviews');
         $popular_jobs = Job::inRandomOrder()->limit(4)->get();
         $related_jobs = Job::where('category_id', $job->category_id)->inRandomOrder()->limit(5)->get();
-        return view('livewire.details-component', ['job' => $job, 'popular_jobs' => $popular_jobs, 'related_jobs' => $related_jobs, 'total_view' => $total_view])->layout('layouts.base');
+        $user = User::query()->where('id', $job->user_id)->first();
+        return view('livewire.details-component', ['job' => $job, 'popular_jobs' => $popular_jobs, 'related_jobs' => $related_jobs, 'total_view' => $total_view, 'user' => $user])->layout('layouts.base');
     }
 }

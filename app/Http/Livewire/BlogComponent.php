@@ -24,6 +24,10 @@ class BlogComponent extends Component
     public $search;
     public $job_cat;
     public $job_cat_id;
+    public $is_sub_cat;
+
+    public $job_sub_cat;
+    public $job_sub_cat_id;
 
     public function mount()
     {
@@ -36,7 +40,7 @@ class BlogComponent extends Component
 
         $this->popular_jobs = Job::orderBy('totalviews', 'desc')->limit(12)->get();
 
-        $this->fill(request()->only('search', 'job_cat', 'job_cat_id'));
+        $this->fill(request()->only('search', 'job_cat', 'job_cat_id', 'is_sub_cat'));
     }
 
     public function company($job_id, $job_name, $job_salary)

@@ -176,7 +176,7 @@
                 </div>
             @endforeach
             <div class="wrap-pagination-info">
-                {{ $posts->links() }}
+                {{ $posts->links('pagination::bootstrap-4') }}
             </div>
         </div>
     </div>

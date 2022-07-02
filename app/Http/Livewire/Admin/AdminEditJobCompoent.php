@@ -2,6 +2,7 @@
 
 namespace App\Http\Livewire\Admin;
 
+use Illuminate\Support\Facades\Auth;
 use Livewire\Component;
 use App\Models\Job;
 use App\Models\Category;
@@ -27,6 +28,7 @@ class AdminEditJobCompoent extends Component
     public $newimage;
     public $job_id;
     public $sub_category_id;
+    public $type;
 
     public function mount($job_slug)
     {
@@ -44,6 +46,7 @@ class AdminEditJobCompoent extends Component
         $this->category_id = $job->category_id;
         $this->sub_category_id = $job->sub_category_id;
         $this->job_id = $job->id;
+        $this->type = $job->type;
     }
     public function generateSlug()
     {
@@ -54,15 +57,16 @@ class AdminEditJobCompoent extends Component
     {
         $this->validateOnly($fields, [
             'name' => 'required',
-            'slug' => 'required|unique:jobs',
+            'slug' => 'required|unique:jobs,slug,' . $this->job_id,
             'short_description' => 'required',
             'description' => 'required',
             'regular_salary' => 'required|numeric',
             'SKU' => 'required',
             'stock_status' => 'required',
             'quantity' => 'required|numeric',
-            'newimage' => 'required|mimes:jpeg,png,jpg',
-            'category_id' => 'required'
+            'newimage' => 'nullable|mimes:jpeg,png,jpg',
+            'category_id' => 'required',
+            'type' => 'required',
         ]);
     }
 
@@ -70,15 +74,16 @@ class AdminEditJobCompoent extends Component
     {
         $this->validate([
             'name' => 'required',
-            'slug' => 'required|unique:jobs',
+            'slug' => 'required|unique:jobs,slug,' . $this->job_id,
             'short_description' => 'required',
             'description' => 'required',
             'regular_salary' => 'required|numeric',
             'SKU' => 'required',
             'stock_status' => 'required',
             'quantity' => 'required|numeric',
-            'newimage' => 'required|mimes:jpeg,png,jpg',
-            'category_id' => 'required'
+            'newimage' => 'nullable|mimes:jpeg,png,jpg',
+            'category_id' => 'required',
+            'type' => 'required',
         ]);
         $job = Job::find($this->job_id);
         $job->user_id = Auth::user()->id;
@@ -100,6 +105,7 @@ class AdminEditJobCompoent extends Component
         if ($this->sub_category_id) {
             $job->sub_category_id = $this->sub_category_id;
         }
+        $job->type = $this->type;
         @$job->save();
         session()->flash('message', 'Job has been updated successfully!');
     }

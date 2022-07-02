@@ -6,11 +6,19 @@
             <div class="wrap-list-cate">
                 <input type="hidden" name="job_cat" value="{{ $job_cat }}" id="job-cate">
                 <input type="hidden" name="job_cat_id" value="{{ $job_cat_id }}" id="job-cate-id">
+                <input type="hidden" name="is_sub_cat" value="{{ $is_sub_cat }}" id="job-is_sub_cat">
                 <a href="#" class="link-control">{{ str_split($job_cat, 12)[0] }}</a>
                 <ul class="list-cate">
                     <li class="level-0">{{ __('search.all_location') }}</li>
                     @foreach ( $categories as $category )
                         <li class="level-1" data-id="{{ $category->id }}">{{ $category->name }}</li>
+                        @if (count($category->subCategory) > 0)
+                                @foreach ($category->subCategory as $sub_category)
+                                    <li class="level-2" data-id="{{ $sub_category->id }}" data-subcat="true">
+                                        {{ $sub_category->name }}
+                                    </li>
+                                @endforeach
+                        @endif
                     @endforeach
                 </ul>
             </div>

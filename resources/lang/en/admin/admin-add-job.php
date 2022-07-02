@@ -24,4 +24,7 @@ return [
     'date' => 'Date',
     'action' => 'Action',
     'sure' => 'Are you sure, You want to delete this job?',
+    'type' => 'Job Type',
+    'fulltime' => 'Full Time',
+    'parttime' => 'Part Time',
 ];

@@ -71,7 +71,7 @@
                                     </div>
                                     <div class="product-info">
                                         <a href="{{ route('job.details', ['slug'=>$job->slug]) }}" class="product-name"><span>{{ $job->name }}</span></a>
-                                        <div class="wrap-price"><ins><p class="product-price">{{ __('search.salary') }}{{ $job->regular_salary }}</p></ins></div>    
+                                        <div class="wrap-price"><ins><p class="product-price">{{ __('search.salary') }}{{ $job->regular_salary }}</p></ins></div>
                                     </div>
                                     <div class="addcart">
                                         <div class="bookmark">
@@ -89,7 +89,7 @@
                 </div>
 
                 <div class="wrap-pagination-info">
-                    {{ $jobs->links() }}
+                    {{ $jobs->links('pagination::bootstrap-4') }}
                 </div>
             </div><!--end main products area-->
 

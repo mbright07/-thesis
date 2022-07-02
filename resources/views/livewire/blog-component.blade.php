@@ -20,15 +20,6 @@
 
                     <div class="wrap-right">
                         <div class="sort-item orderby ">
-                            <select name="category" class="use-chosen" wire:model="category">
-                                <option value="default" selected="selected">{{ __('search.all_location') }}</option>
-                                @foreach ($categories as $category)
-                                    <option value="{{ $category->id }}">{{ $category->name }}</option>
-                                @endforeach
-                            </select>
-                        </div>
-
-                        <div class="sort-item orderby ">
                             <select name="orderby" class="use-chosen" wire:model="sorting">
                                 <option value="default" selected="selected">{{ __('search.default') }}</option>
                                 <option value="created_at">{{ __('search.sort_newness') }}</option>
@@ -151,8 +142,14 @@
                     <h2 class="widget-title">Job Type</h2>
                     <div class="widget-content">
                         <ul class="list-style vertical-list list-limited" data-show="6">
-                            <li class="list-item"><a class="filter-link" href="#">Full time</a></li>
-                            <li class="list-item"><a class="filter-link" href="#">Part time</a></li>
+                            <li class="list-item">
+                                <input class="form-check-input" type="checkbox" value="1" id="fulltime" wire:model="fulltime" />
+                                <label class="form-check-label" for="fulltime">Full Time</label>
+                            </li>
+                            <li class="list-item">
+                                <input class="form-check-input" type="checkbox" value="2" id="parttime" wire:model="parttime" />
+                                <label class="form-check-label" for="parttime">Part Time</label>
+                            </li>
                         </ul>
                     </div>
                 </div><!-- brand widget-->

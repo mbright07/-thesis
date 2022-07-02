@@ -10,11 +10,12 @@ class HeaderSearchComponent extends Component
     public $search;
     public $job_cat;
     public $job_cat_id;
+    public $is_sub_cat;
 
     public function mount()
     {
         $this->job_cat = 'All location';
-        $this->fill(request()->only('search', 'job_cat', 'job_cat_id'));
+        $this->fill(request()->only('search', 'job_cat', 'job_cat_id', 'is_sub_cat'));
     }
 
     public function render()

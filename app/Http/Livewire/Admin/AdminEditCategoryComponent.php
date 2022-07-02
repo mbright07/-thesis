@@ -44,7 +44,7 @@ class AdminEditCategoryComponent extends Component
     {
         $this->validateOnly($fields, [
             'name' => 'required',
-            'slug' => 'required|unique:categories'
+            'slug' => 'required|unique:categories,slug,' . $this->category_id,
         ]);
     }
 
@@ -52,7 +52,7 @@ class AdminEditCategoryComponent extends Component
     {
         $this->validate([
             'name' => 'required',
-            'slug' => 'required|unique:categories'
+            'slug' => 'required|unique:categories,slug,' . $this->category_id,
         ]);
         if ($this->sub_category_id) {
             $sub_category = Subcategory::find($this->sub_category_id);

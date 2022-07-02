@@ -156,7 +156,6 @@
                                 <div class="col-md-4">
                                     <select class="form-control" wire:model="category_id"
                                         wire:change="changeSubcategory">
-                                        <option value="">{{ __('admin/admin-add-job.s_location') }}</option>
                                         @foreach ($categories as $category)
                                             <option value="{{ $category->id }}">{{ $category->name }}</option>
                                         @endforeach
@@ -181,6 +180,16 @@
                                     @error('sub_category_id')
                                         <p class="text-danger">{{ $message }}</p>
                                     @enderror
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <label class="col-md-4 control-label">{{ __('admin/admin-add-job.type') }}</label>
+                                <div class="col-md-4">
+                                    <select class="form-control" wire:model="type">
+                                        <option value="1">{{ __('admin/admin-add-job.fulltime') }}</option>
+                                        <option value="2">{{ __('admin/admin-add-job.parttime') }}</option>
+                                    </select>
                                 </div>
                             </div>
 

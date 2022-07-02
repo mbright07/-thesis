@@ -14,7 +14,7 @@
                     <div class="panel-heading">
                         {{ __('user/user-recruitment.all_recruitment') }}
                     </div>
-                
+
                     <div class="panel-body">
                         <table class="table table-striped">
                             <thead>
@@ -54,7 +54,7 @@
                                 @endforeach
                             </tbody>
                         </table>
-                        {{ $recruitments->links() }}
+                        {{ $recruitments->links('pagination::bootstrap-4') }}
                     </div>
                 </div>
             </div>

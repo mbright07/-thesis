@@ -72,21 +72,50 @@
                             <div class="tab-content-item active" id="description">
                                 {!! $job->description !!}
                             </div>
+
                             <div class="tab-content-item " id="add_infomation">
-                                {{-- <table class="shop_attributes">
-                                    <tbody>
-                                        <tr>
-                                            <th>Weight</th><td class="product_weight">1 kg</td>
-                                        </tr>
-                                        <tr>
-                                            <th>Dimensions</th><td class="product_dimensions">12 x 15 x 23 cm</td>
-                                        </tr>
-                                        <tr>
-                                            <th>Color</th><td><p>Black, Blue, Grey, Violet, Yellow</p></td>
-                                        </tr>
-                                    </tbody>
-                                </table> --}}
+                                @if($user->role_id == 3)
+                                <div class="col-sm-3">
+                                    <div class="text-center">
+                                        <img src="{{ asset('/assets/images/profile') }}/{{ $user->profile->image }}"
+                                             class="avatar img-circle img-thumbnail" alt="avatar">
+                                    </div>
+                                    <div class="row text-center">
+                                        <div class="col-sm-12" class="text-center">
+                                            <h2>{{ $user->name }}</h2>
+                                        </div>
+                                    </div>
+                                    <hr>
+
+                                    <div class="panel panel-default">
+                                        <div class="panel-heading">Social Media</div>
+                                        <div class="panel-body">
+                                            <i class="fa fa-facebook fa-2x"></i> <i class="fa fa-github fa-2x"></i> <i
+                                                class="fa fa-twitter fa-2x"></i> <i class="fa fa-pinterest fa-2x"></i> <i
+                                                class="fa fa-google-plus fa-2x"></i>
+                                        </div>
+                                    </div>
+
+                                </div>
+                                <div class="col-sm-9">
+                                    <div class="row text-center">
+                                        <div class="col-sm-12" class="text-center">
+                                            <h2>{{ $user->profile->email }}</h2>
+                                        </div>
+                                        <div class="col-sm-12" class="text-center">
+                                            <h2>{{ $user->profile->mobile }}</h2>
+                                        </div>
+                                        <div class="col-sm-12" class="text-center">
+                                            <h2>{{ $user->profile->address }}</h2>
+                                        </div>
+                                        <div class="col-sm-12" class="text-center">
+                                            <h2>{{ $user->profile->intro }}</h2>
+                                        </div>
+                                    </div>
+                                </div>
+                                @endif
                             </div>
+
                             <div class="tab-content-item " id="review">
 
                                 <div class="wrap-review-form">

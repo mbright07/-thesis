@@ -72,6 +72,7 @@
                     _this.parent().siblings('a').text(_content).attr('title',_title);
                     _this.parent().siblings('input[name="job_cat"]').val(_value);
 					_this.parent().siblings('input[name="job_cat_id"]').val(_this.data("id"));
+                    _this.parent().siblings('input[name="is_sub_cat"]').val(_this.data("subcat"));
                     _this.parent().slideUp();
                 });
 			}
@@ -359,7 +360,7 @@
 	                    _this.addClass('active');
 	                    _this.parents().siblings('.tab-contents').find('.active').removeClass('active');
 	                    _this.parents().siblings('.tab-contents').find(_this.attr('href')).addClass('active');
-                    }  
+                    }
                 });
             }
 
