@@ -8,7 +8,7 @@ return [
     'description' => 'Description',
     'regular_salary' => 'Regular Salary',
     'stock' => 'Stock',
-    'instock' => 'Instock',
+    'instock' => 'In stock',
     'out_stock' => 'Out of Stock',
     'featured' => 'Featured',
     'no' => 'No',
@@ -27,4 +27,5 @@ return [
     'type' => 'Job Type',
     'fulltime' => 'Full Time',
     'parttime' => 'Part Time',
+    'all_type' => 'All Types',
 ];

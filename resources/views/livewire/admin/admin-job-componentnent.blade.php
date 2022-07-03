@@ -44,27 +44,27 @@
                                     </select>
                                 </div> --}}
                                 <div class="col-md-3">
-                                    <label for="">Search</label>
-                                    <input type="text" class="form-control" placeholder="Search..."
+                                    <label for="">{{ __('search.search') }}</label>
+                                    <input type="text" class="form-control" placeholder="{{ __('search.search') }}..."
                                         wire:model="search" />
                                 </div>
                                 <div class="col-md-2">
-                                    <label for="active">Status</label>
+                                    <label for="active">{{ __('search.status') }}</label>
                                     <select name="active" class="form-control" wire:model="active">
-                                        <option value="">No Selected</option>
-                                        <option value="instock">instock</option>
-                                        <option value="outofstock">outofstock</option>
+                                        <option value="">{{ __('search.all_status') }}</option>
+                                        <option value="instock">{{ __('admin/admin-add-job.instock') }}</option>
+                                        <option value="outofstock">{{ __('admin/admin-add-job.out_stock') }}</option>
                                     </select>
                                 </div>
                                 <div class="col-md-2">
-                                    <label for="sortBy">sortBy</label>
+                                    <label for="sortBy">{{ __('search.sortBy') }}</label>
                                     <select name="sortBy" class="form-control" wire:model="sortBy">
-                                        <option value="asc">Cũ Nhất</option>
-                                        <option value="desc">Mới nhất</option>
+                                        <option value="asc">{{ __('search.asc') }}</option>
+                                        <option value="desc">{{ __('search.desc') }}</option>
                                     </select>
                                 </div>
                                 <div class="col-md-2">
-                                    <label for="sortBy">Location</label>
+                                    <label for="sortBy">{{ __('admin/admin-add-job.location') }}</label>
                                     <select name="sortBy" class="form-control" wire:model="category_id">
                                         <option value="" selected="selected">{{ __('search.all_location') }}</option>
                                         @foreach ($categories as $category)

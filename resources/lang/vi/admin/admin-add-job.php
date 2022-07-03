@@ -24,4 +24,8 @@ return [
     'date' => 'Thời gian',
     'action' => 'Thao tác',
     'sure' => 'Bạn có chắc muốn xóa công việc này?',
+    'type' => 'Loại công việc',
+    'fulltime' => 'Toàn thời gian',
+    'parttime' => 'Bán thời gian',
+    'all_type' => 'Tất cả loại công việc',
 ];

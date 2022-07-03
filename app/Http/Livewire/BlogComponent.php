@@ -15,7 +15,6 @@ class BlogComponent extends Component
     public $sorting;
     public $pagesize;
 
-    public $min_salary;
     public $max_salary;
 
     public $popular_jobs;
@@ -25,21 +24,20 @@ class BlogComponent extends Component
     public $job_cat_id;
     public $is_sub_cat;
 
-    public $full_time;
-    public $part_time;
+    public $type;
 
-    public $salary_below;
-    public $salary_above;
-
-    public $salary_select;
+    public $selected_salary_min;
+    public $selected_salary_max;
 
     public function mount()
     {
         $this->sorting = "";
         $this->pagesize = 12;
 
-        $this->min_salary = 1;
-        $this->max_salary = 1000;
+        $this->max_salary = Job::max('regular_salary');
+
+        $this->selected_salary_min = 1;
+        $this->selected_salary_max = $this->max_salary;
 
         $this->popular_jobs = Job::orderBy('totalviews', 'desc')->limit(10)->get();
 
@@ -90,20 +88,35 @@ class BlogComponent extends Component
     use WithPagination;
     public function render()
     {
-        var_dump($this->sorting);
-        if ($this->sorting == 'created_at') {
-            $this->popular_jobs = Job::orderBy('totalviews', 'desc')->limit(1)->get();
-            $jobs = Job::whereBetween('regular_salary', [$this->min_salary, $this->max_salary])->orderBy('created_at', 'DESC')->paginate($this->pagesize);
-        } else if ($this->sorting == 'regular_salary') {
-            $this->popular_jobs = Job::orderBy('totalviews', 'desc')->limit(2)->get();
-            $jobs = Job::whereBetween('regular_salary', [$this->min_salary, $this->max_salary])->orderBy('regular_salary', 'ASC')->paginate($this->pagesize);
-        } else if ($this->sorting == 'regular_salary-desc') {
-            $this->popular_jobs = Job::orderBy('totalviews', 'desc')->limit(3)->get();
-            $jobs = Job::whereBetween('regular_salary', [$this->min_salary, $this->max_salary])->orderBy('regular_salary', 'DESC')->paginate($this->pagesize);
-        } else {
-            $this->popular_jobs = Job::orderBy('totalviews', 'desc')->limit(12)->get();
-            $jobs = Job::whereBetween('regular_salary', [$this->min_salary, $this->max_salary])->paginate($this->pagesize);
-        }
+        $this->popular_jobs = Job::orderBy('totalviews', 'desc')->limit(10)->get();
+
+        $jobs = Job::query()
+            ->when($this->is_sub_cat, function ($query) {
+                $query->where('sub_category_id', $this->job_cat_id);
+            })
+            ->when(!$this->is_sub_cat, function ($query) {
+                if ($this->job_cat_id) {
+                    $query->where('category_id', $this->job_cat_id);
+                }
+            })
+            ->whereBetween('regular_salary', [$this->selected_salary_min, $this->selected_salary_max])
+            ->when($this->type, function ($query) {
+                $query->where('type', $this->type);
+            })
+            ->search(trim($this->search))
+            ->when($this->sorting == 'created_at', function ($query) {
+                $query->orderBy('created_at', 'DESC');
+            })
+            ->when($this->sorting == 'created_at', function ($query) {
+                $query->orderBy('created_at', 'DESC');
+            })
+            ->when($this->sorting == 'regular_salary', function ($query) {
+                $query->orderBy('regular_salary', 'ASC');
+            })
+            ->when($this->sorting == 'regular_salary-desc', function ($query) {
+                $query->orderBy('regular_salary', 'DESC');
+            })
+            ->paginate($this->pagesize);
 
         $categories = Category::all();
 

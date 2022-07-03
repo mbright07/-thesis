@@ -24,5 +24,11 @@ return [
     'here' => 'Tìm kiếm việc làm...',
     'job_location' => 'Công việc theo địa điểm',
     'salary_2' => 'Lương ',
-    'filter' => 'Lọc'
+    'filter' => 'Lọc',
+    'search' => 'Tìm kiếm',
+    'status' => 'Trạng thái',
+    'sortBy' => 'Sắp xếp theo',
+    'all_status' => 'Tất cả trạng thái',
+    'asc' => 'Cũ nhất',
+    'desc' => 'Mới nhất',
 ];

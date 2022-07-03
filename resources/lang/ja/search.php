@@ -24,5 +24,11 @@ return [
     'here' => '検索...',
     'job_location' => '仕事の場所',
     'salary_2' => '給料 ',
-    'filter' => 'フィルター'
+    'filter' => 'フィルター',
+    'search' => 'Search',
+    'status' => 'Status',
+    'sortBy' => 'Sort By',
+    'all_status' => 'All Status',
+    'asc' => 'Oldest',
+    'desc' => 'Newest',
 ];

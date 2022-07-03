@@ -118,25 +118,22 @@
 		},
 
 		mercado_price_range: function(){
-    	    if($("#slider-range").length > 0){
+    	    /*if($("#slider-range").length > 0){
                 $( "#slider-range" ).slider({
                     range: true,
                     min: 0,
-                    max: 500,
-                    values: [ 75, 300 ],
+                    max: $( "#salary_max" ).val(),
+                    values: [ 1, $( "#salary_max" ).val() ],
                     slide: function( event, ui ) {
                         $( "#amount" ).val( "$" + ui.values[ 0 ] + " - $" + ui.values[ 1 ] );
-                        $( "#salary_below" ).val( ui.values[ 0 ]);
-                        $( "#salary_above" ).val( ui.values[ 1 ]);
+                        @this.set('selectedMin', ui.values[0])
+                        @this.set('selectedMax', ui.values[1])
                     }
                 });
                 $( "#amount" ).val( "$" + $( "#slider-range" ).slider( "values", 0 ) +
                     " - $" + $( "#slider-range" ).slider( "values", 1 ) );
 
-                $( "#salary_below" ).val( $( "#slider-range" ).slider( "values", 0 ));
-                $( "#salary_above" ).val( $( "#slider-range" ).slider( "values", 1 ));
-
-            }
+            }*/
 		},
         /* ---------------------------------------------
 		// Clone all Zan Menus for mobile

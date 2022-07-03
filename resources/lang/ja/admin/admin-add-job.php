@@ -24,4 +24,8 @@ return [
     'date' => '時間',
     'action' => '操作',
     'sure' => 'よろしいでしょうか、この仕事を削除しますか?',
+    'type' => 'Job Type',
+    'fulltime' => 'Full Time',
+    'parttime' => 'Part Time',
+    'all_type' => 'All Types',
 ];

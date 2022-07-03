@@ -35,7 +35,7 @@
                                 <option value="18">{{ __('search.18') }}</option>
                                 <option value="21">{{ __('search.21') }}</option>
                                 <option value="24">{{ __('search.24') }}</option>
-                                <option value="30">{{ __('search.30') }}e</option>
+                                <option value="30">{{ __('search.30') }}</option>
                                 <option value="32">{{ __('search.32') }}</option>
                             </select>
                         </div>
@@ -58,7 +58,7 @@
                                 <div class="product product-style-2 equal-elem ">
                                     <div class="product-thumnail">
                                         <a href="{{ route('job.details', ['slug' => $job->slug]) }}"
-                                            title={{ $job->name }}>
+                                            title="{{ $job->name }}">
                                             <figure><img
                                                     src="{{ asset('assets/images/products') }}/{{ $job->image }}"
                                                     width="800" height="800" alt="{{ $job->name }}"></figure>
@@ -77,7 +77,7 @@
                                         <div class="product-wish">
                                             @if ($witems->contains($job->id))
                                                 <a href="#"
-                                                    wire:click.prvent="removeFromWishlist({{ $job->id }})"><i
+                                                    wire:click.prevent="removeFromWishlist({{ $job->id }})"><i
                                                         class="fa fa-heart fill-heart"></i></a>
                                             @else
                                                 <a href="#"
@@ -140,18 +140,11 @@
 
                 <div class="widget mercado-widget filter-widget brand-widget">
                     <h2 class="widget-title">Job Type</h2>
-                    <div class="widget-content">
-                        <ul class="list-style vertical-list list-limited" data-show="6">
-                            <li class="list-item">
-                                <input class="form-check-input" type="checkbox" value="1" id="full_time" wire:model="full_time" />
-                                <label class="form-check-label" for="full_time">Full Time</label>
-                            </li>
-                            <li class="list-item">
-                                <input class="form-check-input" type="checkbox" value="2" id="part_time" wire:model="part_time" />
-                                <label class="form-check-label" for="part_time">Part Time</label>
-                            </li>
-                        </ul>
-                    </div>
+                    <select name="job-type" class="use-chosen" wire:model="type">
+                        <option value="" selected="selected">{{ __('admin/admin-add-job.all_type') }}</option>
+                        <option value="1">{{ __('admin/admin-add-job.fulltime') }}</option>
+                        <option value="2">{{ __('admin/admin-add-job.parttime') }}</option>
+                    </select>
                 </div><!-- brand widget-->
 
                 <br/><br/>
@@ -171,13 +164,11 @@
                 <div class="widget mercado-widget filter-widget price-filter">
                     <h2 class="widget-title">{{ __('search.salary_2') }}</h2>
                     <div class="widget-content">
-                        <div id="slider-range"></div>
+                        <div id="slider-range" wire:ignore></div>
                         <p>
                             <label for="amount">{{ __('search.salary_2') }}:</label>
-                            <input type="text" id="amount" readonly>
-                            <button class="filter-submit">{{ __('search.filter') }}</button>
-                            <input type="hidden" id="salary_below" name="salary_below" wire:model="salary_below">
-                            <input type="hidden" id="salary_above" name="salary_above" wire:model="salary_above">
+                            <input type="text" id="amount" readonly style="width: 100%">
+                            <input type="hidden" id="salary_max" name="salary_max" value="{{ $max_salary }}" wire:model="max_salary">
                         </p>
                     </div>
                 </div><!-- Price-->
@@ -225,25 +216,26 @@
 
 
 @push('scripts')
-   {{-- <script>
-        var slider = document.getElementById('slider');
-        noUiSlider.create(slider, {
-            start: [1, 1000],
-            connect: true,
-            range: {
-                'min': 1,
-                'max': 1000
-            },
-            pips: {
-                mode: 'steps',
-                stepped: true,
-                density: 4
+    <script>
+
+        $(function() {
+            if($("#slider-range").length > 0){
+                $( "#slider-range" ).slider({
+                    range: true,
+                    min: 1,
+                    max: $( "#salary_max" ).val(),
+                    values: [ 1, $( "#salary_max" ).val() ],
+                    slide: function( event, ui ) {
+                        $( "#amount" ).val( "$" + ui.values[ 0 ] + " - $" + ui.values[ 1 ] );
+                        @this.set('selected_salary_min', ui.values[0])
+                        @this.set('selected_salary_max', ui.values[1])
+                    }
+                });
+                $( "#amount" ).val( "$" + $( "#slider-range" ).slider( "values", 0 ) +
+                    " - $" + $( "#slider-range" ).slider( "values", 1 ) );
+
             }
         });
 
-        slider.noUiSlider.on('change', function(value) {
-            @this.set('min_salary', value[0]);
-            @this.set('max_salary', value[1]);
-        });
-    </script>--}}
+    </script>
 @endpush
