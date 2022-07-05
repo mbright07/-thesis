@@ -309,8 +309,10 @@
                 <div class="left-content">
                     <div class="profile">
                         <div class="image">
+                            @if($users->profile && $users->profile->image)
                             <img src="{{ asset('/assets/images/profile') }}/{{ $users->profile->image }}"
                                 alt="">
+                            @endif
                         </div>
                         <h2 class="name">{{ $users->name }}</h2>
                         <p class="career">Công việc mong muốn</p>
@@ -320,7 +322,7 @@
                         <ul>
                             <li>
                                 <i class="fa fa-phone"></i>
-                                {{ $users->profile->mobile }}
+                                {{ $users->profile ? $users->profile->mobile : '' }}
                             </li>
                             <li>
                                 <i class="fa fa-fax"></i>
@@ -340,7 +342,7 @@
                             </li>
                             <li>
                                 <i class="fa fa-map-marker"></i>
-                                {{ $users->profile->address }}
+                                {{ $users->profile ? $users->profile->address : '' }}
                             </li>
                         </ul>
                     </div>
@@ -403,7 +405,7 @@
                     <div class="about sect">
                         <h2 class="right-title">About Me</h2>
                         <p class="para">
-                            {{ $users->profile->intro }}
+                            {{ $users->profile ? $users->profile->intro : '' }}
                         </p>
                     </div>
 

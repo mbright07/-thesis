@@ -109,35 +109,6 @@
             <!--end main products area-->
 
             <div class="col-lg-3 col-md-4 col-sm-4 col-xs-12 sitebar">
-                {{--<div class="widget mercado-widget categories-widget">
-                    <h2 class="widget-title">{{ __('search.all_location') }}</h2>
-                    <div class="widget-content">
-                        <ul class="list-category">
-                            @foreach ($categories as $category)
-                                <li
-                                    class="category-item {{ count($category->subCategory) > 0 ? 'has-child-cate' : '' }}">
-                                    <a href="{{ route('job.category', ['category_slug' => $category->slug]) }}"
-                                        class="cate-link">{{ $category->name }}</a>
-                                    @if (count($category->subCategory) > 0)
-                                        <span class="toggle-control">+</span>
-                                        <ul class="sub-cate">
-                                            @foreach ($category->subCategory as $sub_category)
-                                                <li class="category-item">
-                                                    <a href="{{ route('job.category', ['category_slug' => $category->slug, 'sub_category_slug' => $sub_category->slug]) }}"
-                                                        class="cat-link">
-                                                        <i class="fa fa-caret-right"></i>
-                                                        {{ $sub_category->name }}
-                                                    </a>
-                                                </li>
-                                            @endforeach
-                                        </ul>
-                                    @endif
-                                </li>
-                            @endforeach
-                        </ul>
-                    </div>
-                </div><!-- Categories widget-->--}}
-
                 <div class="widget mercado-widget filter-widget brand-widget">
                     <h2 class="widget-title">Job Type</h2>
                     <select name="job-type" class="use-chosen" wire:model="type">
@@ -148,18 +119,6 @@
                 </div><!-- brand widget-->
 
                 <br/><br/>
-
-               {{-- <div class="widget mercado-widget filter-widget price-filter">
-                    <h2 class="widget-title">{{ __('search.salary_2') }}</h2>
-                    <div class="sort-item orderby ">
-                        <select name="orderby" class="use-chosen" wire:model="salary_select">
-                            <option value="" selected="selected">$1 - $300</option>
-                            <option value="q">$301 - $600</option>
-                            <option value="w">$601 - $1000</option>
-                            <option value="e-desc">> $1000</option>
-                        </select>
-                    </div>
-                </div><!-- Price-->--}}
 
                 <div class="widget mercado-widget filter-widget price-filter">
                     <h2 class="widget-title">{{ __('search.salary_2') }}</h2>

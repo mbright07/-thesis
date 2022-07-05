@@ -3,9 +3,6 @@
 namespace App\Http\Livewire\Employer;
 
 use App\Models\Category;
-use App\Models\HomeCategory;
-use App\Models\HomeSlider;
-use App\Models\Job;
 use App\Models\Post;
 use App\Models\User;
 use Illuminate\Support\Facades\Auth;
@@ -16,12 +13,14 @@ class EmployeeHomeComponent extends Component
 {
     public function render()
     {
-        $ljobs = Job::orderBy('created_at', 'DESC')->get()->take(8);
-        $category = HomeCategory::find(1);
-        $cats = explode(',', $category->sel_categories);
-        $categories = Category::whereIn('id', $cats)->get();
-        $no_of_jobs = $category->no_of_jobs;
-        $top_views = User::orderBy('totalviews', 'DESC')->get()->take(8);
+        $lcandidates = User::where('role_id', 2)->orderBy('created_at', 'DESC')->get()->take(8);
+        foreach ($lcandidates as $lcandidate) {
+            if ($lcandidate->workPreference) {
+                $lcandidate->expectedLocationName = Category::whereIn('id', array_column($lcandidate->workPreference->toArray(), 'category_id'))->get('name');
+            }
+        }
+
+        $top_views = User::where('role_id', 2)->orderBy('totalviews', 'DESC')->get()->take(8);
         foreach ($top_views as $top_view) {
             if ($top_view->workPreference) {
                 $top_view->expectedLocationName = Category::whereIn('id', array_column($top_view->workPreference->toArray(), 'category_id'))->get('name');
@@ -33,6 +32,6 @@ class EmployeeHomeComponent extends Component
             Cart::instance('bookmark')->restore(Auth::user()->email);
             Cart::instance('wishlist')->restore(Auth::user()->email);
         }
-        return view('livewire.employer.employee-home-component', ['ljobs' => $ljobs, 'categories' => $categories, 'no_of_jobs' => $no_of_jobs, 'top_views' => $top_views, 'lposts' => $lposts])->layout('layouts.base');
+        return view('livewire.employer.employee-home-component', ['lcandidates' => $lcandidates, 'top_views' => $top_views, 'lposts' => $lposts])->layout('layouts.base');
     }
 }

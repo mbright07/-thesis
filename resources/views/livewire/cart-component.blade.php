@@ -75,7 +75,7 @@
                 <div class="text-center" style="padding: 30p 0;">
                     <h1>{{ __('bookmark.empty') }}</h1>
                     <p>{{ __('bookmark.add_job_now') }}</p>
-                    <a href="/blog" class="btn btn-success">{{ __('bookmark.list_job') }}</a>
+                    <a href="{{ route('jobs') }}" class="btn btn-success">{{ __('bookmark.list_job') }}</a>
                 </div>
             @endif
             <div class="wrap-iten-in-cart">

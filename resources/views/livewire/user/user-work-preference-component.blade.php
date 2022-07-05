@@ -24,15 +24,15 @@
                         <div class="form-row">
                             <div class="form-group col-md-4">
                                 <label for="expected_location">Expected Location *</label>
-                                <select class="form-control" id="expected_location" wire:model="expected_location">
+                                <select class="form-control" id="expected_location" wire:model="category_id">
                                     <option>--Select Expected Location--</option>
                                     @foreach ($categories as $item)
-                                        <option value={{ str_replace(' ', '_', $item->name) }}>
+                                        <option value={{ $item->id }}>
                                             {{ $item->name }}
                                         </option>
                                     @endforeach
                                 </select>
-                                @error('expected_location')
+                                @error('category_id')
                                     <p class="text-danger">{{ $message }}</p>
                                 @enderror
                             </div>
@@ -63,7 +63,7 @@
                             <div class="panel-body">
                                 <div class="panel-body-left" style="float: left;">
                                     <h5>Nơi làm việc:
-                                        <strong>{{ str_replace('_', ' ', $per->expected_location) }}</strong>
+                                        <strong>{{ $per->expected_location->name }}</strong>
                                     </h5>
                                     <h5>Mức lương mong muốn (USD / tháng):
                                         <strong>{{ $per->expected_salary }}</strong></h5>

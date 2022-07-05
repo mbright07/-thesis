@@ -26,6 +26,7 @@ use App\Http\Livewire\ContactComponent;
 use App\Http\Livewire\DetailPostComponent;
 use App\Http\Livewire\DetailsComponent;
 use App\Http\Livewire\Employer\EmployeeCandidateDetailsComponent;
+use App\Http\Livewire\Employer\EmployeeCandidatesComponent;
 use App\Http\Livewire\Employer\EmployeeHomeComponent;
 use App\Http\Livewire\Employer\EmployerDashBoardComponent;
 use App\Http\Livewire\HomeComponent;
@@ -111,7 +112,8 @@ Route::group(['middleware' => 'locale'], function () {
         Route::group(['middleware' => 'role:employer'], function () {
             Route::get('/employer/dashboard', EmployerDashBoardComponent::class)->name('employer.dashboard');
             Route::get('/employer', EmployeeHomeComponent::class)->name('employer.home');
-            Route::get('/employer/candidate/{id}', EmployeeCandidateDetailsComponent::class)->name('employer.candidate.details');
+            Route::get('/employer/candidates', EmployeeCandidatesComponent::class)->name('employer.candidates');
+            Route::get('/employer/candidates/{user_id}', EmployeeCandidateDetailsComponent::class)->name('employer.candidate.details');
             Route::get('/employer/profile', UserProfileComponent::class)->name('employer.profile');
             Route::get('/employer/change-password', UserChangePasswordCompponent::class)->name('employer.changepassword');
             Route::get('/employer/jobs', AdminJobComponentnent::class)->name('employer.jobs');
