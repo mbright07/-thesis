@@ -40,7 +40,7 @@
                                     </div>
                                     <div class="quantity checkout-info">
                                         <a class="btn btn-success" href="#"
-                                            wire:click.prevent="Recruitment">{{ __('bookmark.apply') }}</a>
+                                            wire:click.prevent="recruitment({{ $item->model->id }})">{{ __('bookmark.apply') }}</a>
                                     </div>
                                     <div class="delete">
                                         <a href="#"

@@ -32,8 +32,7 @@ class EmployeeCandidatesComponent extends Component
     {
         $lcandidates = User::where('users.role_id', 2)
             ->when($this->job_cat_id, function ($query) {
-                $userIdList = Work_preference::query()->where('category_id', $this->job_cat_id)->get('user_id');
-                $userIdList = array_column($userIdList->toArray(), 'user_id');
+                $userIdList = Work_preference::query()->where('category_id', $this->job_cat_id)->pluck('user_id');
                 $query->whereIn('id', $userIdList);
             })
             ->where('name', 'LIKE', '%'.trim($this->search).'%')
@@ -41,7 +40,7 @@ class EmployeeCandidatesComponent extends Component
 
         foreach ($lcandidates as $lcandidate) {
             if ($lcandidate->workPreference) {
-                $lcandidate->expectedLocationName = Category::whereIn('id', array_column($lcandidate->workPreference->toArray(), 'category_id'))->get('name');
+                $lcandidate->expectedLocationName = Category::whereIn('id', array_column($lcandidate->workPreference->toArray(), 'category_id'))->pluck('name');
             }
         }
 

@@ -10,7 +10,7 @@
                 @foreach ($top_views as $top_view)
                     <div class="product product-style-2 equal-elem ">
                         <div class="product-thumnail">
-                            <a href="{{ route('employer.candidate.details', ['id' => $top_view->id]) }}"
+                            <a href="{{ route('employer.candidate.details', ['user_id' => $top_view->id]) }}"
                                title="{{ $top_view->name }}">
                                 @if($top_view->profile && $top_view->profile->image)
                                     <figure><img src="{{ asset('/assets/images/profile') }}/{{ $top_view->profile->image }}"
@@ -22,13 +22,13 @@
                             </a>
                         </div>
                         <div class="product-info">
-                            <a href="{{ route('employer.candidate.details', ['id' => $top_view->id]) }}"
+                            <a href="{{ route('employer.candidate.details', ['user_id' => $top_view->id]) }}"
                                class="product-name"><span>{{ $top_view->name }}</span></a>
                             <div class="wrap-price"><ins>
                                     <p class="product-price">{{ __('employee/home.expected_location') }}:
                                         @if($top_view->expectedLocationName)
                                             @foreach($top_view->expectedLocationName as $item)
-                                                {{ $item->name }}
+                                                {{ $item }}
                                                 <br/>
                                             @endforeach
                                         @endif
@@ -59,7 +59,7 @@
                                 @foreach ($lcandidates as $lcandidate)
                                     <div class="product product-style-2 equal-elem ">
                                         <div class="product-thumnail">
-                                            <a href="{{ route('employer.candidate.details', ['id' => $lcandidate->id]) }}"
+                                            <a href="{{ route('employer.candidate.details', ['user_id' => $lcandidate->id]) }}"
                                                title="{{ $lcandidate->name }}">
                                                 @if($lcandidate->profile && $lcandidate->profile->image)
                                                     <figure><img src="{{ asset('/assets/images/profile') }}/{{ $lcandidate->profile->image }}"
@@ -71,13 +71,13 @@
                                             </a>
                                         </div>
                                         <div class="product-info">
-                                            <a href="{{ route('employer.candidate.details', ['id' => $lcandidate->id]) }}"
+                                            <a href="{{ route('employer.candidate.details', ['user_id' => $lcandidate->id]) }}"
                                                class="product-name"><span>{{ $lcandidate->name }}</span></a>
                                             <div class="wrap-price"><ins>
                                                     <p class="product-price">{{ __('employee/home.expected_location') }}:
                                                         @if($lcandidate->expectedLocationName)
                                                             @foreach($lcandidate->expectedLocationName as $item)
-                                                                {{ $item->name }}
+                                                                {{ $item }}
                                                                 <br/>
                                                             @endforeach
                                                         @endif

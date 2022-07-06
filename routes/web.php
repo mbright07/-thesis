@@ -73,7 +73,7 @@ Route::group(['middleware' => 'locale'], function () {
 
     Route::get('/bookmark', CartComponent::class)->name('job.bookmark');
 
-    Route::get('/recruitment', RecruitmentComponent::class)->name('recruitment');
+    Route::get('/recruitment/{job_id}', RecruitmentComponent::class)->name('recruitment');
 
     Route::get('/job/{slug}', DetailsComponent::class)->name('job.details');
 

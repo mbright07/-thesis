@@ -4,16 +4,18 @@
 
         <div class="wrap-breadcrumb">
             <ul>
-                <li class="item-link"><a href="/" class="link">{{ __('detail.home') }}</a></li>
+{{--                <li class="item-link"><a href="/" class="link">{{ __('detail.home') }}</a></li>--}}
                 <li class="item-link"><span>{{ __('detail.detail') }}</span></li>
             </ul>
         </div>
         <div class="row">
-            <div class="col-lg-9 col-md-8 col-sm-8 col-xs-12 main-content-area">
+            <div class="col-lg-12 col-md-8 col-sm-8 col-xs-12 main-content-area">
                 <div class="wrap-product-detail">
                     <div class="detail-media">
-                        <img src="{{ asset('assets/images/products') }}/{{ $user->profile->image }}" alt="{{ $user->name }}"
-                             height="300" width="300" />
+                        @if($user->profile && $user->profile->image)
+                            <img src="{{ asset('assets/images/profile') }}/{{ $user->profile->image }}" alt="{{ $user->name }}"
+                                height="300" width="300" />
+                        @endif
                     </div>
                     <div class="detail-info">
                         <div class="product-rating">
@@ -22,7 +24,7 @@
                                     color: #e6e6e6 !important;
                                 }
                             </style>
-                            @php
+                           {{-- @php
                                 $avgrating = 0;
                             @endphp
                             @foreach ($job->recruitmentJobs->where('rstatus', 1) as $recruitmentJob)
@@ -36,30 +38,43 @@
                                 @else
                                     <i class="fa fa-star color-gray" aria-hidden="true"></i>
                                 @endif
-                            @endfor
+                            @endfor--}}
                             <a href="#"
-                               class="count-review">({{ $job->recruitmentJobs->where('rstatus', 1)->count() }}
+                               class="count-review">(
                                 {{ __('detail.review') }})</a>
                         </div>
-                        <h2 class="product-name">{{ $job->name }}</h2>
-                        <h5>View: {{ $job->totalviews }}</h5>
+                        <h2 class="product-name">{{ $user->name }}</h2>
+                        <h5>View: {{ $user->totalviews }}</h5>
                         <div class="short-desc">
-                            {!! $job->short_description !!}
+                            <table border="1">
+                                <thead>
+                                    <th>{{ __('employee/home.expected_location') }}</th>
+                                    <th>{{ __('detail.salary') }}</th>
+                                </thead>
+                                <tbody>
+                                    @if($user->workPreference)
+                                        @foreach($user->workPreference as $item)
+                                            <tr>
+                                                <td>
+                                                    {{ $item->expected_location_name }}
+                                                </td>
+                                                <td>
+                                                    {{ $item->expected_salary }}
+                                                </td>
+                                            </tr>
+                                        @endforeach
+                                    @endif
+                                </tbody>
+                            </table>
                         </div>
 
-                        <div class="wrap-price"><span
-                                class="product-price">{{ __('detail.salary') }}{{ $job->regular_salary }}</span>
-                        </div>
                         <div class="stock-info in-stock">
                             <p class="availability">
-                                {{ __('detail.availability') }}<b>{{ $job->stock_status }}</b></p>
-                            <p class="availability">{{ __('detail.quantily') }}<b>{{ $job->quantity }}</b></p>
+                                Available: <b>{{ $available ? 'Available' : 'Unavailable' }}</b></p>
                         </div>
                         <div class="wrap-butons">
                             <a href="#" class="btn add-to-cart"
-                               wire:click.prevent="Recruitment">{{ __('detail.apply_now') }}</a>
-                            <a href="#" class="btn add-to-cart"
-                               wire:click.prevent="company({{ $job->id }},'{{ $job->name }}',{{ $job->regular_salary }})">{{ __('detail.bookmark') }}</a>
+                               wire:click.prevent="company({{ $user->id }}, {{ $user->name }})">{{ __('detail.bookmark') }}</a>
                         </div>
                     </div>
                     <div class="advance-info">
@@ -70,50 +85,108 @@
                         </div>
                         <div class="tab-contents">
                             <div class="tab-content-item active" id="description">
-                                {!! $job->description !!}
+
                             </div>
 
                             <div class="tab-content-item " id="add_infomation">
-                                @if($user->role_id == 3)
-                                    <div class="col-sm-3">
-                                        <div class="text-center">
+                                <div class="col-sm-3">
+                                    <div class="text-center">
+                                        @if($user->profile && $user->profile->image)
                                             <img src="{{ asset('/assets/images/profile') }}/{{ $user->profile->image }}"
                                                  class="avatar img-circle img-thumbnail" alt="avatar">
-                                        </div>
-                                        <div class="row text-center">
-                                            <div class="col-sm-12" class="text-center">
-                                                <h2>{{ $user->name }}</h2>
-                                            </div>
-                                        </div>
-                                        <hr>
-
-                                        <div class="panel panel-default">
-                                            <div class="panel-heading">Social Media</div>
-                                            <div class="panel-body">
-                                                <i class="fa fa-facebook fa-2x"></i> <i class="fa fa-github fa-2x"></i> <i
-                                                    class="fa fa-twitter fa-2x"></i> <i class="fa fa-pinterest fa-2x"></i> <i
-                                                    class="fa fa-google-plus fa-2x"></i>
-                                            </div>
-                                        </div>
-
+                                        @endif
                                     </div>
-                                    <div class="col-sm-9">
-                                        <div class="row text-center">
-                                            <div class="col-sm-12" class="text-center">
-                                                <h2>{{ $user->profile->email }}</h2>
-                                            </div>
-                                            <div class="col-sm-12" class="text-center">
-                                                <h2>{{ $user->profile->mobile }}</h2>
-                                            </div>
-                                            <div class="col-sm-12" class="text-center">
-                                                <h2>{{ $user->profile->address }}</h2>
-                                            </div>
-                                            <div class="col-sm-12" class="text-center">
-                                                <h2>{{ $user->profile->intro }}</h2>
-                                            </div>
+                                    <div class="row text-center">
+                                        <div class="col-sm-12" class="text-center">
+                                            <h2>{{ $user->name }}</h2>
                                         </div>
                                     </div>
-                                @endif
+                                    <hr>
+                                </div>
+
+                                <div class="col-sm-9">
+                                    <div class="tab-content">
+                                        <div class="form-group">
+                                            <div class="col-xs-6">
+                                                <label for="name">
+                                                    <h4>Name</h4>
+                                                </label>
+                                                <br/>
+                                                {{ $user->name }}
+                                            </div>
+                                        </div>
+
+                                        <div class="form-group">
+                                            <div class="col-xs-6">
+                                                <label for="email">
+                                                    <h4>Email</h4>
+                                                </label>
+                                                <br/>
+                                                {{ $user->email }}
+                                            </div>
+                                        </div>
+
+                                        <div class="form-group">
+                                            <div class="col-xs-6">
+                                                <label for="mobile">
+                                                    <h4>Mobile</h4>
+                                                </label>
+                                                <br/>
+                                                {{ $user->profile ? $user->profile->mobile : '' }}
+                                            </div>
+                                        </div>
+
+                                        <div class="form-group">
+                                            <div class="col-xs-6">
+                                                <label for="city">
+                                                    <h4>City</h4>
+                                                </label>
+                                                <br/>
+                                                {{ $user->profile ? $user->profile->city : '' }}
+                                            </div>
+                                        </div>
+
+                                        <div class="form-group">
+                                            <div class="col-xs-6">
+                                                <label for="province">
+                                                    <h4>Province</h4>
+                                                </label>
+                                                <br/>
+                                                {{ $user->profile ? $user->profile->province : '' }}
+                                            </div>
+                                        </div>
+
+                                        <div class="form-group">
+                                            <div class="col-xs-6">
+                                                <label for="country">
+                                                    <h4>Country</h4>
+                                                </label>
+                                                <br/>
+                                                {{ $user->profile ? $user->profile->country : '' }}
+                                            </div>
+                                        </div>
+
+                                        <div class="form-group">
+                                            <div class="col-xs-6">
+                                                <label for="address">
+                                                    <h4>Address</h4>
+                                                </label>
+                                                <br/>
+                                                {{ $user->profile ? $user->profile->address : '' }}
+                                            </div>
+                                        </div>
+
+                                        <div class="form-group">
+                                            <div class="col-xs-12">
+                                                <label for="intro">
+                                                    <h4>Intro</h4>
+                                                </label>
+                                                <br/>
+                                                {{ $user->profile ? $user->profile->intro : '' }}
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
                             </div>
 
                             <div class="tab-content-item " id="review">
@@ -144,7 +217,7 @@
                                             width: 100%;
                                         }
                                     </style>
-                                    <div id="comments">
+                                    {{--<div id="comments">
                                         <h2 class="woocommerce-Reviews-title">
                                             {{ $job->recruitmentJobs->where('rstatus', 1)->count() }}
                                             {{ __('detail.review_for') }} <span>{{ $job->name }}</span></h2>
@@ -179,7 +252,7 @@
                                                 </li>
                                             @endforeach
                                         </ol>
-                                    </div>
+                                    </div>--}}
 
                                 </div>
                             </div>

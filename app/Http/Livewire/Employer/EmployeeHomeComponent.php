@@ -16,14 +16,14 @@ class EmployeeHomeComponent extends Component
         $lcandidates = User::where('role_id', 2)->orderBy('created_at', 'DESC')->get()->take(8);
         foreach ($lcandidates as $lcandidate) {
             if ($lcandidate->workPreference) {
-                $lcandidate->expectedLocationName = Category::whereIn('id', array_column($lcandidate->workPreference->toArray(), 'category_id'))->get('name');
+                $lcandidate->expectedLocationName = Category::whereIn('id', array_column($lcandidate->workPreference->toArray(), 'category_id'))->pluck('name');
             }
         }
 
         $top_views = User::where('role_id', 2)->orderBy('totalviews', 'DESC')->get()->take(8);
         foreach ($top_views as $top_view) {
             if ($top_view->workPreference) {
-                $top_view->expectedLocationName = Category::whereIn('id', array_column($top_view->workPreference->toArray(), 'category_id'))->get('name');
+                $top_view->expectedLocationName = Category::whereIn('id', array_column($top_view->workPreference->toArray(), 'category_id'))->pluck('name');
             }
         }
         $lposts = Post::orderBy('created_at', 'DESC')->get()->take(8);

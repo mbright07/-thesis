@@ -49,7 +49,7 @@
                                                     <br/>
                                                     @if($lcandidate->expectedLocationName)
                                                         @foreach($lcandidate->expectedLocationName as $item)
-                                                            {{ $item->name }}
+                                                            {{ $item }}
                                                             <br/>
                                                         @endforeach
                                                     @endif

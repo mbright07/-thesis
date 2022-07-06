@@ -2,7 +2,9 @@
 
 namespace App\Http\Livewire\Employer;
 
+use App\Models\Category;
 use App\Models\Job;
+use App\Models\Recruitment;
 use App\Models\User;
 use Cart;
 use Illuminate\Support\Facades\Auth;
@@ -18,14 +20,14 @@ class EmployeeCandidateDetailsComponent extends Component
         $this->user_id = $user_id;
     }
 
-    public function company($job_id, $job_name, $job_salary)
+    public function company($user_id, $user_name)
     {
         if (!Auth::check()) {
             return redirect()->route('login');
         } else {
-            Cart::instance('bookmark_candidate')->add($job_id, $job_name, 1, $job_salary)->associate('App\Models\User');
-            session()->flash('success_message', 'Job bookmark successful');
-            return redirect()->route('job.bookmark');
+            Cart::instance('bookmark_candidate')->add($user_id, $user_name)->associate('App\Models\User');
+            session()->flash('success_message', 'Candidate bookmark successful');
+            return redirect()->route('candidate.bookmark');
         }
     }
 
@@ -33,8 +35,21 @@ class EmployeeCandidateDetailsComponent extends Component
     {
         $user = User::where('id', $this->user_id)->first();
         $total_view = User::where('id', $this->user_id)->increment('totalviews');
+        $processing = Recruitment::where('user_id', $this->user_id)->where('status', 'Processing')->first();
 
-        return view('livewire.employer.employee-candidate-details-component', ['user' => $user])->layout('layouts.base');
+        $available = !$processing;
+
+        if ($user->workPreference) {
+            foreach($user->workPreference as $item) {
+                $item->expected_location_name = Category::where('id', $item['category_id'])->pluck('name')->first();
+            }
+        }
+
+        return view('livewire.employer.employee-candidate-details-component', [
+            'user' => $user,
+            'total_view' => $total_view,
+            'available' => $available,
+        ])->layout('layouts.base');
     }
 }
 

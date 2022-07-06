@@ -76,10 +76,10 @@ class BlogComponent extends Component
         }
     }
 
-    public function Recruitment()
+    public function recruitment($job_id)
     {
         if (Auth::check()) {
-            return redirect()->route('recruitment');
+            return redirect()->route('recruitment', ['job_id' => $job_id]);
         } else {
             return redirect()->route('login');
         }

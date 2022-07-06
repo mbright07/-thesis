@@ -57,7 +57,7 @@
                         </div>
                         <div class="wrap-butons">
                             <a href="#" class="btn add-to-cart"
-                                wire:click.prevent="Recruitment">{{ __('detail.apply_now') }}</a>
+                                wire:click.prevent="recruitment({{ $job->id }})">{{ __('detail.apply_now') }}</a>
                             <a href="#" class="btn add-to-cart"
                                 wire:click.prevent="company({{ $job->id }},'{{ $job->name }}',{{ $job->regular_salary }})">{{ __('detail.bookmark') }}</a>
                         </div>
@@ -74,11 +74,12 @@
                             </div>
 
                             <div class="tab-content-item " id="add_infomation">
-                                @if($user->role_id == 3)
                                 <div class="col-sm-3">
                                     <div class="text-center">
-                                        <img src="{{ asset('/assets/images/profile') }}/{{ $user->profile->image }}"
-                                             class="avatar img-circle img-thumbnail" alt="avatar">
+                                        @if($user->profile && $user->profile->image)
+                                            <img src="{{ asset('/assets/images/profile') }}/{{ $user->profile->image }}"
+                                                class="avatar img-circle img-thumbnail" alt="avatar">
+                                        @endif
                                     </div>
                                     <div class="row text-center">
                                         <div class="col-sm-12" class="text-center">
@@ -86,34 +87,91 @@
                                         </div>
                                     </div>
                                     <hr>
-
-                                    <div class="panel panel-default">
-                                        <div class="panel-heading">Social Media</div>
-                                        <div class="panel-body">
-                                            <i class="fa fa-facebook fa-2x"></i> <i class="fa fa-github fa-2x"></i> <i
-                                                class="fa fa-twitter fa-2x"></i> <i class="fa fa-pinterest fa-2x"></i> <i
-                                                class="fa fa-google-plus fa-2x"></i>
-                                        </div>
-                                    </div>
-
                                 </div>
+
                                 <div class="col-sm-9">
-                                    <div class="row text-center">
-                                        <div class="col-sm-12" class="text-center">
-                                            <h2>{{ $user->profile->email }}</h2>
+                                    <div class="tab-content">
+                                        <div class="form-group">
+                                            <div class="col-xs-6">
+                                                <label for="name">
+                                                    <h4>Name</h4>
+                                                </label>
+                                                <br/>
+                                                {{ $user->name }}
+                                            </div>
                                         </div>
-                                        <div class="col-sm-12" class="text-center">
-                                            <h2>{{ $user->profile->mobile }}</h2>
+
+                                        <div class="form-group">
+                                            <div class="col-xs-6">
+                                                <label for="email">
+                                                    <h4>Email</h4>
+                                                </label>
+                                                <br/>
+                                                {{ $user->email }}
+                                            </div>
                                         </div>
-                                        <div class="col-sm-12" class="text-center">
-                                            <h2>{{ $user->profile->address }}</h2>
+
+                                        <div class="form-group">
+                                            <div class="col-xs-6">
+                                                <label for="mobile">
+                                                    <h4>Mobile</h4>
+                                                </label>
+                                                <br/>
+                                                {{ $user->profile ? $user->profile->mobile : '' }}
+                                            </div>
                                         </div>
-                                        <div class="col-sm-12" class="text-center">
-                                            <h2>{{ $user->profile->intro }}</h2>
+
+                                        <div class="form-group">
+                                            <div class="col-xs-6">
+                                                <label for="city">
+                                                    <h4>City</h4>
+                                                </label>
+                                                <br/>
+                                                {{ $user->profile ? $user->profile->city : '' }}
+                                            </div>
+                                        </div>
+
+                                        <div class="form-group">
+                                            <div class="col-xs-6">
+                                                <label for="province">
+                                                    <h4>Province</h4>
+                                                </label>
+                                                <br/>
+                                                {{ $user->profile ? $user->profile->province : '' }}
+                                            </div>
+                                        </div>
+
+                                        <div class="form-group">
+                                            <div class="col-xs-6">
+                                                <label for="country">
+                                                    <h4>Country</h4>
+                                                </label>
+                                                <br/>
+                                                {{ $user->profile ? $user->profile->country : '' }}
+                                            </div>
+                                        </div>
+
+                                        <div class="form-group">
+                                            <div class="col-xs-6">
+                                                <label for="address">
+                                                    <h4>Address</h4>
+                                                </label>
+                                                <br/>
+                                                {{ $user->profile ? $user->profile->address : '' }}
+                                            </div>
+                                        </div>
+
+                                        <div class="form-group">
+                                            <div class="col-xs-12">
+                                                <label for="intro">
+                                                    <h4>Intro</h4>
+                                                </label>
+                                                <br/>
+                                                {{ $user->profile ? $user->profile->intro : '' }}
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
-                                @endif
                             </div>
 
                             <div class="tab-content-item " id="review">

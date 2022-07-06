@@ -43,10 +43,10 @@ class CartComponent extends Component
         session()->flash('s_success_message', 'Job has been removed from save for later');
     }
 
-    public function Recruitment()
+    public function recruitment($job_id)
     {
         if (Auth::check()) {
-            return redirect()->route('recruitment');
+            return redirect()->route('recruitment', ['job_id' => $job_id]);
         } else {
             return redirect()->route('login');
         }
