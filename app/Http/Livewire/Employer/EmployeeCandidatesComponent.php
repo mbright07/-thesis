@@ -28,6 +28,17 @@ class EmployeeCandidatesComponent extends Component
         $this->fill(request()->only('search', 'job_cat', 'job_cat_id', 'is_sub_cat'));
     }
 
+    public function company($user_id, $user_name, $workPreference)
+    {
+        if (!Auth::check()) {
+            return redirect()->route('login');
+        } else {
+            Cart::instance('bookmark-candidate')->add($user_id, $user_name, 1, null, $workPreference)->associate('App\Models\User');
+            session()->flash('success_message', 'Candidate bookmark successful');
+            return redirect()->route('employer.candidate.bookmark');
+        }
+    }
+
     public function render()
     {
         $lcandidates = User::where('users.role_id', 2)
@@ -40,7 +51,9 @@ class EmployeeCandidatesComponent extends Component
 
         foreach ($lcandidates as $lcandidate) {
             if ($lcandidate->workPreference) {
-                $lcandidate->expectedLocationName = Category::whereIn('id', array_column($lcandidate->workPreference->toArray(), 'category_id'))->pluck('name');
+                foreach($lcandidate->workPreference as $item) {
+                    $item->expected_location_name = Category::where('id', $item->category_id)->pluck('name')->first();
+                }
             }
         }
 

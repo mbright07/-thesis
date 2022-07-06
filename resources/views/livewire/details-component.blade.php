@@ -9,7 +9,7 @@
             </ul>
         </div>
         <div class="row">
-            <div class="col-lg-9 col-md-8 col-sm-8 col-xs-12 main-content-area">
+            <div class="col-lg-12 col-md-8 col-sm-8 col-xs-12 main-content-area">
                 <div class="wrap-product-detail">
                     <div class="detail-media">
                         <img src="{{ asset('assets/images/products') }}/{{ $job->image }}" alt="{{ $job->name }}"

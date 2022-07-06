@@ -15,6 +15,9 @@
                         @if($user->profile && $user->profile->image)
                             <img src="{{ asset('assets/images/profile') }}/{{ $user->profile->image }}" alt="{{ $user->name }}"
                                 height="300" width="300" />
+                        @else
+                            <img src="{{ asset('/assets/images/profile/default-avatar-profile-image.jpg') }}"
+                                 width="300" height="300" alt="{{ $user->name }}" />
                         @endif
                     </div>
                     <div class="detail-info">
@@ -74,7 +77,7 @@
                         </div>
                         <div class="wrap-butons">
                             <a href="#" class="btn add-to-cart"
-                               wire:click.prevent="company({{ $user->id }}, {{ $user->name }})">{{ __('detail.bookmark') }}</a>
+                               wire:click.prevent="company({{ $user->id }},'{{ $user->name }}',{{ json_encode($user->workPreference) }})">{{ __('detail.bookmark') }}</a>
                         </div>
                     </div>
                     <div class="advance-info">
@@ -84,8 +87,8 @@
                             <a href="#review" class="tab-control-item">{{ __('detail.review') }}</a>
                         </div>
                         <div class="tab-contents">
-                            <div class="tab-content-item active" id="description">
-
+                            <div class="tab-content-item active" id="description" >
+                                @include('livewire.employer.employee-candidate-resume-component')
                             </div>
 
                             <div class="tab-content-item " id="add_infomation">

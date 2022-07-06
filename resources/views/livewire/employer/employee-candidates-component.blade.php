@@ -47,9 +47,9 @@
                                         <div class="wrap-price"><ins>
                                                 <p class="product-price">{{ __('employee/home.expected_location') }}:
                                                     <br/>
-                                                    @if($lcandidate->expectedLocationName)
-                                                        @foreach($lcandidate->expectedLocationName as $item)
-                                                            {{ $item }}
+                                                    @if($lcandidate->workPreference)
+                                                        @foreach($lcandidate->workPreference as $item)
+                                                            {{ $item->expected_location_name }}
                                                             <br/>
                                                         @endforeach
                                                     @endif
@@ -61,7 +61,7 @@
                                         <br/>
                                         <div class="bookmark">
                                             <a href="#" class="btn add-to-cart"
-                                               wire:click.prevent="company({{ $lcandidate->id }},'{{ $lcandidate->name }}')">{{ __('search.bookmark') }}</a>
+                                               wire:click.prevent="company({{ $lcandidate->id }},'{{ $lcandidate->name }}',{{ json_encode($lcandidate->workPreference) }})">{{ __('search.bookmark') }}</a>
                                         </div>
                                     </div>
                                 </div>
