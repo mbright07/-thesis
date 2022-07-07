@@ -195,6 +195,11 @@
                     " - $" + $( "#slider-range" ).slider( "values", 1 ) );
 
             }
+
+        });
+
+        window.addEventListener('jobApplied', (e) => {
+            alert(e.detail.message);
         });
 
     </script>

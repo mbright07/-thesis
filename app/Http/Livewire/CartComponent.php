@@ -2,6 +2,8 @@
 
 namespace App\Http\Livewire;
 
+use App\Models\Recruitment;
+use App\Models\RecruitmentJob;
 use Livewire\Component;
 use Cart;
 use Illuminate\Support\Facades\Auth;
@@ -46,7 +48,16 @@ class CartComponent extends Component
     public function recruitment($job_id)
     {
         if (Auth::check()) {
-            return redirect()->route('recruitment', ['job_id' => $job_id]);
+            $recruitment_ids = Recruitment::where('user_id', Auth::user()->id)->pluck('id');
+            $recruitment_jobs = RecruitmentJob::whereIn('recruitment_id', $recruitment_ids->toArray())
+                ->where('job_id', $job_id)->first();
+
+            if ($recruitment_jobs) {
+                $message = 'You have applied this job!';
+                $this->dispatchBrowserEvent('jobApplied', ['message' => $message]);
+            } else {
+                return redirect()->route('recruitment.job_id', ['job_id' => $job_id]);
+            }
         } else {
             return redirect()->route('login');
         }

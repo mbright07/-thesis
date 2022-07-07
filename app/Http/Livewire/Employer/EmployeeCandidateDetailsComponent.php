@@ -49,7 +49,7 @@ class EmployeeCandidateDetailsComponent extends Component
         if (!Auth::check()) {
             return redirect()->route('login');
         } else {
-            Cart::instance('bookmark-candidate')->add($user_id, $user_name, 1, null, $workPreference)->associate('App\Models\User');
+            Cart::instance('bookmark_candidate')->add($user_id, $user_name, 1, 0, $workPreference)->associate('App\Models\User');
             session()->flash('success_message', 'Candidate bookmark successful');
             return redirect()->route('employer.candidate.bookmark');
         }

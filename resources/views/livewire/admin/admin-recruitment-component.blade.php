@@ -44,6 +44,15 @@
                                         <option value="desc">Mới nhất</option>
                                     </select>
                                 </div>
+                                <div class="col-md-2">
+                                    <label for="job_id">Job</label>
+                                    <select name="job_id" class="form-control" wire:model="job_id">
+                                        <option value="" selected="selected">No Selected</option>
+                                        @foreach($jobs as $job)
+                                            <option value="{{ $job->id }}">{{ $job->name }}</option>
+                                        @endforeach
+                                    </select>
+                                </div>
                             </div>
                         </div>
                     </div>

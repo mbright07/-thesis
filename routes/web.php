@@ -32,6 +32,7 @@ use App\Http\Livewire\Employer\EmployeeHomeComponent;
 use App\Http\Livewire\Employer\EmployerDashBoardComponent;
 use App\Http\Livewire\HomeComponent;
 use App\Http\Livewire\RecruitmentComponent;
+use App\Http\Livewire\RecruitmentOneJobComponent;
 use App\Http\Livewire\ReferenceComponent;
 use App\Http\Livewire\SearchComponent;
 use App\Http\Livewire\ThankyouComponent;
@@ -74,7 +75,9 @@ Route::group(['middleware' => 'locale'], function () {
 
     Route::get('/bookmark', CartComponent::class)->name('job.bookmark');
 
-    Route::get('/recruitment/{job_id}', RecruitmentComponent::class)->name('recruitment');
+    Route::get('/recruitment', RecruitmentComponent::class)->name('recruitment');
+
+    Route::get('/recruitment/{job_id}', RecruitmentOneJobComponent::class)->name('recruitment.job_id');
 
     Route::get('/job/{slug}', DetailsComponent::class)->name('job.details');
 

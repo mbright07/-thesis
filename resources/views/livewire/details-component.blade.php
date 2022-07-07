@@ -421,3 +421,14 @@
     <!--end container-->
 
 </main>
+
+
+@push('scripts')
+    <script>
+
+        window.addEventListener('jobApplied', (e) => {
+            alert(e.detail.message);
+        });
+
+    </script>
+@endpush
