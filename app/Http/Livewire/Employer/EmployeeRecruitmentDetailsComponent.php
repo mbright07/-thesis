@@ -13,18 +13,18 @@ class EmployeeRecruitmentDetailsComponent extends Component
     public $recruitment_id;
     public function mount($recruitment_id)
     {
+        $job_ids = RecruitmentJob::where('recruitment_id', $this->recruitment_id)->pluck('job_id')->toArray();
+        $job = Job::where('user_id', Auth::user()->id)->whereIn('id', $job_ids)->first();
+
+        if (!$job) {
+            abort(403);
+        }
+
         $this->recruitment_id = $recruitment_id;
     }
 
     public function render()
     {
-        /*$job_ids = RecruitmentJob::where('recruitment_id', $this->recruitment_id)->pluck('job_id')->toArray();
-        $jobs = Job::where('user_id', Auth::user()->id)->whereIn('id', $job_ids)->get();
-
-        if (!$jobs) {
-            abort(403);
-        }*/
-
         $recruitment = Recruitment::find($this->recruitment_id);
         return view('livewire.employer.employee-recruitment-details-component', ['recruitment' => $recruitment])->layout('layouts.base');
     }
