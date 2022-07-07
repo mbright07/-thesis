@@ -254,18 +254,31 @@
                         <div class="primary-nav-section">
                             <div class="container">
                                 <ul class="nav primary clone-main-menu" id="mercado_main" data-menuname="Main menu">
-                                    <li class="menu-item home-icon">
-                                        <a href="/" class="link-term mercado-item-title"><i class="fa fa-home"
-                                                aria-hidden="true"></i></a>
-                                    </li>
-                                    <li class="menu-item">
-                                        <a href="/jobs"
-                                            class="link-term mercado-item-title">{{ __('base.jobs') }}</a>
-                                    </li>
-                                    <li class="menu-item">
-                                        <a href="/bookmark"
-                                            class="link-term mercado-item-title">{{ __('base.bookmark') }}</a>
-                                    </li>
+                                    @if(Auth::user() && Auth::user()->role_id !== 3)
+                                        <li class="menu-item home-icon">
+                                            <a href="/" class="link-term mercado-item-title"><i class="fa fa-home" aria-hidden="true"></i></a>
+                                        </li>
+                                        <li class="menu-item">
+                                            <a href="/jobs"
+                                               class="link-term mercado-item-title">{{ __('base.jobs') }}</a>
+                                        </li>
+                                        <li class="menu-item">
+                                            <a href="/bookmark"
+                                               class="link-term mercado-item-title">{{ __('base.bookmark') }}</a>
+                                        </li>
+                                    @else
+                                        <li class="menu-item home-icon">
+                                            <a href="{{ route('employer.home') }}" class="link-term mercado-item-title"><i class="fa fa-home" aria-hidden="true"></i></a>
+                                        </li>
+                                        <li class="menu-item">
+                                            <a href="{{ route('employer.candidates') }}"
+                                               class="link-term mercado-item-title">Candidates</a>
+                                        </li>
+                                        <li class="menu-item">
+                                            <a href="{{ route('employer.candidates.bookmark') }}"
+                                               class="link-term mercado-item-title">Candidates Bookmark</a>
+                                        </li>
+                                    @endif
                                     <li class="menu-item">
                                         <a href="/recruitment"
                                             class="link-term mercado-item-title">{{ __('base.recruitment') }}</a>

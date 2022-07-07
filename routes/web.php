@@ -120,7 +120,7 @@ Route::group(['middleware' => 'locale'], function () {
             Route::get('/employer', EmployeeHomeComponent::class)->name('employer.home');
             Route::get('/employer/candidates', EmployeeCandidatesComponent::class)->name('employer.candidates');
             Route::get('/employer/candidates/{user_id}', EmployeeCandidateDetailsComponent::class)->name('employer.candidate.details');
-            Route::get('/employer/candidates-bookmark', EmployeeCandidatesBookmarkComponent::class)->name('employer.candidate.bookmark');
+            Route::get('/employer/candidates-bookmark', EmployeeCandidatesBookmarkComponent::class)->name('employer.candidates.bookmark');
             Route::get('/employer/profile', UserProfileComponent::class)->name('employer.profile');
             Route::get('/employer/recruitments', EmployeeRecruitmentComponent::class)->name('employer.recruitments');
             Route::get('/employer/recruitments/{recruitment_id}', EmployeeRecruitmentDetailsComponent::class)->name('employer.recruitmentdetails');
