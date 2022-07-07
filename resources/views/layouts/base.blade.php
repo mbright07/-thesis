@@ -121,6 +121,10 @@
                                                             href="{{ route('employer.profile') }}">{{ __('base.my_profile') }}</a>
                                                     </li>
                                                     <li class="menu-item">
+                                                        <a title="All Recruitments"
+                                                           href="{{ route('employer.recruitments') }}">{{ __('base.all_recruitments') }}</a>
+                                                    </li>
+                                                    <li class="menu-item">
                                                         <a title="Change Password"
                                                             href="{{ route('employer.changepassword') }}">{{ __('base.change_password') }}</a>
                                                     </li>

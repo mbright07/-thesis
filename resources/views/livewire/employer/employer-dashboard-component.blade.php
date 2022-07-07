@@ -124,7 +124,7 @@
                                                     href="{{ URL::asset('/assets/images/recruitments') }}/{{ $recruitment->file }}">{{ $recruitment->file }}</a>
                                             </td>
                                             <td>{{ $recruitment->created_at }}</td>
-                                            <td><a href="{{ route('admin.recruitmentdetails', ['recruitment_id' => $recruitment->id]) }}"
+                                            <td><a href="{{ route('employer.recruitmentdetails', ['recruitment_id' => $recruitment->id]) }}"
                                                    class="btn btn-info btn-sm">Detail</a></td>
                                         </tr>
                                     @endforeach

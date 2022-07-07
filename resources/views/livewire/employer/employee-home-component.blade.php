@@ -26,9 +26,9 @@
                                class="product-name"><span>{{ $top_view->name }}</span></a>
                             <div class="wrap-price"><ins>
                                     <p class="product-price">{{ __('employee/home.expected_location') }}:
-                                        @if($top_view->expectedLocationName)
-                                            @foreach($top_view->expectedLocationName as $item)
-                                                {{ $item }}
+                                        @if($top_view->workPreference)
+                                            @foreach($top_view->workPreference as $item)
+                                                {{ $item->expected_location_name }}
                                                 <br/>
                                             @endforeach
                                         @endif
@@ -75,9 +75,9 @@
                                                class="product-name"><span>{{ $lcandidate->name }}</span></a>
                                             <div class="wrap-price"><ins>
                                                     <p class="product-price">{{ __('employee/home.expected_location') }}:
-                                                        @if($lcandidate->expectedLocationName)
-                                                            @foreach($lcandidate->expectedLocationName as $item)
-                                                                {{ $item }}
+                                                        @if($lcandidate->workPreference)
+                                                            @foreach($lcandidate->workPreference as $item)
+                                                                {{ $item->expected_location_name }}
                                                                 <br/>
                                                             @endforeach
                                                         @endif

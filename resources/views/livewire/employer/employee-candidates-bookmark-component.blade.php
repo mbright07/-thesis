@@ -36,9 +36,27 @@
                                         <a class="link-to-product"
                                            href="{{ route('employer.candidate.details', ['user_id' => $item->model->id]) }}">{{ $item->model->name }}</a>
                                     </div>
-                                    <div class="price-field produtc-price">
-                                        <p class="price">
-                                            {{ __('bookmark.salary') }}{{ $item->model->regular_salary }}</p>
+                                    <div class="price-field product-price">
+                                        <table border="1">
+                                            <thead>
+                                            <th>{{ __('employee/home.expected_location') }}</th>
+                                            <th>{{ __('detail.salary') }}</th>
+                                            </thead>
+                                            <tbody>
+                                            @if($item->options)
+                                                @foreach($item->options as $option)
+                                                    <tr>
+                                                        <td>
+                                                            {{ $option['expected_location_name'] }}
+                                                        </td>
+                                                        <td>
+                                                            {{ $option['expected_salary'] }}
+                                                        </td>
+                                                    </tr>
+                                                @endforeach
+                                            @endif
+                                            </tbody>
+                                        </table>
                                     </div>
                                     <div class="quantity checkout-info">
                                         <a class="btn btn-success" href="#"
@@ -107,8 +125,14 @@
                                     <a href="{{ route('employer.candidate.details', ['user_id' => $top_view->id]) }}"
                                        class="product-name"><span>{{ $top_view->name }}</span></a>
                                     <div class="wrap-price"><ins>
-                                            <p class="product-price">{{ __('home.salary') }}
-                                                ${{ $top_view->regular_salary }}</p>
+                                            <p class="product-price">{{ __('employee/home.expected_location') }}:
+                                                @if($top_view->workPreference)
+                                                    @foreach($top_view->workPreference as $item)
+                                                        {{ $item->expected_location_name }}
+                                                        <br/>
+                                                    @endforeach
+                                                @endif
+                                            </p>
                                         </ins></div>
                                 </div>
                             </div>
