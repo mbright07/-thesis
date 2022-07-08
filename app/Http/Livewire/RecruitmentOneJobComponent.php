@@ -104,7 +104,7 @@ class RecruitmentOneJobComponent extends Component
                     $recruitment->city = $this->city;
                     $recruitment->province = $this->province;
                     $recruitment->country = $this->country;
-                    $fileName = Auth::user()->id . '_' . $this->job_id;
+                    $fileName = Auth::user()->id . '_' . $this->job_id . '.' . $this->file->extension();
                     $this->file->storeAs('recruitments', $fileName);
                     $recruitment->file = $fileName;
                     $recruitment->status = 'pending';

@@ -27,7 +27,7 @@
                                     <th>{{ __('admin/admin-recruitment.cancel') }}</th>
                                     <td>{{ $recruitment->canceled_date }}</td>
                                 @endif
-                    
+
                             </tr>
                         </table>
                     </div>
@@ -41,14 +41,14 @@
                         <div class="row">
                             <div class="col-md-6">{{ __('admin/admin-recruitment.re_job') }}</div>
                             <div class="col-md-6">
-                                
+
                             </div>
                         </div>
                     </div>
                     <div class="panel-body">
                         <div class="wrap-iten-in-cart">
                             <h3 class="box-title">{{ __('admin/admin-recruitment.job_name') }}</h3>
-                            <ul class="products-cart">    
+                            <ul class="products-cart">
                                 @foreach ($recruitment->recruitmentJob as $item )
                                     <li class="pr-cart-item">
                                         <div class="product-image">
@@ -57,13 +57,13 @@
                                         <div class="product-name">
                                             <a class="link-to-product" href="{{ route('job.details',['slug'=>$item->job->slug]) }}">{{ $item->job->name }}</a>
                                         </div>
-                                        <div class="price-field produtc-price"><p class="price">{{ __('admin/admin-recruitment.salary') }}{{ $item->job->regular_salary }}</p></div>
+                                        <div class="price-field product-price"><p class="price">{{ __('admin/admin-recruitment.salary') }}{{ $item->job->regular_salary }}</p></div>
                                     </li>
-                                @endforeach							
+                                @endforeach
                             </ul>
                         </div>
                         <div class="wrap-iten-in-cart">
-                            
+
                             <h3 class="box-title">{{ __('admin/admin-recruitment.cv_detail') }}</h3>
                             <table class="table table-striped table-bordered" style="width:90%; margin-left:5%;">
                                 <tr>
@@ -92,7 +92,7 @@
                                     <td>{{ $recruitment->intro }}</td>
                                 </tr>
                             </table>
-                        </div>  
+                        </div>
                     </div>
                 </div>
             </div>

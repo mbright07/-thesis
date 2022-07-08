@@ -30,7 +30,7 @@
                                         <a class="link-to-product"
                                             href="{{ route('job.details', ['slug' => $item->model->slug]) }}">{{ $item->model->name }}</a>
                                     </div>
-                                    <div class="price-field produtc-price">
+                                    <div class="price-field product-price">
                                         <p class="price">
                                             {{ __('bookmark.salary') }}{{ $item->model->regular_salary }}</p>
                                     </div>

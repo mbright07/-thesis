@@ -22,23 +22,15 @@
                                     color: #e6e6e6 !important;
                                 }
                             </style>
-                            @php
-                                $avgrating = 0;
-                            @endphp
-                            @foreach ($job->recruitmentJobs->where('rstatus', 1) as $recruitmentJob)
-                                @php
-                                    $avgrating = $avgrating + $recruitmentJob->review->rating;
-                                @endphp
-                            @endforeach
                             @for ($i = 1; $i <= 5; $i++)
-                                @if ($i <= $avgrating)
+                                @if ($i <= $job->rating_avg)
                                     <i class="fa fa-star" aria-hidden="true"></i>
                                 @else
                                     <i class="fa fa-star color-gray" aria-hidden="true"></i>
                                 @endif
                             @endfor
                             <a href="#"
-                                class="count-review">({{ $job->recruitmentJobs->where('rstatus', 1)->count() }}
+                                class="count-review">({{ $job->review_cnt }}
                                 {{ __('detail.review') }})</a>
                         </div>
                         <h2 class="product-name">{{ $job->name }}</h2>
@@ -204,37 +196,39 @@
                                     </style>
                                     <div id="comments">
                                         <h2 class="woocommerce-Reviews-title">
-                                            {{ $job->recruitmentJobs->where('rstatus', 1)->count() }}
+                                            {{ $job->review_cnt }}
                                             {{ __('detail.review_for') }} <span>{{ $job->name }}</span></h2>
                                         <ol class="commentlist">
-                                            @foreach ($job->recruitmentJobs->where('rstatus', 1) as $recruitmentJob)
-                                                <li class="comment byuser comment-author-admin bypostauthor even thread-even depth-1"
-                                                    id="li-comment-20">
-                                                    <div id="comment-20" class="comment_container">
-                                                        <img alt=""
-                                                            src="{{ asset('assets/images/author-avata.jpg') }}"
-                                                            height="80" width="80">
-                                                        <div class="comment-text">
-                                                            <div class="star-rating">
-                                                                <span
-                                                                    class="width-{{ $recruitmentJob->review->rating * 20 }}-percent">{{ __('detail.rate') }}
+                                            @foreach ($job->recruitmentJobs as $recruitmentJob)
+                                                @foreach ($recruitmentJob->reviews as $review)
+                                                    <li class="comment byuser comment-author-admin bypostauthor even thread-even depth-1"
+                                                        id="li-comment-20">
+                                                        <div id="comment-20" class="comment_container">
+                                                            <img alt=""
+                                                                src="{{ asset('assets/images/author-avata.jpg') }}"
+                                                                height="80" width="80">
+                                                            <div class="comment-text">
+                                                                <div class="star-rating">
+                                                                    <span
+                                                                        class="width-{{ $review->rating * 20 }}-percent">{{ __('detail.rate') }}
+                                                                        <strong
+                                                                            class="rating">{{ $review->rating }}</strong>
+                                                                        {{ __('detail.out_of_5') }} </span>
+                                                                </div>
+                                                                <p class="meta">
                                                                     <strong
-                                                                        class="rating">{{ $recruitmentJob->review->rating }}</strong>
-                                                                    {{ __('detail.out_of_5') }} </span>
-                                                            </div>
-                                                            <p class="meta">
-                                                                <strong
-                                                                    class="woocommerce-review__author">{{ $recruitmentJob->recruitment->user->name }}</strong>
-                                                                <span class="woocommerce-review__dash">–</span>
-                                                                <time class="woocommerce-review__published-date"
-                                                                    datetime="2008-02-14 20:00">{{ Carbon\Carbon::parse($recruitmentJob->review->created_at)->format('d F Y g:i A') }}</time>
-                                                            </p>
-                                                            <div class="description">
-                                                                <p>{{ $recruitmentJob->review->comment }}</p>
+                                                                        class="woocommerce-review__author">{{ $recruitmentJob->recruitment->user->name }}</strong>
+                                                                    <span class="woocommerce-review__dash">–</span>
+                                                                    <time class="woocommerce-review__published-date"
+                                                                        datetime="2008-02-14 20:00">{{ Carbon\Carbon::parse($review->created_at)->format('d F Y g:i A') }}</time>
+                                                                </p>
+                                                                <div class="description">
+                                                                    <p>{{ $review->comment }}</p>
+                                                                </div>
                                                             </div>
                                                         </div>
-                                                    </div>
-                                                </li>
+                                                    </li>
+                                                @endforeach
                                             @endforeach
                                         </ol>
                                     </div>

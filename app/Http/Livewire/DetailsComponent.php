@@ -10,6 +10,7 @@ use App\Models\User;
 use Livewire\Component;
 use Cart;
 use Illuminate\Support\Facades\Auth;
+use function PHPUnit\Framework\stringContains;
 
 class DetailsComponent extends Component
 {
@@ -52,6 +53,22 @@ class DetailsComponent extends Component
     public function render()
     {
         $job = Job::where('slug', $this->slug)->first();
+
+        if ($job->recruitmentJobs) {
+            foreach ($job->recruitmentJobs as $recruitmentJob) {
+                if ($recruitmentJob->reviews) {
+                    $job->review_cnt = count($recruitmentJob->reviews->toArray());
+                    $job->rating_avg = 0;
+                    foreach ($recruitmentJob->reviews as $review) {
+                        $job->rating_avg += $review->rating;
+                    }
+                    if ($job->review_cnt != 0) {
+                        $job->rating_avg /= $job->review_cnt;
+                    }
+                }
+            }
+        }
+
         $total_view = Job::where('slug', $this->slug)->increment('totalviews');
         $popular_jobs = Job::inRandomOrder()->limit(4)->get();
         $related_jobs = Job::where('category_id', $job->category_id)->inRandomOrder()->limit(5)->get();
