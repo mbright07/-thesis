@@ -10,20 +10,19 @@
     </style>
     <div>
         <a wire:click="addLanguage()" style="color: red; font-size:18px;">
-            <i class="fa fa-plus-circle"></i> Add Language
+            <i class="fa fa-plus-circle"></i> {{ __('user/user-experience.add_language') }}
         </a>
-        <p style="font-style: italic; font-size:13px; margin-left:20px;">Cập nhật thông tin ngoại ngữ, điều này sẽ giúp
-            tăng triển vọng tìm kiếm công việc.</p>
+        <p style="font-style: italic; font-size:13px; margin-left:20px;">{{ __('user/user-experience.lang_noti') }}</p>
     </div>
     <div class="panel-body">
         @if ($isOpen_lang)
             <div class="panel panel-success">
-                <div class="panel-heading">Language</div>
+                <div class="panel-heading">{{ __('user/user-experience.lang') }}</div>
                 <div class="panel-body">
                     <form>
                         <div class="form-row">
                             <div class="form-group col-md-4">
-                                <label for="language">Language *</label>
+                                <label for="language">{{ __('user/user-experience.language') }} *</label>
                                 <input type="text" class="form-control" id="language" wire:model="language">
                                 @error('language')
                                     <p class="text-danger">{{ $message }}</p>
@@ -31,22 +30,24 @@
                             </div>
 
                             <div class="form-group col-md-4">
-                                <label for="lang_proficiency">proficiency *</label>
+                                <label for="lang_proficiency">{{ __('user/user-experience.proficiency') }} *</label>
                                 <select class="form-control" id="proficiency" wire:model="lang_proficiency">
-                                    <option>--Select proficiency--</option>
-                                    <option value="beginner">beginner</option>
-                                    <option value="intermediate">intermediate</option>
-                                    <option value="advanced">advanced</option>
-                                    <option value="native">native</option>
+                                    <option>--{{ __('user/user-experience.select_proficiency') }}--</option>
+                                    <option value="beginner">{{ __('user/user-experience.beginner') }}</option>
+                                    <option value="intermediate">{{ __('user/user-experience.intermediate') }}
+                                    </option>
+                                    <option value="advanced">{{ __('user/user-experience.advanced') }}</option>
+                                    <option value="native">{{ __('user/user-experience.native') }}</option>
                                 </select>
                                 @error('lang_proficiency')
                                     <p class="text-danger">{{ $message }}</p>
                                 @enderror
                             </div>
                         </div>
-                        <button wire:click.prevent="storeLanguage()" class="btn btn-success">Save</button>
+                        <button wire:click.prevent="storeLanguage()"
+                            class="btn btn-success">{{ __('user/user-experience.save') }}</button>
                         <button wire:click="closeModalLang" type="button">
-                            Cancel
+                            {{ __('user/user-experience.cancel') }}
                         </button>
                     </form>
                 </div>

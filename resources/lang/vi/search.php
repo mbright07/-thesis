@@ -31,4 +31,5 @@ return [
     'all_status' => 'Tất cả trạng thái',
     'asc' => 'Cũ nhất',
     'desc' => 'Mới nhất',
+    'job_type' => 'Loại hình công việc',
 ];

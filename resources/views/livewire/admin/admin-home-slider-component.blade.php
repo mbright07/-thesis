@@ -2,7 +2,7 @@
     <div class="container" style="padding: 30px 0;">
         <div class="row">
             <div class="col-md-12">
-                <div class="panel panel-default">
+                <div class="panel panel-info">
                     <div class="panel-heading">
                         <div class="row">
                             <div class="col-md-2">
@@ -10,23 +10,26 @@
                             </div>
                             <div>
                                 <div class="col-md-3">
-                                    <label for="">Search</label>
-                                    <input type="text" class="form-control" placeholder="Search..."
+                                    <label for="">{{ __('admin/admin-add-home-slider.search') }}</label>
+                                    <input type="text" class="form-control"
+                                        placeholder="{{ __('admin/admin-add-home-slider.search') }}..."
                                         wire:model="search" />
                                 </div>
                                 <div class="col-md-2">
-                                    <label for="active">Status</label>
+                                    <label for="active">{{ __('admin/admin-add-home-slider.status') }}</label>
                                     <select name="active" class="form-control" wire:model="active">
-                                        <option value="">No Selected</option>
-                                        <option value="0">Inactive</option>
-                                        <option value="1">Active</option>
+                                        <option value="">{{ __('admin/admin-add-home-slider.no_selected') }}
+                                        </option>
+                                        <option value="0">{{ __('admin/admin-add-home-slider.inactive') }}
+                                        </option>
+                                        <option value="1">{{ __('admin/admin-add-home-slider.active') }}</option>
                                     </select>
                                 </div>
                                 <div class="col-md-2">
-                                    <label for="sortBy">sortBy</label>
+                                    <label for="sortBy">{{ __('admin/admin-add-home-slider.sortBy') }}</label>
                                     <select name="sortBy" class="form-control" wire:model="sortBy">
-                                        <option value="asc">Cũ Nhất</option>
-                                        <option value="desc">Mới nhất</option>
+                                        <option value="asc">{{ __('admin/admin-add-home-slider.oldest') }}</option>
+                                        <option value="desc">{{ __('admin/admin-add-home-slider.newest') }}</option>
                                     </select>
                                 </div>
                             </div>
@@ -69,7 +72,8 @@
                                         <td>{{ $slider->status == 1 ? 'Active' : 'Inactive' }}</td>
                                         <td>{{ $slider->created_at }}</td>
                                         <td>
-                                            <a href="{{ route('admin.edithomeslider', ['slider_id' => $slider->id]) }}">
+                                            <a
+                                                href="{{ route('admin.edithomeslider', ['slider_id' => $slider->id]) }}">
                                                 <i class="fa fa-edit fa-2x text-info"></i>
                                             </a>
                                             <a href="#"

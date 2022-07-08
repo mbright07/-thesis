@@ -10,7 +10,7 @@ return [
     'contact_messages' => 'Tin nhắn liên hệ',
     'settings' => 'Cài đặt',
     'logout' => 'Đăng xuất',
-    'my_profile' => 'Hồ sơ của tôi',
+    'my_profile' => 'Thông tin cá nhân',
     'my_recruitments' => 'Ứng tuyển',
     'change_password' => 'Đổi mật khẩu',
     'login' => 'Đăng nhập',
@@ -26,5 +26,9 @@ return [
     'contact_us' => 'Liên hệ',
     'noti' => 'Thông báo',
     'message' => 'Tin nhắn',
-    'language' => 'Ngôn ngữ'
+    'language' => 'Ngôn ngữ',
+    'candidates' => 'Ứng viên',
+    'candidates_bookmark' => 'Ứng viên đã lưu',
+    'all_posts' => 'Tất cả bài đăng',
+    'my_experience' => 'Hồ sơ của tôi'
 ];

@@ -25,4 +25,6 @@ return [
     'cv_detail' => 'CV Detail',
     'full_name' => 'Full Name',
     'address' => 'Address',
+    'pending' => 'Pending',
+    'no_selected' => 'No Selected',
 ];

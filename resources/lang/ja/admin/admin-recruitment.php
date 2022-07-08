@@ -25,4 +25,6 @@ return [
     'cv_detail' => '履歴書の詳細',
     'full_name' => '名前',
     'address' => '住所',
+    'pending' => 'ペンディング',
+    'no_selected' => 'すべての仕事',
 ];

@@ -10,20 +10,20 @@
     </style>
     <div>
         <a wire:click="addActivity()" style="color: red; font-size:18px;">
-            <i class="fa fa-plus-circle"></i> Add Activity
+            <i class="fa fa-plus-circle"></i> {{ __('user/user-experience.add_activity') }}
         </a>
-        <p style="font-style: italic; font-size:13px; margin-left:20px;">Hoạt động không ảnh hưởng đến bậc hồ sơ của bạn.
+        <p style="font-style: italic; font-size:13px; margin-left:20px;">{{ __('user/user-experience.acti_noti') }}
         </p>
     </div>
     <div class="panel-body">
         @if ($isOpen_act)
             <div class="panel panel-success">
-                <div class="panel-heading">Activity</div>
+                <div class="panel-heading">{{ __('user/user-experience.act') }}</div>
                 <div class="panel-body">
                     <form>
                         <div class="form-row">
                             <div class="form-group col-md-4">
-                                <label for="activity_name">Activity Name *</label>
+                                <label for="activity_name">{{ __('user/user-experience.act_name') }} *</label>
                                 <input type="text" class="form-control" id="activity_name"
                                     wire:model="activity_name">
                                 @error('activity_name')
@@ -32,16 +32,18 @@
                             </div>
 
                             <div class="form-group col-md-4">
-                                <label for="activity_description">Description *</label>
+                                <label for="activity_description">{{ __('user/user-experience.description') }}
+                                    *</label>
                                 <textarea type="text" class="form-control" id="activity_description" wire:model="activity_description"></textarea>
                                 @error('activity_description')
                                     <p class="text-danger">{{ $message }}</p>
                                 @enderror
                             </div>
                         </div>
-                        <button wire:click.prevent="storeActivity()" class="btn btn-success">Save</button>
+                        <button wire:click.prevent="storeActivity()"
+                            class="btn btn-success">{{ __('user/user-experience.save') }}</button>
                         <button wire:click="closeModalSkill()" type="button">
-                            Cancel
+                            {{ __('user/user-experience.cancel') }}
                         </button>
                     </form>
                 </div>
