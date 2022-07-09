@@ -31,6 +31,7 @@ use App\Http\Livewire\Employer\EmployeeCandidatesComponent;
 use App\Http\Livewire\Employer\EmployeeHomeComponent;
 use App\Http\Livewire\Employer\EmployeeRecruitmentComponent;
 use App\Http\Livewire\Employer\EmployeeRecruitmentDetailsComponent;
+use App\Http\Livewire\Employer\EmployeeReviewCandidatesComponent;
 use App\Http\Livewire\Employer\EmployerDashBoardComponent;
 use App\Http\Livewire\HomeComponent;
 use App\Http\Livewire\RecruitmentComponent;
@@ -124,6 +125,7 @@ Route::group(['middleware' => 'locale'], function () {
             Route::get('/employer/profile', UserProfileComponent::class)->name('employer.profile');
             Route::get('/employer/recruitments', EmployeeRecruitmentComponent::class)->name('employer.recruitments');
             Route::get('/employer/recruitments/{recruitment_id}', EmployeeRecruitmentDetailsComponent::class)->name('employer.recruitmentdetails');
+            Route::get('/employer/review-candidate/{recruitment_job_id}', EmployeeReviewCandidatesComponent::class)->name('employer.review.candidate');
             Route::get('/employer/change-password', UserChangePasswordCompponent::class)->name('employer.changepassword');
             Route::get('/employer/jobs', AdminJobComponentnent::class)->name('employer.jobs');
             Route::get('/employer/job/add', AdminAddJobComponent::class)->name('employer.addjob');

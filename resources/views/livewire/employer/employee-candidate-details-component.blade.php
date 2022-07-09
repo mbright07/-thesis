@@ -27,23 +27,15 @@
                                     color: #e6e6e6 !important;
                                 }
                             </style>
-                           {{-- @php
-                                $avgrating = 0;
-                            @endphp
-                            @foreach ($job->recruitmentJobs->where('rstatus', 1) as $recruitmentJob)
-                                @php
-                                    $avgrating = $avgrating + $recruitmentJob->review->rating;
-                                @endphp
-                            @endforeach
                             @for ($i = 1; $i <= 5; $i++)
-                                @if ($i <= $avgrating)
+                                @if ($i <= $user->rating_avg)
                                     <i class="fa fa-star" aria-hidden="true"></i>
                                 @else
                                     <i class="fa fa-star color-gray" aria-hidden="true"></i>
                                 @endif
-                            @endfor--}}
+                            @endfor
                             <a href="#"
-                               class="count-review">(
+                               class="count-review">({{ $user->review_cnt }}
                                 {{ __('detail.review') }})</a>
                         </div>
                         <h2 class="product-name">{{ $user->name }}</h2>
@@ -220,42 +212,57 @@
                                             width: 100%;
                                         }
                                     </style>
-                                    {{--<div id="comments">
-                                        <h2 class="woocommerce-Reviews-title">
-                                            {{ $job->recruitmentJobs->where('rstatus', 1)->count() }}
-                                            {{ __('detail.review_for') }} <span>{{ $job->name }}</span></h2>
-                                        <ol class="commentlist">
-                                            @foreach ($job->recruitmentJobs->where('rstatus', 1) as $recruitmentJob)
-                                                <li class="comment byuser comment-author-admin bypostauthor even thread-even depth-1"
-                                                    id="li-comment-20">
-                                                    <div id="comment-20" class="comment_container">
-                                                        <img alt=""
-                                                             src="{{ asset('assets/images/author-avata.jpg') }}"
-                                                             height="80" width="80">
-                                                        <div class="comment-text">
-                                                            <div class="star-rating">
-                                                                <span
-                                                                    class="width-{{ $recruitmentJob->review->rating * 20 }}-percent">{{ __('detail.rate') }}
+                                    <div id="comments">
+                                    @if (Session::has('message'))
+                                        <div class="alert alert-success" role="alert">{{ Session::get('message') }}</div>
+                                    @endif
+                                    <h2 class="woocommerce-Reviews-title">
+                                        {{ $user->review_cnt }}
+                                        {{ __('detail.review_for') }} <span>{{ $user->name }}</span></h2>
+                                    <ol class="commentlist">
+                                        @foreach ($user->recruitments as $recruitment)
+                                            @foreach ($recruitment->recruitmentJob as $recruitmentJob)
+                                                @foreach ($recruitmentJob->reviewCandidates as $review)
+                                                    <li class="comment byuser comment-author-admin bypostauthor even thread-even depth-1"
+                                                        id="li-comment-20">
+                                                        <div id="comment-20" class="comment_container">
+                                                            <img alt=""
+                                                                 src="{{ asset('assets/images/author-avata.jpg') }}"
+                                                                 height="80" width="80">
+                                                            <div class="comment-text">
+                                                                <div class="star-rating">
+                                                                        <span
+                                                                            class="width-{{ $review->rating * 20 }}-percent">{{ __('detail.rate') }}
+                                                                            <strong
+                                                                                class="rating">{{ $review->rating }}</strong>
+                                                                            {{ __('detail.out_of_5') }} </span>
+                                                                </div>
+                                                                <p class="meta">
                                                                     <strong
-                                                                        class="rating">{{ $recruitmentJob->review->rating }}</strong>
-                                                                    {{ __('detail.out_of_5') }} </span>
-                                                            </div>
-                                                            <p class="meta">
-                                                                <strong
-                                                                    class="woocommerce-review__author">{{ $recruitmentJob->recruitment->user->name }}</strong>
-                                                                <span class="woocommerce-review__dash">–</span>
-                                                                <time class="woocommerce-review__published-date"
-                                                                      datetime="2008-02-14 20:00">{{ Carbon\Carbon::parse($recruitmentJob->review->created_at)->format('d F Y g:i A') }}</time>
-                                                            </p>
-                                                            <div class="description">
-                                                                <p>{{ $recruitmentJob->review->comment }}</p>
+                                                                        class="woocommerce-review__author">{{ $recruitmentJob->job->user->name }}</strong>
+                                                                    <span class="woocommerce-review__dash">–</span>
+                                                                    <time class="woocommerce-review__published-date"
+                                                                          datetime="2008-02-14 20:00">{{ Carbon\Carbon::parse($review->created_at)->format('d F Y g:i A') }}</time>
+                                                                </p>
+                                                                <div class="description">
+                                                                    <p>{{ $review->comment }}</p>
+                                                                </div>
                                                             </div>
                                                         </div>
-                                                    </div>
-                                                </li>
+                                                        @if($recruitmentJob->job->user_id == Auth::user()->id)
+                                                            <div class="panel-body-right" style="float: right">
+                                                                <i class="fa fa-trash" aria-hidden="true"
+                                                                   onclick="confirm('Are you sure?') || event.stopImmediatePropagation()"
+                                                                   wire:click.prevent="deleteReview({{ $review->id }})"
+                                                                   style="color: rgb(248, 66, 66); font-size: 18px;"></i>
+                                                            </div>
+                                                        @endif
+                                                    </li>
+                                                @endforeach
                                             @endforeach
-                                        </ol>
-                                    </div>--}}
+                                        @endforeach
+                                    </ol>
+                                </div>
 
                                 </div>
                             </div>

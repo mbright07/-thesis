@@ -31,6 +31,11 @@ class Job extends Model
         return $this->belongsTo(Subcategory::class, 'sub_category_id');
     }
 
+    public function user()
+    {
+        return $this->belongsTo(User::class);
+    }
+
     public function incrementReadCount()
     {
         $this->totalviews++;

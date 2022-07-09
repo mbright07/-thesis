@@ -6,6 +6,7 @@ use App\Models\Job;
 use App\Models\Profile;
 use App\Models\Recruitment;
 use App\Models\RecruitmentJob;
+use App\Models\Review;
 use App\Models\User;
 use Livewire\Component;
 use Cart;
@@ -48,6 +49,12 @@ class DetailsComponent extends Component
         } else {
             return redirect()->route('login');
         }
+    }
+
+    public function deleteReview ($review_id) {
+        $review = Review::find($review_id);
+        $review->delete();
+        session()->flash('message', 'Review has been deleted successfully!');
     }
 
     public function render()
