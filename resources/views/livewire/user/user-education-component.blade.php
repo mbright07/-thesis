@@ -10,20 +10,19 @@
     </style>
     <div>
         <a wire:click="addEducation" style="color: red; font-size:18px;">
-            <i class="fa fa-plus-circle"></i> Add Education
+            <i class="fa fa-plus-circle"></i> {{ __('user/user-experience.add_education') }}
         </a>
-        <p style="font-style: italic; font-size:13px; margin-left:20px;">Mô tả toàn bộ quá trình học vấn của bạn, cũng
-            như các bằng cấp bạn đã được và các khóa huấn luyện bạn đã tham gia</p>
+        <p style="font-style: italic; font-size:13px; margin-left:20px;">{{ __('user/user-experience.edu_noti') }}</p>
     </div>
     <div class="panel-body">
         @if ($isOpen_edu)
             <div class="panel panel-success">
-                <div class="panel-heading">Education</div>
+                <div class="panel-heading">{{ __('user/user-experience.edu') }}</div>
                 <div class="panel-body">
                     <form>
                         <div class="form-row">
                             <div class="form-group col-md-4">
-                                <label for="subject">Subject *</label>
+                                <label for="subject">{{ __('user/user-experience.subject') }} *</label>
                                 <input type="text" class="form-control" id="positon" wire:model="subject">
                                 @error('subject')
                                     <p class="text-danger">{{ $message }}</p>
@@ -31,7 +30,7 @@
                             </div>
 
                             <div class="form-group col-md-4">
-                                <label for="school">School *</label>
+                                <label for="school">{{ __('user/user-experience.school') }} *</label>
                                 <input type="text" class="form-control" id="school" wire:model="school">
                                 @error('school')
                                     <p class="text-danger">{{ $message }}</p>
@@ -39,17 +38,18 @@
                             </div>
 
                             <div class="form-group col-md-4">
-                                <label for="qualification">qualification *</label>
+                                <label for="qualification">{{ __('user/user-experience.qualification') }} *</label>
                                 <select class="form-control" id="qualification" wire:model="qualification">
                                     {{-- <option>--Select qualification--
                                     </option> --}}
-                                    <option value="high_school">high school</option>
-                                    <option value="associate_degree">associate degree</option>
-                                    <option value="college">college</option>
-                                    <option value="bachelors">bachelors</option>
-                                    <option value="masters">masters</option>
-                                    <option value="doctorate">doctorate</option>
-                                    <option value="others">others</option>
+                                    <option value="high_school">{{ __('user/user-experience.high_school') }}</option>
+                                    <option value="associate_degree">{{ __('user/user-experience.associate_degree') }}
+                                    </option>
+                                    <option value="college">{{ __('user/user-experience.college') }}</option>
+                                    <option value="bachelors">{{ __('user/user-experience.bachelors') }}</option>
+                                    <option value="masters">{{ __('user/user-experience.masters') }}</option>
+                                    <option value="doctorate">{{ __('user/user-experience.doctorate') }}</option>
+                                    <option value="others">{{ __('user/user-experience.others') }}</option>
                                 </select>
                                 @error('qualification')
                                     <p class="text-danger">{{ $message }}</p>
@@ -58,7 +58,7 @@
                         </div>
                         <div class="form-row">
                             <div class="form-group col-md-6">
-                                <label for="edu_from_month">From Month *</label>
+                                <label for="edu_from_month">{{ __('user/user-experience.from') }} *</label>
                                 <input type="date" class="form-control" id="edu_from_month"
                                     wire:model="edu_from_month">
                                 @error('edu_from_month')
@@ -67,7 +67,7 @@
                             </div>
 
                             <div class="form-group col-md-6">
-                                <label for="edu_to_month">To Month *</label>
+                                <label for="edu_to_month">{{ __('user/user-experience.to') }} *</label>
                                 <input type="date" class="form-control" id="edu_to_month" wire:model="edu_to_month">
                                 @error('edu_to_month')
                                     <p class="text-danger">{{ $message }}</p>
@@ -76,16 +76,17 @@
                         </div>
                         <div class="form-group">
                             <div class="col-md-12">
-                                <label for="achievement">Achievement *</label>
+                                <label for="achievement">{{ __('user/user-experience.achievement') }} *</label>
                                 <textarea type="text" class="form-control" name="achievement" id="achievement" wire:model="achievement"></textarea>
                                 @error('achievement')
                                     <p class="text-danger">{{ $message }}</p>
                                 @enderror
                             </div>
                         </div>
-                        <button wire:click.prevent="storeEducation" class="btn btn-success">Save</button>
+                        <button wire:click.prevent="storeEducation"
+                            class="btn btn-success">{{ __('user/user-experience.save') }}</button>
                         <button wire:click="closeModalEdu()" type="button">
-                            Cancel
+                            {{ __('user/user-experience.cancel') }}
                         </button>
                     </form>
                 </div>

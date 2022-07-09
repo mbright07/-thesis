@@ -6,7 +6,7 @@
         @endif
         <div class="col-md-12">
             <div>
-                <h3>My Experience</h3>
+                <h3>{{ __('user/user-experience.my_ex') }}</h3>
 
             </div>
 
@@ -14,31 +14,40 @@
                 <div class="tabbable-line">
                     <ul class="nav nav-tabs ">
                         <li class="active">
-                            <a href="#work_history" data-toggle="tab" wire:ignore>Work History </a>
+                            <a href="#work_history" data-toggle="tab"
+                                wire:ignore>{{ __('user/user-experience.work_his') }} </a>
                         </li>
                         <li>
-                            <a href="#education" data-toggle="tab" wire:ignore>Education </a>
+                            <a href="#education" data-toggle="tab" wire:ignore>{{ __('user/user-experience.edu') }}
+                            </a>
                         </li>
                         <li>
-                            <a href="#skill" data-toggle="tab" wire:ignore>Skills </a>
+                            <a href="#skill" data-toggle="tab" wire:ignore>{{ __('user/user-experience.skill') }}
+                            </a>
                         </li>
                         <li>
-                            <a href="#language" data-toggle="tab" wire:ignore>Languages </a>
+                            <a href="#language" data-toggle="tab" wire:ignore>{{ __('user/user-experience.lang') }}
+                            </a>
                         </li>
                         <li>
-                            <a href="#activity" data-toggle="tab" wire:ignore>Activities </a>
+                            <a href="#activity" data-toggle="tab" wire:ignore>{{ __('user/user-experience.act') }}
+                            </a>
                         </li>
                         <li>
-                            <a href="#certification" data-toggle="tab" wire:ignore>Certifications </a>
+                            <a href="#certification" data-toggle="tab"
+                                wire:ignore>{{ __('user/user-experience.cer') }} </a>
                         </li>
                         <li>
-                            <a href="#work_preference" data-toggle="tab" wire:ignore>Work Preferences </a>
+                            <a href="#work_preference" data-toggle="tab"
+                                wire:ignore>{{ __('user/user-experience.work_pre') }} </a>
                         </li>
                         <li>
-                            <a href="#reference" data-toggle="tab" wire:ignore>References </a>
+                            <a href="#reference" data-toggle="tab" wire:ignore>{{ __('user/user-experience.re') }}
+                            </a>
                         </li>
                         <li>
-                            <a href="#resume" data-toggle="tab" wire:ignore>Resume </a>
+                            <a href="#resume" data-toggle="tab" wire:ignore>{{ __('user/user-experience.resume') }}
+                            </a>
                         </li>
                     </ul>
 

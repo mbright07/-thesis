@@ -301,7 +301,8 @@
 
 <body>
     <button class="btn btn-success" style="float: right;">
-        <a href="{{ route('user.experience.donwload-cv') }}">Download CV</a>
+        <a href="{{ route('user.experience.donwload-cv') }}"
+            style="color: white">{{ __('user/user-experience.download') }}</a>
     </button>
     <div class="container">
         <div class="main-content">
@@ -309,16 +310,16 @@
                 <div class="left-content">
                     <div class="profile">
                         <div class="image">
-                            @if($users->profile && $users->profile->image)
-                            <img src="{{ asset('/assets/images/profile') }}/{{ $users->profile->image }}"
-                                alt="">
+                            @if ($users->profile && $users->profile->image)
+                                <img src="{{ asset('/assets/images/profile') }}/{{ $users->profile->image }}"
+                                    alt="">
                             @endif
                         </div>
                         <h2 class="name">{{ $users->name }}</h2>
-                        <p class="career">Công việc mong muốn</p>
+                        <p class="career">{{ __('user/user-experience.work_pre') }}</p>
                     </div>
                     <div class="contact-info">
-                        <h3 class="main-title">Contact Info</h3>
+                        <h3 class="main-title">{{ __('user/user-experience.contact_info') }}</h3>
                         <ul>
                             <li>
                                 <i class="fa fa-phone"></i>
@@ -347,7 +348,7 @@
                         </ul>
                     </div>
                     <div class="skills-section">
-                        <h3 class="main-title">Skills</h3>
+                        <h3 class="main-title">{{ __('user/user-experience.skill') }}</h3>
                         <ul>
                             @foreach ($skills as $skill)
                                 @if ($skill->user_id === Auth::user()->id)
@@ -362,7 +363,7 @@
                         </ul>
                     </div>
                     <div class="skills-section">
-                        <h3 class="main-title">Languages</h3>
+                        <h3 class="main-title">{{ __('user/user-experience.lang') }}</h3>
                         <ul>
                             @foreach ($languages as $lang)
                                 @if ($lang->user_id === Auth::user()->id)
@@ -377,7 +378,7 @@
                         </ul>
                     </div>
                     <div class="references-section">
-                        <h3 class="main-title">References</h3>
+                        <h3 class="main-title">{{ __('user/user-experience.re') }}</h3>
                         @foreach ($references as $re)
                             @if ($re->user_id === Auth::user()->id)
                                 <div class="referee">
@@ -403,14 +404,14 @@
             <div class="right-section-cv">
                 <div class="right-main-content">
                     <div class="about sect">
-                        <h2 class="right-title">About Me</h2>
+                        <h2 class="right-title">{{ __('user/user-experience.about_me') }}</h2>
                         <p class="para">
                             {{ $users->profile ? $users->profile->intro : '' }}
                         </p>
                     </div>
 
                     <div class="experince sect">
-                        <h2 class="right-title">Experience</h2>
+                        <h2 class="right-title">{{ __('user/user-experience.experience') }}</h2>
                         @foreach ($work_histories as $work_history)
                             @if ($work_history->user_id === Auth::user()->id)
                                 <div class="timeline">
@@ -433,7 +434,7 @@
                     </div>
 
                     <div class="education sect">
-                        <h2 class="right-title">education</h2>
+                        <h2 class="right-title">{{ __('user/user-experience.edu') }}</h2>
                         @foreach ($my_education as $my_education)
                             @if ($my_education->user_id === Auth::user()->id)
                                 <div class="timeline">
@@ -456,7 +457,7 @@
                     </div>
 
                     <div class="awards sect">
-                        <h2 class="right-title">Activities</h2>
+                        <h2 class="right-title">{{ __('user/user-experience.act') }}</h2>
                         @foreach ($activities as $act)
                             @if ($act->user_id === Auth::user()->id)
                                 <div class="timeline">
@@ -477,7 +478,7 @@
                     </div>
 
                     <div class="education sect">
-                        <h2 class="right-title">Certifications</h2>
+                        <h2 class="right-title">{{ __('user/user-experience.cer') }}</h2>
                         @foreach ($certifications as $cer)
                             @if ($cer->user_id === Auth::user()->id)
                                 <div class="timeline">

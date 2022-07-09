@@ -16,4 +16,9 @@ return [
     'date' => 'Date',
     'action' => 'Action',
     'sure' => 'Are you sure, You want to delete this slider?',
+    'search' => 'Search',
+    'no_selected' => 'No Selected',
+    'sortBy' => 'Sort by',
+    'oldest' => 'Oldest',
+    'newest' => 'Newest'
 ];

@@ -26,5 +26,9 @@ return [
     'contact_us' => 'コンタクト',
     'noti' => '通知',
     'message' => 'メッセージ',
-    'language' => '言語'
+    'language' => '言語',
+    'candidates' => '候補者',
+    'candidates_bookmark' => '候補者ブックマーク',
+    'all_posts' => 'すべての投稿',
+    'my_experience' => '私の経験'
 ];

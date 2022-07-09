@@ -31,4 +31,5 @@ return [
     'all_status' => 'All Status',
     'asc' => 'Oldest',
     'desc' => 'Newest',
+    'job_type' => 'Job Type'
 ];

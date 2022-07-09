@@ -16,7 +16,7 @@
                     <div class="alert alert-success" role="alert">{{ Session::get('message') }}</div>
                 @endif
 
-                <div class="panel panel-default">
+                <div class="panel panel-info">
                     <div class="panel-heading">
                         <div class="row">
                             <div class="col-md-2">
@@ -25,8 +25,8 @@
                             <div>
                                 <div class="col-md-3">
                                     <label for="">{{ __('search.search') }}</label>
-                                    <input type="text" class="form-control" placeholder="{{ __('search.search') }}..."
-                                        wire:model="search" />
+                                    <input type="text" class="form-control"
+                                        placeholder="{{ __('search.search') }}..." wire:model="search" />
                                 </div>
                                 <div class="col-md-2">
                                     <label for="active">{{ __('search.status') }}</label>
@@ -46,7 +46,8 @@
                             </div>
                             <div class="col-md-2" style="float: right">
                                 <label for=""></label>
-                                <div><a href="{{ route('admin.addpost') }}" class="btn btn-success pull-right">Add New
+                                <div><a href="{{ route('admin.addpost') }}" class="btn btn-success pull-right">Add
+                                        New
                                         Post</a></div>
 
                             </div>
