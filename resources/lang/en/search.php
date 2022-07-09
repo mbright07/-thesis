@@ -24,5 +24,12 @@ return [
     'here' => 'Search here...',
     'job_location' => 'Job Locations',
     'salary_2' => 'Salary ',
-    'filter' => 'Filter'
+    'filter' => 'Filter',
+    'search' => 'Search',
+    'status' => 'Status',
+    'sortBy' => 'Sort By',
+    'all_status' => 'All Status',
+    'asc' => 'Oldest',
+    'desc' => 'Newest',
+    'job_type' => 'Job Type'
 ];

@@ -30,7 +30,7 @@
                                         <a class="link-to-product"
                                             href="{{ route('job.details', ['slug' => $item->model->slug]) }}">{{ $item->model->name }}</a>
                                     </div>
-                                    <div class="price-field produtc-price">
+                                    <div class="price-field product-price">
                                         <p class="price">
                                             {{ __('bookmark.salary') }}{{ $item->model->regular_salary }}</p>
                                     </div>
@@ -40,7 +40,7 @@
                                     </div>
                                     <div class="quantity checkout-info">
                                         <a class="btn btn-success" href="#"
-                                            wire:click.prevent="Recruitment">{{ __('bookmark.apply') }}</a>
+                                            wire:click.prevent="recruitment({{ $item->model->id }})">{{ __('bookmark.apply') }}</a>
                                     </div>
                                     <div class="delete">
                                         <a href="#"
@@ -61,7 +61,7 @@
 
                 <div class="summary">
                     <div class="checkout-info">
-                        <a class="link-to-shop" href="/blog"
+                        <a class="link-to-shop" href="/jobs"
                             style="font-size: 18px;">{{ __('bookmark.continue') }}<i class="fa fa-arrow-circle-right"
                                 aria-hidden="true"></i></a>
                     </div>
@@ -75,7 +75,7 @@
                 <div class="text-center" style="padding: 30p 0;">
                     <h1>{{ __('bookmark.empty') }}</h1>
                     <p>{{ __('bookmark.add_job_now') }}</p>
-                    <a href="/blog" class="btn btn-success">{{ __('bookmark.list_job') }}</a>
+                    <a href="{{ route('jobs') }}" class="btn btn-success">{{ __('bookmark.list_job') }}</a>
                 </div>
             @endif
             <div class="wrap-iten-in-cart">
@@ -165,3 +165,14 @@
     <!--end container-->
 
 </main>
+
+
+@push('scripts')
+    <script>
+
+        window.addEventListener('jobApplied', (e) => {
+            alert(e.detail.message);
+        });
+
+    </script>
+@endpush

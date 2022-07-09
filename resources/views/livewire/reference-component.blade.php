@@ -37,7 +37,7 @@
 
 
     <div class="wrap-show-advance-info-box style-1 has-countdown">
-        <h3 class="title-box">Top View</h3>
+        <h3 class="title-box">{{ __('reference.top_view') }}</h3>
         <div class="wrap-products slide-carousel owl-carousel style-nav-1 equal-container " data-items="5"
             data-loop="false" data-nav="true" data-dots="false"
             data-responsive='{"0":{"items":"1"},"480":{"items":"2"},"768":{"items":"3"},"992":{"items":"4"},"1200":{"items":"5"}}'>
@@ -58,7 +58,7 @@
                             class="product-name"><span>{{ $top_view_post->title }}</span></a>
                         <div class="wrap-price" style="margin-left: -30px;">
                             <p class="product-price" style="color: gray; margin-bottom: 10px;">
-                                Post at:
+                                {{ __('reference.post_at') }}
                                 {{ $top_view_post->created_at->format('Y-m-d') }}
                             </p>
                         </div>
@@ -69,7 +69,7 @@
     </div>
 
     <div class="wrap-show-advance-info-box style-1">
-        <h3 class="title-box">Lastest Post</h3>
+        <h3 class="title-box">{{ __('reference.lastest_post') }}</h3>
         <div class="wrap-products">
             <div class="wrap-product-tab tab-style-1">
                 <div class="tab-contents">
@@ -92,7 +92,8 @@
                                             class="product-name"><span>{{ $lpost->title }}</span></a>
                                         <div class="wrap-price" style="margin-left: -28px;">
                                             <p class="product-price">
-                                                Post at {{ $lpost->created_at->format('Y-m-d') }}
+                                                {{ __('reference.post_at') }}
+                                                {{ $lpost->created_at->format('Y-m-d') }}
                                             </p>
                                         </div>
                                     </div>
@@ -107,7 +108,7 @@
 
 
     <div class="wrap-show-advance-info-box style-1">
-        <h3 class="title-box">Other Post</h3>
+        <h3 class="title-box">{{ __('reference.other') }}</h3>
         <div class="wrap-top-banner">
             <a href="#" class="link-banner banner-effect-2">
                 <figure><img src="{{ asset('assets/images/digital-electronic-banner.jpg') }}" width="1170"
@@ -133,7 +134,7 @@
                                             </figure>
                                         </a>
                                         <div class="group-flash">
-                                            <span class="flash-item new-label">new</span>
+                                            <span class="flash-item new-label">{{ __('reference.new') }}</span>
                                         </div>
                                     </div>
                                     <div class="product-info">
@@ -151,7 +152,7 @@
     <br>
     <div class="row">
         <div class="wrap-show-advance-info-box style-1" style="width: 97.5%; margin-left: 15px;">
-            <h3 class="title-box">All Posts</h3>
+            <h3 class="title-box">{{ __('reference.all_posts') }}</h3>
         </div>
         <br>
         <br>
@@ -163,20 +164,22 @@
                             alt="{{ $post->title }}">
                     </div>
                     <div class="post-main-info-right">
-                        <h4>{{ $post->title }}</h4>
+                        <a href="{{ route('post.details', ['slug' => $post->slug]) }}"
+                            style="color: red; font-size: 20px;">{{ $post->title }}</a>
                         <div class="post-meta">
                             <span>
-                                <i class="fa fa-calendar"></i> {{ $post->created_at }}
+                                <i class="fa fa-calendar" style="color: rgb(248, 44, 44);"></i>
+                                {{ $post->created_at }}
                             </span>
                         </div>
                         <p class="description">{!! $post->short_description !!}</p>
-                        <a href="{{ route('post.details', ['slug' => $post->slug]) }}" class="main-btn">Read
-                            More</a>
+                        <a href="{{ route('post.details', ['slug' => $post->slug]) }}"
+                            class="main-btn">{{ __('reference.read_more') }}</a>
                     </div>
                 </div>
             @endforeach
             <div class="wrap-pagination-info">
-                {{ $posts->links() }}
+                {{ $posts->links('pagination::bootstrap-4') }}
             </div>
         </div>
     </div>

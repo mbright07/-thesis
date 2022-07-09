@@ -26,6 +26,7 @@ class AdminAddJobComponent extends Component
     public $image;
     public $category_id;
     public $sub_category_id;
+    public $type;
 
     public function mount()
     {
@@ -50,7 +51,8 @@ class AdminAddJobComponent extends Component
             'stock_status' => 'required',
             'quantity' => 'required|numeric',
             'image' => 'required|mimes:jpeg,png,jpg',
-            'category_id' => 'required'
+            'category_id' => 'required',
+            'type' => 'required',
         ]);
     }
     public function addJob()
@@ -85,6 +87,7 @@ class AdminAddJobComponent extends Component
         if ($this->sub_category_id) {
             $job->sub_category_id = $this->sub_category_id;
         }
+        $job->type = $this->type;
         @$job->save();
         session()->flash('message', 'Job has been created successfully!');
     }

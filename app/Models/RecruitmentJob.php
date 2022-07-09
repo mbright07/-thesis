@@ -23,8 +23,8 @@ class RecruitmentJob extends Model
         return $this->belongsTo(Job::class);
     }
 
-    public function review()
+    public function reviews()
     {
-        return $this->hasOne(Review::class, 'recruitment_job_id');
+        return $this->hasMany(Review::class, 'recruitment_job_id');
     }
 }

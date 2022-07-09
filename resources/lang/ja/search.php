@@ -24,5 +24,12 @@ return [
     'here' => '検索...',
     'job_location' => '仕事の場所',
     'salary_2' => '給料 ',
-    'filter' => 'フィルター'
+    'filter' => 'フィルター',
+    'search' => '探索',
+    'status' => '状態',
+    'sortBy' => '並び替え',
+    'all_status' => 'すべての状態',
+    'asc' => '最古',
+    'desc' => '最新',
+    'job_type' => '職種',
 ];

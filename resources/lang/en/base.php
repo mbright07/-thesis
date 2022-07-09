@@ -26,5 +26,9 @@ return [
     'contact_us' => 'Contact Us',
     'noti' => 'Noti',
     'message' => 'Message',
-    'language' => 'Language'
+    'language' => 'Language',
+    'candidates' => 'Candidates',
+    'candidates_bookmark' => 'Candidates Bookmark',
+    'all_posts' => 'All Posts',
+    'my_experience' => 'My Experience'
 ];

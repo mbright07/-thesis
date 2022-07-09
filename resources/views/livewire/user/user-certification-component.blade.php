@@ -10,20 +10,20 @@
     </style>
     <div>
         <a wire:click="addCertification()" style="color: red; font-size:18px;">
-            <i class="fa fa-plus-circle"></i> Add Certification
+            <i class="fa fa-plus-circle"></i> {{ __('user/user-experience.add_certification') }}
         </a>
-        <p style="font-style: italic; font-size:13px; margin-left:20px;">Chứng chỉ không ảnh hưởng đến bậc hồ sơ của bạn.
+        <p style="font-style: italic; font-size:13px; margin-left:20px;">{{ __('user/user-experience.cer_noti') }}
         </p>
     </div>
     <div class="panel-body">
         @if ($isOpen_cer)
             <div class="panel panel-success">
-                <div class="panel-heading">Certification</div>
+                <div class="panel-heading">{{ __('user/user-experience.cer') }}</div>
                 <div class="panel-body">
                     <form>
                         <div class="form-row">
                             <div class="form-group col-md-4">
-                                <label for="certification_name">Certification Name *</label>
+                                <label for="certification_name">{{ __('user/user-experience.cer_name') }} *</label>
                                 <input type="text" class="form-control" id="certification_name"
                                     wire:model="certification_name">
                                 @error('certification_name')
@@ -32,16 +32,18 @@
                             </div>
 
                             <div class="form-group col-md-4">
-                                <label for="certification_description">Description *</label>
+                                <label for="certification_description">{{ __('user/user-experience.description') }}
+                                    *</label>
                                 <textarea type="text" class="form-control" id="certification_description" wire:model="certification_description"></textarea>
                                 @error('certification_description')
                                     <p class="text-danger">{{ $message }}</p>
                                 @enderror
                             </div>
                         </div>
-                        <button wire:click.prevent="storeCertification()" class="btn btn-success">Save</button>
+                        <button wire:click.prevent="storeCertification()"
+                            class="btn btn-success">{{ __('user/user-experience.save') }}</button>
                         <button wire:click="closeModalCer" type="button">
-                            Cancel
+                            {{ __('user/user-experience.cancel') }}
                         </button>
                     </form>
                 </div>

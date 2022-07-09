@@ -69,7 +69,8 @@
                                                             href="{{ route('admin.jobs') }}">{{ __('base.all_jobs') }}</a>
                                                     </li>
                                                     <li class="menu-item">
-                                                        <a title="Posts" href="{{ route('admin.posts') }}">All Posts</a>
+                                                        <a title="Posts"
+                                                            href="{{ route('admin.posts') }}">{{ __('base.all_posts') }}</a>
                                                     </li>
                                                     <li class="menu-item">
                                                         <a title="Manage Home Slider"
@@ -121,6 +122,10 @@
                                                             href="{{ route('employer.profile') }}">{{ __('base.my_profile') }}</a>
                                                     </li>
                                                     <li class="menu-item">
+                                                        <a title="All Recruitments"
+                                                            href="{{ route('employer.recruitments') }}">{{ __('base.all_recruitments') }}</a>
+                                                    </li>
+                                                    <li class="menu-item">
                                                         <a title="Change Password"
                                                             href="{{ route('employer.changepassword') }}">{{ __('base.change_password') }}</a>
                                                     </li>
@@ -151,7 +156,7 @@
                                                     </li>
                                                     <li class="menu-item">
                                                         <a title="My Experience"
-                                                            href="{{ route('user.experience') }}">My Experience</a>
+                                                            href="{{ route('user.experience') }}">{{ __('base.my_experience') }}</a>
                                                     </li>
                                                     <li class="menu-item">
                                                         <a title="My Recruitments"
@@ -250,18 +255,35 @@
                         <div class="primary-nav-section">
                             <div class="container">
                                 <ul class="nav primary clone-main-menu" id="mercado_main" data-menuname="Main menu">
-                                    <li class="menu-item home-icon">
-                                        <a href="/" class="link-term mercado-item-title"><i class="fa fa-home"
-                                                aria-hidden="true"></i></a>
-                                    </li>
-                                    <li class="menu-item">
-                                        <a href="/blog"
-                                            class="link-term mercado-item-title">{{ __('base.jobs') }}</a>
-                                    </li>
-                                    <li class="menu-item">
-                                        <a href="/bookmark"
-                                            class="link-term mercado-item-title">{{ __('base.bookmark') }}</a>
-                                    </li>
+                                    @if (Auth::user() && Auth::user()->role_id === 3)
+                                        <li class="menu-item home-icon">
+                                            <a href="{{ route('employer.home') }}"
+                                                class="link-term mercado-item-title"><i class="fa fa-home"
+                                                    aria-hidden="true"></i></a>
+                                        </li>
+                                        <li class="menu-item">
+                                            <a href="{{ route('employer.candidates') }}"
+                                                class="link-term mercado-item-title">{{ __('base.candidates') }}</a>
+                                        </li>
+                                        <li class="menu-item">
+                                            <a href="{{ route('employer.candidates.bookmark') }}"
+                                                class="link-term mercado-item-title">{{ __('base.candidates_bookmark') }}</a>
+                                        </li>
+                                    @else
+                                        <li class="menu-item home-icon">
+                                            <a href="/" class="link-term mercado-item-title"><i class="fa fa-home"
+                                                    aria-hidden="true"></i></a>
+                                        </li>
+                                        <li class="menu-item">
+                                            <a href="/jobs"
+                                                class="link-term mercado-item-title">{{ __('base.jobs') }}</a>
+                                        </li>
+                                        <li class="menu-item">
+                                            <a href="/bookmark"
+                                                class="link-term mercado-item-title">{{ __('base.bookmark') }}</a>
+                                        </li>
+
+                                    @endif
                                     <li class="menu-item">
                                         <a href="/recruitment"
                                             class="link-term mercado-item-title">{{ __('base.recruitment') }}</a>
@@ -301,10 +323,10 @@
         <script src="{{ asset('assets/js/functions.js') }}"></script>
         <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/noUiSlider/15.6.0/nouislider.min.js"
-                integrity="sha512-1mDhG//LAjM3pLXCJyaA+4c+h5qmMoTc7IuJyuNNPaakrWT9rVTxICK4tIizf7YwJsXgDC2JP74PGCc7qxLAHw=="
-                crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+            integrity="sha512-1mDhG//LAjM3pLXCJyaA+4c+h5qmMoTc7IuJyuNNPaakrWT9rVTxICK4tIizf7YwJsXgDC2JP74PGCc7qxLAHw=="
+            crossorigin="anonymous" referrerpolicy="no-referrer"></script>
         <script src="https://cdn.tiny.cloud/1/00di8v0f0v7k10qxofzw3djgapgkxw88x6p0e8yuhk9prsjm/tinymce/6/tinymce.min.js"
-                referrerpolicy="origin"></script>
+            referrerpolicy="origin"></script>
         {{-- <script src="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
 	<script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script> --}}
         <!------ Include the above in your HEAD tag ---------->

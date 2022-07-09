@@ -16,37 +16,38 @@
                     <div class="alert alert-success" role="alert">{{ Session::get('message') }}</div>
                 @endif
 
-                <div class="panel panel-default">
+                <div class="panel panel-info">
                     <div class="panel-heading">
                         <div class="row">
                             <div class="col-md-2">
-                                <label for="">All Posts</label>
+                                <label for="">{{ __('admin/admin-posts.all_posts') }}</label>
                             </div>
                             <div>
                                 <div class="col-md-3">
-                                    <label for="">Search</label>
-                                    <input type="text" class="form-control" placeholder="Search..."
-                                        wire:model="search" />
+                                    <label for="">{{ __('search.search') }}</label>
+                                    <input type="text" class="form-control"
+                                        placeholder="{{ __('search.search') }}..." wire:model="search" />
                                 </div>
                                 <div class="col-md-2">
-                                    <label for="active">Status</label>
+                                    <label for="active">{{ __('search.status') }}</label>
                                     <select name="active" class="form-control" wire:model="active">
-                                        <option value="">No Selected</option>
-                                        <option value="0">Inactive</option>
-                                        <option value="1">Active</option>
+                                        <option value="">{{ __('search.all_status') }}</option>
+                                        <option value="false">{{ __('admin/admin-posts.inactive') }}</option>
+                                        <option value="1">{{ __('admin/admin-posts.active') }}</option>
                                     </select>
                                 </div>
                                 <div class="col-md-2">
-                                    <label for="sortBy">sortBy</label>
+                                    <label for="sortBy">{{ __('search.sortBy') }}</label>
                                     <select name="sortBy" class="form-control" wire:model="sortBy">
-                                        <option value="asc">Cũ Nhất</option>
-                                        <option value="desc">Mới nhất</option>
+                                        <option value="asc">{{ __('search.asc') }}</option>
+                                        <option value="desc">{{ __('search.desc') }}</option>
                                     </select>
                                 </div>
                             </div>
                             <div class="col-md-2" style="float: right">
                                 <label for=""></label>
-                                <div><a href="{{ route('admin.addpost') }}" class="btn btn-success pull-right">Add New
+                                <div><a href="{{ route('admin.addpost') }}" class="btn btn-success pull-right">Add
+                                        New
                                         Post</a></div>
 
                             </div>
@@ -57,12 +58,12 @@
                         <table class='table table-striped'>
                             <thead>
                                 <th>Id</th>
-                                <th>Image</th>
-                                <th>Title</th>
+                                <th>{{ __('admin/admin-posts.image') }}</th>
+                                <th>{{ __('admin/admin-posts.title') }}</th>
                                 {{-- <th>Description</th> --}}
-                                <th>Status</th>
-                                <th>Created Time</th>
-                                <th>Action</th>
+                                <th>{{ __('search.search') }}</th>
+                                <th>{{ __('admin/admin-posts.created_time') }}</th>
+                                <th>{{ __('admin/admin-posts.action') }}</th>
                             </thead>
                             <tbody>
                                 @foreach ($posts as $post)
@@ -88,7 +89,7 @@
                                 @endforeach
                             </tbody>
                         </table>
-                        {{ $posts->links() }}
+                        {{ $posts->links('pagination::bootstrap-4') }}
                     </div>
                 </div>
             </div>

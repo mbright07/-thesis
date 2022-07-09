@@ -10,20 +10,20 @@
     </style>
     <div>
         <a wire:click="addWorkHistory()" style="color: red; font-size:18px;">
-            <i class="fa fa-plus-circle"></i> Add Work History
+            <i class="fa fa-plus-circle"></i> {{ __('user/user-experience.add_work_his') }}
         </a>
-        <p style="font-style: italic; font-size:13px; margin-left:20px;">Mô tả toàn bộ quá trình học vấn của bạn, cũng
-            như các bằng cấp bạn đã được và các khóa huấn luyện bạn đã tham gia</p>
+        <p style="font-style: italic; font-size:13px; margin-left:20px;">{{ __('user/user-experience.work_his_noti') }}
+        </p>
     </div>
     <div class="panel-body">
         @if ($isOpen_work)
             <div class="panel panel-success">
-                <div class="panel-heading">Work History</div>
+                <div class="panel-heading">{{ __('user/user-experience.work_his') }}</div>
                 <div class="panel-body">
                     <form>
                         <div class="form-row">
                             <div class="form-group col-md-6">
-                                <label for="positon">Position *</label>
+                                <label for="positon">{{ __('user/user-experience.position') }} *</label>
                                 <input type="text" class="form-control" id="positon" wire:model="position">
                                 @error('positon')
                                     <p class="text-danger">{{ $message }}</p>
@@ -31,7 +31,7 @@
                             </div>
 
                             <div class="form-group col-md-6">
-                                <label for="company">Company *</label>
+                                <label for="company">{{ __('user/user-experience.company') }} *</label>
                                 <input type="text" class="form-control" id="positon" wire:model="company">
                                 @error('company')
                                     <p class="text-danger">{{ $message }}</p>
@@ -40,7 +40,7 @@
                         </div>
                         <div class="form-row">
                             <div class="form-group col-md-6">
-                                <label for="from_month">From Month *</label>
+                                <label for="from_month">{{ __('user/user-experience.from') }} *</label>
                                 <input type="date" class="form-control" id="from_month" wire:model="from_month">
                                 @error('from_month')
                                     <p class="text-danger">{{ $message }}</p>
@@ -48,7 +48,7 @@
                             </div>
 
                             <div class="form-group col-md-6">
-                                <label for="to_month">To Month *</label>
+                                <label for="to_month">{{ __('user/user-experience.to') }} *</label>
                                 <input type="date" class="form-control" id="to_month" wire:model="to_month">
                                 @error('to_month')
                                     <p class="text-danger">{{ $message }}</p>
@@ -57,16 +57,17 @@
                         </div>
                         <div class="form-group">
                             <div class="col-md-12">
-                                <label for="description">Description *</label>
+                                <label for="description">{{ __('user/user-experience.description') }} *</label>
                                 <textarea type="text" class="form-control" name="description" id="description" wire:model="description"></textarea>
                                 @error('description')
                                     <p class="text-danger">{{ $message }}</p>
                                 @enderror
                             </div>
                         </div>
-                        <button wire:click.prevent="storeWorkHistory" class="btn btn-success">Save</button>
+                        <button wire:click.prevent="storeWorkHistory"
+                            class="btn btn-success">{{ __('user/user-experience.save') }}</button>
                         <button wire:click="closeModalWorkHistory()" type="button">
-                            Cancel
+                            {{ __('user/user-experience.cancel') }}
                         </button>
                     </form>
                 </div>

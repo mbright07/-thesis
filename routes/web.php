@@ -25,9 +25,16 @@ use App\Http\Livewire\CategoryComponent;
 use App\Http\Livewire\ContactComponent;
 use App\Http\Livewire\DetailPostComponent;
 use App\Http\Livewire\DetailsComponent;
+use App\Http\Livewire\Employer\EmployeeCandidateDetailsComponent;
+use App\Http\Livewire\Employer\EmployeeCandidatesBookmarkComponent;
+use App\Http\Livewire\Employer\EmployeeCandidatesComponent;
+use App\Http\Livewire\Employer\EmployeeHomeComponent;
+use App\Http\Livewire\Employer\EmployeeRecruitmentComponent;
+use App\Http\Livewire\Employer\EmployeeRecruitmentDetailsComponent;
 use App\Http\Livewire\Employer\EmployerDashBoardComponent;
 use App\Http\Livewire\HomeComponent;
 use App\Http\Livewire\RecruitmentComponent;
+use App\Http\Livewire\RecruitmentOneJobComponent;
 use App\Http\Livewire\ReferenceComponent;
 use App\Http\Livewire\SearchComponent;
 use App\Http\Livewire\ThankyouComponent;
@@ -66,11 +73,13 @@ Route::group(['middleware' => 'locale'], function () {
 
     Route::get('/', HomeComponent::class);
 
-    Route::get('/blog', BlogComponent::class);
+    Route::get('/jobs', BlogComponent::class)->name('jobs');
 
     Route::get('/bookmark', CartComponent::class)->name('job.bookmark');
 
     Route::get('/recruitment', RecruitmentComponent::class)->name('recruitment');
+
+    Route::get('/recruitment/{job_id}', RecruitmentOneJobComponent::class)->name('recruitment.job_id');
 
     Route::get('/job/{slug}', DetailsComponent::class)->name('job.details');
 
@@ -108,7 +117,13 @@ Route::group(['middleware' => 'locale'], function () {
         //For Employer
         Route::group(['middleware' => 'role:employer'], function () {
             Route::get('/employer/dashboard', EmployerDashBoardComponent::class)->name('employer.dashboard');
+            Route::get('/employer', EmployeeHomeComponent::class)->name('employer.home');
+            Route::get('/employer/candidates', EmployeeCandidatesComponent::class)->name('employer.candidates');
+            Route::get('/employer/candidates/{user_id}', EmployeeCandidateDetailsComponent::class)->name('employer.candidate.details');
+            Route::get('/employer/candidates-bookmark', EmployeeCandidatesBookmarkComponent::class)->name('employer.candidates.bookmark');
             Route::get('/employer/profile', UserProfileComponent::class)->name('employer.profile');
+            Route::get('/employer/recruitments', EmployeeRecruitmentComponent::class)->name('employer.recruitments');
+            Route::get('/employer/recruitments/{recruitment_id}', EmployeeRecruitmentDetailsComponent::class)->name('employer.recruitmentdetails');
             Route::get('/employer/change-password', UserChangePasswordCompponent::class)->name('employer.changepassword');
             Route::get('/employer/jobs', AdminJobComponentnent::class)->name('employer.jobs');
             Route::get('/employer/job/add', AdminAddJobComponent::class)->name('employer.addjob');

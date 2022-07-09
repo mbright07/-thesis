@@ -3,7 +3,7 @@
         <div class="row">
             <div class="col-md-12">
                 @if (Session::has('recruitment_message'))
-                    <div class="alert alert-success" role="alert">{{ Session::get('recruitment_message') }}</div>   
+                    <div class="alert alert-success" role="alert">{{ Session::get('recruitment_message') }}</div>
                 @endif
                 <div class="panel panel-default">
                     <div class="panel-heading">
@@ -29,7 +29,7 @@
                                 <th>{{ __('user/user-recruitment.process') }}</th>
                                 <td>{{ $recruitment->processed_date }}</td>
                             @elseif ($recruitment->status == "canceled")
-                                <th>{{ __('user/user-recruitment.cancel') }}</th>                                    
+                                <th>{{ __('user/user-recruitment.cancel') }}</th>
                                 <td>{{ $recruitment->canceled_date }}</td>
                             @endif
                         </table>
@@ -45,7 +45,7 @@
                     <div class="panel-body">
                         <div class="wrap-iten-in-cart">
                             <h3 class="box-title">{{ __('user/user-recruitment.re_job') }}</h3>
-                            <ul class="products-cart">    
+                            <ul class="products-cart">
                                 @foreach ($recruitment->recruitmentJob as $item )
                                     <li class="pr-cart-item">
                                         <div class="product-image">
@@ -54,16 +54,16 @@
                                         <div class="product-name">
                                             <a class="link-to-product" href="{{ route('job.details',['slug'=>$item->job->slug]) }}">{{ $item->job->name }}</a>
                                         </div>
-                                        <div class="price-field produtc-price"><p class="price">{{ __('user/user-recruitment.salary') }}{{ $item->job->regular_salary }}</p></div>
-                                        @if ($item->rstatus == false)
+                                        <div class="price-field product-price"><p class="price">{{ __('user/user-recruitment.salary') }}{{ $item->job->regular_salary }}</p></div>
+                                        @if ($recruitment->status == 'processing')
                                             <div class="price-field sub-total"><p class="price"><a href="{{ route('user.review',['recruitment_job_id'=>$item->id]) }}">{{ __('user/user-recruitment.write_review') }}</a></p></div>
-                                        @endif 
+                                        @endif
                                     </li>
-                                @endforeach							
+                                @endforeach
                             </ul>
                         </div>
                         <div class="wrap-iten-in-cart">
-                            
+
                             <h3 class="box-title">{{ __('user/user-recruitment.cv_detail') }}</h3>
                             <table class="table table-striped table-bordered" style="width:90%; margin-left:5%;">
                                 <tr>
@@ -91,7 +91,7 @@
                                     <td>{{ $recruitment->intro }}</td>
                                 </tr>
                             </table>
-                        </div>  
+                        </div>
                     </div>
                 </div>
             </div>

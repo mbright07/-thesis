@@ -68,10 +68,10 @@
 						_value = _this.text(),
 						_content = _this.text(),
 						_title 	 = _this.text();
-                    _content = _content.slice(0, 12);
-                    _this.parent().siblings('a').text(_content).attr('title',_title);
+                    _this.parent().siblings('a').text(_this.text()).attr('title',_title);
                     _this.parent().siblings('input[name="job_cat"]').val(_value);
 					_this.parent().siblings('input[name="job_cat_id"]').val(_this.data("id"));
+                    _this.parent().siblings('input[name="is_sub_cat"]').val(_this.data("subcat"));
                     _this.parent().slideUp();
                 });
 			}
@@ -118,19 +118,22 @@
 		},
 
 		mercado_price_range: function(){
-    	    if($("#slider-range").length > 0){
+    	    /*if($("#slider-range").length > 0){
                 $( "#slider-range" ).slider({
                     range: true,
                     min: 0,
-                    max: 500,
-                    values: [ 75, 300 ],
+                    max: $( "#salary_max" ).val(),
+                    values: [ 1, $( "#salary_max" ).val() ],
                     slide: function( event, ui ) {
                         $( "#amount" ).val( "$" + ui.values[ 0 ] + " - $" + ui.values[ 1 ] );
+                        @this.set('selectedMin', ui.values[0])
+                        @this.set('selectedMax', ui.values[1])
                     }
                 });
                 $( "#amount" ).val( "$" + $( "#slider-range" ).slider( "values", 0 ) +
                     " - $" + $( "#slider-range" ).slider( "values", 1 ) );
-            }
+
+            }*/
 		},
         /* ---------------------------------------------
 		// Clone all Zan Menus for mobile
@@ -359,7 +362,7 @@
 	                    _this.addClass('active');
 	                    _this.parents().siblings('.tab-contents').find('.active').removeClass('active');
 	                    _this.parents().siblings('.tab-contents').find(_this.attr('href')).addClass('active');
-                    }  
+                    }
                 });
             }
 

@@ -2,14 +2,15 @@
     <div class="container" style="padding: 30px 0;">
         <div class="row">
             <div class="col-md-12">
-                <div class="panel panel-default">
+                <div class="panel panel-success">
                     <div class="panel-heading">
                         <div class="row">
                             <div class="col-md-6">
-                                Edit Post
+                                {{ __('admin/admin-posts.edit') }}
                             </div>
                             <div class="col-md-6">
-                                <a href="{{ route('admin.posts') }}" class="btn btn-success pull-right">All Posts</a>
+                                <a href="{{ route('admin.posts') }}"
+                                    class="btn btn-success pull-right">{{ __('admin/admin-posts.all_posts') }}</a>
                             </div>
                         </div>
                     </div>
@@ -19,33 +20,32 @@
                         @endif
                         <form class="form-horizontal" enctype="multipart/form-data" wire:submit.prevent="updatePost">
                             <div class="form-group">
-                                <label class="col-md-4 control-label">Title</label>
-                                <div class="col-md-4">
-                                    <input type="text" placeholder="Title" class="form-control input-md"
-                                        wire:model="title" wire:keyup="generateSlug" />
+                                <label class="col-md-2 control-label">{{ __('admin/admin-posts.title') }}</label>
+                                <div class="col-md-9">
+                                    <input type="text" placeholder="{{ __('admin/admin-posts.title') }}"
+                                        class="form-control input-md" wire:model="title" wire:keyup="generateSlug" />
                                 </div>
                             </div>
 
                             <div class="form-group">
-                                <label class="col-md-4 control-label">Slug</label>
-                                <div class="col-md-4">
-                                    <input type="text" placeholder="slug" class="form-control input-md"
-                                        wire:model="slug" />
+                                <label class="col-md-2 control-label">{{ __('admin/admin-posts.slug') }}</label>
+                                <div class="col-md-9">
+                                    <input type="text" placeholder="{{ __('admin/admin-posts.slug') }}"
+                                        class="form-control input-md" wire:model="slug" />
                                 </div>
                             </div>
 
                             <div class="form-group">
-                                <label
-                                    class="col-md-4 control-label">{{ __('admin/admin-add-job.short_description') }}</label>
-                                <div class="col-md-4">
-                                    <textarea class="form-control" id="short_description"
-                                        placeholder="{{ __('admin/admin-add-job.short_description') }}" wire:model="short_description"></textarea>
+                                <label class="col-md-2 control-label">{{ __('admin/admin-posts.short_des') }}</label>
+                                <div class="col-md-9">
+                                    <textarea class="form-control" id="short_description" placeholder="{{ __('admin/admin-posts.short_des') }}"
+                                        wire:model="short_description"></textarea>
                                 </div>
                             </div>
 
                             <div class="form-group">
-                                <label class="col-md-4 control-label">Image</label>
-                                <div class="col-md-4">
+                                <label class="col-md-2 control-label">{{ __('admin/admin-posts.image') }}</label>
+                                <div class="col-md-9">
                                     <input type="file" class="input-file" wire:model="newimage" />
                                     @if ($newimage)
                                         <img src="{{ $newimage->temporaryUrl() }}" width="120" />
@@ -57,9 +57,10 @@
                             </div>
 
                             <div class="form-group">
-                                <label class="col-md-4 control-label">description</label>
-                                <div class="col-md-4">
-                                    <textarea class="form-control" id="description" placeholder="description" wire:model="description"></textarea>
+                                <label class="col-md-2 control-label">{{ __('admin/admin-posts.des') }}</label>
+                                <div class="col-md-9">
+                                    <textarea class="form-control" id="description" placeholder="{{ __('admin/admin-posts.des') }}"
+                                        wire:model="description"></textarea>
                                     @error('description')
                                         <p class="text-danger">{{ $message }}</p>
                                     @enderror
@@ -67,12 +68,14 @@
                             </div>
 
                             <div class="form-group">
-                                <div class="col-md-4 control-label">{{ __('admin/admin-add-home-slider.status') }}
+                                <div class="col-md-2 control-label">{{ __('admin/admin-posts.status') }}
                                 </div>
-                                <div class="col-md-4">
+                                <div class="col-md-9">
                                     <select class="form-control" wire:model="status">
-                                        <option value="0">{{ __('admin/admin-add-home-slider.inactive') }}</option>
-                                        <option value="1">{{ __('admin/admin-add-home-slider.active') }}</option>
+                                        <option value="0">{{ __('admin/admin-posts.inactive') }}
+                                        </option>
+                                        <option value="1">{{ __('admin/admin-posts.active') }}
+                                        </option>
                                     </select>
                                 </div>
                             </div>
@@ -80,7 +83,8 @@
                             <div class="form-group">
                                 <label class="col-md-4 control-label"></label>
                                 <div class="col-md-4">
-                                    <button type="submit" class="btn btn-primary">update</button>
+                                    <button type="submit"
+                                        class="btn btn-primary">{{ __('admin/admin-posts.update') }}</button>
                                 </div>
                             </div>
                         </form>

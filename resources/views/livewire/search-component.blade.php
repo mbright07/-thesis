@@ -10,7 +10,7 @@
         <div class="row">
 
             <div class="col-lg-9 col-md-8 col-sm-8 col-xs-12 main-content-area">
-                
+
                 <div class="banner-shop">
                     <a href="#" class="banner-link">
                         <figure><img src="assets/images/shop-banner.jpg" alt=""></figure>
@@ -59,7 +59,7 @@
                                     </div>
                                     <div class="product-info">
                                         <a href="{{ route('job.details', ['slug'=>$job->slug]) }}" class="product-name"><span>{{ $job->name }}</span></a>
-                                        <div class="wrap-price"><ins><p class="product-price">{{ __('search.salary') }}{{ $job->regular_salary }}</p></ins></div>    
+                                        <div class="wrap-price"><ins><p class="product-price">{{ __('search.salary') }}{{ $job->regular_salary }}</p></ins></div>
                                     </div>
                                     <div class="addcart">
                                         <div class="bookmark">
@@ -78,7 +78,7 @@
                     <h2 style="padding-top: 30px;">{{ __('search.no_jobs') }}</h2>
                 @endif
                 <div class="wrap-pagination-info">
-                    {{ $jobs->links() }}
+                    {{ $jobs->links('pagination::bootstrap-4') }}
                 </div>
             </div>
             <div class="col-lg-3 col-md-4 col-sm-4 col-xs-12 sitebar">

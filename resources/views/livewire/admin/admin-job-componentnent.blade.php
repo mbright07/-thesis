@@ -14,7 +14,7 @@
                 @if (Session::has('message'))
                     <div class="alert alert-success" role="alert">{{ Session::get('message') }}</div>
                 @endif
-                <div class="panel panel-default">
+                <div class="panel panel-info">
                     <div class="panel-heading">
                         <div class="row">
                             @if (Auth::user()->id === 1)
@@ -44,23 +44,33 @@
                                     </select>
                                 </div> --}}
                                 <div class="col-md-3">
-                                    <label for="">Search</label>
-                                    <input type="text" class="form-control" placeholder="Search..."
-                                        wire:model="search" />
+                                    <label for="">{{ __('search.search') }}</label>
+                                    <input type="text" class="form-control"
+                                        placeholder="{{ __('search.search') }}..." wire:model="search" />
                                 </div>
                                 <div class="col-md-2">
-                                    <label for="active">Status</label>
+                                    <label for="active">{{ __('search.status') }}</label>
                                     <select name="active" class="form-control" wire:model="active">
-                                        <option value="">No Selected</option>
-                                        <option value="instock">instock</option>
-                                        <option value="outofstock">outofstock</option>
+                                        <option value="">{{ __('search.all_status') }}</option>
+                                        <option value="instock">{{ __('admin/admin-add-job.instock') }}</option>
+                                        <option value="outofstock">{{ __('admin/admin-add-job.out_stock') }}</option>
                                     </select>
                                 </div>
                                 <div class="col-md-2">
-                                    <label for="sortBy">sortBy</label>
+                                    <label for="sortBy">{{ __('search.sortBy') }}</label>
                                     <select name="sortBy" class="form-control" wire:model="sortBy">
-                                        <option value="asc">Cũ Nhất</option>
-                                        <option value="desc">Mới nhất</option>
+                                        <option value="asc">{{ __('search.asc') }}</option>
+                                        <option value="desc">{{ __('search.desc') }}</option>
+                                    </select>
+                                </div>
+                                <div class="col-md-2">
+                                    <label for="sortBy">{{ __('admin/admin-add-job.location') }}</label>
+                                    <select name="sortBy" class="form-control" wire:model="category_id">
+                                        <option value="" selected="selected">{{ __('search.all_location') }}
+                                        </option>
+                                        @foreach ($categories as $category)
+                                            <option value="{{ $category->id }}">{{ $category->name }}</option>
+                                        @endforeach
                                     </select>
                                 </div>
                             </div>
@@ -80,44 +90,38 @@
                             </thead>
                             <tbody>
                                 @foreach ($jobs as $job)
-                                    @if ($job->user_id === Auth::user()->id)
-                                        <tr>
-                                            <td>{{ $job->id }}</td>
-                                            <td> <img
-                                                    src="{{ asset('assets/images/products') }}/{{ $job->image }}"
-                                                    width="60" /></td>
-                                            <td>{{ $job->name }}</td>
-                                            <td>{{ $job->stock_status }}</td>
-                                            <td>{{ $job->regular_salary }}</td>
-                                            <td>{{ $job->category->name }}</td>
-                                            <td>{{ $job->created_at }}</td>
-                                            <td>
-                                                @if (Auth::user()->id === 1)
-                                                    {
-                                                    <a
-                                                        href="{{ route('admin.editjob', ['job_slug' => $job->slug]) }}">
-                                                        <i class="fa fa-edit fa-2x text-info"></i>
-                                                    </a>
-                                                }@else{
-                                                    <a
-                                                        href="{{ route('employer.editjob', ['job_slug' => $job->slug]) }}">
-                                                        <i class="fa fa-edit fa-2x text-info"></i>
-                                                    </a>
-                                                    }
-                                                @endif
+                                    <tr>
+                                        <td>{{ $job->id }}</td>
+                                        <td> <img src="{{ asset('assets/images/products') }}/{{ $job->image }}"
+                                                width="60" /></td>
+                                        <td>{{ $job->name }}</td>
+                                        <td>{{ $job->stock_status }}</td>
+                                        <td>{{ $job->regular_salary }}</td>
+                                        <td>{{ $job->category->name }}</td>
+                                        <td>{{ $job->created_at }}</td>
+                                        <td>
+                                            @if (Auth::user()->id === 1)
+                                                <a href="{{ route('admin.editjob', ['job_slug' => $job->slug]) }}">
+                                                    <i class="fa fa-edit fa-2x text-info"></i>
+                                                </a>
+                                            @else
+                                                <a
+                                                    href="{{ route('employer.editjob', ['job_slug' => $job->slug]) }}">
+                                                    <i class="fa fa-edit fa-2x text-info"></i>
+                                                </a>
+                                            @endif
 
-                                                <a href="#"
-                                                    onclick="confirm('{{ __('admin/admin-add-job.sure') }}') || event.stopImmediatePropagation()"
-                                                    wire:click.prevent="deleteJob({{ $job->id }})"
-                                                    style="margin-left: 10px;"><i
-                                                        class="fa fa-times fa-2x text-danger"></i></a>
-                                            </td>
-                                        </tr>
-                                    @endif
+                                            <a href="#"
+                                                onclick="confirm('{{ __('admin/admin-add-job.sure') }}') || event.stopImmediatePropagation()"
+                                                wire:click.prevent="deleteJob({{ $job->id }})"
+                                                style="margin-left: 10px;"><i
+                                                    class="fa fa-times fa-2x text-danger"></i></a>
+                                        </td>
+                                    </tr>
                                 @endforeach
                             </tbody>
                         </table>
-                        {{ $jobs->links() }}
+                        {{ $jobs->links('pagination::bootstrap-4') }}
                     </div>
                 </div>
             </div>

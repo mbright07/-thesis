@@ -25,4 +25,6 @@ return [
     'cv_detail' => 'Hồ sơ chi tiết',
     'full_name' => 'Họ và tên',
     'address' => 'Địa chỉ',
+    'pending' => 'Đang chờ',
+    'no_selected' => 'Tất cả công việc',
 ];

@@ -33,16 +33,20 @@ class AdminJobComponentnent extends Component
     }
     public function render()
     {
+        $jobs = Job::query()->where('user_id', Auth::user()->id)
+            ->when($this->active, function ($query) {
+                $query->where('stock_status', $this->active);
+            })
+            ->when($this->category_id, function ($query) {
+                $query->where('category_id', $this->category_id);
+            })
+                ->search(trim($this->search))
+                ->orderBy('created_at', $this->sortBy)
+                ->paginate(10);
+
         return view('livewire.admin.admin-job-componentnent', [
             'categories' => Category::all(),
-            'jobs' => Job::orderBy('created_at', 'ASC')->paginate(10),
-            'jobs' => Job::when($this->active, function ($query) {
-                $query->where('stock_status', $this->active);
-            })->search(trim($this->search))
-                ->orderBy('created_at', $this->sortBy)
-                ->paginate(10),
-            // 'jobs' => Job::with('category')->where('category_id', $this->location)
-            //     ->paginate(10),
+            'jobs' => $jobs,
         ])->layout('layouts.base');
     }
 }

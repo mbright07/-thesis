@@ -27,7 +27,7 @@
 
                         <div class="sort-item orderby ">
                             <select name="orderby" class="use-chosen" wire:model="sorting" >
-                                <option value="default" selected="selected">{{ __('search.default') }}</option>
+                                <option value="" selected="selected">{{ __('search.default') }}</option>
                                 <option value="created_at">{{ __('search.sort_newness') }}</option>
                                 <option value="regular_salary">{{ __('search.low_to_high') }}</option>
                                 <option value="price-desc">{{ __('search.high_to_low') }}</option>
@@ -71,7 +71,7 @@
                                     </div>
                                     <div class="product-info">
                                         <a href="{{ route('job.details', ['slug'=>$job->slug]) }}" class="product-name"><span>{{ $job->name }}</span></a>
-                                        <div class="wrap-price"><ins><p class="product-price">{{ __('search.salary') }}{{ $job->regular_salary }}</p></ins></div>    
+                                        <div class="wrap-price"><ins><p class="product-price">{{ __('search.salary') }}{{ $job->regular_salary }}</p></ins></div>
                                     </div>
                                     <div class="addcart">
                                         <div class="bookmark">
@@ -89,7 +89,7 @@
                 </div>
 
                 <div class="wrap-pagination-info">
-                    {{ $jobs->links() }}
+                    {{ $jobs->links('pagination::bootstrap-4') }}
                 </div>
             </div><!--end main products area-->
 
@@ -143,6 +143,8 @@
                             <label for="amount">{{ __('search.salary_2') }}:</label>
                             <input type="text" id="amount" readonly>
                             <button class="filter-submit">{{ __('search.filter') }}</button>
+                            <input type="hidden" id="salary_below" wire:model="salary_below">
+                            <input type="hidden" id="salary_above" wire:model="salary_above">
                         </p>
                     </div>
                 </div><!-- Price-->

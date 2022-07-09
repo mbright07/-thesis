@@ -16,4 +16,9 @@ return [
     'date' => '時間',
     'action' => '操作',
     'sure' => 'よろしいでしょうか、このスライダーを削除しますか?',
+    'search' => '探索',
+    'no_selected' => 'すべての状態',
+    'sortBy' => '並び替え',
+    'oldest' => '最古',
+    'newest' => '最新'
 ];

@@ -24,7 +24,7 @@ class UserExperienceComponent extends Component
     public $language, $lang_proficiency, $languages, $language_id;
     public $activity_name, $activity_description, $activities, $activity_id;
     public $certification_name, $certification_description, $certifications, $certification_id;
-    public $expected_location, $expected_salary, $work_preferences, $work_preference_id;
+    public $category_id, $expected_salary, $work_preferences, $work_preference_id;
     public $re_name, $re_position, $re_company, $re_email, $re_phone, $references, $reference_id;
     public $user;
     public $isOpen_work = 0;
@@ -427,12 +427,15 @@ class UserExperienceComponent extends Component
 
     public function storeWorkPreference()
     {
-        $this->validate([
-            'expected_location' => 'required',
-            'expected_salary' => 'required|numeric',
-        ]);
+        $str_validate = $this->work_preference_id ? [
+            'category_id' => ['required', 'unique:work_preferences,category_id,'.$this->work_preference_id.',id,user_id,'.Auth::user()->id],
+        ] : [
+            'category_id' => ['required', 'unique:work_preferences,category_id,'.$this->category_id.',id,user_id,'.Auth::user()->id],
+        ];
+        $str_validate['expected_salary'] = 'required|numeric';
+        $this->validate($str_validate);
         Work_preference::updateOrCreate(['id' => $this->work_preference_id], [
-            'expected_location' => $this->expected_location,
+            'category_id' => $this->category_id,
             'expected_salary' => $this->expected_salary,
             'user_id' => Auth::user()->id,
         ]);
@@ -449,14 +452,14 @@ class UserExperienceComponent extends Component
     {
         $work_preference = Work_preference::findOrFail($id);
         $this->work_preference_id = $id;
-        $this->expected_location = $work_preference->expected_location;
+        $this->category_id = $work_preference->category_id;
         $this->expected_salary = $work_preference->expected_salary;
-        $this->openModalCer();
+        $this->openModalPre();
     }
 
     public function resetInputFields_pre()
     {
-        $this->expected_location = '';
+        $this->category_id = '';
         $this->expected_salary = '';
     }
 
@@ -548,6 +551,9 @@ class UserExperienceComponent extends Component
         $activities = Activity::all();
         $certifications = Certification::all();
         $work_preferences = Work_preference::all();
+        foreach ($work_preferences as $work_preference) {
+            $work_preference->expected_location = Category::where('id', $work_preference->category_id)->get('name');
+        }
         $references = Reference::all();
         $categories = Category::all();
         $users = User::find(Auth::user()->id);
@@ -575,6 +581,9 @@ class UserExperienceComponent extends Component
         $this->activities = Activity::all();
         $this->certifications = Certification::all();
         $this->work_preferences = Work_preference::all();
+        foreach ($this->work_preferences as $work_preference) {
+            $work_preference->expected_location = Category::where('id', $work_preference->category_id)->get('name')->get(0);
+        }
         $this->references = Reference::all();
         $categories = Category::all();
         $users = User::find(Auth::user()->id);

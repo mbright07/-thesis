@@ -10,35 +10,35 @@
     </style>
     <div>
         <a wire:click="addWorkPreference()" style="color: red; font-size:18px;">
-            <i class="fa fa-plus-circle"></i> Add Work Preference
+            <i class="fa fa-plus-circle"></i> {{ __('user/user-experience.add_work_pre') }}
         </a>
-        <p style="font-style: italic; font-size:13px; margin-left:20px;">Thêm công việc mong muốn của bạn.
+        <p style="font-style: italic; font-size:13px; margin-left:20px;">{{ __('user/user-experience.work_pre_noti') }}
         </p>
     </div>
     <div class="panel-body">
         @if ($isOpen_pre)
             <div class="panel panel-success">
-                <div class="panel-heading">Work Preference</div>
+                <div class="panel-heading">{{ __('user/user-experience.work_pre') }}</div>
                 <div class="panel-body">
                     <form>
                         <div class="form-row">
                             <div class="form-group col-md-4">
-                                <label for="expected_location">Expected Location *</label>
-                                <select class="form-control" id="expected_location" wire:model="expected_location">
-                                    <option>--Select Expected Location--</option>
+                                <label for="expected_location">{{ __('user/user-experience.ex_loca') }} *</label>
+                                <select class="form-control" id="expected_location" wire:model="category_id">
+                                    <option>--{{ __('user/user-experience.select_ex_loca') }}--</option>
                                     @foreach ($categories as $item)
-                                        <option value={{ str_replace(' ', '_', $item->name) }}>
+                                        <option value={{ $item->id }}>
                                             {{ $item->name }}
                                         </option>
                                     @endforeach
                                 </select>
-                                @error('expected_location')
+                                @error('category_id')
                                     <p class="text-danger">{{ $message }}</p>
                                 @enderror
                             </div>
 
                             <div class="form-group col-md-4">
-                                <label for="expected_salary">expected_salary *</label>
+                                <label for="expected_salary">{{ __('user/user-experience.ex_sala') }} *</label>
                                 <input type="text" class="form-control" id="expected_salary"
                                     wire:model="expected_salary">
                                 @error('expected_salary')
@@ -46,9 +46,10 @@
                                 @enderror
                             </div>
                         </div>
-                        <button wire:click.prevent="storeWorkPreference()" class="btn btn-success">Save</button>
+                        <button wire:click.prevent="storeWorkPreference()"
+                            class="btn btn-success">{{ __('user/user-experience.save') }}</button>
                         <button wire:click="closeModalPre()" type="button">
-                            Cancel
+                            {{ __('user/user-experience.cancel') }}
                         </button>
                     </form>
                 </div>
@@ -62,11 +63,12 @@
                         <div class="row box-shadow">
                             <div class="panel-body">
                                 <div class="panel-body-left" style="float: left;">
-                                    <h5>Nơi làm việc:
-                                        <strong>{{ str_replace('_', ' ', $per->expected_location) }}</strong>
+                                    <h5>{{ __('user/user-experience.ex_loca') }}
+                                        {{-- <strong>{{ $per->expected_location->name }}</strong> --}}
                                     </h5>
-                                    <h5>Mức lương mong muốn (USD / tháng):
-                                        <strong>{{ $per->expected_salary }}</strong></h5>
+                                    <h5>{{ __('user/user-experience.ex_sala_month') }}:
+                                        <strong>{{ $per->expected_salary }}</strong>
+                                    </h5>
                                 </div>
                                 <div class="panel-body-right" style="float: right">
                                     <i class="fa fa-pencil-square-o" aria-hidden="true"

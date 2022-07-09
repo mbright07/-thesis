@@ -11,15 +11,15 @@
     <div class="container" style="padding:30px 0;">
         <div class="row">
             <div class="col-md-12">
-                <div class="panel panel-default">
+                <div class="panel panel-info">
                     <div class="panel-heading">
                         <div class="row">
                             <div class="col-md-4">
                                 <label for="">{{ __('admin/admin-category.all_locations') }}</label>
                             </div>
                             <div class="col-md-3">
-                                <label for="">Search</label>
-                                <input type="text" class="form-control" placeholder="Search..."
+                                <label for="">{{ __('search.search') }}</label>
+                                <input type="text" class="form-control" placeholder="{{ __('search.search') }}..."
                                     wire:model="search" />
                             </div>
                             <div class="col-md-5">
@@ -83,7 +83,7 @@
                                 @endforeach
                             </tbody>
                         </table>
-                        {{ $categories->links() }}
+                        {{ $categories->links('pagination::bootstrap-4') }}
                     </div>
                 </div>
             </div>
