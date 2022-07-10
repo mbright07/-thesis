@@ -27,4 +27,6 @@ return [
     'popular_job' => 'Công việc phổ biển',
     'related' => 'Công việc liên quan',
     'new' => 'Mới',
+    'cv' => 'CV của ứng viên',
+    'can_info' => 'Thông tin cá nhân',
 ];

@@ -330,18 +330,6 @@
                                 {{ $users->email }}
                             </li>
                             <li>
-                                <i class="fa fa-globe"></i>
-                                #
-                            </li>
-                            <li>
-                                <i class="fa fa-facebook"></i>
-                                #
-                            </li>
-                            <li>
-                                <i class="fa fa-instagram"></i>
-                                #
-                            </li>
-                            <li>
                                 <i class="fa fa-map-marker"></i>
                                 {{ $users->profile ? $users->profile->address : '' }}
                             </li>

@@ -27,4 +27,7 @@ return [
     'popular_job' => 'Popular Jobs',
     'related' => 'Related Jobs',
     'new' => 'New',
+    'cv' => "Candidate's cv",
+    'can_info' => 'Personal information',
+
 ];

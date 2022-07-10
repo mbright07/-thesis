@@ -27,4 +27,6 @@ return [
     'popular_job' => '人気の仕事',
     'related' => '関連する仕事',
     'new' => '新しい',
+    'cv' => "Candidate's cv",
+    'can_info' => 'Personal information',
 ];

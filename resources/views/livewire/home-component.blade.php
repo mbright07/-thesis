@@ -43,7 +43,7 @@
                 data-responsive='{"0":{"items":"1"},"480":{"items":"2"},"768":{"items":"3"},"992":{"items":"4"},"1200":{"items":"5"}}'>
                 @foreach ($top_views as $top_view)
                     <div class="product product-style-2 equal-elem ">
-                        <div class="product-thumnail">
+                        <div class="product-thumnail" style="height: 60%">
                             <a href="{{ route('job.details', ['slug' => $top_view->slug]) }}"
                                 title="{{ $top_view->name }}">
                                 <figure><img src="{{ asset('assets/images/products') }}/{{ $top_view->image }}"
@@ -55,7 +55,7 @@
                         </div>
                         <div class="product-info">
                             <a href="{{ route('job.details', ['slug' => $top_view->slug]) }}"
-                                class="product-name"><span>{{ $top_view->name }}</span></a>
+                                class="product-name"><span style="height: 50%;">{{ $top_view->name }}</span></a>
                             <div class="wrap-price"><ins>
                                     <p class="product-price">{{ __('home.salary') }}
                                         ${{ $top_view->regular_salary }}</p>
@@ -99,7 +99,7 @@
                                     @endphp
                                     @foreach ($c_jobs as $c_job)
                                         <div class="product product-style-2 equal-elem ">
-                                            <div class="product-thumnail">
+                                            <div class="product-thumnail" style="height: 60%">
                                                 <a href="{{ route('job.details', ['slug' => $c_job->slug]) }}"
                                                     title="{{ $c_job->name }}">
                                                     <figure><img
@@ -110,7 +110,8 @@
                                             </div>
                                             <div class="product-info">
                                                 <a href="{{ route('job.details', ['slug' => $c_job->slug]) }}"
-                                                    class="product-name"><span>{{ $c_job->name }}</span></a>
+                                                    class="product-name"><span
+                                                        style="height: 50%;">{{ $c_job->name }}</span></a>
                                                 <div class="wrap-price"><ins>
                                                         <p class="product-price">
                                                             {{ __('home.salary') }}${{ $c_job->regular_salary }}
@@ -144,7 +145,7 @@
                                 data-responsive='{"0":{"items":"1"},"480":{"items":"2"},"768":{"items":"3"},"992":{"items":"4"},"1200":{"items":"5"}}'>
                                 @foreach ($ljobs as $ljob)
                                     <div class="product product-style-2 equal-elem ">
-                                        <div class="product-thumnail">
+                                        <div class="product-thumnail" style="height: 50%">
                                             <a href="{{ route('job.details', ['slug' => $ljob->slug]) }}"
                                                 title="{{ $ljob->name }}">
                                                 <figure><img
@@ -153,11 +154,15 @@
                                                 </figure>
                                             </a>
                                         </div>
-                                        <div class="product-info">
+                                        <div class="product-info" style="height: 200px">
                                             <a href="{{ route('job.details', ['slug' => $ljob->slug]) }}"
-                                                class="product-name"><span>{{ $ljob->name }}</span></a>
-                                            <div class="wrap-price"><span
-                                                    class="product-price">${{ $ljob->regular_salary }}</span></div>
+                                                class="product-name"><span
+                                                    style="height: 60%;">{{ $ljob->name }}</span></a>
+                                            <div class="wrap-price">
+                                                <ins>
+                                                    <p class="product-price">{{ __('home.salary') }}${{ $ljob->regular_salary }}</p>
+                                                </ins>
+                                            </div>
                                         </div>
                                     </div>
                                 @endforeach
@@ -198,10 +203,12 @@
                                         </div>
                                         <div class="product-info" style="height: 200px;">
                                             <a href="{{ route('post.details', ['slug' => $lpost->slug]) }}"
-                                                class="product-name"><span>{{ $lpost->title }}</span></a>
-                                            <div class="wrap-price" style="margin-left: -28px;">
+                                                class="product-name"><span
+                                                    style="height: 50%;">{{ $lpost->title }}</span></a>
+                                            <div class="wrap-price" style="color: gray">
                                                 <p class="product-price">
-                                                    Post at {{ $lpost->created_at->format('Y-m-d') }}
+                                                    <i class="fa fa-clock-o" aria-hidden="true"></i>
+                                                    {{ $lpost->created_at->format('Y-m-d') }}
                                                 </p>
                                             </div>
                                         </div>

@@ -6,7 +6,7 @@
                 <article>
                     <header>
                         <h1>{{ $post->title }}</h1>
-                        <span>{{ $post->created_at }}</span>
+                        <i class="fa fa-clock-o" aria-hidden="true"></i> <span>{{ $post->created_at }}</span>
                     </header>
                     <hr>
                     <div class="main">
@@ -20,7 +20,7 @@
 
             <div class="col-lg-3 col-md-4 col-sm-4 col-xs-12 sitebar" style="margin-top: 50px;">
                 <div class="widget mercado-widget widget-product">
-                    <h2 class="widget-title">Popular Post</h2>
+                    <h2 class="widget-title">{{ __('employee/home.popular') }}</h2>
                     <div class="widget-content">
                         <ul class="products">
                             @foreach ($popular_posts as $popular_post)
@@ -39,7 +39,8 @@
                                                 title="{{ $popular_post->title }}"
                                                 class="product-name"><span>{{ $popular_post->title }}</span></a>
                                             <div class="wrap-price" style="margin-left: -40px; width: 200px;"><span
-                                                    class="product-price">Post at:
+                                                    class="product-price" style="color: gray;"><i class="fa fa-clock-o"
+                                                        aria-hidden="true"></i>
                                                     {{ $popular_post->created_at->format('Y-m-d') }}</span>
                                             </div>
                                         </div>
@@ -54,7 +55,7 @@
             <!--end sitebar-->
 
             <div class="wrap-show-advance-info-box style-1">
-                <h3 class="title-box">Lastest Post</h3>
+                <h3 class="title-box">{{ __('employee/home.latest') }}</h3>
                 <div class="wrap-products">
                     <div class="wrap-product-tab tab-style-1">
                         <div class="tab-contents">
@@ -75,10 +76,12 @@
                                             </div>
                                             <div class="product-info" style="height: 200px;">
                                                 <a href="{{ route('post.details', ['slug' => $lpost->slug]) }}"
-                                                    class="product-name"><span>{{ $lpost->title }}</span></a>
-                                                <div class="wrap-price" style="margin-left: -28px;">
+                                                    class="product-name"><span
+                                                        style="height: 50%;">{{ $lpost->title }}</span></a>
+                                                <div class="wrap-price">
                                                     <p class="product-price">
-                                                        Post at {{ $lpost->created_at->format('Y-m-d') }}
+                                                        <i class="fa fa-clock-o" aria-hidden="true"></i>
+                                                        {{ $lpost->created_at->format('Y-m-d') }}
                                                     </p>
                                                 </div>
                                             </div>
