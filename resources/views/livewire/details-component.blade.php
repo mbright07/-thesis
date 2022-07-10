@@ -123,6 +123,9 @@
                                         }
                                     </style>
                                     <div id="comments">
+                                        @if (Session::has('message'))
+                                            <div class="alert alert-success" role="alert">{{ Session::get('message') }}</div>
+                                        @endif
                                         <h2 class="woocommerce-Reviews-title">
                                             {{ $job->review_cnt }}
                                             {{ __('detail.review_for') }} <span>{{ $job->name }}</span></h2>
@@ -155,6 +158,14 @@
                                                                 </div>
                                                             </div>
                                                         </div>
+                                                        @if($recruitmentJob->recruitment->user->id == Auth::user()->id)
+                                                        <div class="panel-body-right" style="float: right">
+                                                            <i class="fa fa-trash" aria-hidden="true"
+                                                               onclick="confirm('Are you sure?') || event.stopImmediatePropagation()"
+                                                               wire:click.prevent="deleteReview({{ $review->id }})"
+                                                               style="color: rgb(248, 66, 66); font-size: 18px;"></i>
+                                                        </div>
+                                                        @endif
                                                     </li>
                                                 @endforeach
                                             @endforeach

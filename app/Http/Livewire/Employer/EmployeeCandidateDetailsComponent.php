@@ -10,6 +10,7 @@ use App\Models\Job;
 use App\Models\Language;
 use App\Models\Recruitment;
 use App\Models\Reference;
+use App\Models\ReviewCandidate;
 use App\Models\Skill;
 use App\Models\User;
 use App\Models\Work_history;
@@ -55,9 +56,33 @@ class EmployeeCandidateDetailsComponent extends Component
         }
     }
 
+    public function deleteReview ($review_id) {
+        $review = ReviewCandidate::find($review_id);
+        $review->delete();
+        session()->flash('message', 'Review has been deleted successfully!');
+    }
+
     public function render()
     {
         $user = User::where('id', $this->user_id)->first();
+
+        if ($user->recruitments) {
+            foreach ($user->recruitments as $recruitment) {
+                foreach ($recruitment->recruitmentJob as $recruitmentJob) {
+                    if ($recruitmentJob->reviewCandidates) {
+                        $user->review_cnt = count($recruitmentJob->reviewCandidates->toArray());
+                        $user->rating_avg = 0;
+                        foreach ($recruitmentJob->reviewCandidates as $review) {
+                            $user->rating_avg += $review->rating;
+                        }
+                        if ($user->review_cnt != 0) {
+                            $user->rating_avg /= $user->review_cnt;
+                        }
+                    }
+                }
+            }
+        }
+
         $total_view = User::where('id', $this->user_id)->increment('totalviews');
         $processing = Recruitment::where('user_id', $this->user_id)->where('status', 'Processing')->first();
 

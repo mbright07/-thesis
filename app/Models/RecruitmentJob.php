@@ -27,4 +27,9 @@ class RecruitmentJob extends Model
     {
         return $this->hasMany(Review::class, 'recruitment_job_id');
     }
+
+    public function reviewCandidates()
+    {
+        return $this->hasMany(ReviewCandidate::class, 'recruitment_job_id');
+    }
 }

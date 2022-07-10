@@ -113,4 +113,9 @@ class User extends Authenticatable
 
         return $this->hasMany(Reference::class, 'user_id');
     }
+
+    public function recruitments()
+    {
+        return $this->hasMany(Recruitment::class, 'user_id');
+    }
 }
