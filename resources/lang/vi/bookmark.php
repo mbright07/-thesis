@@ -21,5 +21,6 @@ return [
     'delete_sure' => 'Bạn có chắc muốn xóa công việc này?',
     'delete_save' => 'Xóa khỏi danh sách xem sau',
     'no_job_save' => 'Không có công việc nào ở danh sách xem sau',
-    'most_view' => 'Top công việc được xem nhiều nhất'
+    'most_view' => 'Top công việc được xem nhiều nhất',
+    'most_view_can' => 'Top ứng viên được tiếp cận nhiều nhất',
 ];

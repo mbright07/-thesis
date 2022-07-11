@@ -7,7 +7,7 @@
                         <div class="icon-stat">
                             <div class="row">
                                 <div class="col-xs-8 text-left">
-                                    <span class="icon-stat-label">Total Recruitments Pending</span>
+                                    <span class="icon-stat-label">{{ __('employee/dashboard.total') }}</span>
                                     <span class="icon-stat-value">{{ $totalRecruitments }}</span>
                                 </div>
                                 <div class="col-xs-4 text-center">
@@ -15,7 +15,7 @@
                                 </div>
                             </div>
                             <div class="icon-stat-footer">
-                                <i class="fa fa-clock-o"></i> Updated Now
+                                <i class="fa fa-clock-o"></i> {{ __('employee/dashboard.update') }}
                             </div>
                         </div>
                     </div>
@@ -23,7 +23,7 @@
                         <div class="icon-stat">
                             <div class="row">
                                 <div class="col-xs-8 text-left">
-                                    <span class="icon-stat-label">Total Recruitments Today</span>
+                                    <span class="icon-stat-label">{{ __('employee/dashboard.total_today') }}</span>
                                     <span class="icon-stat-value">{{ $totalRecruitments_today }}</span>
                                 </div>
                                 <div class="col-xs-4 text-center">
@@ -31,7 +31,7 @@
                                 </div>
                             </div>
                             <div class="icon-stat-footer">
-                                <i class="fa fa-clock-o"></i> Updated Now
+                                <i class="fa fa-clock-o"></i> {{ __('employee/dashboard.update') }}
                             </div>
                         </div>
                     </div>
@@ -39,7 +39,7 @@
                         <div class="icon-stat">
                             <div class="row">
                                 <div class="col-xs-8 text-left">
-                                    <span class="icon-stat-label">Recruitments Processing</span>
+                                    <span class="icon-stat-label">{{ __('employee/dashboard.process') }}</span>
                                     <span class="icon-stat-value">{{ $totalRecruitments_processing }}</span>
                                 </div>
                                 <div class="col-xs-4 text-center">
@@ -47,7 +47,7 @@
                                 </div>
                             </div>
                             <div class="icon-stat-footer">
-                                <i class="fa fa-clock-o"></i> Updated Now
+                                <i class="fa fa-clock-o"></i> {{ __('employee/dashboard.update') }}
                             </div>
                         </div>
                     </div>
@@ -55,7 +55,7 @@
                         <div class="icon-stat">
                             <div class="row">
                                 <div class="col-xs-8 text-left">
-                                    <span class="icon-stat-label">Total Recruitments Canceled</span>
+                                    <span class="icon-stat-label">{{ __('employee/dashboard.total_cancel') }}</span>
                                     <span class="icon-stat-value">{{ $totalRecruitments_canceled }}</span>
                                 </div>
                                 <div class="col-xs-4 text-center">
@@ -63,7 +63,7 @@
                                 </div>
                             </div>
                             <div class="icon-stat-footer">
-                                <i class="fa fa-clock-o"></i> Updated Now
+                                <i class="fa fa-clock-o"></i> {{ __('employee/dashboard.update') }}
                             </div>
                         </div>
                     </div>
@@ -86,48 +86,48 @@
                     <div class="col-md-12">
                         <div class="panel panel-success">
                             <div class="panel-heading">
-                                Lastest Recruiment
+                                {{ __('employee/dashboard.latest') }}
                             </div>
                             <div class="panel-body" style="margin-left: -10px;">
                                 <table class="table table-striped">
                                     <thead>
-                                    <tr>
-                                        <th>STT</th>
-                                        <th>FirstName</th>
-                                        <th>Last Name</th>
-                                        <th>Email</th>
-                                        <th>Mobile</th>
-                                        <th>Intro</th>
-                                        <th>City</th>
-                                        <th>Province</th>
-                                        <th>Country</th>
-                                        <th>CV</th>
-                                        <th>Status</th>
-                                        <th>Recruitment Date</th>
-                                        <th class="text-center">Action</th>
-                                    </tr>
+                                        <tr>
+                                            <th>{{ __('admin/admin-recruitment.stt') }}</th>
+                                            <th>{{ __('admin/admin-recruitment.f_name') }}</th>
+                                            <th>{{ __('admin/admin-recruitment.l_name') }}</th>
+                                            <th>{{ __('admin/admin-recruitment.email') }}</th>
+                                            <th>{{ __('admin/admin-recruitment.mobile') }}</th>
+                                            <th>{{ __('admin/admin-recruitment.city') }}</th>
+                                            <th>{{ __('admin/admin-recruitment.province') }}</th>
+                                            <th>{{ __('admin/admin-recruitment.country') }}</th>
+                                            <th>{{ __('admin/admin-recruitment.status') }}</th>
+                                            <th>{{ __('admin/admin-recruitment.cv') }}</th>
+                                            <th>{{ __('admin/admin-recruitment.re_date') }}</th>
+                                            <th class="text-center">
+                                                {{ __('admin/admin-recruitment.action') }}
+                                            </th>
+                                        </tr>
                                     </thead>
                                     <tbody>
-                                    @foreach ($recruitments as $recruitment)
-                                        <tr>
-                                            <td>{{ $recruitment->id }}</td>
-                                            <td>{{ $recruitment->firstname }}</td>
-                                            <td>{{ $recruitment->lastname }}</td>
-                                            <td>{{ $recruitment->email }}</td>
-                                            <td>{{ $recruitment->mobile }}</td>
-                                            <td>{{ substr($recruitment->intro, 0, 35) }}</td>
-                                            <td>{{ $recruitment->country }}</td>
-                                            <td>{{ $recruitment->province }}</td>
-                                            <td>{{ $recruitment->city }}</td>
-                                            <td><strong>{{ $recruitment->status }}</strong></td>
-                                            <td><a
-                                                    href="{{ URL::asset('/assets/images/recruitments') }}/{{ $recruitment->file }}">{{ $recruitment->file }}</a>
-                                            </td>
-                                            <td>{{ $recruitment->created_at }}</td>
-                                            <td><a href="{{ route('employer.recruitmentdetails', ['recruitment_id' => $recruitment->id]) }}"
-                                                   class="btn btn-info btn-sm">Detail</a></td>
-                                        </tr>
-                                    @endforeach
+                                        @foreach ($recruitments as $recruitment)
+                                            <tr>
+                                                <td>{{ $recruitment->id }}</td>
+                                                <td>{{ $recruitment->firstname }}</td>
+                                                <td>{{ $recruitment->lastname }}</td>
+                                                <td>{{ $recruitment->email }}</td>
+                                                <td>{{ $recruitment->mobile }}</td>
+                                                <td>{{ $recruitment->city }}</td>
+                                                <td>{{ $recruitment->province }}</td>
+                                                <td>{{ $recruitment->country }}</td>
+                                                <td><strong>{{ $recruitment->status }}</strong></td>
+                                                <td><a
+                                                        href="{{ URL::asset('/assets/images/recruitments') }}/{{ $recruitment->file }}">{{ $recruitment->file }}</a>
+                                                </td>
+                                                <td>{{ $recruitment->created_at }}</td>
+                                                <td><a href="{{ route('employer.recruitmentdetails', ['recruitment_id' => $recruitment->id]) }}"
+                                                        class="btn btn-info btn-sm">{{ __('admin/admin-recruitment.detail') }}</a></td>
+                                            </tr>
+                                        @endforeach
                                     </tbody>
                                 </table>
                             </div>
@@ -144,7 +144,7 @@
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.4/Chart.js"></script>
 <script>
-    var xValues = ["Recruitments Pending", "Recruitments Processing", "Recruitments Canceled"];
+    var xValues = ["{{ __('employee/dashboard.total') }}", "{{ __('employee/dashboard.process') }}", "{{ __('employee/dashboard.total_cancel') }}"];
     var yValues = [{{ $totalRecruitments }}, {{ $totalRecruitments_processing }},
         {{ $totalRecruitments_canceled }}
     ];

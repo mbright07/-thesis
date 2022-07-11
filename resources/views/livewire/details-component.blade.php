@@ -9,13 +9,13 @@
             </ul>
         </div>
         <div class="row">
-            <div class="col-lg-12 col-md-8 col-sm-8 col-xs-12 main-content-area">
+            <div class="col-lg-9 col-md-8 col-sm-8 col-xs-12 main-content-area">
                 <div class="wrap-product-detail">
-                    <div class="detail-media">
+                    <div class="detail-media" style="width: 40%; float:left">
                         <img src="{{ asset('assets/images/products') }}/{{ $job->image }}" alt="{{ $job->name }}"
                             height="300" width="300" />
                     </div>
-                    <div class="detail-info">
+                    <div class="detail-info" style="width: 50%; margin-top: -40px;">
                         <div class="product-rating">
                             <style>
                                 .color-gray {
@@ -29,12 +29,11 @@
                                     <i class="fa fa-star color-gray" aria-hidden="true"></i>
                                 @endif
                             @endfor
-                            <a href="#"
-                                class="count-review">({{ $job->review_cnt }}
+                            <a href="#" class="count-review">({{ $job->review_cnt }}
                                 {{ __('detail.review') }})</a>
                         </div>
                         <h2 class="product-name">{{ $job->name }}</h2>
-                        <h5>View: {{ $job->totalviews }}</h5>
+                        <h5><i class="fa fa-eye" aria-hidden="true"></i>{{ $job->totalviews }}</h5>
                         <div class="short-desc">
                             {!! $job->short_description !!}
                         </div>
@@ -66,103 +65,32 @@
                             </div>
 
                             <div class="tab-content-item " id="add_infomation">
-                                <div class="col-sm-3">
-                                    <div class="text-center">
-                                        @if($user->profile && $user->profile->image)
-                                            <img src="{{ asset('/assets/images/profile') }}/{{ $user->profile->image }}"
-                                                class="avatar img-circle img-thumbnail" alt="avatar">
+                                <div class="tab-content">
+                                    <div style="float: left; ">
+                                        @if ($user->profile && $user->profile->image)
+                                            <img src="{{ asset('assets/images/profile') }}/{{ $user->profile->image }}"
+                                                alt="{{ $user->name }}" height="100" width="100" />
+                                        @else
+                                            <img src="http://ssl.gstatic.com/accounts/ui/avatar_2x.png" width="100"
+                                                height="100" alt="{{ $user->name }}" />
                                         @endif
+                                        <h3>{{ $user->name }}</h3>
                                     </div>
-                                    <div class="row text-center">
-                                        <div class="col-sm-12" class="text-center">
-                                            <h2>{{ $user->name }}</h2>
-                                        </div>
+                                    <div style="margin-left: 200px ">
+                                        <ul class="list-in-text">
+                                            <li><i class="fa fa-user" aria-hidden="true"></i> {{ $user->name }}</li>
+                                            <li><i class="fa fa-envelope" aria-hidden="true"></i> {{ $user->email }}
+                                            </li>
+                                            <li><i class="fa fa-phone" aria-hidden="true"></i>
+                                                {{ $user->profile ? $user->profile->mobile : '' }}</li>
+                                            <li><i class="fa fa-map-marker" aria-hidden="true"></i>
+                                                {{ $user->profile ? $user->profile->address : '' }}</li>
+                                            <li><i class="fa fa-info-circle" aria-hidden="true"></i>
+                                                <cite>{{ $user->profile ? $user->profile->intro : '' }}</cite>
+                                            </li>
+                                        </ul>
                                     </div>
-                                    <hr>
-                                </div>
 
-                                <div class="col-sm-9">
-                                    <div class="tab-content">
-                                        <div class="form-group">
-                                            <div class="col-xs-6">
-                                                <label for="name">
-                                                    <h4>Name</h4>
-                                                </label>
-                                                <br/>
-                                                {{ $user->name }}
-                                            </div>
-                                        </div>
-
-                                        <div class="form-group">
-                                            <div class="col-xs-6">
-                                                <label for="email">
-                                                    <h4>Email</h4>
-                                                </label>
-                                                <br/>
-                                                {{ $user->email }}
-                                            </div>
-                                        </div>
-
-                                        <div class="form-group">
-                                            <div class="col-xs-6">
-                                                <label for="mobile">
-                                                    <h4>Mobile</h4>
-                                                </label>
-                                                <br/>
-                                                {{ $user->profile ? $user->profile->mobile : '' }}
-                                            </div>
-                                        </div>
-
-                                        <div class="form-group">
-                                            <div class="col-xs-6">
-                                                <label for="city">
-                                                    <h4>City</h4>
-                                                </label>
-                                                <br/>
-                                                {{ $user->profile ? $user->profile->city : '' }}
-                                            </div>
-                                        </div>
-
-                                        <div class="form-group">
-                                            <div class="col-xs-6">
-                                                <label for="province">
-                                                    <h4>Province</h4>
-                                                </label>
-                                                <br/>
-                                                {{ $user->profile ? $user->profile->province : '' }}
-                                            </div>
-                                        </div>
-
-                                        <div class="form-group">
-                                            <div class="col-xs-6">
-                                                <label for="country">
-                                                    <h4>Country</h4>
-                                                </label>
-                                                <br/>
-                                                {{ $user->profile ? $user->profile->country : '' }}
-                                            </div>
-                                        </div>
-
-                                        <div class="form-group">
-                                            <div class="col-xs-6">
-                                                <label for="address">
-                                                    <h4>Address</h4>
-                                                </label>
-                                                <br/>
-                                                {{ $user->profile ? $user->profile->address : '' }}
-                                            </div>
-                                        </div>
-
-                                        <div class="form-group">
-                                            <div class="col-xs-12">
-                                                <label for="intro">
-                                                    <h4>Intro</h4>
-                                                </label>
-                                                <br/>
-                                                {{ $user->profile ? $user->profile->intro : '' }}
-                                            </div>
-                                        </div>
-                                    </div>
                                 </div>
                             </div>
 
@@ -243,8 +171,12 @@
                                             @endforeach
                                         </ol>
                                     </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
 
-                                    {{-- <div id="review_form_wrapper">
+                    {{-- <div id="review_form_wrapper">
                                         <div id="review_form">
                                             <div id="respond" class="comment-respond">
 
@@ -293,14 +225,10 @@
                                                             class="submit" value="{{ __('detail.submit') }}">
                                                     </p>
                                                 </form>
-
                                             </div><!-- .comment-respond-->
                                         </div><!-- #review_form -->
                                     </div><!-- #review_form_wrapper --> --}}
-                                </div>
-                            </div>
-                        </div>
-                    </div>
+
                 </div>
             </div>
 
@@ -366,7 +294,7 @@
                                         <div class="product-info">
                                             <a href="{{ route('job.details', ['slug' => $popular_job->slug]) }}"
                                                 title="{{ $popular_job->name }}"
-                                                class="product-name"><span>{{ $popular_job->name }}</span></a>
+                                                class="product-name"><span style="font-size: 15px;">{{ $popular_job->name }}</span></a>
                                             <div class="wrap-price"><span
                                                     class="product-price">{{ __('detail.salary') }}{{ $popular_job->regular_salary }}</span>
                                             </div>
@@ -379,7 +307,7 @@
                 </div>
 
             </div>
-            <!--end sitebar-->
+
 
             <div class="single-advance-box col-lg-12 col-md-12 col-sm-12 col-xs-12">
                 <div class="wrap-show-advance-info-box style-1 box-in-site">
@@ -396,17 +324,18 @@
                                             title="{{ $related_job->name }}">
                                             <figure><img
                                                     src="{{ asset('assets/images/products') }}/{{ $related_job->image }}"
-                                                    width="214" height="214" alt="{{ $related_job->name }}"></figure>
+                                                    width="214" height="214" alt="{{ $related_job->name }}">
+                                            </figure>
                                         </a>
                                         <div class="group-flash">
                                             <span class="flash-item new-label"
                                                 style="height: 20px; padding-top: 5px;">{{ __('detail.new') }}</span>
                                         </div>
                                     </div>
-                                    <div class="product-info">
+                                    <div class="product-info" style="height: 200px">
                                         <a href="{{ route('job.details', ['slug' => $related_job->slug]) }}"
                                             title="{{ $related_job->name }}"
-                                            class="product-name"><span>{{ $related_job->name }}</span></a>
+                                            class="product-name"><span style="height: 60%;">{{ $related_job->name }}</span></a>
                                         <div class="wrap-price"><span
                                                 class="product-price">{{ __('detail.salary') }}{{ $related_job->regular_salary }}</span>
                                         </div>
@@ -418,22 +347,17 @@
                     <!--End wrap-products-->
                 </div>
             </div>
-
         </div>
-        <!--end row-->
 
     </div>
-    <!--end container-->
 
 </main>
 
 
 @push('scripts')
     <script>
-
         window.addEventListener('jobApplied', (e) => {
             alert(e.detail.message);
         });
-
     </script>
 @endpush

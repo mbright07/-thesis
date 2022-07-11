@@ -21,5 +21,7 @@ return [
     'delete_sure' => 'Are you sure, You want to delete this job?',
     'delete_save' => 'Delete from save for Later',
     'no_job_save' => 'No Job save for later',
-    'most_view' => 'Most Viewed Jobs'
+    'most_view' => 'Most Viewed Jobs',
+    'most_view_can' => 'Most Viewed Candidates',
+
 ];

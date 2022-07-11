@@ -55,10 +55,10 @@
                     </div>
                     <div class="product-info" style="height: 200px;">
                         <a href="{{ route('post.details', ['slug' => $top_view_post->slug]) }}"
-                            class="product-name"><span>{{ $top_view_post->title }}</span></a>
-                        <div class="wrap-price" style="margin-left: -30px;">
+                            class="product-name"><span style="height: 50%;">{{ $top_view_post->title }}</span></a>
+                        <div class="wrap-price">
                             <p class="product-price" style="color: gray; margin-bottom: 10px;">
-                                {{ __('reference.post_at') }}
+                                <i class="fa fa-clock-o" aria-hidden="true"></i>
                                 {{ $top_view_post->created_at->format('Y-m-d') }}
                             </p>
                         </div>
@@ -89,10 +89,10 @@
                                     </div>
                                     <div class="product-info" style="height: 200px;">
                                         <a href="{{ route('post.details', ['slug' => $lpost->slug]) }}"
-                                            class="product-name"><span>{{ $lpost->title }}</span></a>
-                                        <div class="wrap-price" style="margin-left: -28px;">
-                                            <p class="product-price">
-                                                {{ __('reference.post_at') }}
+                                            class="product-name"><span style="height: 50%;">{{ $lpost->title }}</span></a>
+                                        <div class="wrap-price">
+                                            <p class="product-price" style="color: gray; margin-bottom: 10px;">
+                                                <i class="fa fa-clock-o" aria-hidden="true"></i>
                                                 {{ $lpost->created_at->format('Y-m-d') }}
                                             </p>
                                         </div>

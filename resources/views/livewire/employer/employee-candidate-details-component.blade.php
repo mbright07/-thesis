@@ -1,185 +1,154 @@
 <main id="main" class="main-site">
-
     <div class="container">
-
         <div class="wrap-breadcrumb">
             <ul>
-{{--                <li class="item-link"><a href="/" class="link">{{ __('detail.home') }}</a></li>--}}
+                <li class="item-link"><a href="{{ route('employer.home') }}" class="link">{{ __('detail.home') }}</a>
+                </li>
                 <li class="item-link"><span>{{ __('detail.detail') }}</span></li>
             </ul>
         </div>
         <div class="row">
             <div class="col-lg-12 col-md-8 col-sm-8 col-xs-12 main-content-area">
                 <div class="wrap-product-detail">
-                    <div class="detail-media">
-                        @if($user->profile && $user->profile->image)
-                            <img src="{{ asset('assets/images/profile') }}/{{ $user->profile->image }}" alt="{{ $user->name }}"
-                                height="300" width="300" />
-                        @else
-                            <img src="{{ asset('/assets/images/profile/default-avatar-profile-image.jpg') }}"
-                                 width="300" height="300" alt="{{ $user->name }}" />
-                        @endif
-                    </div>
-                    <div class="detail-info">
-                        <div class="product-rating">
-                            <style>
-                                .color-gray {
-                                    color: #e6e6e6 !important;
-                                }
-                            </style>
-                            @for ($i = 1; $i <= 5; $i++)
-                                @if ($i <= $user->rating_avg)
-                                    <i class="fa fa-star" aria-hidden="true"></i>
-                                @else
-                                    <i class="fa fa-star color-gray" aria-hidden="true"></i>
-                                @endif
-                            @endfor
-                            <a href="#"
-                               class="count-review">({{ $user->review_cnt }}
-                                {{ __('detail.review') }})</a>
-                        </div>
-                        <h2 class="product-name">{{ $user->name }}</h2>
-                        <h5>View: {{ $user->totalviews }}</h5>
-                        <div class="short-desc">
-                            <table border="1">
-                                <thead>
-                                    <th>{{ __('employee/home.expected_location') }}</th>
-                                    <th>{{ __('detail.salary') }}</th>
-                                </thead>
-                                <tbody>
-                                    @if($user->workPreference)
-                                        @foreach($user->workPreference as $item)
-                                            <tr>
-                                                <td>
-                                                    {{ $item->expected_location_name }}
-                                                </td>
-                                                <td>
-                                                    {{ $item->expected_salary }}
-                                                </td>
-                                            </tr>
-                                        @endforeach
-                                    @endif
-                                </tbody>
-                            </table>
+                    <div class="container-details">
+                        <div class="detail-media" style="width: 25%; float:left">
+                            @if ($user->profile && $user->profile->image)
+                                <img src="{{ asset('assets/images/profile') }}/{{ $user->profile->image }}"
+                                    alt="{{ $user->name }}" height="300" width="300" />
+                            @else
+                                <img src="http://ssl.gstatic.com/accounts/ui/avatar_2x.png" width="300"
+                                    height="300" alt="{{ $user->name }}" />
+                            @endif
                         </div>
 
-                        <div class="stock-info in-stock">
-                            <p class="availability">
-                                Available: <b>{{ $available ? 'Available' : 'Unavailable' }}</b></p>
+                        <div class="detail-info" style="width: 40%; ">
+                            <div class="product-rating">
+                                <style>
+                                    .color-gray {
+                                        color: #e6e6e6 !important;
+                                    }
+                                </style>
+                                @for ($i = 1; $i <= 5; $i++)
+                                    @if ($i <= $user->rating_avg)
+                                        <i class="fa fa-star" aria-hidden="true"></i>
+                                    @else
+                                        <i class="fa fa-star color-gray" aria-hidden="true"></i>
+                                    @endif
+                                @endfor
+                                <a href="#" class="count-review">({{ $user->review_cnt }}
+                                    {{ __('detail.review') }})</a>
+                            </div>
+
+                            <div class="short-desc">
+                                <h2 class="product-name">{{ $user->name }}</h2>
+                                <h5><i class="fa fa-eye" aria-hidden="true"></i>
+                                    {{ $user->totalviews }}</h5>
+                                <table class="table table-bordered">
+                                    <thead>
+                                        <th>{{ __('employee/home.expected_location') }}</th>
+                                        <th>{{ __('detail.salary') }}</th>
+                                    </thead>
+                                    <tbody>
+                                        @if ($user->workPreference)
+                                            @foreach ($user->workPreference as $item)
+                                                <tr>
+                                                    <td>
+                                                        {{ $item->expected_location_name }}
+                                                    </td>
+                                                    <td>
+                                                        {{ $item->expected_salary }}
+                                                    </td>
+                                                </tr>
+                                            @endforeach
+                                        @endif
+                                    </tbody>
+                                </table>
+                            </div>
+                            <div class="stock-info in-stock">
+                                <p class="availability">
+                                    <i class="fa fa-check" aria-hidden="true"></i>:
+                                    <b>{{ $available ? 'Available' : 'Unavailable' }}</b>
+                                </p>
+                            </div>
+                            <div class="wrap-butons" style="margin-top: -30px;">
+                                <a href="#" class="btn add-to-cart"
+                                    wire:click.prevent="company({{ $user->id }},'{{ $user->name }}',{{ json_encode($user->workPreference) }})">{{ __('detail.bookmark') }}</a>
+                            </div>
                         </div>
-                        <div class="wrap-butons">
-                            <a href="#" class="btn add-to-cart"
-                               wire:click.prevent="company({{ $user->id }},'{{ $user->name }}',{{ json_encode($user->workPreference) }})">{{ __('detail.bookmark') }}</a>
+
+                        <div class="widget widget-our-services " style="width: 30%; float: right;">
+                            <div class="widget-content">
+                                <ul class="our-services">
+                                    <li class="service">
+                                        <a class="link-to-service" href="#">
+                                            <i class="fa fa-truck" aria-hidden="true"></i>
+                                            <div class="right-content">
+                                                <b class="title">{{ __('detail.career') }}</b>
+                                                <span class="subtitle"></span>
+                                                <p class="desc">Lorem Ipsum is simply dummy text of the
+                                                    printing...
+                                                </p>
+                                            </div>
+                                        </a>
+                                    </li>
+
+                                    <li class="service">
+                                        <a class="link-to-service" href="#">
+                                            <i class="fa fa-gift" aria-hidden="true"></i>
+                                            <div class="right-content">
+                                                <b class="title">{{ __('detail.skill') }}</b>
+                                                <span class="subtitle"></span>
+                                                <p class="desc">Lorem Ipsum is simply dummy text of the
+                                                    printing...
+                                                </p>
+                                            </div>
+                                        </a>
+                                    </li>
+
+                                    <li class="service">
+                                        <a class="link-to-service" href="#">
+                                            <i class="fa fa-reply" aria-hidden="true"></i>
+                                            <div class="right-content">
+                                                <b class="title">{{ __('detail.area') }}</b>
+                                                <span class="subtitle"></span>
+                                                <p class="desc">Lorem Ipsum is simply dummy text of the
+                                                    printing...
+                                                </p>
+                                            </div>
+                                        </a>
+                                    </li>
+                                </ul>
+                            </div>
                         </div>
                     </div>
                     <div class="advance-info">
                         <div class="tab-control normal">
-                            <a href="#description" class="tab-control-item active">{{ __('detail.description') }}</a>
-                            <a href="#add_infomation" class="tab-control-item">{{ __('detail.add_info') }}</a>
+                            <a href="#description" class="tab-control-item active">{{ __('detail.cv') }}</a>
+                            <a href="#add_infomation" class="tab-control-item">{{ __('detail.can_info') }}</a>
                             <a href="#review" class="tab-control-item">{{ __('detail.review') }}</a>
                         </div>
                         <div class="tab-contents">
-                            <div class="tab-content-item active" id="description" >
+                            <div class="tab-content-item active" id="description">
                                 @include('livewire.employer.employee-candidate-resume-component')
                             </div>
 
                             <div class="tab-content-item " id="add_infomation">
-                                <div class="col-sm-3">
-                                    <div class="text-center">
-                                        @if($user->profile && $user->profile->image)
-                                            <img src="{{ asset('/assets/images/profile') }}/{{ $user->profile->image }}"
-                                                 class="avatar img-circle img-thumbnail" alt="avatar">
-                                        @endif
-                                    </div>
-                                    <div class="row text-center">
-                                        <div class="col-sm-12" class="text-center">
-                                            <h2>{{ $user->name }}</h2>
-                                        </div>
-                                    </div>
-                                    <hr>
-                                </div>
-
                                 <div class="col-sm-9">
                                     <div class="tab-content">
-                                        <div class="form-group">
-                                            <div class="col-xs-6">
-                                                <label for="name">
-                                                    <h4>Name</h4>
-                                                </label>
-                                                <br/>
-                                                {{ $user->name }}
-                                            </div>
-                                        </div>
-
-                                        <div class="form-group">
-                                            <div class="col-xs-6">
-                                                <label for="email">
-                                                    <h4>Email</h4>
-                                                </label>
-                                                <br/>
+                                        <ul class="list-in-text">
+                                            <li><i class="fa fa-user" aria-hidden="true"></i> {{ $user->name }}
+                                            </li>
+                                            <li><i class="fa fa-envelope" aria-hidden="true"></i>
                                                 {{ $user->email }}
-                                            </div>
-                                        </div>
-
-                                        <div class="form-group">
-                                            <div class="col-xs-6">
-                                                <label for="mobile">
-                                                    <h4>Mobile</h4>
-                                                </label>
-                                                <br/>
-                                                {{ $user->profile ? $user->profile->mobile : '' }}
-                                            </div>
-                                        </div>
-
-                                        <div class="form-group">
-                                            <div class="col-xs-6">
-                                                <label for="city">
-                                                    <h4>City</h4>
-                                                </label>
-                                                <br/>
-                                                {{ $user->profile ? $user->profile->city : '' }}
-                                            </div>
-                                        </div>
-
-                                        <div class="form-group">
-                                            <div class="col-xs-6">
-                                                <label for="province">
-                                                    <h4>Province</h4>
-                                                </label>
-                                                <br/>
-                                                {{ $user->profile ? $user->profile->province : '' }}
-                                            </div>
-                                        </div>
-
-                                        <div class="form-group">
-                                            <div class="col-xs-6">
-                                                <label for="country">
-                                                    <h4>Country</h4>
-                                                </label>
-                                                <br/>
-                                                {{ $user->profile ? $user->profile->country : '' }}
-                                            </div>
-                                        </div>
-
-                                        <div class="form-group">
-                                            <div class="col-xs-6">
-                                                <label for="address">
-                                                    <h4>Address</h4>
-                                                </label>
-                                                <br/>
-                                                {{ $user->profile ? $user->profile->address : '' }}
-                                            </div>
-                                        </div>
-
-                                        <div class="form-group">
-                                            <div class="col-xs-12">
-                                                <label for="intro">
-                                                    <h4>Intro</h4>
-                                                </label>
-                                                <br/>
-                                                {{ $user->profile ? $user->profile->intro : '' }}
-                                            </div>
-                                        </div>
+                                            </li>
+                                            <li><i class="fa fa-phone" aria-hidden="true"></i>
+                                                {{ $user->profile ? $user->profile->mobile : '' }}</li>
+                                            <li><i class="fa fa-map-marker" aria-hidden="true"></i>
+                                                {{ $user->profile ? $user->profile->address : '' }}</li>
+                                            <li><i class="fa fa-info-circle" aria-hidden="true"></i>
+                                                <cite>{{ $user->profile ? $user->profile->intro : '' }}</cite>
+                                            </li>
+                                        </ul>
                                     </div>
                                 </div>
                             </div>
@@ -212,67 +181,17 @@
                                             width: 100%;
                                         }
                                     </style>
-                                    <div id="comments">
-                                    @if (Session::has('message'))
-                                        <div class="alert alert-success" role="alert">{{ Session::get('message') }}</div>
-                                    @endif
-                                    <h2 class="woocommerce-Reviews-title">
-                                        {{ $user->review_cnt }}
-                                        {{ __('detail.review_for') }} <span>{{ $user->name }}</span></h2>
-                                    <ol class="commentlist">
-                                        @foreach ($user->recruitments as $recruitment)
-                                            @foreach ($recruitment->recruitmentJob as $recruitmentJob)
-                                                @foreach ($recruitmentJob->reviewCandidates as $review)
-                                                    <li class="comment byuser comment-author-admin bypostauthor even thread-even depth-1"
-                                                        id="li-comment-20">
-                                                        <div id="comment-20" class="comment_container">
-                                                            <img alt=""
-                                                                 src="{{ asset('assets/images/author-avata.jpg') }}"
-                                                                 height="80" width="80">
-                                                            <div class="comment-text">
-                                                                <div class="star-rating">
-                                                                        <span
-                                                                            class="width-{{ $review->rating * 20 }}-percent">{{ __('detail.rate') }}
-                                                                            <strong
-                                                                                class="rating">{{ $review->rating }}</strong>
-                                                                            {{ __('detail.out_of_5') }} </span>
-                                                                </div>
-                                                                <p class="meta">
-                                                                    <strong
-                                                                        class="woocommerce-review__author">{{ $recruitmentJob->job->user->name }}</strong>
-                                                                    <span class="woocommerce-review__dash">–</span>
-                                                                    <time class="woocommerce-review__published-date"
-                                                                          datetime="2008-02-14 20:00">{{ Carbon\Carbon::parse($review->created_at)->format('d F Y g:i A') }}</time>
-                                                                </p>
-                                                                <div class="description">
-                                                                    <p>{{ $review->comment }}</p>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                        @if($recruitmentJob->job->user_id == Auth::user()->id)
-                                                            <div class="panel-body-right" style="float: right">
-                                                                <i class="fa fa-trash" aria-hidden="true"
-                                                                   onclick="confirm('Are you sure?') || event.stopImmediatePropagation()"
-                                                                   wire:click.prevent="deleteReview({{ $review->id }})"
-                                                                   style="color: rgb(248, 66, 66); font-size: 18px;"></i>
-                                                            </div>
-                                                        @endif
-                                                    </li>
-                                                @endforeach
-                                            @endforeach
-                                        @endforeach
-                                    </ol>
                                 </div>
 
-                                </div>
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
-
         </div>
-        <!--end row-->
+
+    </div>
+    <!--end row-->
 
     </div>
     <!--end container-->
