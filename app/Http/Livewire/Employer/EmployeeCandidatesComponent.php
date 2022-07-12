@@ -3,11 +3,9 @@
 namespace App\Http\Livewire\Employer;
 
 use App\Models\Category;
-use App\Models\Job;
 use App\Models\User;
 use App\Models\Work_preference;
 use Cart;
-use DB;
 use Illuminate\Support\Facades\Auth;
 use Livewire\Component;
 
@@ -21,9 +19,18 @@ class EmployeeCandidatesComponent extends Component
 
     public $type;
 
+    public $selected_salary_min;
+    public $selected_salary_max;
+    public $max_salary;
+
     public function mount()
     {
         $this->pagesize = 12;
+
+        $this->max_salary = Work_preference::query()->max('expected_salary');
+
+        $this->selected_salary_min = 1;
+        $this->selected_salary_max = $this->max_salary;
 
         $this->fill(request()->only('search', 'job_cat', 'job_cat_id', 'is_sub_cat'));
     }
@@ -41,12 +48,18 @@ class EmployeeCandidatesComponent extends Component
 
     public function render()
     {
+
+        $candidate_ids = Work_preference::query()
+            ->whereBetween('expected_salary', [$this->selected_salary_min, $this->selected_salary_max])
+            ->pluck('user_id')->toArray();
+
         $lcandidates = User::where('users.role_id', 2)
             ->when($this->job_cat_id, function ($query) {
                 $userIdList = Work_preference::query()->where('category_id', $this->job_cat_id)->pluck('user_id');
                 $query->whereIn('id', $userIdList);
             })
             ->where('name', 'LIKE', '%'.trim($this->search).'%')
+            ->whereIn('id', $candidate_ids)
             ->paginate($this->pagesize);
 
         foreach ($lcandidates as $lcandidate) {
@@ -56,11 +69,6 @@ class EmployeeCandidatesComponent extends Component
                 }
             }
         }
-
-        /*if (Auth::check()) {
-            Cart::instance('bookmark')->store(Auth::user()->email);
-            Cart::instance('wishlist')->store(Auth::user()->email);
-        }*/
 
         return view('livewire.employer.employee-candidates-component', ['lcandidates' => $lcandidates])->layout("layouts.base");
     }

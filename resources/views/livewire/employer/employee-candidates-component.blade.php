@@ -7,7 +7,7 @@
             </ul>
         </div>
         <div class="row">
-            <div class="col-lg-12 col-md-8 col-sm-8 col-xs-12 main-content-area">
+            <div class="col-lg-9 col-md-8 col-sm-8 col-xs-12 main-content-area">
                 <div class="banner-shop">
                     <a href="#" class="banner-link">
                         <figure><img src="{{ asset('assets/images/shop-banner.jpg') }}" alt=""></figure>
@@ -57,7 +57,7 @@
                                                             style="color: #ff2832"></i>
                                                         @if ($lcandidate->workPreference)
                                                             @foreach ($lcandidate->workPreference as $item)
-                                                               <strong>{{ $item->expected_location_name }}</strong> 
+                                                               <strong>{{ $item->expected_location_name }}</strong>
                                                             @endforeach
                                                         @endif
                                                     </p>
@@ -73,64 +73,56 @@
                             </div>
                         </div>
                     @endforeach
-
-                    {{-- <ul class="product-list grid-products equal-container">
-                        @php
-                            $witems = Cart::instance('wishlist')
-                                ->content()
-                                ->pluck('id');
-                        @endphp
-                        @foreach ($lcandidates as $lcandidate)
-
-                            <li class="col-lg-4 col-md-6 col-sm-6 col-xs-6 ">
-                                <div class="product product-style-2 equal-elem ">
-                                    <div class="product-thumnail">
-                                        <a href="{{ route('employer.candidate.details', ['user_id' => $lcandidate->id]) }}"
-                                            title="{{ $lcandidate->name }}">
-                                            @if ($lcandidate->profile && $lcandidate->profile->image)
-                                                <figure><img
-                                                        src="{{ asset('/assets/images/profile') }}/{{ $lcandidate->profile->image }}"
-                                                        width="800" height="800" alt="{{ $lcandidate->name }}">
-                                                </figure>
-                                            @else
-                                                <figure><img src="http://ssl.gstatic.com/accounts/ui/avatar_2x.png"
-                                                        width="800" height="800" alt="{{ $lcandidate->name }}">
-                                                </figure>
-                                            @endif
-                                        </a>
-                                    </div>
-                                    <div class="product-info">
-                                        <a href="{{ route('employer.candidate.details', ['user_id' => $lcandidate->id]) }}"
-                                            class="product-name"><span>{{ $lcandidate->name }}</span></a>
-                                        <div class="wrap-price"><ins>
-                                                <p class="product-price">{{ __('employee/home.expected_location') }}:
-                                                    <br />
-                                                    @if ($lcandidate->workPreference)
-                                                        @foreach ($lcandidate->workPreference as $item)
-                                                            {{ $item->expected_location_name }}
-                                                            <br />
-                                                        @endforeach
-                                                    @endif
-                                                </p>
-                                            </ins>
-                                        </div>
-                                    </div>
-                                    <div class="addcart">
-                                        <br />
-                                        <div class="bookmark">
-                                            <a href="#" class="btn add-to-cart"
-                                                wire:click.prevent="company({{ $lcandidate->id }},'{{ $lcandidate->name }}',{{ json_encode($lcandidate->workPreference) }})">{{ __('search.bookmark') }}</a>
-                                        </div>
-                                    </div>
-                                </div>
-                            </li>
-                        @endforeach
-                    </ul> --}}
                 </div>
                 <div class="wrap-pagination-info">
                     {{ $lcandidates->links('pagination::bootstrap-4') }}
                 </div>
             </div>
+
+            <div class="col-lg-3 col-md-4 col-sm-4 col-xs-12 sitebar">
+                <div class="widget mercado-widget filter-widget price-filter">
+                    <h2 class="widget-title">Expected Salary</h2>
+                    <div class="widget-content">
+                        <div id="slider-range" wire:ignore></div>
+                        <p>
+                            <label for="amount">{{ __('search.salary_2') }}:</label>
+                            <input type="text" id="amount" readonly style="width: 100%">
+                            <input type="hidden" id="salary_max" name="salary_max" value="{{ $max_salary }}"
+                                   wire:model="max_salary">
+                        </p>
+                    </div>
+                </div><!-- Price-->
+            </div>
+
         </div>
     </div>
 </main>
+
+
+@push('scripts')
+    <script>
+        $(function() {
+            if ($("#slider-range").length > 0) {
+                $("#slider-range").slider({
+                    range: true,
+                    min: 1,
+                    max: $("#salary_max").val(),
+                    values: [1, $("#salary_max").val()],
+                    slide: function(event, ui) {
+                        $("#amount").val("$" + ui.values[0] + " - $" + ui.values[1]);
+                    @this.set('selected_salary_min', ui.values[0])
+                    @this.set('selected_salary_max', ui.values[1])
+                    }
+                });
+                $("#amount").val("$" + $("#slider-range").slider("values", 0) +
+                    " - $" + $("#slider-range").slider("values", 1));
+
+            }
+
+        });
+
+        window.addEventListener('jobApplied', (e) => {
+            alert(e.detail.message);
+        });
+    </script>
+@endpush
