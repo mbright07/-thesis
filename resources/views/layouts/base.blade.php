@@ -221,15 +221,7 @@
 
                             <div class="wrap-icon right-section">
                                 @livewire('wishlist-count-component')
-                                <div class="wrap-icon-section wishlist">
-                                    <a href="#" class="link-direction">
-                                        <i class="fa fa-bell" aria-hidden="true"></i>
-                                        <div class="left-info">
-                                            <span class="index">0</span>
-                                            <span class="title">{{ __('base.noti') }}</span>
-                                        </div>
-                                    </a>
-                                </div>
+                                @livewire('notification-component')
                                 <div class="wrap-icon-section minicart">
                                     <a href="#" class="link-direction">
                                         <i class="fa fa-comments" aria-hidden="true"></i>

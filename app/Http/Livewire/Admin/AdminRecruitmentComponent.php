@@ -5,6 +5,10 @@ namespace App\Http\Livewire\Admin;
 use App\Models\Job;
 use App\Models\Recruitment;
 use App\Models\RecruitmentJob;
+use App\Models\User;
+use App\Notifications\NewRecruitment;
+use App\Notifications\UpdateRecruitmentStatus;
+use Illuminate\Support\Facades\Auth;
 use Livewire\Component;
 use Livewire\WithPagination;
 use Illuminate\Support\Facades\DB;
@@ -28,6 +32,26 @@ class AdminRecruitmentComponent extends Component
         }
         $recruitment->save();
         session()->flash('recruitment_message', 'Recruitment status has been updated successfully!');
+
+        $user = Auth::user();
+
+        $jobs = [];
+        foreach ($recruitment->recruitmentJob as $recruitmentJob) {
+            $job['id'] = $recruitmentJob->job->id;
+            $job['name'] = $recruitmentJob->job->name;
+            $jobs[] = $job;
+        }
+
+        $data = [
+            'recruitment_id' => $recruitment->id,
+            'status' => $recruitment->status,
+            'responder_id' => $user->id,
+            'responder_name' => $user->name,
+            'jobs' => json_encode($jobs),
+        ];
+
+        $receiver = User::find($recruitment->user_id);
+        $receiver->notify(new UpdateRecruitmentStatus($data));
     }
     public function render()
     {

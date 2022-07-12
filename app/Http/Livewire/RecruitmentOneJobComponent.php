@@ -5,6 +5,8 @@ namespace App\Http\Livewire;
 use App\Mail\RecruitmentMail;
 use App\Models\Recruitment;
 use App\Models\RecruitmentJob;
+use App\Models\User;
+use App\Notifications\NewRecruitment;
 use Cart;
 use DB;
 use Exception;
@@ -72,26 +74,6 @@ class RecruitmentOneJobComponent extends Component
                 $message = 'You have applied this job!';
                 $this->dispatchBrowserEvent('jobApplied', ['message' => $message]);
             } else {
-                $recruitment = new Recruitment();
-                $recruitment->user_id = Auth::user()->id;
-                $recruitment->firstname = $this->firstname;
-                $recruitment->lastname = $this->lastname;
-                $recruitment->email = $this->email;
-                $recruitment->mobile = $this->mobile;
-                $recruitment->intro = $this->intro;
-                $recruitment->city = $this->city;
-                $recruitment->province = $this->province;
-                $recruitment->country = $this->country;
-                $fileName = $this->file->getClientOriginalName();
-                $this->file->storeAs('recruitments', $fileName);
-                $recruitment->file = $fileName;
-                $recruitment->status = 'pending';
-
-                $recruitmentJob = new RecruitmentJob();
-                $recruitmentJob->job_id = $this->job_id;
-                $recruitmentJob->recruitment_id = $recruitment->id;
-                $recruitmentJob->salary = Job::where('id', $this->job_id)->pluck('regular_salary')->first();
-
                 DB::beginTransaction();
                 try {
                     $recruitment = new Recruitment();
@@ -118,7 +100,7 @@ class RecruitmentOneJobComponent extends Component
 
                     DB::commit();
 
-                    $this->sendRecruitmentConfirmationMail($recruitment);
+//                    $this->sendRecruitmentConfirmationMail($recruitment);
 
                     $this->thankyou = 1;
 
@@ -130,6 +112,20 @@ class RecruitmentOneJobComponent extends Component
                         }
                     }
                     session()->forget('recruitment');
+
+                    $user = Auth::user();
+
+                    foreach ($recruitment->recruitmentJob as $recruitmentJob) {
+                        $data = [
+                            'recruitment_id' => $recruitment->id,
+                            'candidate_id' => $user->id,
+                            'candidate_name' => $user->name,
+                            'job_id' => $recruitmentJob->job->id,
+                            'job_name' => $recruitmentJob->job->name,
+                        ];
+                        $receiver = User::find($recruitmentJob->job->user->id);
+                        $receiver->notify(new NewRecruitment($data));
+                    }
 
                 } catch (Exception $e) {
                     DB::rollBack();
