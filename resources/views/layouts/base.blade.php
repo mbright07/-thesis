@@ -222,7 +222,7 @@
                             <div class="wrap-icon right-section">
                                 @livewire('wishlist-count-component')
                                 @livewire('notification-component')
-                                <div class="wrap-icon-section minicart">
+                                {{-- <div class="wrap-icon-section minicart">
                                     <a href="#" class="link-direction">
                                         <i class="fa fa-comments" aria-hidden="true"></i>
                                         <div class="left-info">
@@ -230,7 +230,7 @@
                                             <span class="title">{{ __('base.message') }}</span>
                                         </div>
                                     </a>
-                                </div>
+                                </div> --}}
                                 <div class="wrap-icon-section show-up-after-1024">
                                     <a href="#" class="mobile-navigation">
                                         <span></span>
@@ -276,18 +276,18 @@
                                         </li>
 
                                     @endif
-                                    <li class="menu-item">
+                                    {{-- <li class="menu-item">
                                         <a href="/recruitment"
                                             class="link-term mercado-item-title">{{ __('base.recruitment') }}</a>
-                                    </li>
+                                    </li> --}}
                                     <li class="menu-item">
                                         <a href="/reference"
                                             class="link-term mercado-item-title">{{ __('base.references') }}</a>
                                     </li>
-                                    <li class="menu-item">
+                                    {{-- <li class="menu-item">
                                         <a href="#"
                                             class="link-term mercado-item-title">{{ __('base.about_us') }}</a>
-                                    </li>
+                                    </li> --}}
                                     <li class="menu-item">
                                         <a href="/contact-us"
                                             class="link-term mercado-item-title">{{ __('base.contact_us') }}</a>

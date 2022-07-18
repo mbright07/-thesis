@@ -38,7 +38,6 @@ class AdminEditJobCompoent extends Component
         $this->short_description = $job->short_description;
         $this->description = $job->description;
         $this->regular_salary = $job->regular_salary;
-        $this->SKU = $job->SKU;
         $this->stock_status = $job->stock_status;
         $this->featured = $job->featured;
         $this->quantity = $job->quantity;
@@ -61,7 +60,6 @@ class AdminEditJobCompoent extends Component
             'short_description' => 'required',
             'description' => 'required',
             'regular_salary' => 'required|numeric',
-            'SKU' => 'required',
             'stock_status' => 'required',
             'quantity' => 'required|numeric',
             'newimage' => 'nullable|mimes:jpeg,png,jpg',
@@ -78,7 +76,6 @@ class AdminEditJobCompoent extends Component
             'short_description' => 'required',
             'description' => 'required',
             'regular_salary' => 'required|numeric',
-            'SKU' => 'required',
             'stock_status' => 'required',
             'quantity' => 'required|numeric',
             'newimage' => 'nullable|mimes:jpeg,png,jpg',
@@ -92,7 +89,6 @@ class AdminEditJobCompoent extends Component
         $job->short_description = $this->short_description;
         $job->description = $this->description;
         $job->regular_salary = $this->regular_salary;
-        $job->SKU = $this->SKU;
         $job->stock_status = $this->stock_status;
         $job->featured = $this->featured;
         $job->quantity = $this->quantity;

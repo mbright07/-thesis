@@ -31,7 +31,7 @@
                         @endif
                         <form class="form-horizontal" enctype="multipart/form-data" wire:submit.prevent="addJob">
                             <div class="form-group">
-                                <label class="col-md-2 control-label">{{ __('admin/admin-add-job.job_name') }}</label>
+                                <label class="col-md-2 control-label">{{ __('admin/admin-add-job.job_name') }} <span class="star">*</span></label>
                                 <div class="col-md-8">
                                     <input type="text" placeholder="{{ __('admin/admin-add-job.job_name') }}"
                                         class="form-control input-md" wire:model="name" wire:keyup="generateSlug" />
@@ -43,7 +43,7 @@
 
                             <div class="form-group">
                                 <label
-                                    class="col-md-2 control-label">{{ __('admin/admin-add-job.job_slug') }}</label>
+                                    class="col-md-2 control-label">{{ __('admin/admin-add-job.job_slug') }} <span class="star">*</span></label>
                                 <div class="col-md-8">
                                     <input type="text" placeholder="{{ __('admin/admin-add-job.job_slug') }}"
                                         class="form-control input-md" wire:model="slug" />
@@ -55,7 +55,7 @@
 
                             <div class="form-group">
                                 <label
-                                    class="col-md-2 control-label">{{ __('admin/admin-add-job.short_description') }}</label>
+                                    class="col-md-2 control-label">{{ __('admin/admin-add-job.short_description') }} <span class="star">*</span></label>
                                 <div class="col-md-8" wire:ignore>
                                     <textarea class="form-control" id="short_description" placeholder="{{ __('admin/admin-add-job.short_description') }}"
                                         wire:model="short_description"></textarea>
@@ -67,7 +67,7 @@
 
                             <div class="form-group">
                                 <label
-                                    class="col-md-2 control-label">{{ __('admin/admin-add-job.description') }}</label>
+                                    class="col-md-2 control-label">{{ __('admin/admin-add-job.description') }} <span class="star">*</span></label>
                                 <div class="col-md-8" wire:ignore>
                                     <textarea class="form-control" id="description" placeholder="{{ __('admin/admin-add-job.description') }}"
                                         wire:model="description"></textarea>
@@ -79,7 +79,7 @@
 
                             <div class="form-group">
                                 <label
-                                    class="col-md-2 control-label">{{ __('admin/admin-add-job.regular_salary') }}</label>
+                                    class="col-md-2 control-label">{{ __('admin/admin-add-job.regular_salary') }} <span class="star">*</span></label>
                                 <div class="col-md-8">
                                     <input type="text"
                                         placeholder="{{ __('admin/admin-add-job.regular_salary') }}"
@@ -90,7 +90,7 @@
                                 </div>
                             </div>
 
-                            <div class="form-group">
+                            {{-- <div class="form-group">
                                 <label class="col-md-2 control-label">SKU</label>
                                 <div class="col-md-8">
                                     <input type="text" placeholder="SKU" class="form-control input-md"
@@ -99,10 +99,10 @@
                                         <p class="text-danger">{{ $message }}</p>
                                     @enderror
                                 </div>
-                            </div>
+                            </div> --}}
 
                             <div class="form-group">
-                                <label class="col-md-2 control-label">{{ __('admin/admin-add-job.stock') }}</label>
+                                <label class="col-md-2 control-label">{{ __('admin/admin-add-job.stock') }} <span class="star">*</span></label>
                                 <div class="col-md-8">
                                     <select class="form-control" wire:model="stock_status">
                                         <option value="instock">{{ __('admin/admin-add-job.instock') }}</option>
@@ -116,7 +116,7 @@
 
                             <div class="form-group">
                                 <label
-                                    class="col-md-2 control-label">{{ __('admin/admin-add-job.featured') }}</label>
+                                    class="col-md-2 control-label">{{ __('admin/admin-add-job.featured') }} <span class="star">*</span></label>
                                 <div class="col-md-8">
                                     <select class="form-control" wire:model="featured">
                                         <option value="0">{{ __('admin/admin-add-job.no') }}</option>
@@ -127,7 +127,7 @@
 
                             <div class="form-group">
                                 <label
-                                    class="col-md-2 control-label">{{ __('admin/admin-add-job.quantity') }}</label>
+                                    class="col-md-2 control-label">{{ __('admin/admin-add-job.quantity') }} <span class="star">*</span></label>
                                 <div class="col-md-8">
                                     <input type="text" placeholder="{{ __('admin/admin-add-job.quantity') }}"
                                         class="form-control input-md" wire:model="quantity" />
@@ -138,7 +138,7 @@
                             </div>
 
                             <div class="form-group">
-                                <label class="col-md-2 control-label">{{ __('admin/admin-add-job.image') }}</label>
+                                <label class="col-md-2 control-label">{{ __('admin/admin-add-job.image') }} <span class="star">*</span></label>
                                 <div class="col-md-8">
                                     <input type="file" class="input-file" wire:model="image" />
                                     @if ($image)
@@ -152,7 +152,7 @@
 
                             <div class="form-group">
                                 <label
-                                    class="col-md-2 control-label">{{ __('admin/admin-add-job.location') }}</label>
+                                    class="col-md-2 control-label">{{ __('admin/admin-add-job.location') }} <span class="star">*</span></label>
                                 <div class="col-md-8">
                                     <select class="form-control" wire:model="category_id"
                                         wire:change="changeSubcategory">
@@ -184,7 +184,7 @@
                             </div>
 
                             <div class="form-group">
-                                <label class="col-md-2 control-label">{{ __('admin/admin-add-job.type') }}</label>
+                                <label class="col-md-2 control-label">{{ __('admin/admin-add-job.type') }} <span class="star">*</span></label>
                                 <div class="col-md-8">
                                     <select class="form-control" wire:model="type">
                                         <option value="1">{{ __('admin/admin-add-job.fulltime') }}</option>

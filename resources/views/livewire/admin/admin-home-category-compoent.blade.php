@@ -13,7 +13,7 @@
                         <form class="form-horizontal" wire:submit.prevent="updateHomeCategory">
                             <div class="form-group" wire:ignore>
                                 <label class="col-md-4 control-label">
-                                    {{ __('admin/admin-add-category.choose_locations') }} </label>
+                                    {{ __('admin/admin-add-category.choose_locations') }} <span class="star">*</span></label>
                                 <div class="col-md-4">
                                     <select class="select sel_categories form-control" name="categories[]"
                                         multiple="multiple" wire:model="selected_categories">
@@ -21,15 +21,21 @@
                                             <option value="{{ $category->id }}">{{ $category->name }}</option>
                                         @endforeach
                                     </select>
+                                    @error('selected_categories')
+                                        <p class="text-danger">{{ $message }}</p>
+                                    @enderror
                                 </div>
                             </div>
 
                             <div class="form-group">
-                                <label class="col-md-4 control-label"> {{ __('admin/admin-add-category.no_of_job') }}
+                                <label class="col-md-4 control-label"> {{ __('admin/admin-add-category.no_of_job') }} <span class="star">*</span>
                                 </label>
                                 <div class="col-md-4">
                                     <input type="text" class="form-control input-md" wire:model="numberofjobs" />
                                 </div>
+                                @error('numberofjobs')
+                                        <p class="text-danger">{{ $message }}</p>
+                                    @enderror
                             </div>
 
                             <div class="form-group">

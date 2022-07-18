@@ -8,13 +8,13 @@
         </div>
         <div class="row">
 
-            <div class="col-lg-9 col-md-8 col-sm-8 col-xs-12 main-content-area">
+            <div class="col-lg-9 col-md-8 col-sm-8 col-xs-12 main-content-area" style="margin-top: -50px">
 
-                <div class="banner-shop">
+                {{-- <div class="banner-shop">
                     <a href="#" class="banner-link">
                         <figure><img src="assets/images/shop-banner.jpg" alt=""></figure>
                     </a>
-                </div>
+                </div> --}}
 
                 <div class="wrap-shop-control" style="height: 50px;">
 
@@ -56,7 +56,7 @@
                         @foreach ($jobs as $job)
                             <li class="col-lg-4 col-md-6 col-sm-6 col-xs-6 ">
                                 <div class="product product-style-2 equal-elem ">
-                                    <div class="product-thumnail">
+                                    <div class="product-thumnail" style="height: 60%">
                                         <a href="{{ route('job.details', ['slug' => $job->slug]) }}"
                                             title="{{ $job->name }}">
                                             <figure><img

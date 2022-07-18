@@ -20,7 +20,7 @@
                                     <select name="active" class="form-control" wire:model="active">
                                         <option value="">{{ __('admin/admin-add-home-slider.no_selected') }}
                                         </option>
-                                        <option value="0">{{ __('admin/admin-add-home-slider.inactive') }}
+                                        <option value="false">{{ __('admin/admin-add-home-slider.inactive') }}
                                         </option>
                                         <option value="1">{{ __('admin/admin-add-home-slider.active') }}</option>
                                     </select>

@@ -7875,6 +7875,10 @@ ul.list-in-text {
     padding: 20px;
     margin-bottom: 0px;
 }
+
+.star {
+    color: #ff0000;
+}
 /* ---------------------CV-------------------*/
 /*Media Querries*/
 /* @media screen and (max-width:823px) { */

@@ -47,7 +47,6 @@ class AdminAddJobComponent extends Component
             'short_description' => 'required',
             'description' => 'required',
             'regular_salary' => 'required|numeric',
-            'SKU' => 'required',
             'stock_status' => 'required',
             'quantity' => 'required|numeric',
             'image' => 'required|mimes:jpeg,png,jpg',
@@ -63,7 +62,6 @@ class AdminAddJobComponent extends Component
             'short_description' => 'required',
             'description' => 'required',
             'regular_salary' => 'required|numeric',
-            'SKU' => 'required',
             'stock_status' => 'required',
             'quantity' => 'required|numeric',
             'image' => 'required|mimes:jpeg,png,jpg',
@@ -76,7 +74,6 @@ class AdminAddJobComponent extends Component
         $job->short_description = $this->short_description;
         $job->description = $this->description;
         $job->regular_salary = $this->regular_salary;
-        $job->SKU = $this->SKU;
         $job->stock_status = $this->stock_status;
         $job->featured = $this->featured;
         $job->quantity = $this->quantity;

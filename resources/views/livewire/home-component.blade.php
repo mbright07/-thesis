@@ -6,11 +6,11 @@
                 @foreach ($sliders as $slider)
                     <div class="item-slide">
                         <img src="{{ asset('assets/images/sliders') }}/{{ $slider->image }}" alt=""
-                            class="img-slide">
+                            class="img-slide" >
                         <div class="slide-info slide-1">
                             <h2 class="f-title"><b>{{ $slider->title }}</b></h2>
-                            <span class="subtitle">{{ $slider->subtitle }}</span>
-                            <p class="sale-info">{{ __('home.salary') }}<span
+                            <span class="subtitle" style="color: white">{{ $slider->subtitle }}</span>
+                            <p class="sale-info" style="color: black">{{ __('home.salary') }}<span
                                     class="price">{{ $slider->salary }}</span></p>
                             <br />
                             <a href="{{ $slider->link }}" class="btn-link">{{ __('home.apply_now') }}</a>
@@ -20,7 +20,7 @@
             </div>
         </div>
 
-        <div class="wrap-banner style-twin-default">
+        {{-- <div class="wrap-banner style-twin-default">
             <div class="banner-item">
                 <a href="#" class="link-banner banner-effect-1">
                     <figure><img src="{{ asset('assets/images/home-1-banner-1.jpg') }}" alt="" width="580"
@@ -33,7 +33,7 @@
                             height="190"></figure>
                 </a>
             </div>
-        </div>
+        </div> --}}
 
         <!--On Sale-->
         <div class="wrap-show-advance-info-box style-1 has-countdown">
@@ -70,12 +70,12 @@
         <!--Product Categories-->
         <div class="wrap-show-advance-info-box style-1">
             <h3 class="title-box">{{ __('home.featured_jobs') }}</h3>
-            <div class="wrap-top-banner">
+            {{-- <div class="wrap-top-banner">
                 <a href="#" class="link-banner banner-effect-2">
                     <figure><img src="{{ asset('assets/images/fashion-accesories-banner.jpg') }}" width="1170"
                             height="240" alt=""></figure>
                 </a>
-            </div>
+            </div> --}}
             <div class="wrap-products">
                 <div class="wrap-product-tab tab-style-1">
                     <div class="tab-control">
@@ -130,12 +130,12 @@
         <!--Latest Products-->
         <div class="wrap-show-advance-info-box style-1">
             <h3 class="title-box">{{ __('home.lastest_jobs') }}</h3>
-            <div class="wrap-top-banner">
+            {{-- <div class="wrap-top-banner">
                 <a href="#" class="link-banner banner-effect-2">
                     <figure><img src="{{ asset('assets/images/digital-electronic-banner.jpg') }}" width="1170"
                             height="240" alt=""></figure>
                 </a>
-            </div>
+            </div> --}}
             <div class="wrap-products">
                 <div class="wrap-product-tab tab-style-1">
                     <div class="tab-contents">
@@ -176,12 +176,12 @@
         <!--Latest Products-->
         <div class="wrap-show-advance-info-box style-1">
             <h3 class="title-box">{{ __('home.career_advice') }}</h3>
-            <div class="wrap-top-banner">
+            {{-- <div class="wrap-top-banner">
                 <a href="#" class="link-banner banner-effect-2">
                     <figure><img src="{{ asset('assets/images/digital-electronic-banner.jpg') }}" width="1170"
                             height="240" alt=""></figure>
                 </a>
-            </div>
+            </div> --}}
             <div class="wrap-products">
                 <div class="wrap-product-tab tab-style-1">
                     <div class="tab-contents">

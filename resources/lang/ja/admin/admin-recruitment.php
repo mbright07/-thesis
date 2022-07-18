@@ -15,8 +15,8 @@ return [
     're_date' => '採用日',
     'action' => '操作',
     'detail' => '詳細',
-    'process' => '処理中',
-    'cancel' => 'キャンセル',
+    'process' => '処理中 (Processing)',
+    'cancel' => 'キャンセル (Canceled)',
     're_job_detail' => '採用仕事の詳細',
     'id' => '採用 ID',
     're_job' => 'すべての採用仕事',
@@ -25,6 +25,6 @@ return [
     'cv_detail' => '履歴書の詳細',
     'full_name' => '名前',
     'address' => '住所',
-    'pending' => 'ペンディング',
+    'pending' => 'ペンディング (Pending)',
     'no_selected' => 'すべての仕事',
 ];
