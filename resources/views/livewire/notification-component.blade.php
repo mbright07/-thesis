@@ -13,9 +13,27 @@
         <div class="dropdown-menu dropdown-menu-right menu-notification" aria-labelledby="navbarDropdown">
             @if ($notifications)
                 @foreach ($notifications as $notification)
-                    <a class="dropdown-item" href="#">
-                        <span>{{ $notification->data['candidate_name'] }} da ung tuyen cong viec {{ $notification->data['job_name'] }}</span><br>
-                    </a>
+                    @if (Auth::user()->role_id == 1)
+                        <a class="dropdown-item" href="{{ route('admin.recruitmentdetails', $notification->data['recruitment_id']) }}">
+                            <span>Ung vien {{ $notification->data['candidate_name'] }} da ung tuyen cong viec {{ $notification->data['job_name'] }}</span><br>
+                        </a>
+                    @elseif (Auth::user()->role_id == 3)
+                        <a class="dropdown-item" href="{{ route('employer.recruitmentdetails', $notification->data['recruitment_id']) }}">
+                            <span>Ung vien {{ $notification->data['candidate_name'] }} da ung tuyen cong viec {{ $notification->data['job_name'] }}</span><br>
+                        </a>
+                    @elseif (Auth::user()->role_id == 2)
+                        <a class="dropdown-item" href="{{ route('user.recruitmentdetails', $notification->data['recruitment_id']) }}">
+                            <span>
+                                Nha tuyen dung {{ $notification->data['responder_name'] }} da cap nhat trang thai cua don ung tuyen thanh {{ $notification->data['status'] }}
+                                <br/>
+                                Doi voi cong viec
+                                <br/>
+                                @foreach (json_decode($notification->data['jobs']) as $job)
+                                    {{ $job->name }}
+                                @endforeach
+                            </span>
+                        </a>
+                    @endif
                 @endforeach
             @endif
         </div>

@@ -11,7 +11,7 @@ class NotificationComponent extends Component
     {
         $notifications = [];
 
-        if (Auth::user() && Auth::user()->role_id == 3) {
+        if (Auth::user() && in_array(Auth::user()->role_id, [1, 2, 3])) {
             $notifications = Auth::user()->notifications;
         }
 
