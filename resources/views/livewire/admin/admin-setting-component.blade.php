@@ -12,7 +12,7 @@
                         @endif
                         <form class="form-horizontal" wire:submit.prevent="saveSettings">
                             <div class="form-group">
-                                <label class="col-md-4 control-label">{{ __('admin/admin-setting.email') }}</label>
+                                <label class="col-md-4 control-label">{{ __('admin/admin-setting.email') }} <span class="star">*</span></label>
                                 <div class="col-md-4">
                                     <input type="email" placeholder="{{ __('admin/admin-setting.email') }}"
                                         class="form-control input-md" wire:model="email" />
@@ -23,7 +23,7 @@
                             </div>
 
                             <div class="form-group">
-                                <label class="col-md-4 control-label">{{ __('admin/admin-setting.phone') }}</label>
+                                <label class="col-md-4 control-label">{{ __('admin/admin-setting.phone') }} <span class="star">*</span></label>
                                 <div class="col-md-4">
                                     <input type="text" placeholder="{{ __('admin/admin-setting.phone') }}"
                                         class="form-control input-md" wire:model="phone" />
@@ -34,7 +34,7 @@
                             </div>
 
                             <div class="form-group">
-                                <label class="col-md-4 control-label">{{ __('admin/admin-setting.phone2') }}</label>
+                                <label class="col-md-4 control-label">{{ __('admin/admin-setting.phone2') }} <span class="star">*</span></label>
                                 <div class="col-md-4">
                                     <input type="text" placeholder="{{ __('admin/admin-setting.phone2') }}"
                                         class="form-control input-md" wire:model="phone2" />
@@ -45,7 +45,7 @@
                             </div>
 
                             <div class="form-group">
-                                <label class="col-md-4 control-label">{{ __('admin/admin-setting.address') }}</label>
+                                <label class="col-md-4 control-label">{{ __('admin/admin-setting.address') }} <span class="star">*</span></label>
                                 <div class="col-md-4">
                                     <input type="text" placeholder="{{ __('admin/admin-setting.address') }}"
                                         class="form-control input-md" wire:model="address" />
@@ -56,7 +56,7 @@
                             </div>
 
                             <div class="form-group">
-                                <label class="col-md-4 control-label">{{ __('admin/admin-setting.map') }}</label>
+                                <label class="col-md-4 control-label">{{ __('admin/admin-setting.map') }} <span class="star">*</span></label>
                                 <div class="col-md-4">
                                     <input type="text" placeholder="{{ __('admin/admin-setting.map') }}"
                                         class="form-control input-md" wire:model="map" />
@@ -67,7 +67,7 @@
                             </div>
 
                             <div class="form-group">
-                                <label class="col-md-4 control-label">{{ __('admin/admin-setting.twitter') }}</label>
+                                <label class="col-md-4 control-label">{{ __('admin/admin-setting.twitter') }} <span class="star">*</span></label>
                                 <div class="col-md-4">
                                     <input type="text" placeholder="{{ __('admin/admin-setting.twitter') }}"
                                         class="form-control input-md" wire:model="twitter" />
@@ -79,7 +79,7 @@
 
                             <div class="form-group">
                                 <label
-                                    class="col-md-4 control-label">{{ __('admin/admin-setting.facebook') }}</label>
+                                    class="col-md-4 control-label">{{ __('admin/admin-setting.facebook') }} <span class="star">*</span></label>
                                 <div class="col-md-4">
                                     <input type="text" placeholder="{{ __('admin/admin-setting.facebook') }}"
                                         class="form-control input-md" wire:model="facebook" />
@@ -90,7 +90,7 @@
                             </div>
 
                             <div class="form-group">
-                                <label class="col-md-4 control-label">{{ __('admin/admin-setting.pin') }}</label>
+                                <label class="col-md-4 control-label">{{ __('admin/admin-setting.pin') }} <span class="star">*</span></label>
                                 <div class="col-md-4">
                                     <input type="text" placeholder="{{ __('admin/admin-setting.pin') }}"
                                         class="form-control input-md" wire:model="pinterest" />
@@ -102,7 +102,7 @@
 
                             <div class="form-group">
                                 <label
-                                    class="col-md-4 control-label">{{ __('admin/admin-setting.instagram') }}</label>
+                                    class="col-md-4 control-label">{{ __('admin/admin-setting.instagram') }} <span class="star">*</span></label>
                                 <div class="col-md-4">
                                     <input type="text" placeholder="{{ __('admin/admin-setting.instagram') }}"
                                         class="form-control input-md" wire:model="instagram" />

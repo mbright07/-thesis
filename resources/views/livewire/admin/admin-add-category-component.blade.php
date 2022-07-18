@@ -21,7 +21,7 @@
                         <form class="form-horizontal" wire:submit.prevent="storeCategory">
                             <div class="form-group">
                                 <label
-                                    class="col-md-4 control-label">{{ __('admin/admin-add-category.location_name') }}</label>
+                                    class="col-md-4 control-label">{{ __('admin/admin-add-category.location_name') }} <span class="star">*</span> </label>
                                 <div class="col-md-4">
                                     <input type="text"
                                         placeholder="{{ __('admin/admin-add-category.location_name') }}"
@@ -34,7 +34,7 @@
 
                             <div class="form-group">
                                 <label
-                                    class="col-md-4 control-label">{{ __('admin/admin-add-category.location_slug') }}</label>
+                                    class="col-md-4 control-label">{{ __('admin/admin-add-category.location_slug') }} <span class="star">*</span></label>
                                 <div class="col-md-4">
                                     <input type="text"
                                         placeholder="{{ __('admin/admin-add-category.location_slug') }}"

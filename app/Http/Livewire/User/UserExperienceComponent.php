@@ -409,7 +409,6 @@ class UserExperienceComponent extends Component
     }
 
     //--------------------Work Preference----------------------//
-    //public $expected_location,$expected_salary,$work_preferences,$work_preference_id;
     public function openModalPre()
     {
         $this->isOpen_pre = true;
@@ -470,7 +469,6 @@ class UserExperienceComponent extends Component
     }
 
     //---------------------Reference------------------------------//
-    //public $re_name,$re_position,$re_company,$re_email,$re_phone,$references,$reference_id;
     public function openModalRe()
     {
         $this->isOpen_re = true;

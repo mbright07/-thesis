@@ -15,8 +15,8 @@ return [
     're_date' => 'Ngày ứng tuyển',
     'action' => 'Thao tác',
     'detail' => 'Xem chi tiết',
-    'process' => 'Đang xử lý',
-    'cancel' => 'Đã hủy',
+    'process' => 'Đang xử lý (Processing)',
+    'cancel' => 'Đã hủy (Canceled)',
     're_job_detail' => 'Xem chi tiết đơn ứng tuyển',
     'id' => 'ID ứng tuyển',
     're_job' => 'Công việc đã ứng tuyển',
@@ -25,6 +25,6 @@ return [
     'cv_detail' => 'Hồ sơ chi tiết',
     'full_name' => 'Họ và tên',
     'address' => 'Địa chỉ',
-    'pending' => 'Đang chờ',
+    'pending' => 'Đang chờ (Pending)',
     'no_selected' => 'Tất cả công việc',
 ];

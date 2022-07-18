@@ -17,9 +17,20 @@ class AdminHomeCategoryCompoent extends Component
         $this->selected_categories = explode(',', $category->sel_categories);
         $this->numberofjobs = $category->no_of_jobs;
     }
+    public function updated($fields)
+    {
+        $this->validateOnly($fields, [
+            'selected_categories' => 'required',
+            'numberofjobs' => 'required'
+        ]);
+    }
 
     public function updateHomeCategory()
-    {
+    {   
+        $this->validate([
+            'selected_categories' => 'required',
+            'numberofjobs' => 'required'
+        ]);
         $category = HomeCategory::find(1);
         $category->sel_categories = implode(',', $this->selected_categories);
         $category->no_of_jobs = $this->numberofjobs;

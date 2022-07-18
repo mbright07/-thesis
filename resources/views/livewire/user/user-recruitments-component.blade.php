@@ -13,7 +13,33 @@
             <div class="col-md-12">
                 <div class="panel panel-info">
                     <div class="panel-heading">
-                        {{ __('user/user-recruitment.all_recruitments') }}
+                        <div class="row">
+                            <div class="col-md-3">
+                                {{ __('user/user-recruitment.all_recruitments') }}
+                            </div>
+                            <div>
+                                <div class="col-md-2">
+                                    <label for="active">{{ __('admin/admin-add-home-slider.status') }}</label>
+                                    <select name="active" class="form-control" wire:model="active">
+                                        <option value="">{{ __('admin/admin-add-home-slider.no_selected') }}
+                                        </option>
+                                        <option value="pending">{{ __('admin/admin-recruitment.pending') }}</option>
+                                        <option value="Processing">{{ __('admin/admin-recruitment.process') }}
+                                        </option>
+                                        <option value="canceled">{{ __('admin/admin-recruitment.cancel') }}</option>
+                                    </select>
+                                </div>
+                                <div class="col-md-2">
+                                    <label for="sortBy">{{ __('admin/admin-add-home-slider.sortBy') }}</label>
+                                    <select name="sortBy" class="form-control" wire:model="sortBy">
+                                        <option value="asc">{{ __('admin/admin-add-home-slider.oldest') }}
+                                        </option>
+                                        <option value="desc">{{ __('admin/admin-add-home-slider.newest') }}
+                                        </option>
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
                     </div>
 
                     <div class="panel-body">

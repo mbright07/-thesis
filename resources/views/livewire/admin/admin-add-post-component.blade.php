@@ -20,7 +20,7 @@
                         @endif
                         <form class="form-horizontal" enctype="multipart/form-data" wire:submit.prevent="addPost">
                             <div class="form-group">
-                                <label class="col-md-2 control-label">{{ __('admin/admin-posts.title') }}</label>
+                                <label class="col-md-2 control-label">{{ __('admin/admin-posts.title') }} <span class="star">*</span></label>
                                 <div class="col-md-9">
                                     <input type="text" placeholder="{{ __('admin/admin-posts.title') }}"
                                         class="form-control input-md" wire:model="title" wire:keyup="generateSlug" />
@@ -31,7 +31,7 @@
                             </div>
 
                             <div class="form-group">
-                                <label class="col-md-2 control-label">{{ __('admin/admin-posts.slug') }}</label>
+                                <label class="col-md-2 control-label">{{ __('admin/admin-posts.slug') }} <span class="star">*</span></label>
                                 <div class="col-md-9">
                                     <input type="text" placeholder="{{ __('admin/admin-posts.slug') }}"
                                         class="form-control input-md" wire:model="slug" />
@@ -42,7 +42,7 @@
                             </div>
 
                             <div class="form-group">
-                                <label class="col-md-2 control-label">{{ __('admin/admin-posts.short_des') }}</label>
+                                <label class="col-md-2 control-label">{{ __('admin/admin-posts.short_des') }} <span class="star">*</span></label>
                                 <div class="col-md-9" wire:ignore>
                                     <textarea class="form-control" id="short_description" placeholder="{{ __('admin/admin-posts.short_des') }}"
                                         wire:model="short_description"></textarea>
@@ -53,7 +53,7 @@
                             </div>
 
                             <div class="form-group">
-                                <label class="col-md-2 control-label">{{ __('admin/admin-posts.image') }}</label>
+                                <label class="col-md-2 control-label">{{ __('admin/admin-posts.image') }} <span class="star">*</span></label>
                                 <div class="col-md-9">
                                     <input type="file" class="input-file" wire:model="image" />
                                     @if ($image)
@@ -66,7 +66,7 @@
                             </div>
 
                             <div class="form-group">
-                                <label class="col-md-2 control-label">{{ __('admin/admin-posts.des') }}</label>
+                                <label class="col-md-2 control-label">{{ __('admin/admin-posts.des') }} <span class="star">*</span></label>
                                 <div class="col-md-9" wire:ignore>
                                     <textarea class="form-control" id="description" placeholder="{{ __('admin/admin-posts.des') }}"
                                         wire:model="description"></textarea>
@@ -77,7 +77,7 @@
                             </div>
 
                             <div class="form-group">
-                                <div class="col-md-2 control-label">{{ __('admin/admin-posts.status') }}</div>
+                                <div class="col-md-2 control-label">{{ __('admin/admin-posts.status') }} <span class="star">*</span></div>
                                 <div class="col-md-9">
                                     <select class="form-control" wire:model="status">
                                         <option value="0">{{ __('admin/admin-add-home-slider.inactive') }}
