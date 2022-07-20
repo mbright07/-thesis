@@ -10,11 +10,13 @@ use App\Notifications\NewRecruitment;
 use Cart;
 use DB;
 use Exception;
+use GuzzleHttp\Exception\GuzzleException;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Mail;
 use Livewire\Component;
 use Livewire\WithFileUploads;
 use App\Models\Job;
+use Pusher\Pusher;
 
 class RecruitmentOneJobComponent extends Component
 {
@@ -122,9 +124,24 @@ class RecruitmentOneJobComponent extends Component
                             'candidate_name' => $user->name,
                             'job_id' => $recruitmentJob->job->id,
                             'job_name' => $recruitmentJob->job->name,
+                            'employee_id' => $recruitmentJob->job->user->id,
                         ];
                         $receiver = User::find($recruitmentJob->job->user->id);
                         $receiver->notify(new NewRecruitment($data));
+
+                        $options = array(
+                            'cluster' => env('PUSHER_APP_CLUSTER'),
+                            'encrypted' => true,
+                        );
+
+                        $pusher = new Pusher(
+                            env('PUSHER_APP_KEY'),
+                            env('PUSHER_APP_SECRET'),
+                            env('PUSHER_APP_ID'),
+                            $options,
+                        );
+
+                        $pusher->trigger('NotificationEvent', 'send-message', json_encode($data));
                     }
 
                 } catch (Exception $e) {
