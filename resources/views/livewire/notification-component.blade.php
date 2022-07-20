@@ -40,6 +40,7 @@
                                 @endforeach
                                 <br/>
                             </span>
+                            <br/>
                         </a>
                     @endif
                 @endforeach
@@ -60,8 +61,9 @@
             channel.bind('send-message', function(data) {
                 const data_ = JSON.parse(data);
                 @if (Auth::check())
-                    if (data_.employee_id === {{ Auth::user()->id }}) {
+                    if (data_.receiver_id === {{ Auth::user()->id }}) {
                         var newNotificationHtml;
+
                         if ({{ Auth::user()->role_id }} === 1) {
                             newNotificationHtml = `
                                 <a class="dropdown-item" href="/admin/recruitments/${ data_.recruitment_id }">
@@ -71,14 +73,33 @@
                             `;
                         }
 
-                    if ({{ Auth::user()->role_id }} === 3) {
-                        newNotificationHtml = `
-                                <a class="dropdown-item" href="/employer/recruitments/${ data_.recruitment_id }">
-                                <span>Ung vien ${ data_.candidate_name } da ung tuyen cong viec ${ data_.job_name }</span>
-                                <br/><br/>
-                                </a>
-                            `;
-                    }
+                        if ({{ Auth::user()->role_id }} === 3) {
+                            newNotificationHtml = `
+                                    <a class="dropdown-item" href="/employer/recruitments/${ data_.recruitment_id }">
+                                    <span>Ung vien ${ data_.candidate_name } da ung tuyen cong viec ${ data_.job_name }</span>
+                                    <br/><br/>
+                                    </a>
+                                `;
+                        }
+
+                        if ({{ Auth::user()->role_id }} === 2) {
+                            newNotificationHtml = `
+                                        <a class="dropdown-item" href="/user/recruitments/${ data_.recruitment_id }">
+                                        <span>
+                                            Nha tuyen dung ${ data_.responder_name} da cap nhat trang thai cua don ung tuyen thanh ${ data_.status }
+                                        <br/>
+                                        Doi voi cong viec
+                                        <br/>`;
+
+                            const newArray= JSON.parse(data_.jobs).map(element => newNotificationHtml += element.name);
+
+                            newNotificationHtml +=
+                                        `<br/>
+                                        </span>
+                                        <br/><br/>
+                                        </a>
+                                        `;
+                        }
 
                         $('.menu-notification').prepend(newNotificationHtml);
                     }

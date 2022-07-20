@@ -12,6 +12,7 @@ use Illuminate\Support\Facades\Auth;
 use Livewire\Component;
 use Livewire\WithPagination;
 use Illuminate\Support\Facades\DB;
+use Pusher\Pusher;
 
 class AdminRecruitmentComponent extends Component
 {
@@ -48,10 +49,25 @@ class AdminRecruitmentComponent extends Component
             'responder_id' => $user->id,
             'responder_name' => $user->name,
             'jobs' => json_encode($jobs),
+            'receiver_id' => $recruitment->user_id,
         ];
 
         $receiver = User::find($recruitment->user_id);
         $receiver->notify(new UpdateRecruitmentStatus($data));
+
+        $options = array(
+            'cluster' => env('PUSHER_APP_CLUSTER'),
+            'encrypted' => true,
+        );
+
+        $pusher = new Pusher(
+            env('PUSHER_APP_KEY'),
+            env('PUSHER_APP_SECRET'),
+            env('PUSHER_APP_ID'),
+            $options,
+        );
+
+        $pusher->trigger('NotificationEvent', 'send-message', json_encode($data));
     }
     public function render()
     {

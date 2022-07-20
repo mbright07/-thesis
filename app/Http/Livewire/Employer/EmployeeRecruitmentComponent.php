@@ -11,6 +11,7 @@ use Auth;
 use Illuminate\Support\Facades\DB;
 use Livewire\Component;
 use Livewire\WithPagination;
+use Pusher\Pusher;
 
 class EmployeeRecruitmentComponent extends Component
 {
@@ -47,10 +48,25 @@ class EmployeeRecruitmentComponent extends Component
             'responder_id' => $user->id,
             'responder_name' => $user->name,
             'jobs' => json_encode($jobs),
+            'receiver_id' => $recruitment->user_id,
         ];
 
         $receiver = User::find($recruitment->user_id);
         $receiver->notify(new UpdateRecruitmentStatus($data));
+
+        $options = array(
+            'cluster' => env('PUSHER_APP_CLUSTER'),
+            'encrypted' => true,
+        );
+
+        $pusher = new Pusher(
+            env('PUSHER_APP_KEY'),
+            env('PUSHER_APP_SECRET'),
+            env('PUSHER_APP_ID'),
+            $options,
+        );
+
+        $pusher->trigger('NotificationEvent', 'send-message', json_encode($data));
     }
     public function render()
     {

@@ -124,7 +124,7 @@ class RecruitmentOneJobComponent extends Component
                             'candidate_name' => $user->name,
                             'job_id' => $recruitmentJob->job->id,
                             'job_name' => $recruitmentJob->job->name,
-                            'employee_id' => $recruitmentJob->job->user->id,
+                            'receiver_id' => $recruitmentJob->job->user->id,
                         ];
                         $receiver = User::find($recruitmentJob->job->user->id);
                         $receiver->notify(new NewRecruitment($data));
