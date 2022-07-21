@@ -65,7 +65,8 @@ class AdminAddJobComponent extends Component
             'stock_status' => 'required',
             'quantity' => 'required|numeric',
             'image' => 'required|mimes:jpeg,png,jpg',
-            'category_id' => 'required'
+            'category_id' => 'required',
+            'type' => 'required',
         ]);
         $job = new Job();
         $job->user_id = Auth::user()->id;

@@ -190,6 +190,9 @@
                                         <option value="1">{{ __('admin/admin-add-job.fulltime') }}</option>
                                         <option value="2">{{ __('admin/admin-add-job.parttime') }}</option>
                                     </select>
+                                    @error('type')
+                                        <p class="text-danger">{{ $message }}</p>
+                                    @enderror
                                 </div>
                             </div>
 

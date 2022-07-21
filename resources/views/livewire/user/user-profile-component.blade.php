@@ -62,7 +62,7 @@
                             <div class="form-group">
                                 <div class="col-xs-6">
                                     <label for="name">
-                                        <h4>{{ __('user/user-profile.name') }}</h4>
+                                        <h4>{{ __('user/user-profile.name') }} <span class="star">*</span></h4>
                                     </label>
                                     <input type="text" class="form-control" name="name" id="name"
                                         placeholder="{{ __('user/user-profile.name') }}"
@@ -76,7 +76,7 @@
                             <div class="form-group">
                                 <div class="col-xs-6">
                                     <label for="email">
-                                        <h4>{{ __('user/user-profile.email') }}</h4>
+                                        <h4>{{ __('user/user-profile.email') }} <span class="star">*</span></h4>
                                     </label>
                                     <input type="email" class="form-control" name="email" id="email"
                                         placeholder="you@email.com" title="enter your email." wire:model="email">
@@ -89,7 +89,7 @@
                             <div class="form-group">
                                 <div class="col-xs-6">
                                     <label for="mobile">
-                                        <h4>{{ __('user/user-profile.mobile') }}</h4>
+                                        <h4>{{ __('user/user-profile.mobile') }} <span class="star">*</span></h4>
                                     </label>
                                     <input type="text" class="form-control" name="mobile"
                                         placeholder="{{ __('user/user-profile.mobile') }}"
@@ -103,7 +103,7 @@
                                 <div class="form-group">
                                     <div class="col-xs-6">
                                         <label for="phone">
-                                            <h4>{{ __('user/user-profile.date') }}</h4>
+                                            <h4>{{ __('user/user-profile.date') }} <span class="star">*</span></h4>
                                         </label>
                                         <input type="date" class="form-control" name="birthday" id="date_of_birth"
                                             placeholder="{{ __('user/user-profile.date') }}"
@@ -119,7 +119,7 @@
                                 <div class="form-group">
                                     <div class="col-xs-6">
                                         <label for="gender">
-                                            <h4>{{ __('user/user-profile.gender') }}</h4>
+                                            <h4>{{ __('user/user-profile.gender') }} <span class="star">*</span></h4>
                                         </label>
                                         <div>
                                             <select class="form-control" name="gender" wire:model="gender">
@@ -143,7 +143,7 @@
                                 <div class="form-group">
                                     <div class="col-xs-6">
                                         <label for="marital_status">
-                                            <h4>{{ __('user/user-profile.marital_status') }}</h4>
+                                            <h4>{{ __('user/user-profile.marital_status') }} <span class="star">*</span></h4>
                                         </label>
                                         <div>
                                             <select class="form-control" name="marital_status"
@@ -169,7 +169,7 @@
                             <div class="form-group">
                                 <div class="col-xs-6">
                                     <label for="city">
-                                        <h4>{{ __('user/user-profile.city') }}</h4>
+                                        <h4>{{ __('user/user-profile.city') }} <span class="star">*</span></h4>
                                     </label>
                                     <input type="text" class="form-control" name="city" id="location"
                                         placeholder="{{ __('user/user-profile.somewhere') }}"
@@ -183,7 +183,7 @@
                             <div class="form-group">
                                 <div class="col-xs-6">
                                     <label for="province">
-                                        <h4>{{ __('user/user-profile.province') }}</h4>
+                                        <h4>{{ __('user/user-profile.province') }} <span class="star">*</span></h4>
                                     </label>
                                     <input type="text" class="form-control" id="location" name="province"
                                         placeholder="{{ __('user/user-profile.somewhere') }}"
@@ -197,7 +197,7 @@
                             <div class="form-group">
                                 <div class="col-xs-6">
                                     <label for="country">
-                                        <h4>{{ __('user/user-profile.country') }}</h4>
+                                        <h4>{{ __('user/user-profile.country') }} <span class="star">*</span></h4>
                                     </label>
                                     <input type="text" class="form-control" name="country" id="location"
                                         placeholder="{{ __('user/user-profile.somewhere') }}" title="enter country"
@@ -211,7 +211,7 @@
                             <div class="form-group">
                                 <div class="col-xs-6">
                                     <label for="address">
-                                        <h4>{{ __('user/user-profile.address') }}</h4>
+                                        <h4>{{ __('user/user-profile.address') }} <span class="star">*</span></h4>
                                     </label>
                                     <input type="text" class="form-control" name="address" id="location"
                                         placeholder="{{ __('user/user-profile.somewhere') }}" title="enter intro"
@@ -225,7 +225,7 @@
                             <div class="form-group">
                                 <div class="col-xs-12">
                                     <label for="intro">
-                                        <h4>{{ __('user/user-profile.intro') }}</h4>
+                                        <h4>{{ __('user/user-profile.intro') }} <span class="star">*</span></h4>
                                     </label>
                                     <textarea rows="8" type="text" class="form-control" name="intro" id="intro" title="enter intro"
                                         wire:model="intro"></textarea>

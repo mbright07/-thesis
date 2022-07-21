@@ -112,7 +112,7 @@
                     data-responsive='{"0":{"items":"1"},"480":{"items":"2"},"768":{"items":"3"},"992":{"items":"4"},"1200":{"items":"5"}}'>
                     @foreach ($top_views as $top_view)
                         <div class="product product-style-2 equal-elem ">
-                            <div class="product-thumnail">
+                            <div class="product-thumnail" style="height: 45%">
                                 <a href="{{ route('job.details', ['slug' => $top_view->slug]) }}"
                                     title="{{ $top_view->name }}">
                                     <figure><img

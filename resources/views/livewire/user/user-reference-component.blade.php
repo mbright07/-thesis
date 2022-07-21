@@ -61,11 +61,15 @@
                                 @enderror
                             </div>
                         </div>
-                        <button wire:click.prevent="storeReference"
-                            class="btn btn-success">{{ __('user/user-experience.save') }}</button>
-                        <button wire:click="closeModalRe()" type="button">
-                            {{ __('user/user-experience.cancel') }}
-                        </button>
+                        <div class="form-group">
+                            <div class="col-md-12" style="margin-top:20px; ">
+                                <button wire:click.prevent="storeReference"
+                                    class="btn btn-success">{{ __('user/user-experience.save') }}</button>
+                                <button wire:click="closeModalRe()" type="button" class="btn btn-light">
+                                    {{ __('user/user-experience.cancel') }}
+                                </button>
+                            </div>
+                        </div>
                     </form>
                 </div>
             </div>

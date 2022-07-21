@@ -71,6 +71,7 @@ return [
     'select_ex_loca' => 'Select Expected Location',
     'ex_sala' => 'Expected Salary',
     'ex_sala_month' => 'Expected Salary (USD/month)',
+    'type' => 'Expected Type Job',
 
     'my_ex' => 'My Experience',
     'resume' => 'Resume',

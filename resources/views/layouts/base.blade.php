@@ -146,10 +146,10 @@
                                                     ({{ Auth::user()->name }})<i class="fa fa-angle-down"
                                                         aria-hidden="true"></i></a>
                                                 <ul class="submenu curency">
-                                                    <li class="menu-item">
+                                                    {{-- <li class="menu-item">
                                                         <a title="Dashboard"
                                                             href="{{ route('user.dashboard') }}">{{ __('base.dashboard') }}</a>
-                                                    </li>
+                                                    </li> --}}
                                                     <li class="menu-item">
                                                         <a title="My Profile"
                                                             href="{{ route('user.profile') }}">{{ __('base.my_profile') }}</a>
@@ -184,7 +184,7 @@
                                         <li class="menu-item"><a title="Register or Login"
                                                 href="{{ route('register') }}">{{ __('base.register') }}</a></li>
                                     @endif
-                                    @endif
+                                @endif
 
                                     <li class="menu-item lang-menu menu-item-has-children parent">
                                         <a title="Language" href="#"><i class="fa fa-angle-down"
@@ -220,7 +220,7 @@
                             @livewire('header-search-component')
 
                             <div class="wrap-icon right-section">
-                                @livewire('wishlist-count-component')
+                                {{-- @livewire('wishlist-count-component') --}}
                                 @livewire('notification-component')
                                 {{-- <div class="wrap-icon-section minicart">
                                     <a href="#" class="link-direction">
@@ -231,13 +231,13 @@
                                         </div>
                                     </a>
                                 </div> --}}
-                                <div class="wrap-icon-section show-up-after-1024">
+                                {{-- <div class="wrap-icon-section show-up-after-1024">
                                     <a href="#" class="mobile-navigation">
                                         <span></span>
                                         <span></span>
                                         <span></span>
                                     </a>
-                                </div>
+                                </div> --}}
                             </div>
 
                         </div>
@@ -261,6 +261,28 @@
                                             <a href="{{ route('employer.candidates.bookmark') }}"
                                                 class="link-term mercado-item-title">{{ __('base.candidates_bookmark') }}</a>
                                         </li>
+                                    @elseif (Auth::user() && Auth::user()->role_id === 2)
+                                        <li class="menu-item home-icon">
+                                            <a href="/" class="link-term mercado-item-title"><i class="fa fa-home"
+                                                    aria-hidden="true"></i></a>
+                                        </li>
+                                        <li class="menu-item">
+                                            <a href="/jobs"
+                                                class="link-term mercado-item-title">{{ __('base.jobs') }}</a>
+                                        </li>
+                                        <li class="menu-item">
+                                            <a href="{{ route('user.jobs.bookmark') }}"
+                                                class="link-term mercado-item-title">{{ __('base.bookmark') }}</a>
+                                        </li>
+                                        <li class="menu-item">
+                                            <a title="My Experience"
+                                                href="{{ route('user.experience') }}">{{ __('base.my_experience') }}</a>
+                                        </li>
+                                        <li class="menu-item">
+                                            <a title="My Recruitments"
+                                                href="{{ route('user.recruitments') }}">{{ __('base.my_recruitments') }}</a>
+                                        </li>
+                                    
                                     @else
                                         <li class="menu-item home-icon">
                                             <a href="/" class="link-term mercado-item-title"><i class="fa fa-home"
@@ -271,7 +293,7 @@
                                                 class="link-term mercado-item-title">{{ __('base.jobs') }}</a>
                                         </li>
                                         <li class="menu-item">
-                                            <a href="/bookmark"
+                                            <a href="{{ route('user.jobs.bookmark') }}"
                                                 class="link-term mercado-item-title">{{ __('base.bookmark') }}</a>
                                         </li>
 

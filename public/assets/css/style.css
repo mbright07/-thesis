@@ -1833,7 +1833,7 @@ li.menu-item .nav-label.sale-label::before {
 
 .product-style-2 .product-info {
     margin-top: -20px;
-    height: 150px;
+    height: 250px;
 }
 
 .product .product-info .product-name .content {
@@ -1859,7 +1859,7 @@ li.menu-item .nav-label.sale-label::before {
     display: inline-block;
     width: 100%;
     margin-top: 55px;
-    height: 50px;
+    height: 100px;
 }
 .product .product-info .product-rating {
     margin-left: 80px;
@@ -2467,6 +2467,7 @@ li.menu-item .nav-label.sale-label::before {
 }
 .addcart {
     height: 100px;
+    margin-top: -50px;
 }
 .addcart .bookmark {
     width: 40%;
@@ -2500,80 +2501,66 @@ li.menu-item .nav-label.sale-label::before {
 .addcart a.add-to-cart:hover {
     color: #f32626;
 }
-/* .wrap-pagination-info{ */
-    /* margin-top: 46px; */
-    /* border-top: 1px solid #e6e6e6; */
-/* } */
-/* .wrap-pagination-info .page-numbers{ */
-    /* padding: 0; */
-    /* margin: 0; */
-    /* margin-top: 17px; */
-/* } */
-/* .wrap-pagination-info .page-numbers li{ */
-    /* display: block; */
-    /* list-style: none; */
-    /* float: left; */
-/* } */
-/* .wrap-pagination-info .page-numbers li:not(:last-child){ */
-    /* margin-right: 10px; */
-/* } */
-/* .wrap-pagination-info .page-numbers li .page-number-item.current{ */
-    /* display: inline-block; */
-    /* color: #ffffff; */
-    /* font-size: 14px; */
-    /* line-height: 35px; */
-    /* font-weight: 700; */
-    /* text-align: center; */
-    /* min-width: 35px; */
-    /* padding: 0 5px; */
-    /* height: 35px; */
-/* } */
-/* .wrap-pagination-info .page-numbers li .page-number-item.next-link{ */
-    /* min-width: 77px !important; */
-/* } */
-/* .wrap-pagination-info .page-numbers li .page-number-item:not(.current){ */
-    /* display: inline-block; */
-    /* color: #333333; */
-    /* font-size: 14px; */
-    /* line-height: 34px; */
-    /* background-color: #f5f5f5; */
-    /* text-align: center; */
-    /* min-width: 35px; */
-    /* padding: 0 5px; */
-    /* height: 35px; */
-    /* border-color: #e6e6e6; */
-/* } */
-/* .wrap-pagination-info .page-numbers li .page-number-item{ */
-    /* border: 1px solid; */
-/* } */
-/* .wrap-pagination-info .page-numbers li .page-number-item:hover{ */
-    /* color: #f76d6d; */
-    /* font-weight: 700; */
-/* } */
-/* .wrap-pagination-info .result-count{ */
-    /* display: inline-block; */
-    /* font-size: 13px; */
-    /* line-height: 35px; */
-    /* color: #333333; */
-    /* float: right; */
-    /* margin: 0; */
-    /* margin-top: -2px; */
-/* } */
-
-.pagination > li > a,
-.pagination > li > span {
-    color: green; 
+.wrap-pagination-info{
+    margin-top: 46px;
+    border-top: 1px solid #e6e6e6;
+}
+.wrap-pagination-info .page-numbers{
+    padding: 0;
+    margin: 0;
+    margin-top: 17px;
+}
+.wrap-pagination-info .page-numbers li{
+    display: block;
+    list-style: none;
+    float: left;
+}
+.wrap-pagination-info .page-numbers li:not(:last-child){
+    margin-right: 10px;
+}
+.wrap-pagination-info .page-numbers li .page-number-item.current{
+    display: inline-block;
+    color: #ffffff;
+    font-size: 14px;
+    line-height: 35px;
+    font-weight: 700;
+    text-align: center;
+    min-width: 35px;
+    padding: 0 5px;
+    height: 35px;
+}
+.wrap-pagination-info .page-numbers li .page-number-item.next-link{
+    min-width: 77px !important;
+}
+.wrap-pagination-info .page-numbers li .page-number-item:not(.current){
+    display: inline-block;
+    color: #333333;
+    font-size: 14px;
+    line-height: 34px;
+    background-color: #f5f5f5;
+    text-align: center;
+    min-width: 35px;
+    padding: 0 5px;
+    height: 35px;
+    border-color: #e6e6e6;
+}
+.wrap-pagination-info .page-numbers li .page-number-item{
+    border: 1px solid;
+}
+.wrap-pagination-info .page-numbers li .page-number-item:hover{
+    color: #f76d6d;
+    font-weight: 700;
+}
+.wrap-pagination-info .result-count{
+    display: inline-block;
+    font-size: 13px;
+    line-height: 35px;
+    color: #333333;
+    float: right;
+    margin: 0;
+    margin-top: -2px;
 }
 
-.pagination > .active > a,
-.pagination > .active > a:focus,
-.pagination > .active > a:hover,
-.pagination > .active > span,
-.pagination > .active > span:focus,
-.pagination > .active > span:hover {
-    background-color: green;
-    border-color: green;
-}
 .left-sidebar .main-content-area {
     float: right !important;
 }
@@ -7406,18 +7393,15 @@ table.shop_attributes tbody {
     color: red;
 }
 
-.pl-4,
-.px-4 {
+.pl-4, .px-4 {
     padding: 1rem !important;
 }
 
-.pb-2,
-.py-2 {
+.pb-2, .py-2 {
     padding: 1rem !important;
 }
 
-.pt-2,
-.py-2 {
+.pt-2, .py-2 {
     padding: 1rem !important;
 }
 

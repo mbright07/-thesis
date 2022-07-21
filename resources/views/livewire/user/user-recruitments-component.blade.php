@@ -9,6 +9,56 @@
         }
     </style>
     <div class="container" style="padding: 30px 0;">
+        <div class="row" style="margin-left: 15%">
+            <div class="col-md-3 col-sm-6">
+                <div class="icon-stat">
+                    <div class="row">
+                        <div class="col-xs-8 text-left">
+                            <span class="icon-stat-label">{{ __('employee/dashboard.total') }}</span>
+                            <span class="icon-stat-value">{{ $totalRecruitments }}</span>
+                        </div>
+                        <div class="col-xs-4 text-center">
+                            <i class="fa fa-file icon-stat-visual bg-primary"></i>
+                        </div>
+                    </div>
+                    <div class="icon-stat-footer">
+                        <i class="fa fa-clock-o"></i> {{ __('employee/dashboard.update') }}
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-3 col-sm-6">
+                <div class="icon-stat">
+                    <div class="row">
+                        <div class="col-xs-8 text-left">
+                            <span class="icon-stat-label">{{ __('employee/dashboard.process') }}</span>
+                            <span class="icon-stat-value">{{ $totalRecruitments_processing }}</span>
+                        </div>
+                        <div class="col-xs-4 text-center">
+                            <i class="fa fa-file icon-stat-visual bg-primary"></i>
+                        </div>
+                    </div>
+                    <div class="icon-stat-footer">
+                        <i class="fa fa-clock-o"></i> {{ __('employee/dashboard.update') }}
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-3 col-sm-6">
+                <div class="icon-stat">
+                    <div class="row">
+                        <div class="col-xs-8 text-left">
+                            <span class="icon-stat-label">{{ __('employee/dashboard.total_cancel') }}</span>
+                            <span class="icon-stat-value">{{ $totalRecruitments_canceled }}</span>
+                        </div>
+                        <div class="col-xs-4 text-center">
+                            <i class="fa fa-gift icon-stat-visual bg-secondary"></i>
+                        </div>
+                    </div>
+                    <div class="icon-stat-footer">
+                        <i class="fa fa-clock-o"></i> {{ __('employee/dashboard.update') }}
+                    </div>
+                </div>
+            </div>
+        </div>
         <div class="row">
             <div class="col-md-12">
                 <div class="panel panel-info">
@@ -70,14 +120,20 @@
                                         </td>
                                         <td><strong>{{ $recruitment->status }}</strong></td>
                                         <td>{{ $recruitment->created_at }}</td>
-                                        <td><a href="{{ route('user.recruitmentdetails', ['recruitment_id' => $recruitment->id]) }}"
+                                        <td>
+                                            <a href="{{ route('user.recruitmentdetails', ['recruitment_id' => $recruitment->id]) }}"
                                                 class="btn btn-info btn-sm">{{ __('user/user-recruitment.detail') }}</a>
+                                            {{-- <a href="#"
+                                                onclick=" return confirm('{{ __('bookmark.sure') }}') || event.stopImmediatePropagation()"
+                                                wire:click.prevent="updateRecruitmentStatus({{ $recruitment->id }},'canceled')"
+                                                class="btn btn-danger" title="">Cancel</a> --}}
+
                                         </td>
                                     </tr>
                                 @endforeach
                             </tbody>
                         </table>
-                        {{ $recruitments->links('pagination::bootstrap-4') }}
+                        {{ $recruitments->links() }}
                     </div>
                 </div>
             </div>

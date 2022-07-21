@@ -56,7 +56,7 @@
                         @foreach ($jobs as $job)
                             <li class="col-lg-4 col-md-6 col-sm-6 col-xs-6 ">
                                 <div class="product product-style-2 equal-elem ">
-                                    <div class="product-thumnail" style="height: 60%">
+                                    <div class="product-thumnail" style="height: 45%">
                                         <a href="{{ route('job.details', ['slug' => $job->slug]) }}"
                                             title="{{ $job->name }}">
                                             <figure><img
@@ -74,7 +74,7 @@
                                                 <p class="product-price">
                                                     {{ __('search.salary') }}{{ $job->regular_salary }}</p>
                                             </ins></div>
-                                        <div class="product-wish">
+                                        {{-- <div class="product-wish">
                                             @if ($witems->contains($job->id))
                                                 <a href="#"
                                                     wire:click.prevent="removeFromWishlist({{ $job->id }})"><i
@@ -84,7 +84,7 @@
                                                     wire:click.prevent="addToWishList({{ $job->id }},'{{ $job->name }}',{{ $job->regular_salary }})"><i
                                                         class="fa fa-heart"></i></a>
                                             @endif
-                                        </div>
+                                        </div> --}}
                                     </div>
                                     <div class="addcart">
                                         <div class="bookmark">
@@ -104,7 +104,7 @@
                 </div>
 
                 <div class="wrap-pagination-info">
-                    {{ $jobs->links('pagination::bootstrap-4') }}
+                    {{ $jobs->links() }}
                 </div>
             </div>
             <!--end main products area-->

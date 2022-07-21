@@ -71,6 +71,7 @@ return [
     'select_ex_loca' => 'Chọn nơi làm việc',
     'ex_sala' => 'Mức lương mong muốn',
     'ex_sala_month' => 'Mức lương mong muốn (USD/tháng)',
+    'type' => 'Loại hình công việc mong muốn',
 
     'my_ex' => 'Hồ sơ của tôi',
     'resume' => 'Sơ yếu lý lịch',

@@ -7,8 +7,8 @@ return [
     'parent_location' => '親の場所',
     'none' => 'なし',
     'submit' => '送信',
-    'manage_home_locations' => 'ホームページの場所を管理する',
-    'choose_locations' => '場所を選択',
+    'manage_home_locations' => 'ホームページの採用会社を管理する',
+    'choose_locations' => '採用会社を選択',
     'no_of_job' => '仕事の数',
     'save' => '保存'
 ];

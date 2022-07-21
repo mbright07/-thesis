@@ -35,7 +35,8 @@ class RecruitmentOneJobComponent extends Component
 
     public $job_id;
 
-    public function mount($job_id) {
+    public function mount($job_id)
+    {
         $this->job_id = $job_id;
     }
 
@@ -102,7 +103,7 @@ class RecruitmentOneJobComponent extends Component
 
                     DB::commit();
 
-//                    $this->sendRecruitmentConfirmationMail($recruitment);
+                    $this->sendRecruitmentConfirmationMail($recruitment);
 
                     $this->thankyou = 1;
 
@@ -143,7 +144,6 @@ class RecruitmentOneJobComponent extends Component
 
                         $pusher->trigger('NotificationEvent', 'send-message', json_encode($data));
                     }
-
                 } catch (Exception $e) {
                     DB::rollBack();
 

@@ -17,8 +17,8 @@
                                 <div class="col-md-4">
                                     <select class="select sel_categories form-control" name="categories[]"
                                         multiple="multiple" wire:model="selected_categories">
-                                        @foreach ($categories as $category)
-                                            <option value="{{ $category->id }}">{{ $category->name }}</option>
+                                        @foreach ($companies as $company)
+                                            <option value="{{ $company->id }}">{{ $company->name }}</option>
                                         @endforeach
                                     </select>
                                     @error('selected_categories')

@@ -53,30 +53,30 @@ class BlogComponent extends Component
         } else {
             Cart::instance('bookmark')->add($job_id, $job_name, 1, $job_salary)->associate('App\Models\Job');
             session()->flash('success_message', 'Job bookmark successful');
-            return redirect()->route('job.bookmark');
+            return redirect()->route('user.jobs.bookmark');
         }
     }
 
-    public function addToWishList($job_id, $job_name, $job_salary)
-    {
-        if (!Auth::check()) {
-            return redirect()->route('login');
-        } else {
-            Cart::instance('wishlist')->add($job_id, $job_name, 1, $job_salary)->associate('App\Models\Job');
-            $this->emitTo('wishlist-count-component', 'refreshComponent');
-        }
-    }
+    // public function addToWishList($job_id, $job_name, $job_salary)
+    // {
+    //     if (!Auth::check()) {
+    //         return redirect()->route('login');
+    //     } else {
+    //         Cart::instance('wishlist')->add($job_id, $job_name, 1, $job_salary)->associate('App\Models\Job');
+    //         $this->emitTo('wishlist-count-component', 'refreshComponent');
+    //     }
+    // }
 
-    public function removeFromWishlist($job_id)
-    {
-        foreach (Cart::instance('wishlist')->content() as $witem) {
-            if ($witem->id == $job_id) {
-                Cart::instance('wishlist')->remove($witem->rowId);
-                $this->emitTo('wishlist-count-component', 'refreshComponent');
-                return;
-            }
-        }
-    }
+    // public function removeFromWishlist($job_id)
+    // {
+    //     foreach (Cart::instance('wishlist')->content() as $witem) {
+    //         if ($witem->id == $job_id) {
+    //             Cart::instance('wishlist')->remove($witem->rowId);
+    //             $this->emitTo('wishlist-count-component', 'refreshComponent');
+    //             return;
+    //         }
+    //     }
+    // }
 
     public function recruitment($job_id)
     {
@@ -89,7 +89,7 @@ class BlogComponent extends Component
                 $message = 'You have applied this job!';
                 $this->dispatchBrowserEvent('jobApplied', ['message' => $message]);
             } else {
-                return redirect()->route('recruitment.job_id', ['job_id' => $job_id]);
+                return redirect()->route('user.recruitment.job_id', ['job_id' => $job_id]);
             }
         } else {
             return redirect()->route('login');

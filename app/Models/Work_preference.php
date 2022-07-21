@@ -11,5 +11,5 @@ class Work_preference extends Model
 
     protected $table = "work_preferences";
 
-    protected $fillable = ['user_id', 'category_id', 'expected_salary'];
+    protected $fillable = ['user_id', 'category_id', 'expected_salary','type'];
 }

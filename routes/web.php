@@ -42,8 +42,10 @@ use App\Http\Livewire\ThankyouComponent;
 use App\Http\Livewire\User\UserChangePasswordCompponent;
 use App\Http\Livewire\User\UserDashboardComponent;
 use App\Http\Livewire\User\UserExperienceComponent;
+use App\Http\Livewire\User\UserJobBookmarkComponent;
 use App\Http\Livewire\User\UserProfileComponent;
 use App\Http\Livewire\User\UserRecruitmentDetailsComponent;
+use App\Http\Livewire\User\UserRecruitmentJobComponent;
 use App\Http\Livewire\User\UserRecruitmentsComponent;
 use App\Http\Livewire\User\UserReviewComponent;
 use App\Http\Livewire\User\UserWorkHistoryComponent;
@@ -76,11 +78,11 @@ Route::group(['middleware' => 'locale'], function () {
 
     Route::get('/jobs', BlogComponent::class)->name('jobs');
 
-    Route::get('/bookmark', CartComponent::class)->name('job.bookmark');
+    //Route::get('/bookmark', CartComponent::class)->name('job.bookmark');
 
-    Route::get('/recruitment', RecruitmentComponent::class)->name('recruitment');
+    //Route::get('/recruitment', RecruitmentComponent::class)->name('recruitment');
 
-    Route::get('/recruitment/{job_id}', RecruitmentOneJobComponent::class)->name('recruitment.job_id');
+    //Route::get('/recruitment/{job_id}', RecruitmentOneJobComponent::class)->name('recruitment.job_id');
 
     Route::get('/job/{slug}', DetailsComponent::class)->name('job.details');
 
@@ -88,7 +90,7 @@ Route::group(['middleware' => 'locale'], function () {
 
     Route::get('/search', SearchComponent::class)->name('job.search');
 
-    Route::get('/wishlist', WishlistComponent::class)->name('job.wishlist');
+    //Route::get('/wishlist', WishlistComponent::class)->name('job.wishlist');
 
     Route::get('/thank-you', ThankyouComponent::class)->name('thankyou');
 
@@ -106,6 +108,8 @@ Route::group(['middleware' => 'locale'], function () {
     Route::group(['middleware' => 'auth'], function () {
         Route::group(['middleware' => 'role:candidate'], function () {
             Route::get('/user/dashboard', UserDashboardComponent::class)->name('user.dashboard');
+            Route::get('/user/job-bookmark', UserJobBookmarkComponent::class)->name('user.jobs.bookmark');
+            Route::get('/user/recruitment/{job_id}', UserRecruitmentJobComponent::class)->name('user.recruitment.job_id');
             Route::get('user/recruitments', UserRecruitmentsComponent::class)->name('user.recruitments');
             Route::get('user/recruitments/{recruitment_id}', UserRecruitmentDetailsComponent::class)->name('user.recruitmentdetails');
             Route::get('/user/review/{recruitment_job_id}', UserReviewComponent::class)->name('user.review');

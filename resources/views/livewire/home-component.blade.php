@@ -43,7 +43,7 @@
                 data-responsive='{"0":{"items":"1"},"480":{"items":"2"},"768":{"items":"3"},"992":{"items":"4"},"1200":{"items":"5"}}'>
                 @foreach ($top_views as $top_view)
                     <div class="product product-style-2 equal-elem ">
-                        <div class="product-thumnail" style="height: 60%">
+                        <div class="product-thumnail" style="height: 50%">
                             <a href="{{ route('job.details', ['slug' => $top_view->slug]) }}"
                                 title="{{ $top_view->name }}">
                                 <figure><img src="{{ asset('assets/images/products') }}/{{ $top_view->image }}"
@@ -70,12 +70,12 @@
         <!--Product Categories-->
         <div class="wrap-show-advance-info-box style-1">
             <h3 class="title-box">{{ __('home.featured_jobs') }}</h3>
-            {{-- <div class="wrap-top-banner">
+            <div class="wrap-top-banner">
                 <a href="#" class="link-banner banner-effect-2">
                     <figure><img src="{{ asset('assets/images/fashion-accesories-banner.jpg') }}" width="1170"
                             height="240" alt=""></figure>
                 </a>
-            </div> --}}
+            </div>
             <div class="wrap-products">
                 <div class="wrap-product-tab tab-style-1">
                     <div class="tab-control">
@@ -93,7 +93,7 @@
                                     data-responsive='{"0":{"items":"1"},"480":{"items":"2"},"768":{"items":"3"},"992":{"items":"4"},"1200":{"items":"5"}}'>
                                     @php
                                         $c_jobs = DB::table('jobs')
-                                            ->where('category_id', $category->id)
+                                            ->where('user_id', $category->id)
                                             ->get()
                                             ->take($no_of_jobs);
                                     @endphp

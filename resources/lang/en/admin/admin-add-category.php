@@ -7,8 +7,8 @@ return [
     'parent_location' => 'Parent Location',
     'none' => 'None',
     'submit' => 'Submit',
-    'manage_home_locations' => 'Manage Home Locations',
-    'choose_locations' => 'Choose Locations',
+    'manage_home_locations' => 'Manage Home Companies',
+    'choose_locations' => 'Choose Companies',
     'no_of_job' => 'No of Jobs',
     'save' => 'Save'
 ];

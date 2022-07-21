@@ -121,7 +121,7 @@
                                 @endforeach
                             </tbody>
                         </table>
-                        {{ $recruitments->links('pagination::bootstrap-4') }}
+                        {{ $recruitments->links() }}
                     </div>
                 </div>
             </div>

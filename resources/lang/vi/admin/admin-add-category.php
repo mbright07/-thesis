@@ -7,8 +7,8 @@ return [
     'parent_location' => 'Địa điểm Cha',
     'none' => 'Không',
     'submit' => 'Lưu',
-    'manage_home_locations' => 'Quản Lý địa điểm hiển thị ở Trang chủ',
-    'choose_locations' => 'Lựa chọn các địa điểm',
+    'manage_home_locations' => 'Quản Lý cơ sở tuyển dụng hiển thị ở Trang chủ',
+    'choose_locations' => 'Lựa chọn các cơ sở tuyển dụng',
     'no_of_job' => 'Số công việc',
     'save' => 'Lưu'
 ];

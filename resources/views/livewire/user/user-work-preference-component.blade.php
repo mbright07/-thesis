@@ -22,7 +22,7 @@
                 <div class="panel-body">
                     <form>
                         <div class="form-row">
-                            <div class="form-group col-md-4">
+                            <div class="form-group col-md-3">
                                 <label for="expected_location">{{ __('user/user-experience.ex_loca') }} *</label>
                                 <select class="form-control" id="expected_location" wire:model="category_id">
                                     <option>--{{ __('user/user-experience.select_ex_loca') }}--</option>
@@ -37,7 +37,7 @@
                                 @enderror
                             </div>
 
-                            <div class="form-group col-md-4">
+                            <div class="form-group col-md-3">
                                 <label for="expected_salary">{{ __('user/user-experience.ex_sala') }} *</label>
                                 <input type="text" class="form-control" id="expected_salary"
                                     wire:model="expected_salary">
@@ -45,12 +45,33 @@
                                     <p class="text-danger">{{ $message }}</p>
                                 @enderror
                             </div>
+
+                            <div class="form-group col-md-3">
+                                <label for="type">
+                                    {{ __('admin/admin-add-job.type') }}
+                                    <span class="star">*</span>
+                                </label>
+                                <div id="type">
+                                    <select class="form-control" wire:model="type">
+                                        <option value="1">{{ __('admin/admin-add-job.fulltime') }}</option>
+                                        <option value="2">{{ __('admin/admin-add-job.parttime') }}</option>
+                                    </select>
+                                    @error('type')
+                                        <p class="text-danger">{{ $message }}</p>
+                                    @enderror
+                                </div>
+                            </div>
                         </div>
-                        <button wire:click.prevent="storeWorkPreference()"
-                            class="btn btn-success">{{ __('user/user-experience.save') }}</button>
-                        <button wire:click="closeModalPre()" type="button">
-                            {{ __('user/user-experience.cancel') }}
-                        </button>
+                        <div class="form-group col-md-3">
+                            <label for=""></label>
+                            <div>
+                                <button wire:click.prevent="storeWorkPreference()"
+                                    class="btn btn-success">{{ __('user/user-experience.save') }}</button>
+                                <button wire:click="closeModalPre()" type="button" class="btn btn-light">
+                                    {{ __('user/user-experience.cancel') }}
+                                </button>
+                            </div>
+                        </div>
                     </form>
                 </div>
             </div>
@@ -63,11 +84,18 @@
                         <div class="row box-shadow">
                             <div class="panel-body">
                                 <div class="panel-body-left" style="float: left;">
-                                    <h5>{{ __('user/user-experience.ex_loca') }}
-                                        {{-- <strong>{{ $per->expected_location->name }}</strong> --}}
+                                    <h5>{{ __('user/user-experience.ex_loca') }}:
+                                        {{-- <strong>{{ $per->expected_location}}</strong> --}}
                                     </h5>
                                     <h5>{{ __('user/user-experience.ex_sala_month') }}:
                                         <strong>{{ $per->expected_salary }}</strong>
+                                    </h5>
+                                    <h5>{{ __('user/user-experience.type') }}:
+                                        @if ($per->type === 1)
+                                            <strong>{{ __('admin/admin-add-job.fulltime') }}</strong>
+                                        @else
+                                            <strong>{{ __('admin/admin-add-job.parttime') }}</strong>
+                                        @endif
                                     </h5>
                                 </div>
                                 <div class="panel-body-right" style="float: right">

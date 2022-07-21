@@ -71,6 +71,7 @@ return [
     'select_ex_loca' => '予想される場所を選択します',
     'ex_sala' => '希望給与',
     'ex_sala_month' => '期待給与(USD/月)',
+    'type' => '期待タイプ仕事',
 
     'my_ex' => '私の経験',
     'resume' => '履歴書',

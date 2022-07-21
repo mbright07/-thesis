@@ -24,7 +24,7 @@ class UserExperienceComponent extends Component
     public $language, $lang_proficiency, $languages, $language_id;
     public $activity_name, $activity_description, $activities, $activity_id;
     public $certification_name, $certification_description, $certifications, $certification_id;
-    public $category_id, $expected_salary, $work_preferences, $work_preference_id;
+    public $category_id, $expected_salary, $type, $work_preferences, $work_preference_id;
     public $re_name, $re_position, $re_company, $re_email, $re_phone, $references, $reference_id;
     public $user;
     public $isOpen_work = 0;
@@ -432,10 +432,12 @@ class UserExperienceComponent extends Component
             'category_id' => ['required', 'unique:work_preferences,category_id,'.$this->category_id.',id,user_id,'.Auth::user()->id],
         ];
         $str_validate['expected_salary'] = 'required|numeric';
+        $str_validate['type'] = 'required';
         $this->validate($str_validate);
         Work_preference::updateOrCreate(['id' => $this->work_preference_id], [
             'category_id' => $this->category_id,
             'expected_salary' => $this->expected_salary,
+            'type' => $this->type,
             'user_id' => Auth::user()->id,
         ]);
 
@@ -453,6 +455,7 @@ class UserExperienceComponent extends Component
         $this->work_preference_id = $id;
         $this->category_id = $work_preference->category_id;
         $this->expected_salary = $work_preference->expected_salary;
+        $this->type = $work_preference->type;
         $this->openModalPre();
     }
 
@@ -460,6 +463,7 @@ class UserExperienceComponent extends Component
     {
         $this->category_id = '';
         $this->expected_salary = '';
+        $this->type = '';
     }
 
     public function deleteWorkPreference($id)
@@ -555,6 +559,7 @@ class UserExperienceComponent extends Component
         $references = Reference::all();
         $categories = Category::all();
         $users = User::find(Auth::user()->id);
+        
         $pdf = PDF::loadView('livewire.user.user-resume-component', [
             'categories' => $categories,
             'users' => $users,
@@ -567,7 +572,7 @@ class UserExperienceComponent extends Component
             'work_preferences' => $work_preferences,
             'references' => $references,
         ]);
-        return $pdf->stream();
+        return $pdf->download('CV.pdf');
     }
 
     public function render()

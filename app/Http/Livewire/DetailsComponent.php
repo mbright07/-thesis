@@ -29,7 +29,7 @@ class DetailsComponent extends Component
         } else {
             Cart::instance('bookmark')->add($job_id, $job_name, 1, $job_salary)->associate('App\Models\Job');
             session()->flash('success_message', 'Job bookmark successful');
-            return redirect()->route('job.bookmark');
+            return redirect()->route('user.jobs.bookmark');
         }
     }
 

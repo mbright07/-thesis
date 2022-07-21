@@ -4,6 +4,7 @@ namespace App\Http\Livewire\Admin;
 
 use App\Models\Category;
 use App\Models\HomeCategory;
+use App\Models\User;
 use Livewire\Component;
 
 class AdminHomeCategoryCompoent extends Component
@@ -13,9 +14,9 @@ class AdminHomeCategoryCompoent extends Component
 
     public function mount()
     {
-        $category = HomeCategory::find(1);
-        $this->selected_categories = explode(',', $category->sel_categories);
-        $this->numberofjobs = $category->no_of_jobs;
+        $company = HomeCategory::find(1);
+        $this->selected_categories = explode(',', $company->sel_categories);
+        $this->numberofjobs = $company->no_of_jobs;
     }
     public function updated($fields)
     {
@@ -31,16 +32,16 @@ class AdminHomeCategoryCompoent extends Component
             'selected_categories' => 'required',
             'numberofjobs' => 'required'
         ]);
-        $category = HomeCategory::find(1);
-        $category->sel_categories = implode(',', $this->selected_categories);
-        $category->no_of_jobs = $this->numberofjobs;
-        $category->save();
-        session()->flash('message', 'HomeLocation has been updated successfully!');
+        $company = HomeCategory::find(1);
+        $company->sel_categories = implode(',', $this->selected_categories);
+        $company->no_of_jobs = $this->numberofjobs;
+        $company->save();
+        session()->flash('message', 'Company has been updated successfully!');
     }
 
     public function render()
     {
-        $categories = Category::all();
-        return view('livewire.admin.admin-home-category-compoent', ['categories' => $categories])->layout('layouts.base');
+        $companies = User::where('users.role_id',3)->get();
+        return view('livewire.admin.admin-home-category-compoent', ['companies' => $companies])->layout('layouts.base');
     }
 }
