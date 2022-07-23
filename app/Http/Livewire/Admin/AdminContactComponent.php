@@ -14,9 +14,7 @@ class AdminContactComponent extends Component
 
     public function render()
     {
-        $contacts = Contact::paginate(12);
         return view('livewire.admin.admin-contact-component', [
-            'contacts' => $contacts,
             'contacts' => Contact::when($this->sortBy, function ($query) {
                 $query->orderBy('created_at', $this->sortBy);
             })->search(trim($this->search))

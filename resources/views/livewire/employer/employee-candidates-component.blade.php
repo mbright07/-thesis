@@ -9,13 +9,8 @@
         <div class="row">
             <div class="col-lg-9 col-md-8 col-sm-8 col-xs-12 main-content-area">
                 <div class="row" style="margin-top:15px ">
-                    @php
-                        $witems = Cart::instance('wishlist')
-                            ->content()
-                            ->pluck('id');
-                    @endphp
                     @foreach ($lcandidates as $lcandidate)
-                        <div class="col-md-6" style="width: 49%; margin-left: 10px">
+                        <div class="col-md-6" style="width: 47%; height:400px; margin-left: 10px">
                             <div class="job-offers">
                                 <div class="row pt-5">
                                     <div class="offert-wrapper">
@@ -70,13 +65,13 @@
                     @endforeach
                 </div>
                 <div class="wrap-pagination-info">
-                    {{ $lcandidates->links('pagination::bootstrap-4') }}
+                    {{ $lcandidates->links() }}
                 </div>
             </div>
 
             <div class="col-lg-3 col-md-4 col-sm-4 col-xs-12 sitebar">
                 <div class="widget mercado-widget filter-widget price-filter">
-                    <h2 class="widget-title">Expected Salary</h2>
+                    <h2 class="widget-title">{{ __('search.ex_salary') }}</h2>
                     <div class="widget-content">
                         <div id="slider-range" wire:ignore></div>
                         <p>
@@ -87,7 +82,29 @@
                         </p>
                     </div>
                 </div><!-- Price-->
+
+                {{-- <div class="widget mercado-widget filter-widget brand-widget">
+                    <h2 class="widget-title">{{ __('search.job_type') }}</h2>
+                    <select name="job-type" class="form-control" wire:model="language">
+                        <option value="" selected="selected">
+                            {{ __('admin/admin-recruitment.no_selected') }}</option>
+                        @foreach ($candidate_languages as $key => $candidate_language)
+                            <option value="{{ $key }}">{{ $candidate_language->language }}</option>
+                        @endforeach
+                    </select>
+                </div><!-- brand widget--> --}}
+
+                <div class="widget mercado-widget filter-widget brand-widget">
+                    <h2 class="widget-title">{{ __('search.job_type') }}</h2>
+                    <select name="job-type" class="form-control" wire:model="type">
+                        <option value="" selected="selected">{{ __('admin/admin-add-job.all_type') }}</option>
+                        <option value="1">{{ __('admin/admin-add-job.fulltime') }}</option>
+                        <option value="2">{{ __('admin/admin-add-job.parttime') }}</option>
+                    </select>
+                </div><!-- brand widget-->
             </div>
+
+            
 
         </div>
     </div>

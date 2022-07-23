@@ -123,10 +123,10 @@
                                         <td>
                                             <a href="{{ route('user.recruitmentdetails', ['recruitment_id' => $recruitment->id]) }}"
                                                 class="btn btn-info btn-sm">{{ __('user/user-recruitment.detail') }}</a>
-                                            {{-- <a href="#"
+                                            <a href="#"
                                                 onclick=" return confirm('{{ __('bookmark.sure') }}') || event.stopImmediatePropagation()"
                                                 wire:click.prevent="updateRecruitmentStatus({{ $recruitment->id }},'canceled')"
-                                                class="btn btn-danger" title="">Cancel</a> --}}
+                                                class="btn btn-danger" title="">{{ __('user/user-recruitment.cancel_recruitment') }}</a>
 
                                         </td>
                                     </tr>

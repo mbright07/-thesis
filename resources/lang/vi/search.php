@@ -32,4 +32,5 @@ return [
     'asc' => 'Cũ nhất',
     'desc' => 'Mới nhất',
     'job_type' => 'Loại hình công việc',
+    'ex_salary' => 'Mức lương mong muốn'
 ];

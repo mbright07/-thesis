@@ -16,7 +16,7 @@ return [
     'action' => 'Thao tác',
     'detail' => 'Xem chi tiết',
     'my_recruitments' => 'Việc đã ứng tuyển',
-    'sure' => 'Bạn có chắc muốn xóa công việc này',
+    'sure' => 'Bạn có chắc muốn hủy ứng tuyển công việc này',
     'cancel_recruitment' => 'Hủy ứng tuyển',
     'id' => 'ID ứng tuyển',
     'process' => 'Đang xử lý',

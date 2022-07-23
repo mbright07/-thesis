@@ -1,17 +1,17 @@
 <?php
 
-namespace App\Http\Livewire\Admin;
+namespace App\Http\Livewire\Employer;
 
-use Illuminate\Support\Facades\Auth;
 use Livewire\Component;
-use App\Models\Job;
 use App\Models\Category;
+use App\Models\Job;
 use App\Models\Subcategory;
 use Illuminate\Support\Str;
 use Illuminate\Support\Carbon;
 use Livewire\WithFileUploads;
+use Illuminate\Support\Facades\Auth;
 
-class AdminEditJobCompoent extends Component
+class EmployerAddJobComponent extends Component
 {
     use WithFileUploads;
     public $name;
@@ -19,34 +19,18 @@ class AdminEditJobCompoent extends Component
     public $short_description;
     public $description;
     public $regular_salary;
-    public $SKU;
     public $stock_status;
-    public $featured;
     public $quantity;
     public $image;
     public $category_id;
-    public $newimage;
-    public $job_id;
     public $sub_category_id;
     public $type;
 
-    public function mount($job_slug)
+    public function mount()
     {
-        $job = Job::where('slug', $job_slug)->first();
-        $this->name = $job->name;
-        $this->slug = $job->slug;
-        $this->short_description = $job->short_description;
-        $this->description = $job->description;
-        $this->regular_salary = $job->regular_salary;
-        $this->stock_status = $job->stock_status;
-        $this->featured = $job->featured;
-        $this->quantity = $job->quantity;
-        $this->image = $job->image;
-        $this->category_id = $job->category_id;
-        $this->sub_category_id = $job->sub_category_id;
-        $this->job_id = $job->id;
-        $this->type = $job->type;
+        $this->stock_status = 'instock';
     }
+
     public function generateSlug()
     {
         $this->slug = Str::slug($this->name, '-');
@@ -56,33 +40,32 @@ class AdminEditJobCompoent extends Component
     {
         $this->validateOnly($fields, [
             'name' => 'required',
-            'slug' => 'required|unique:jobs,slug,' . $this->job_id,
+            'slug' => 'required|unique:jobs',
             'short_description' => 'required',
             'description' => 'required',
             'regular_salary' => 'required|numeric',
             'stock_status' => 'required',
             'quantity' => 'required|numeric',
-            'newimage' => 'nullable|mimes:jpeg,png,jpg',
+            'image' => 'required|mimes:jpeg,png,jpg',
             'category_id' => 'required',
             'type' => 'required',
         ]);
     }
-
-    public function updateJob()
+    public function addJob()
     {
         $this->validate([
             'name' => 'required',
-            'slug' => 'required|unique:jobs,slug,' . $this->job_id,
+            'slug' => 'required|unique:jobs',
             'short_description' => 'required',
             'description' => 'required',
             'regular_salary' => 'required|numeric',
             'stock_status' => 'required',
             'quantity' => 'required|numeric',
-            'newimage' => 'nullable|mimes:jpeg,png,jpg',
+            'image' => 'required|mimes:jpeg,png,jpg',
             'category_id' => 'required',
             'type' => 'required',
         ]);
-        $job = Job::find($this->job_id);
+        $job = new Job();
         $job->user_id = Auth::user()->id;
         $job->name = $this->name;
         $job->slug = $this->slug;
@@ -90,20 +73,17 @@ class AdminEditJobCompoent extends Component
         $job->description = $this->description;
         $job->regular_salary = $this->regular_salary;
         $job->stock_status = $this->stock_status;
-        $job->featured = $this->featured;
         $job->quantity = $this->quantity;
-        if ($this->newimage) {
-            $imageName = Carbon::now()->timestamp . '.' . $this->newimage->extension();
-            $this->newimage->storeAs('products', $imageName);
-            $job->image = $imageName;
-        }
+        $imageName = Carbon::now()->timestamp . '.' . $this->image->extension();
+        $this->image->storeAs('products', $imageName);
+        $job->image = $imageName;
         $job->category_id = $this->category_id;
         if ($this->sub_category_id) {
             $job->sub_category_id = $this->sub_category_id;
         }
         $job->type = $this->type;
         @$job->save();
-        session()->flash('message', 'Job has been updated successfully!');
+        session()->flash('message', 'Job has been created successfully!');
     }
 
     public function changeSubcategory()
@@ -115,6 +95,6 @@ class AdminEditJobCompoent extends Component
     {
         $categories = Category::all();
         $sub_categories = Subcategory::where('category_id', $this->category_id)->get();
-        return view('livewire.admin.admin-edit-job-compoent', ['categories' => $categories, 'sub_categories' => $sub_categories])->layout('layouts.base');
+        return view('livewire.employer.employer-add-job-component', ['categories' => $categories, 'sub_categories' => $sub_categories])->layout('layouts.base');
     }
 }

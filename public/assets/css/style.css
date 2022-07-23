@@ -7914,3 +7914,11 @@ ul.list-in-text {
         /* font-size: 1.5rem; */
     /* } */
 /* } */
+
+.notification {
+    margin-left: 10px;
+}
+
+.notification .dropdown-item{
+    text-decoration: none;
+}

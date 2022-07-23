@@ -63,9 +63,6 @@
                                                     src="{{ asset('assets/images/products') }}/{{ $job->image }}"
                                                     width="800" height="800" alt="{{ $job->name }}"></figure>
                                         </a>
-                                        <div class="group-flash">
-                                            <span class="flash-item bestseller-label">Hot</span>
-                                        </div>
                                     </div>
                                     <div class="product-info">
                                         <a href="{{ route('job.details', ['slug' => $job->slug]) }}"
@@ -74,17 +71,6 @@
                                                 <p class="product-price">
                                                     {{ __('search.salary') }}{{ $job->regular_salary }}</p>
                                             </ins></div>
-                                        {{-- <div class="product-wish">
-                                            @if ($witems->contains($job->id))
-                                                <a href="#"
-                                                    wire:click.prevent="removeFromWishlist({{ $job->id }})"><i
-                                                        class="fa fa-heart fill-heart"></i></a>
-                                            @else
-                                                <a href="#"
-                                                    wire:click.prevent="addToWishList({{ $job->id }},'{{ $job->name }}',{{ $job->regular_salary }})"><i
-                                                        class="fa fa-heart"></i></a>
-                                            @endif
-                                        </div> --}}
                                     </div>
                                     <div class="addcart">
                                         <div class="bookmark">

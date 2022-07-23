@@ -16,6 +16,7 @@ return [
     'action' => '操作',
     'detail' => '詳細',
     'process' => '処理中 (Processing)',
+    'successful' => '成功 (Successful)',
     'cancel' => 'キャンセル (Canceled)',
     're_job_detail' => '採用仕事の詳細',
     'id' => '採用 ID',

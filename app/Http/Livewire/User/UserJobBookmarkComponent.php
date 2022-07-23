@@ -15,12 +15,14 @@ class UserJobBookmarkComponent extends Component
     {
         Cart::instance('bookmark')->remove($rowId);
         session()->flash('success_message', 'Bookmark has been removed!');
+        return redirect()->route('user.jobs.bookmark');
     }
 
     public function destroyAll()
     {
         Cart::instance('bookmark')->destroy();
         session()->flash('success_message', 'All Bookmark has been removed!');
+        return redirect()->route('user.jobs.bookmark');
     }
 
     public function recruitment($job_id)
@@ -34,7 +36,7 @@ class UserJobBookmarkComponent extends Component
                 $message = 'You have applied this job!';
                 $this->dispatchBrowserEvent('jobApplied', ['message' => $message]);
             } else {
-                return redirect()->route('recruitment.job_id', ['job_id' => $job_id]);
+                return redirect()->route('user.recruitment.job_id', ['job_id' => $job_id]);
             }
         } else {
             return redirect()->route('login');
@@ -56,6 +58,16 @@ class UserJobBookmarkComponent extends Component
         if (Auth::check()) {
             Cart::instance('bookmark')->store(Auth::user()->email);
         }
+
+        $job_ids = Job::all()->pluck('id')->toArray();
+        if (Cart::instance('bookmark')->count() > 0) {
+            foreach (Cart::instance('bookmark')->content() as $item) {
+                if (!in_array($item->id, $job_ids)) {
+                    Cart::instance('bookmark')->remove($item->rowId);
+                }
+            }
+        }
+
         $top_views = Job::orderBy('totalviews', 'DESC')->get()->take(8);
         return view('livewire.user.user-job-bookmark-component', ['top_views' => $top_views])->layout("layouts.base");
     }

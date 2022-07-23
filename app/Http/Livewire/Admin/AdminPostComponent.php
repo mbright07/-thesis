@@ -27,7 +27,7 @@ class AdminPostComponent extends Component
     public function render()
     {
         return view('livewire.admin.admin-post-component', [
-            'posts' => Post::orderBy('created_at', 'ASC')->paginate(10),
+            // 'posts' => Post::orderBy('created_at', 'ASC')->paginate(10),
             'posts' => Post::when($this->active, function ($query) {
                 $query->where('status', $this->active);
             })->search(trim($this->search))

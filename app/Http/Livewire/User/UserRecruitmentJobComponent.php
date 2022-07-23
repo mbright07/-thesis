@@ -38,6 +38,14 @@ class UserRecruitmentJobComponent extends Component
     public function mount($job_id)
     {
         $this->job_id = $job_id;
+        $user = User::find(Auth::user()->id);
+        $this->user = $user;
+        $this->email = $user ? $user->email : '';
+        $this->mobile = $user->profile ? $user->profile->mobile : '';
+        $this->intro = $user->profile ? $user->profile->intro : '';
+        $this->city = $user->profile ? $user->profile->city : '';
+        $this->province = $user->profile ? $user->profile->province : '';
+        $this->country = $user->profile ? $user->profile->country : '';
     }
 
     public function updated($fields)

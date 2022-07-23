@@ -1,50 +1,95 @@
 <div class="wrap-icon-section wishlist">
-    {{--<a href="#" class="link-direction">
-        <i class="fa fa-bell" aria-hidden="true"></i>
-        <div class="left-info">
-            <span class="index">0</span>
-            <span class="title">{{ __('base.noti') }}</span>
-        </div>
-    </a>--}}
     <li class="nav-item dropdown dropdown-notifications" style="list-style: none;">
 
-        <a id="navbarDropdown" class="nav-link dropdown-toggle link-direction" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
+        <a id="navbarDropdown" class="nav-link dropdown-toggle link-direction" href="#" role="button"
+            data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
             <i class="fa fa-bell" aria-hidden="true"></i>
             <div class="left-info">
                 <span class="title">{{ __('base.noti') }}</span>
             </div>
-            {{-- Notification<span class="caret"></span> --}}
         </a>
-        <div class="dropdown-menu dropdown-menu-right menu-notification" aria-labelledby="navbarDropdown">
-            @if ($notifications)
-                @foreach ($notifications as $notification)
-                    @if (Auth::user()->role_id == 1)
-                        <a class="dropdown-item" href="{{ route('admin.recruitmentdetails', $notification->data['recruitment_id']) }}">
-                            <span>Ung vien {{ $notification->data['candidate_name'] }} da ung tuyen cong viec {{ $notification->data['job_name'] }}</span><br>
-                            <br/>
-                        </a>
-                    @elseif (Auth::user()->role_id == 3)
-                        <a class="dropdown-item" href="{{ route('employer.recruitmentdetails', $notification->data['recruitment_id']) }}">
-                            <span>Ung vien {{ $notification->data['candidate_name'] }} da ung tuyen cong viec {{ $notification->data['job_name'] }}</span><br>
-                            <br/>
-                        </a>
-                    @elseif (Auth::user()->role_id == 2)
-                        <a class="dropdown-item" href="{{ route('user.recruitmentdetails', $notification->data['recruitment_id']) }}">
-                            <span>
-                                Nha tuyen dung {{ $notification->data['responder_name'] }} da cap nhat trang thai cua don ung tuyen thanh {{ $notification->data['status'] }}
-                                <br/>
-                                Doi voi cong viec
-                                <br/>
-                                @foreach (json_decode($notification->data['jobs']) as $job)
-                                    {{ $job->name }}
-                                @endforeach
-                                <br/>
-                            </span>
-                            <br/>
-                        </a>
-                    @endif
-                @endforeach
-            @endif
+        <div class="dropdown-container" style="margin-top: 30px; width:350px;">
+            <div class="dropdown-toolbar">
+                <div class="dropdown-toolbar-actions">
+                    <a href="#">{{ __('notification.mark') }}</a>
+                </div>
+                <h3 class="dropdown-toolbar-title">{{ __('notification.noti') }} (<span class="notif-count">0</span>)
+                </h3>
+            </div>
+            <ul class="dropdown-menu">
+                <div class=" notification">
+                    <div class="menu-notification">
+                    </div>
+                </div>
+                <div class="dropdown-toolbar">
+                    <h3 class="dropdown-toolbar-title">
+                        {{ __('notification.old_noti') }}
+                    </h3>
+                </div>
+                @if ($notifications)
+                    @foreach ($notifications as $notification)
+                        @if (Auth::user()->role_id == 1)
+                            <div class="notification">
+                                <a class="dropdown-item"
+                                    href="{{ route('admin.recruitmentdetails', $notification->data['recruitment_id']) }}">
+                                    <span>{{ __('notification.candidate') }}
+                                        {{ $notification->data['candidate_name'] }}
+                                        {{ __('notification.apply') }}
+                                        {{ $notification->data['job_name'] }}</span><br>
+                                    <br />
+                                </a>
+                            </div>
+                        @elseif (Auth::user()->role_id == 3)
+                            {{-- @if ($notification->data['type'] == 'have new noti')
+                                <div class="notification">
+                                    <a class="dropdown-item"
+                                        href="{{ route('user.recruitmentdetails', $notification->data['recruitment_id']) }}">
+                                        <span>
+                                            {{ __('notification.candidate') }}
+                                            {{ $notification->data['sender_name'] }}
+                                            {{ __('notification.update_status') }} {{ $notification->data['status'] }}
+                                            {{ __('notification.for') }}
+                                            @foreach (json_decode($notification->data['jobs']) as $job)
+                                                {{ $job->name }}
+                                            @endforeach
+                                            <br />
+                                        </span>
+                                        <br />
+                                    </a>
+                                </div>
+                            @else
+                                <div class="notification">
+                                    <a class="dropdown-item"
+                                        href="{{ route('employer.recruitmentdetails', $notification->data['recruitment_id']) }}">
+                                        <span>{{ __('notification.candidate') }}
+                                            {{ $notification->data['candidate_name'] }}
+                                            {{ __('notification.apply') }}
+                                            {{ $notification->data['job_name'] }}</span><br>
+                                        <br />
+                                    </a>
+                                </div>
+                            @endif --}}
+                        @elseif (Auth::user()->role_id == 2)
+                            <div class="notification">
+                                <a class="dropdown-item"
+                                    href="{{ route('user.recruitmentdetails', $notification->data['recruitment_id']) }}">
+                                    <span>
+                                        {{ __('notification.employer') }}
+                                        {{ $notification->data['responder_name'] }}
+                                        {{ __('notification.update_status') }} {{ $notification->data['status'] }}
+                                        {{ __('notification.for') }}
+                                        @foreach (json_decode($notification->data['jobs']) as $job)
+                                            {{ $job->name }}
+                                        @endforeach
+                                        <br />
+                                    </span>
+                                    <br />
+                                </a>
+                            </div>
+                        @endif
+                    @endforeach
+                @endif
+            </ul>
         </div>
     </li>
 </div>
@@ -67,34 +112,58 @@
                         if ({{ Auth::user()->role_id }} === 1) {
                             newNotificationHtml = `
                                 <a class="dropdown-item" href="/admin/recruitments/${ data_.recruitment_id }">
-                                <span>Ung vien ${ data_.candidate_name } da ung tuyen cong viec ${ data_.job_name }</span>
+                                <span>{{ __('notification.candidate') }} ${ data_.candidate_name } {{ __('notification.apply') }} ${ data_.job_name }</span>
                                 <br/><br/>
                                 </a>
                             `;
                         }
 
                         if ({{ Auth::user()->role_id }} === 3) {
-                            newNotificationHtml = `
+                            if (data_.type == 'have new noti') {
+                                newNotificationHtml = `
+                                        <a class="dropdown-item" href="/user/recruitments/${ data_.recruitment_id }">
+                                        <span>
+                                            {{ __('notification.candidate') }} ${ data_.sender_name} {{ __('notification.update_status') }} ${ data_.status }
+                                        <br/>
+                                        {{ __('notification.for') }}
+                                        <br/>`;
+
+                                const newArray = JSON.parse(data_.jobs).map(element =>
+                                    newNotificationHtml +=
+                                    element.name);
+
+                                newNotificationHtml +=
+                                    `<br/>
+                                            </span>
+                                            <br/><br/>
+                                            </a>
+                                            `;
+                            } else {
+                                newNotificationHtml = `
                                     <a class="dropdown-item" href="/employer/recruitments/${ data_.recruitment_id }">
-                                    <span>Ung vien ${ data_.candidate_name } da ung tuyen cong viec ${ data_.job_name }</span>
+                                    <span>{{ __('notification.candidate') }} ${ data_.candidate_name } {{ __('notification.apply') }} ${ data_.job_name }</span>
                                     <br/><br/>
                                     </a>
                                 `;
+                            }
+
+
                         }
 
                         if ({{ Auth::user()->role_id }} === 2) {
                             newNotificationHtml = `
                                         <a class="dropdown-item" href="/user/recruitments/${ data_.recruitment_id }">
                                         <span>
-                                            Nha tuyen dung ${ data_.responder_name} da cap nhat trang thai cua don ung tuyen thanh ${ data_.status }
+                                            {{ __('notification.employer') }} ${ data_.responder_name} {{ __('notification.update_status') }} ${ data_.status }
                                         <br/>
-                                        Doi voi cong viec
+                                        {{ __('notification.for') }}
                                         <br/>`;
 
-                            const newArray= JSON.parse(data_.jobs).map(element => newNotificationHtml += element.name);
+                            const newArray = JSON.parse(data_.jobs).map(element => newNotificationHtml +=
+                                element.name);
 
                             newNotificationHtml +=
-                                        `<br/>
+                                `<br/>
                                         </span>
                                         <br/><br/>
                                         </a>

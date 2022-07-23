@@ -34,15 +34,6 @@
                             @endif
 
                             <div>
-                                {{-- <div class="col-md-3">
-                                    <label for="">Location</label>
-                                    <select wire:model="location" class="form-control">
-                                        <option value="">No Selected</option>
-                                        @foreach ($categories as $category)
-                                            <option value="{{ $category->id }}">{{ $category->name }}</option>
-                                        @endforeach
-                                    </select>
-                                </div> --}}
                                 <div class="col-md-3">
                                     <label for="">{{ __('search.search') }}</label>
                                     <input type="text" class="form-control"
@@ -81,7 +72,7 @@
                             <thead>
                                 <th>Id</th>
                                 <th>{{ __('admin/admin-add-job.image') }}</th>
-                                <th>{{ __('admin/admin-add-job.job_name') }}</th>
+                                <th style="width: 350px;">{{ __('admin/admin-add-job.job_name') }}</th>
                                 <th>{{ __('admin/admin-add-job.stock') }}</th>
                                 <th>{{ __('admin/admin-add-job.regular_salary') }}</th>
                                 <th>{{ __('admin/admin-add-job.location') }}</th>
@@ -121,10 +112,11 @@
                                 @endforeach
                             </tbody>
                         </table>
-                        {{ $jobs->links('pagination::bootstrap-4') }}
+                        {{ $jobs->links() }}
                     </div>
                 </div>
             </div>
         </div>
     </div>
 </div>
+

@@ -32,4 +32,5 @@ return [
     'asc' => '最古',
     'desc' => '最新',
     'job_type' => '職種',
+    'ex_salary' => '希望給与'
 ];

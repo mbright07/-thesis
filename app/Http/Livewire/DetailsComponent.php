@@ -44,7 +44,7 @@ class DetailsComponent extends Component
                 $message = 'You have applied this job!';
                 $this->dispatchBrowserEvent('jobApplied', ['message' => $message]);
             } else {
-                return redirect()->route('recruitment.job_id', ['job_id' => $job_id]);
+                return redirect()->route('user.recruitment.job_id', ['job_id' => $job_id]);
             }
         } else {
             return redirect()->route('login');

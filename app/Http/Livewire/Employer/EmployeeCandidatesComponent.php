@@ -3,6 +3,7 @@
 namespace App\Http\Livewire\Employer;
 
 use App\Models\Category;
+use App\Models\Language;
 use App\Models\User;
 use App\Models\Work_preference;
 use Cart;
@@ -18,6 +19,7 @@ class EmployeeCandidatesComponent extends Component
     public $job_cat_id;
 
     public $type;
+    public $language;
 
     public $selected_salary_min;
     public $selected_salary_max;
@@ -51,26 +53,42 @@ class EmployeeCandidatesComponent extends Component
 
         $candidate_ids = Work_preference::query()
             ->whereBetween('expected_salary', [$this->selected_salary_min, $this->selected_salary_max])
+            ->when($this->type, function ($query) {
+                $query->where('type', $this->type);
+            })
             ->pluck('user_id')->toArray();
+
+        // $candidate_languages = Language::query()
+        // ->when($this->language, function ($query) {
+        //     $query->where('language', $this->language);
+        // })
+        // ->pluck('language','id')->toArray();
+        
+        //dd($candidate_languages);
+
+
+            
 
         $lcandidates = User::where('users.role_id', 2)
             ->when($this->job_cat_id, function ($query) {
                 $userIdList = Work_preference::query()->where('category_id', $this->job_cat_id)->pluck('user_id');
                 $query->whereIn('id', $userIdList);
             })
-            ->where('name', 'LIKE', '%'.trim($this->search).'%')
+            ->where('name', 'LIKE', '%' . trim($this->search) . '%')
             ->whereIn('id', $candidate_ids)
             ->paginate($this->pagesize);
 
         foreach ($lcandidates as $lcandidate) {
             if ($lcandidate->workPreference) {
-                foreach($lcandidate->workPreference as $item) {
+                foreach ($lcandidate->workPreference as $item) {
                     $item->expected_location_name = Category::where('id', $item->category_id)->pluck('name')->first();
                 }
             }
         }
 
-        return view('livewire.employer.employee-candidates-component', ['lcandidates' => $lcandidates])->layout("layouts.base");
+        return view('livewire.employer.employee-candidates-component', [
+            'lcandidates' => $lcandidates,
+            // 'candidate_languages' => $candidate_languages
+        ])->layout("layouts.base");
     }
-
 }

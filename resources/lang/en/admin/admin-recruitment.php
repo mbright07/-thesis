@@ -16,6 +16,7 @@ return [
     'action' => 'Action',
     'detail' => 'Detail',
     'process' => 'Processing',
+    'successful' => 'Successful',
     'cancel' => 'Canceled',
     're_job_detail' => 'Recruitment Job Details',
     'id' => 'Recruitment Id',

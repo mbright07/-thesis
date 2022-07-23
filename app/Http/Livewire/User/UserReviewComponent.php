@@ -39,9 +39,8 @@ class UserReviewComponent extends Component
         $review->save();
 
         $recruitmentJob = RecruitmentJob::find($this->recruitment_job_id);
-        $recruitmentJob->rstatus = true;
         $recruitmentJob->save();
-        session()->flash('message', 'in');
+        session()->flash('message', 'Your review has been added successfully!');
     }
 
     public function render()

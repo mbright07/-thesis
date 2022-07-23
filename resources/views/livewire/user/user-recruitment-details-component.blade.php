@@ -12,7 +12,7 @@
                             <div class="col-md-6">
                                 <a href="{{ route('user.recruitments') }}" class="btn btn-success pull-right">{{ __('user/user-recruitment.my_recruitments') }} </a>
                                 @if ($recruitment->status == 'pending' || $recruitment->status == 'processing')
-                                    <a href="#" onclick="confirm('{{ __('user/user-recruitment.sure') }}') || event.stopImmediatePropagation()" wire:click.prevent="cancelRecruitment" class="btn btn-warning pull-right" style="margin-right: 20px;">{{ __('user/user-recruitment.cancel_recruitment') }}</a>
+                                    <a href="#" onclick="confirm('{{ __('user/user-recruitment.sure') }}') || event.stopImmediatePropagation()" wire:click.prevent="updateRecruitmentStatus({{ $recruitment->id }},'canceled')" class="btn btn-warning pull-right" style="margin-right: 20px;">{{ __('user/user-recruitment.cancel_recruitment') }}</a>
                                 @endif
                             </div>
                         </div>
@@ -55,9 +55,7 @@
                                             <a class="link-to-product" href="{{ route('job.details',['slug'=>$item->job->slug]) }}">{{ $item->job->name }}</a>
                                         </div>
                                         <div class="price-field product-price"><p class="price">{{ __('user/user-recruitment.salary') }}{{ $item->job->regular_salary }}</p></div>
-                                        @if ($recruitment->status == 'processing')
                                             <div class="price-field sub-total"><p class="price"><a href="{{ route('user.review',['recruitment_job_id'=>$item->id]) }}">{{ __('user/user-recruitment.write_review') }}</a></p></div>
-                                        @endif
                                     </li>
                                 @endforeach
                             </ul>

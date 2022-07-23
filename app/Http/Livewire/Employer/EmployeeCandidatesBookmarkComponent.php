@@ -27,6 +27,16 @@ class EmployeeCandidatesBookmarkComponent extends Component
         if (Auth::check()) {
             Cart::instance('bookmark_candidate')->store(Auth::user()->email);
         }
+
+        $user_ids = User::where('role_id', 2)->pluck('user_id')->toArray();
+        if (Cart::instance('bookmark_candidate')->count() > 0) {
+            foreach (Cart::instance('bookmark_candidate')->content() as $item) {
+                if (!in_array($item->id, $user_ids)) {
+                    Cart::instance('bookmark_candidate')->remove($item->rowId);
+                }
+            }
+        }
+
         $top_views = User::orderBy('totalviews', 'DESC')->get()->take(8);
         foreach ($top_views as $top_view) {
             if ($top_view->workPreference) {

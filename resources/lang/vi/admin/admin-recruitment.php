@@ -16,6 +16,7 @@ return [
     'action' => 'Thao tác',
     'detail' => 'Xem chi tiết',
     'process' => 'Đang xử lý (Processing)',
+    'successful' => 'Thành công (Successful)',
     'cancel' => 'Đã hủy (Canceled)',
     're_job_detail' => 'Xem chi tiết đơn ứng tuyển',
     'id' => 'ID ứng tuyển',

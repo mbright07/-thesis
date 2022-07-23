@@ -26,6 +26,7 @@
         integrity="sha512-qveKnGrvOChbSzAdtSs8p69eoLegyh+1hwOMbmpCViIwj7rn4oJjdmMvWOuyQlTOZgTlZA0N2PXA7iA8/2TUYA=="
         crossorigin="anonymous" referrerpolicy="no-referrer" />
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="https://skywalkapps.github.io/bootstrap-notifications/stylesheets/bootstrap-notifications.css">
 
     @livewireStyles
 </head>
@@ -146,10 +147,6 @@
                                                     ({{ Auth::user()->name }})<i class="fa fa-angle-down"
                                                         aria-hidden="true"></i></a>
                                                 <ul class="submenu curency">
-                                                    {{-- <li class="menu-item">
-                                                        <a title="Dashboard"
-                                                            href="{{ route('user.dashboard') }}">{{ __('base.dashboard') }}</a>
-                                                    </li> --}}
                                                     <li class="menu-item">
                                                         <a title="My Profile"
                                                             href="{{ route('user.profile') }}">{{ __('base.my_profile') }}</a>
@@ -220,24 +217,7 @@
                             @livewire('header-search-component')
 
                             <div class="wrap-icon right-section">
-                                {{-- @livewire('wishlist-count-component') --}}
                                 @livewire('notification-component')
-                                {{-- <div class="wrap-icon-section minicart">
-                                    <a href="#" class="link-direction">
-                                        <i class="fa fa-comments" aria-hidden="true"></i>
-                                        <div class="left-info">
-                                            <span class="index">4</span>
-                                            <span class="title">{{ __('base.message') }}</span>
-                                        </div>
-                                    </a>
-                                </div> --}}
-                                {{-- <div class="wrap-icon-section show-up-after-1024">
-                                    <a href="#" class="mobile-navigation">
-                                        <span></span>
-                                        <span></span>
-                                        <span></span>
-                                    </a>
-                                </div> --}}
                             </div>
 
                         </div>
@@ -252,6 +232,14 @@
                                             <a href="{{ route('employer.home') }}"
                                                 class="link-term mercado-item-title"><i class="fa fa-home"
                                                     aria-hidden="true"></i></a>
+                                        </li>
+                                        <li class="menu-item">
+                                            <a title="Jobs"
+                                                href="{{ route('employer.jobs') }}">{{ __('base.all_jobs') }}</a>
+                                        </li>
+                                        <li class="menu-item">
+                                            <a title="All Recruitments"
+                                                href="{{ route('employer.recruitments') }}">{{ __('base.all_recruitments') }}</a>
                                         </li>
                                         <li class="menu-item">
                                             <a href="{{ route('employer.candidates') }}"
@@ -298,18 +286,10 @@
                                         </li>
 
                                     @endif
-                                    {{-- <li class="menu-item">
-                                        <a href="/recruitment"
-                                            class="link-term mercado-item-title">{{ __('base.recruitment') }}</a>
-                                    </li> --}}
                                     <li class="menu-item">
                                         <a href="/reference"
                                             class="link-term mercado-item-title">{{ __('base.references') }}</a>
                                     </li>
-                                    {{-- <li class="menu-item">
-                                        <a href="#"
-                                            class="link-term mercado-item-title">{{ __('base.about_us') }}</a>
-                                    </li> --}}
                                     <li class="menu-item">
                                         <a href="/contact-us"
                                             class="link-term mercado-item-title">{{ __('base.contact_us') }}</a>

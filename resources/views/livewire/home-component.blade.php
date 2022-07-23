@@ -9,7 +9,7 @@
                             class="img-slide" >
                         <div class="slide-info slide-1">
                             <h2 class="f-title"><b>{{ $slider->title }}</b></h2>
-                            <span class="subtitle" style="color: white">{{ $slider->subtitle }}</span>
+                            <span class="subtitle" style="color: rgb(252, 96, 96)">{{ $slider->subtitle }}</span>
                             <p class="sale-info" style="color: black">{{ __('home.salary') }}<span
                                     class="price">{{ $slider->salary }}</span></p>
                             <br />

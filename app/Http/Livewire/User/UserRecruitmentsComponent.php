@@ -20,51 +20,53 @@ class UserRecruitmentsComponent extends Component
     public $sortBy = 'ASC';
     public $job_id;
 
-    // public function updateRecruitmentStatus($recruitment_id, $status)
-    // {
-    //     $recruitment = Recruitment::find($recruitment_id);
-    //     $recruitment->status = $status;
-    //     if ($status == 'canceled') {
-    //         $recruitment->canceled_date = DB::raw('CURRENT_DATE');
-    //     }
-    //     $recruitment->save();
-    //     session()->flash('recruitment_message', 'Recruitment status has been updated successfully!');
+    public function updateRecruitmentStatus($recruitment_id, $status)
+    {
+        $recruitment = Recruitment::find($recruitment_id);
+        $recruitment->status = $status;
+        if ($status == 'canceled') {
+            $recruitment->canceled_date = DB::raw('CURRENT_DATE');
+        }
+        $recruitment->save();
+        session()->flash('recruitment_message', 'Recruitment status has been updated successfully!');
 
-    //     $user = \Illuminate\Support\Facades\Auth::user();
+        $user = \Illuminate\Support\Facades\Auth::user();
 
-    //     $jobs = [];
-    //     foreach ($recruitment->recruitmentJob as $recruitmentJob) {
-    //         $job['id'] = $recruitmentJob->job->id;
-    //         $job['name'] = $recruitmentJob->job->name;
-    //         $jobs[] = $job;
-    //     }
+        $jobs = [];
+        foreach ($recruitment->recruitmentJob as $recruitmentJob) {
+            $job['id'] = $recruitmentJob->job->id;
+            $job['name'] = $recruitmentJob->job->name;
+            $jobs[] = $job;
+        }
+        foreach ($recruitment->recruitmentJob as $recruitmentJob) {
+            $data = [
+                'recruitment_id' => $recruitment->id,
+                'status' => $recruitment->status,
+                'sender_id' => $user->id,
+                'sender_name' => $user->name,
+                'jobs' => json_encode($jobs),
+                'receiver_id' => $recruitmentJob->job->user->id,
+                'type' => 'have new noti',
+            ];
 
-    //     $data = [
-    //         'recruitment_id' => $recruitment->id,
-    //         'status' => $recruitment->status,
-    //         'responder_id' => $user->id,
-    //         'responder_name' => $user->name,
-    //         'jobs' => json_encode($jobs),
-    //         'receiver_id' => $recruitment->user_id,
-    //     ];
+            $receiver = User::find($recruitmentJob->job->user->id);
+            $receiver->notify(new UpdateRecruitmentStatus($data));
 
-    //     $receiver = User::find($recruitment->user_id);
-    //     $receiver->notify(new UpdateRecruitmentStatus($data));
+            $options = array(
+                'cluster' => env('PUSHER_APP_CLUSTER'),
+                'encrypted' => true,
+            );
 
-    //     $options = array(
-    //         'cluster' => env('PUSHER_APP_CLUSTER'),
-    //         'encrypted' => true,
-    //     );
+            $pusher = new Pusher(
+                env('PUSHER_APP_KEY'),
+                env('PUSHER_APP_SECRET'),
+                env('PUSHER_APP_ID'),
+                $options,
+            );
 
-    //     $pusher = new Pusher(
-    //         env('PUSHER_APP_KEY'),
-    //         env('PUSHER_APP_SECRET'),
-    //         env('PUSHER_APP_ID'),
-    //         $options,
-    //     );
-
-    //     $pusher->trigger('NotificationEvent', 'send-message', json_encode($data));
-    // }
+            $pusher->trigger('NotificationEvent', 'send-message', json_encode($data));
+        }
+    }
 
     public function render()
     {

@@ -2,7 +2,7 @@
     <main id="main" class="main-site">
 
         <div class="container">
-    
+
             <div class="wrap-breadcrumb">
                 <ul>
                     <li class="item-link"><a href="/" class="link">{{ __('recruitment.home') }}</a></li>
@@ -18,7 +18,7 @@
                                 <form enctype="multipart/form-data" wire:submit.prevent="placeRecruitment"
                                     onsubmit="$('#processing').show();">
                                     <div class="form-group row-in-form">
-                                        <label for="fname">{{ __('recruitment.f_name') }}<span>*</span></label>
+                                        <label for="fname"> <strong>{{ __('recruitment.f_name') }}</strong> <span>*</span></label>
                                         <input type="text" name="fname" value=""
                                             placeholder="{{ __('recruitment.f_name') }}" wire:model="firstname">
                                         @error('firstname')
@@ -26,7 +26,7 @@
                                         @enderror
                                     </div>
                                     <div class="form-group row-in-form">
-                                        <label for="lname">{{ __('recruitment.l_name') }}<span>*</span></label>
+                                        <label for="lname"><strong>{{ __('recruitment.l_name') }}</strong> <span>*</span></label>
                                         <input type="text" name="lname" value=""
                                             placeholder="{{ __('recruitment.l_name') }}" wire:model="lastname">
                                         @error('lastname')
@@ -34,7 +34,7 @@
                                         @enderror
                                     </div>
                                     <div class="form-group row-in-form">
-                                        <label for="email">{{ __('recruitment.email') }}<span>*</span></label>
+                                        <label for="email"><strong>{{ __('recruitment.email') }}</strong> <span>*</span></label>
                                         <input type="email" name="email" value=""
                                             placeholder="{{ __('recruitment.email') }}" wire:model="email">
                                         @error('email')
@@ -42,24 +42,23 @@
                                         @enderror
                                     </div>
                                     <div class="form-group row-in-form">
-                                        <label for="phone">{{ __('recruitment.mobile') }}<span>*</span></label>
-                                        <input type="number" name="phone" value=""
+                                        <label for="phone"> <strong>{{ __('recruitment.mobile') }}</strong> <span>*</span></label>
+                                        <input type="text" name="phone" value=""
                                             placeholder="{{ __('recruitment.10') }}" wire:model="mobile">
                                         @error('mobile')
                                             <p class="text-danger">{{ $message }}</p>
                                         @enderror
                                     </div>
                                     <div class="form-group row-in-form">
-                                        <label for="intro">{{ __('recruitment.intro') }}<span>*</span></label>
-                                        {{-- <textarea id="comment" name="add" cols="78" rows="8" wire:model="intro"></textarea> --}}
-                                        <input type="text" name="intro" value=""
-                                            placeholder="{{ __('recruitment.intro') }}" wire:model="intro">
+                                        <label for="intro"><strong>{{ __('recruitment.intro') }}</strong> <span>*</span></label>
+                                        <textarea rows="4" type="text" class="form-control" name="intro" id="intro"
+                                            placeholder="{{ __('recruitment.intro') }}" wire:model="intro"></textarea>
                                         @error('intro')
                                             <p class="text-danger">{{ $message }}</p>
                                         @enderror
                                     </div>
                                     <div class="form-group row-in-form">
-                                        <label for="country">{{ __('recruitment.country') }}<span>*</span></label>
+                                        <label for="country"> <strong>{{ __('recruitment.country') }}</strong> <span>*</span></label>
                                         <input type="text" name="country" value=""
                                             placeholder="{{ __('recruitment.country') }}" wire:model="country">
                                         @error('country')
@@ -67,7 +66,7 @@
                                         @enderror
                                     </div>
                                     <div class="form-group row-in-form">
-                                        <label for="province">{{ __('recruitment.province') }}<span>*</span></label>
+                                        <label for="province"> <strong>{{ __('recruitment.province') }}</strong> <span>*</span></label>
                                         <input type="text" name="province" value=""
                                             placeholder="{{ __('recruitment.province') }}" wire:model="province">
                                         @error('province')
@@ -75,7 +74,7 @@
                                         @enderror
                                     </div>
                                     <div class="form-group row-in-form">
-                                        <label for="city">{{ __('recruitment.city') }}<span>*</span></label>
+                                        <label for="city"><strong>{{ __('recruitment.city') }}</strong> <span>*</span></label>
                                         <input type="text" name="city" value=""
                                             placeholder="{{ __('recruitment.city') }}" wire:model="city">
                                         @error('city')
@@ -83,29 +82,31 @@
                                         @enderror
                                     </div>
                                     <div class="form-group row-in-form">
-                                        <label for="file">{{ __('recruitment.file') }}<span>*</span></label>
+                                        <label for="file"><strong>{{ __('recruitment.file') }}</strong> <span>*</span></label>
                                         <input type="file" name="file" class="form-control" wire:model="file" />
                                         @error('file')
                                             <p class="text-danger">{{ $message }}</p>
                                         @enderror
                                     </div>
-                                    @if ($errors->isEmpty())
-                                        <div wire:ignore id="processing"
-                                            style="font-size: 22px; margin-bottom:20px; padding-left:37px; color: green; display:none; ">
-                                            <i class="fa fa-spinner fa-pulse fa-fw"></i>
-                                            <span>{{ __('recruitment.process') }}</span>
+                                    <div class="form-group row-in-form">
+                                        @if ($errors->isEmpty())
+                                            <div wire:ignore id="processing"
+                                                style="font-size: 22px; margin-bottom:20px; padding-left:37px; color: green; display:none; ">
+                                                <i class="fa fa-spinner fa-pulse fa-fw"></i>
+                                                <span>{{ __('recruitment.process') }}</span>
+                                            </div>
+                                        @endif
+                                        <div class="summary-item payment-method">
+                                            <button type="submit"
+                                                class="btn btn-medium">{{ __('recruitment.apply_now') }}</button>
                                         </div>
-                                    @endif
-                                    <div class="summary-item payment-method">
-                                        <button type="submit"
-                                            class="btn btn-medium">{{ __('recruitment.apply_now') }}</button>
                                     </div>
                                 </form>
                             </div>
                         </div>
                     </div>
                 </div>
-    
+
                 <div class="wrap-show-advance-info-box style-1 box-in-site">
                     <h3 class="title-box">{{ __('recruitment.most_viewed') }}</h3>
                     <div class="wrap-products slide-carousel owl-carousel style-nav-1 equal-container " data-items="5"
@@ -141,17 +142,15 @@
         </div>
         <!--end container-->
     </main>
-    
-    
+
+
     @push('scripts')
         <script>
-    
             window.addEventListener('jobApplied', (e) => {
                 alert(e.detail.message);
                 $('#processing').hide();
             });
-    
         </script>
     @endpush
-    
+
 </div>

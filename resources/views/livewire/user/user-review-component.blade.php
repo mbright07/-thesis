@@ -9,15 +9,15 @@
                             <li class="comment byuser comment-author-admin bypostauthor even thread-even depth-1"
                                 id="li-comment-20">
                                 <div id="comment-20" class="comment_container">
-                                    <img alt=""
+                                    {{-- <img alt=""
                                         src="{{ asset('assets/images/profile') }}/{{ $recruitmentJob->job->image }}"
-                                        height="80" width="80">
+                                        height="80" width="80"> --}}
                                     <div class="comment-text">
-                                        <p class="meta">
+                                        <h4 class="meta">
                                             <a class="link-to-product"
                                                 href="{{ route('job.details', ['slug' => $recruitmentJob->job->slug]) }}"><strong
                                                     class="woocommerce-review__author">{{ $recruitmentJob->job->name }}</strong></a>
-                                        </p>
+                                        </h4>
                                     </div>
                                 </div>
                             </li>

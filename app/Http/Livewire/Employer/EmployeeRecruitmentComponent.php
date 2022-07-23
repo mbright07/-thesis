@@ -27,7 +27,10 @@ class EmployeeRecruitmentComponent extends Component
         $recruitment->status = $status;
         if ($status == 'processing') {
             $recruitment->processed_date = DB::raw('CURRENT_DATE');
-        } else if ($status == 'canceled') {
+        }else if($status == 'successful') {
+            $recruitment->processed_date = DB::raw('CURRENT_DATE');
+        } 
+        else if ($status == 'canceled') {
             $recruitment->canceled_date = DB::raw('CURRENT_DATE');
         }
         $recruitment->save();

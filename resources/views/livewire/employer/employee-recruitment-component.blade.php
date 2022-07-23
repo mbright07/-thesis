@@ -35,8 +35,8 @@
                                         <option value="">{{ __('admin/admin-add-home-slider.no_selected') }}
                                         </option>
                                         <option value="pending">{{ __('admin/admin-recruitment.pending') }}</option>
-                                        <option value="Processing">{{ __('admin/admin-recruitment.process') }}
-                                        </option>
+                                        <option value="Processing">{{ __('admin/admin-recruitment.process') }}</option>
+                                        <option value="successful">{{ __('admin/admin-recruitment.successful') }}</option>
                                         <option value="canceled">{{ __('admin/admin-recruitment.cancel') }}</option>
                                     </select>
                                 </div>
@@ -110,6 +110,9 @@
                                                 <ul class="dropdown-menu">
                                                     <li><a href="#"
                                                             wire:click.prevent="updateRecruitmentStatus({{ $recruitment->id }},'processing')">{{ __('admin/admin-recruitment.process') }}</a>
+                                                    </li>
+                                                    <li><a href="#"
+                                                            wire:click.prevent="updateRecruitmentStatus({{ $recruitment->id }},'successful')">{{ __('admin/admin-recruitment.successful') }}</a>
                                                     </li>
                                                     <li><a href="#"
                                                             wire:click.prevent="updateRecruitmentStatus({{ $recruitment->id }},'canceled')">{{ __('admin/admin-recruitment.cancel') }}</a>
