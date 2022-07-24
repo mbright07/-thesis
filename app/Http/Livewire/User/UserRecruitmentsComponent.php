@@ -46,7 +46,7 @@ class UserRecruitmentsComponent extends Component
                 'sender_name' => $user->name,
                 'jobs' => json_encode($jobs),
                 'receiver_id' => $recruitmentJob->job->user->id,
-                'type' => 'have new noti',
+                'type_noti' => 'have new noti',
             ];
 
             $receiver = User::find($recruitmentJob->job->user->id);

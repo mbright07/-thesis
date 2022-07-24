@@ -1,5 +1,4 @@
 <div>
-
     <div class="container" style="padding: 30px 0;">
         <style>
             nav svg {

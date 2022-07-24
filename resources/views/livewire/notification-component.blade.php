@@ -1,19 +1,15 @@
-<div class="wrap-icon-section wishlist">
-    <li class="nav-item dropdown dropdown-notifications" style="list-style: none;">
+<div class="collapse navbar-collapse">
+    <li class="dropdown dropdown-notifications" style="list-style: none;">
 
-        <a id="navbarDropdown" class="nav-link dropdown-toggle link-direction" href="#" role="button"
-            data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
-            <i class="fa fa-bell" aria-hidden="true"></i>
-            <div class="left-info">
-                <span class="title">{{ __('base.noti') }}</span>
-            </div>
+        <a class="dropdown-toggle" href="#notifications-panel" data-toggle="dropdown">
+            <i data-count="0" class="fa fa-bell notification-icon"></i>
         </a>
         <div class="dropdown-container" style="margin-top: 30px; width:350px;">
             <div class="dropdown-toolbar">
                 <div class="dropdown-toolbar-actions">
                     <a href="#">{{ __('notification.mark') }}</a>
                 </div>
-                <h3 class="dropdown-toolbar-title">{{ __('notification.noti') }} (<span class="notif-count">0</span>)
+                <h3 class="dropdown-toolbar-title">{{ __('notification.noti') }}(<span class="notif-count">0</span>)
                 </h3>
             </div>
             <ul class="dropdown-menu">
@@ -28,19 +24,8 @@
                 </div>
                 @if ($notifications)
                     @foreach ($notifications as $notification)
-                        @if (Auth::user()->role_id == 1)
-                            <div class="notification">
-                                <a class="dropdown-item"
-                                    href="{{ route('admin.recruitmentdetails', $notification->data['recruitment_id']) }}">
-                                    <span>{{ __('notification.candidate') }}
-                                        {{ $notification->data['candidate_name'] }}
-                                        {{ __('notification.apply') }}
-                                        {{ $notification->data['job_name'] }}</span><br>
-                                    <br />
-                                </a>
-                            </div>
-                        @elseif (Auth::user()->role_id == 3)
-                            {{-- @if ($notification->data['type'] == 'have new noti')
+                        @if (Auth::user()->role_id == 3)
+                            {{-- @if ($notification->data['type_noti'] == 'have new noti')
                                 <div class="notification">
                                     <a class="dropdown-item"
                                         href="{{ route('user.recruitmentdetails', $notification->data['recruitment_id']) }}">
@@ -98,6 +83,12 @@
     <script src="https://js.pusher.com/4.4/pusher.min.js"></script>
     <script>
         $(function() {
+            var notificationsWrapper = $('.dropdown-notifications');
+            var notificationsToggle = notificationsWrapper.find('a[data-toggle]');
+            var notificationsCountElem = notificationsToggle.find('i[data-count]');
+            var notificationsCount = parseInt(notificationsCountElem.data('count'));
+            var notifications = notificationsWrapper.find('ul.dropdown-menu');
+
             var pusher = new Pusher('{{ env('PUSHER_APP_KEY') }}', {
                 encrypted: true,
                 cluster: "{{ env('PUSHER_APP_CLUSTER') }}"
@@ -108,23 +99,12 @@
                 @if (Auth::check())
                     if (data_.receiver_id === {{ Auth::user()->id }}) {
                         var newNotificationHtml;
-
-                        if ({{ Auth::user()->role_id }} === 1) {
-                            newNotificationHtml = `
-                                <a class="dropdown-item" href="/admin/recruitments/${ data_.recruitment_id }">
-                                <span>{{ __('notification.candidate') }} ${ data_.candidate_name } {{ __('notification.apply') }} ${ data_.job_name }</span>
-                                <br/><br/>
-                                </a>
-                            `;
-                        }
-
                         if ({{ Auth::user()->role_id }} === 3) {
-                            if (data_.type == 'have new noti') {
+                            if (data_.type_noti == 'have new noti') {
                                 newNotificationHtml = `
                                         <a class="dropdown-item" href="/user/recruitments/${ data_.recruitment_id }">
                                         <span>
                                             {{ __('notification.candidate') }} ${ data_.sender_name} {{ __('notification.update_status') }} ${ data_.status }
-                                        <br/>
                                         {{ __('notification.for') }}
                                         <br/>`;
 
@@ -138,6 +118,10 @@
                                             <br/><br/>
                                             </a>
                                             `;
+                                notificationsCount += 1;
+                                notificationsCountElem.attr('data-count', notificationsCount);
+                                notificationsWrapper.find('.notif-count').text(notificationsCount);
+                                notificationsWrapper.show();
                             } else {
                                 newNotificationHtml = `
                                     <a class="dropdown-item" href="/employer/recruitments/${ data_.recruitment_id }">
@@ -145,9 +129,11 @@
                                     <br/><br/>
                                     </a>
                                 `;
+                                notificationsCount += 1;
+                                notificationsCountElem.attr('data-count', notificationsCount);
+                                notificationsWrapper.find('.notif-count').text(notificationsCount);
+                                notificationsWrapper.show();
                             }
-
-
                         }
 
                         if ({{ Auth::user()->role_id }} === 2) {
@@ -171,9 +157,16 @@
                         }
 
                         $('.menu-notification').prepend(newNotificationHtml);
+                        notificationsCount += 1;
+                        notificationsCountElem.attr('data-count', notificationsCount);
+                        notificationsWrapper.find('.notif-count').text(notificationsCount);
+                        notificationsWrapper.show();
                     }
                 @endif
+
             });
+
+
 
         });
     </script>

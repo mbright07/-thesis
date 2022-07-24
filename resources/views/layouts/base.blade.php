@@ -26,7 +26,8 @@
         integrity="sha512-qveKnGrvOChbSzAdtSs8p69eoLegyh+1hwOMbmpCViIwj7rn4oJjdmMvWOuyQlTOZgTlZA0N2PXA7iA8/2TUYA=="
         crossorigin="anonymous" referrerpolicy="no-referrer" />
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-    <link rel="stylesheet" type="text/css" href="https://skywalkapps.github.io/bootstrap-notifications/stylesheets/bootstrap-notifications.css">
+    <link rel="stylesheet" type="text/css"
+        href="https://skywalkapps.github.io/bootstrap-notifications/stylesheets/bootstrap-notifications.css">
 
     @livewireStyles
 </head>
@@ -66,10 +67,6 @@
                                                             href="{{ route('admin.categories') }}">{{ __('base.categories') }}</a>
                                                     </li>
                                                     <li class="menu-item">
-                                                        <a title="Jobs"
-                                                            href="{{ route('admin.jobs') }}">{{ __('base.all_jobs') }}</a>
-                                                    </li>
-                                                    <li class="menu-item">
                                                         <a title="Posts"
                                                             href="{{ route('admin.posts') }}">{{ __('base.all_posts') }}</a>
                                                     </li>
@@ -80,10 +77,6 @@
                                                     <li class="menu-item">
                                                         <a title="Manage Home Categories"
                                                             href="{{ route('admin.homecategories') }}">{{ __('base.manage_home_categories') }}</a>
-                                                    </li>
-                                                    <li class="menu-item">
-                                                        <a title="All Recruitments"
-                                                            href="{{ route('admin.recruitments') }}">{{ __('base.all_recruitments') }}</a>
                                                     </li>
                                                     <li class="menu-item">
                                                         <a title="Contact Messages"
@@ -181,7 +174,7 @@
                                         <li class="menu-item"><a title="Register or Login"
                                                 href="{{ route('register') }}">{{ __('base.register') }}</a></li>
                                     @endif
-                                @endif
+                                    @endif
 
                                     <li class="menu-item lang-menu menu-item-has-children parent">
                                         <a title="Language" href="#"><i class="fa fa-angle-down"
@@ -229,9 +222,12 @@
                                 <ul class="nav primary clone-main-menu" id="mercado_main" data-menuname="Main menu">
                                     @if (Auth::user() && Auth::user()->role_id === 3)
                                         <li class="menu-item home-icon">
-                                            <a href="{{ route('employer.home') }}"
-                                                class="link-term mercado-item-title"><i class="fa fa-home"
+                                            <a href="/" class="link-term mercado-item-title"><i class="fa fa-home"
                                                     aria-hidden="true"></i></a>
+                                        </li>
+                                        <li class="menu-item">
+                                            <a href="{{ route('employer.home') }}"
+                                                class="link-term mercado-item-title">Home</i></a>
                                         </li>
                                         <li class="menu-item">
                                             <a title="Jobs"
@@ -248,6 +244,14 @@
                                         <li class="menu-item">
                                             <a href="{{ route('employer.candidates.bookmark') }}"
                                                 class="link-term mercado-item-title">{{ __('base.candidates_bookmark') }}</a>
+                                        </li>
+                                        <li class="menu-item">
+                                            <a href="/reference"
+                                                class="link-term mercado-item-title">{{ __('base.references') }}</a>
+                                        </li>
+                                        <li class="menu-item">
+                                            <a href="/contact-us"
+                                                class="link-term mercado-item-title">{{ __('base.contact_us') }}</a>
                                         </li>
                                     @elseif (Auth::user() && Auth::user()->role_id === 2)
                                         <li class="menu-item home-icon">
@@ -270,7 +274,31 @@
                                             <a title="My Recruitments"
                                                 href="{{ route('user.recruitments') }}">{{ __('base.my_recruitments') }}</a>
                                         </li>
-                                    
+                                        <li class="menu-item">
+                                            <a href="/reference"
+                                                class="link-term mercado-item-title">{{ __('base.references') }}</a>
+                                        </li>
+                                        <li class="menu-item">
+                                            <a href="/contact-us"
+                                                class="link-term mercado-item-title">{{ __('base.contact_us') }}</a>
+                                        </li>
+                                    @elseif (Auth::user() && Auth::user()->role_id === 1)
+                                        <li class="menu-item home-icon">
+                                            <a href="/" class="link-term mercado-item-title"><i class="fa fa-home"
+                                                    aria-hidden="true"></i></a>
+                                        </li>
+                                        <li class="menu-item">
+                                            <a href="/jobs"
+                                                class="link-term mercado-item-title">{{ __('base.jobs') }}</a>
+                                        </li>
+                                        <li class="menu-item">
+                                            <a href="{{ route('employer.candidates') }}"
+                                                class="link-term mercado-item-title">{{ __('base.candidates') }}</a>
+                                        </li>
+                                        <li class="menu-item">
+                                            <a href="/reference"
+                                                class="link-term mercado-item-title">{{ __('base.references') }}</a>
+                                        </li>
                                     @else
                                         <li class="menu-item home-icon">
                                             <a href="/" class="link-term mercado-item-title"><i class="fa fa-home"
@@ -284,16 +312,16 @@
                                             <a href="{{ route('user.jobs.bookmark') }}"
                                                 class="link-term mercado-item-title">{{ __('base.bookmark') }}</a>
                                         </li>
-
+                                        <li class="menu-item">
+                                            <a href="/reference"
+                                                class="link-term mercado-item-title">{{ __('base.references') }}</a>
+                                        </li>
+                                        <li class="menu-item">
+                                            <a href="/contact-us"
+                                                class="link-term mercado-item-title">{{ __('base.contact_us') }}</a>
+                                        </li>
                                     @endif
-                                    <li class="menu-item">
-                                        <a href="/reference"
-                                            class="link-term mercado-item-title">{{ __('base.references') }}</a>
-                                    </li>
-                                    <li class="menu-item">
-                                        <a href="/contact-us"
-                                            class="link-term mercado-item-title">{{ __('base.contact_us') }}</a>
-                                    </li>
+
                                 </ul>
                             </div>
                         </div>
